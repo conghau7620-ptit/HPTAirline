@@ -13,28 +13,31 @@ import java.sql.Date;
  */
 public class HoaDon {
     private String maHoaDon;
-    private String maKhachHang;
+    private String sdtKhachHang;
     private Date ngayXuatHoaDon;
     private Byte trangThaiThanhToan;
     private int tongTien;
+    private String sdtNhanVien;
 
     public HoaDon() {
     }
 
-    public HoaDon(String maHoaDon, String maKhachHang, Date ngayXuatHoaDon, Byte trangThaiThanhToan, int tongTien) {
+    public HoaDon(String maHoaDon, String sdtKhachHang, Date ngayXuatHoaDon, 
+                    Byte trangThaiThanhToan, int tongTien, String sdtNhanVien) {
         this.maHoaDon = maHoaDon;
-        this.maKhachHang = maKhachHang;
+        this.sdtKhachHang = sdtKhachHang;
         this.ngayXuatHoaDon = ngayXuatHoaDon;
         this.trangThaiThanhToan = trangThaiThanhToan;
         this.tongTien = tongTien;
+        this.sdtNhanVien = sdtNhanVien;
     }
 
     public String getMaHoaDon() {
         return maHoaDon;
     }
 
-    public String getMaKhachHang() {
-        return maKhachHang;
+    public String getSdtKhachHang() {
+        return sdtKhachHang;
     }
 
     public Date getNgayXuatHoaDon() {
@@ -49,12 +52,16 @@ public class HoaDon {
         return tongTien;
     }
 
+    public String getSdtNhanVien() {
+        return sdtNhanVien;
+    }
+
     public void setMaHoaDon(String maHoaDon) {
         this.maHoaDon = maHoaDon;
     }
 
-    public void setMaKhachHang(String maKhachHang) {
-        this.maKhachHang = maKhachHang;
+    public void setSdtKhachHang(String sdtKhachHang) {
+        this.sdtKhachHang = sdtKhachHang;
     }
 
     public void setNgayXuatHoaDon(Date ngayXuatHoaDon) {
@@ -67,6 +74,10 @@ public class HoaDon {
 
     public void setTongTien(int tongTien) {
         this.tongTien = tongTien;
+    }
+
+    public void setSdtNhanVien(String sdtNhanVien) {
+        this.sdtNhanVien = sdtNhanVien;
     }
     
     

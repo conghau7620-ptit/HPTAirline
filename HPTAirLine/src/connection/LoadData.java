@@ -63,7 +63,8 @@ public class LoadData {
                     rs.getString(2),
                     rs.getDate(3),
                     rs.getByte(4),
-                    rs.getInt(5));
+                    rs.getInt(5),
+                    rs.getString(6));
                 Controller.arrayListHoaDon.add(hoaDon);
             }
         } catch (SQLException ex) {
@@ -82,7 +83,7 @@ public class LoadData {
                     rs.getString(4),
                     rs.getString(5),
                     rs.getString(6),
-                    rs.getString(7));
+                    rs.getInt(7));
                 Controller.arrayListKhachHang.add(khachHang);
             }
         } catch (SQLException ex) {
@@ -145,7 +146,8 @@ public class LoadData {
                 TaiKhoan taiKhoan = new TaiKhoan(
                     rs.getString(1),
                     rs.getString(2),
-                    rs.getString(3));
+                    rs.getString(3),
+                    rs.getString(4));
                 Controller.arrayListTaiKhoan.add(taiKhoan);
             }
         } catch (SQLException ex) {

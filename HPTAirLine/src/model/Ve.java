@@ -11,7 +11,7 @@ package model;
  */
 public class Ve {
     private String maVe;
-    private String maKhachHang;
+    private String sdtKhachHang;
     private String maChuyenBay;
     private int gia;
     private short kyGui;
@@ -27,9 +27,9 @@ public class Ve {
     public Ve() {
     }
 
-    public Ve(String maVe, String maKhachHang, String maChuyenBay, int gia, short kyGui, byte trangThaiDoi, byte trangThaiVe, String cmndNguoiBay, String tenNguoiBay, String emailNguoiBay, String sdtNguoiBay, String maHoaDon, String maGhe) {
+    public Ve(String maVe, String sdtKhachHang, String maChuyenBay, int gia, short kyGui, byte trangThaiDoi, byte trangThaiVe, String cmndNguoiBay, String tenNguoiBay, String emailNguoiBay, String sdtNguoiBay, String maHoaDon, String maGhe) {
         this.maVe = maVe;
-        this.maKhachHang = maKhachHang;
+        this.sdtKhachHang = sdtKhachHang;
         this.maChuyenBay = maChuyenBay;
         this.gia = gia;
         this.kyGui = kyGui;
@@ -47,8 +47,8 @@ public class Ve {
         return maVe;
     }
 
-    public String getMaKhachHang() {
-        return maKhachHang;
+    public String getSdtKhachHang() {
+        return sdtKhachHang;
     }
 
     public String getMaChuyenBay() {
@@ -99,8 +99,8 @@ public class Ve {
         this.maVe = maVe;
     }
 
-    public void setMaKhachHang(String maKhachHang) {
-        this.maKhachHang = maKhachHang;
+    public void setSdtKhachHang(String sdtKhachHang) {
+        this.sdtKhachHang = sdtKhachHang;
     }
 
     public void setMaChuyenBay(String maChuyenBay) {

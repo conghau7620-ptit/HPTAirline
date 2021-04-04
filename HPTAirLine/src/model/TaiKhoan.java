@@ -13,11 +13,13 @@ public class TaiKhoan {
     private String tenDangNhap;
     private String matKhau;
     private String loaiTaiKhoan;
+    private String sdt;
 
-    public TaiKhoan(String tenDangNhap, String matKhau, String loaiTaiKhoan) {
+    public TaiKhoan(String tenDangNhap, String matKhau, String loaiTaiKhoan, String sdt) {
         this.tenDangNhap = tenDangNhap;
         this.matKhau = matKhau;
         this.loaiTaiKhoan = loaiTaiKhoan;
+        this.sdt = sdt;
     }
 
     public TaiKhoan() {
@@ -35,6 +37,10 @@ public class TaiKhoan {
         return loaiTaiKhoan;
     }
 
+    public String getSdt() {
+        return sdt;
+    }
+
     public void setTenDangNhap(String tenDangNhap) {
         this.tenDangNhap = tenDangNhap;
     }
@@ -45,6 +51,10 @@ public class TaiKhoan {
 
     public void setLoaiTaiKhoan(String loaiTaiKhoan) {
         this.loaiTaiKhoan = loaiTaiKhoan;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
     }
     
     
