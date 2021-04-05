@@ -10,27 +10,27 @@ package model;
  * @author conghau
  */
 public class NhanVien {
-    private String maNhanVien;
+    private String sdtNhanVien;
     private String tenNhanVien;
     private String diaChi;
-    private String sdt;
     private String tenDangNhap;
+    private String cmnd;
 
     public NhanVien() {
     }
 
-    public NhanVien(String maNhanVien, String tenNhanVien, String diaChi, String sdt, String tenDangNhap) {
-        this.maNhanVien = maNhanVien;
+    public NhanVien(String sdtNhanVien, String tenNhanVien, String diaChi, String tenDangNhap, String cmnd) {
+        this.sdtNhanVien = sdtNhanVien;
         this.tenNhanVien = tenNhanVien;
         this.diaChi = diaChi;
-        this.sdt = sdt;
         this.tenDangNhap = tenDangNhap;
+        this.cmnd = cmnd;
     }
 
-    public String getMaNhanVien() {
-        return maNhanVien;
+    public String getSdtNhanVien() {
+        return sdtNhanVien;
     }
-
+    
     public String getTenNhanVien() {
         return tenNhanVien;
     }
@@ -39,17 +39,19 @@ public class NhanVien {
         return diaChi;
     }
 
-    public String getSdt() {
-        return sdt;
-    }
-
     public String getTenDangNhap() {
         return tenDangNhap;
     }
 
-    public void setMaNhanVien(String maNhanVien) {
-        this.maNhanVien = maNhanVien;
+    public String getCmnd() {
+        return cmnd;
     }
+
+    public void setSdtNhanVien(String sdtNhanVien) {
+        this.sdtNhanVien = sdtNhanVien;
+    }
+
+    
 
     public void setTenNhanVien(String tenNhanVien) {
         this.tenNhanVien = tenNhanVien;
@@ -59,12 +61,12 @@ public class NhanVien {
         this.diaChi = diaChi;
     }
 
-    public void setSdt(String sdt) {
-        this.sdt = sdt;
-    }
-
     public void setTenDangNhap(String tenDangNhap) {
         this.tenDangNhap = tenDangNhap;
+    }
+
+    public void setCmnd(String cmnd) {
+        this.cmnd = cmnd;
     }
     
     

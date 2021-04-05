@@ -10,29 +10,30 @@ package model;
  * @author conghau
  */
 public class KhachHang {
-    private String maKhachHang;
+    private String sdtKhachHang;
     private String tenKhachHang;
     private String email;
-    private String sdt;
     private String diaChi;
     private String tenDangNhap;
     private String cmnd;
+    private int diemTichLuy;
 
     public KhachHang() {
     }
 
-    public KhachHang(String maKhachHang, String tenKhachHang, String email, String sdt, String diaChi, String tenDangNhap, String cmnd) {
-        this.maKhachHang = maKhachHang;
+    public KhachHang(String sdtKhachHang, String tenKhachHang, String email, 
+                String diaChi, String tenDangNhap, String cmnd, int diemTichLuy) {
+        this.sdtKhachHang = sdtKhachHang;
         this.tenKhachHang = tenKhachHang;
         this.email = email;
-        this.sdt = sdt;
         this.diaChi = diaChi;
         this.tenDangNhap = tenDangNhap;
         this.cmnd = cmnd;
+        this.diemTichLuy = diemTichLuy;
     }
 
-    public String getMaKhachHang() {
-        return maKhachHang;
+    public String getSdtKhachHang() {
+        return sdtKhachHang;
     }
 
     public String getTenKhachHang() {
@@ -41,10 +42,6 @@ public class KhachHang {
 
     public String getEmail() {
         return email;
-    }
-
-    public String getSdt() {
-        return sdt;
     }
 
     public String getDiaChi() {
@@ -59,8 +56,12 @@ public class KhachHang {
         return cmnd;
     }
 
-    public void setMaKhachHang(String maKhachHang) {
-        this.maKhachHang = maKhachHang;
+    public int getDiemTichLuy() {
+        return diemTichLuy;
+    }
+
+    public void setSdtKhachHang(String sdtKhachHang) {
+        this.sdtKhachHang = sdtKhachHang;
     }
 
     public void setTenKhachHang(String tenKhachHang) {
@@ -69,10 +70,6 @@ public class KhachHang {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setSdt(String sdt) {
-        this.sdt = sdt;
     }
 
     public void setDiaChi(String diaChi) {
@@ -85,6 +82,10 @@ public class KhachHang {
 
     public void setCmnd(String cmnd) {
         this.cmnd = cmnd;
+    }
+
+    public void setDiemTichLuy(int diemTichLuy) {
+        this.diemTichLuy = diemTichLuy;
     }
     
     
