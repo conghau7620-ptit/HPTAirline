@@ -46,10 +46,6 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
                 System.err.println("trang");
                 a.setBackground(Color.GREEN);
                 this.listSelected.add(a);
-                // mở giao diện nhập thông tin khách hàng nhưng hiện tại chưa tìm được 
-                // cách để đóng giao diện lại sau khi xác nhận
-                // setVisible(false) không được
-                // vẫm chưa code logic mấy ông muốn test thử thì có thể bỏ 3 dòng dến để test giao diện
                 JFrame khach = new GiaoDienNhapThongTinNguoiBayKhiChonGhe();
                 khach.pack();
                 khach.setVisible(true);
