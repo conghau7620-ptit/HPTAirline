@@ -48,6 +48,7 @@ public class GiaoDienHoaDon extends javax.swing.JFrame {
         jTextField_GiaVePhoThong = new javax.swing.JTextField();
         jTextField_GiaVeThuongGia = new javax.swing.JTextField();
         jLabel_NgayXuatHoaDon = new javax.swing.JLabel();
+        jDateChooser_NgayXuatHoaDon = new com.toedter.calendar.JDateChooser();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -197,14 +198,18 @@ public class GiaoDienHoaDon extends javax.swing.JFrame {
         jButton_HoanTatHoaDon.setBackground(new java.awt.Color(255, 77, 77));
         jButton_HoanTatHoaDon.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_HoanTatHoaDon.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_HoanTatHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_forward_30px.png"))); // NOI18N
         jButton_HoanTatHoaDon.setText("Hoàn Tất");
         jButton_HoanTatHoaDon.setBorderPainted(false);
+        jButton_HoanTatHoaDon.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         jButton_ThoatGiaoDienHoaDon.setBackground(new java.awt.Color(0, 102, 102));
         jButton_ThoatGiaoDienHoaDon.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_ThoatGiaoDienHoaDon.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_ThoatGiaoDienHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_back_30px.png"))); // NOI18N
         jButton_ThoatGiaoDienHoaDon.setText("Quay Lại");
         jButton_ThoatGiaoDienHoaDon.setBorderPainted(false);
+        jButton_ThoatGiaoDienHoaDon.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -234,7 +239,9 @@ public class GiaoDienHoaDon extends javax.swing.JFrame {
                                                 .addGap(88, 88, 88))))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel_NgayXuatHoaDon)
-                                        .addGap(242, 242, 242)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jDateChooser_NgayXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(89, 89, 89)))
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel_ThuongGia)
@@ -287,7 +294,7 @@ public class GiaoDienHoaDon extends javax.swing.JFrame {
                 .addComponent(jLabel_VeDaChon)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -295,9 +302,9 @@ public class GiaoDienHoaDon extends javax.swing.JFrame {
                             .addComponent(jTextField_SLVePhoThong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10)
                             .addComponent(jTextField_GiaVePhoThong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13)
-                        .addGap(2, 2, 2)
+                        .addGap(7, 7, 7)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel_ThuongGia)
                             .addComponent(jTextField_SLVeThuongGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -311,7 +318,9 @@ public class GiaoDienHoaDon extends javax.swing.JFrame {
                             .addComponent(jTextField_TongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel_TongTien)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel_NgayXuatHoaDon)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_NgayXuatHoaDon)
+                            .addComponent(jDateChooser_NgayXuatHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -375,6 +384,7 @@ public class GiaoDienHoaDon extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_HoanTatHoaDon;
     private javax.swing.JButton jButton_ThoatGiaoDienHoaDon;
+    private com.toedter.calendar.JDateChooser jDateChooser_NgayXuatHoaDon;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;

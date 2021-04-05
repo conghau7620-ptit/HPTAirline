@@ -113,8 +113,10 @@ public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
         jButton_XacNhanChonChuyenBay.setBackground(new java.awt.Color(255, 77, 77));
         jButton_XacNhanChonChuyenBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_XacNhanChonChuyenBay.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_XacNhanChonChuyenBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_forward_30px.png"))); // NOI18N
         jButton_XacNhanChonChuyenBay.setText("Xác nhận");
         jButton_XacNhanChonChuyenBay.setBorderPainted(false);
+        jButton_XacNhanChonChuyenBay.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         jLabel_ThongTinCanTimKiem.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel_ThongTinCanTimKiem.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,8 +125,10 @@ public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
         jButton_ThoatKetQuaTimKiemChuyenBay.setBackground(new java.awt.Color(0, 102, 102));
         jButton_ThoatKetQuaTimKiemChuyenBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_ThoatKetQuaTimKiemChuyenBay.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_ThoatKetQuaTimKiemChuyenBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_back_30px.png"))); // NOI18N
         jButton_ThoatKetQuaTimKiemChuyenBay.setText("Quay lại");
         jButton_ThoatKetQuaTimKiemChuyenBay.setBorderPainted(false);
+        jButton_ThoatKetQuaTimKiemChuyenBay.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
