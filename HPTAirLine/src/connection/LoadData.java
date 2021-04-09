@@ -8,6 +8,7 @@ package connection;
 import controller.Controller;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.*;
@@ -31,6 +32,11 @@ public class LoadData {
                     rs.getTime(6),
                     rs.getString(7),
                     rs.getInt(8));
+                chuyenBay.setArrayListGhe(loadTableGhe(chuyenBay.getMaChuyenBay().trim()));
+                for (Ghe g: chuyenBay.getArrayListGhe()) {
+                    System.out.print(g.getMaGhe() + " ");
+                }
+                System.out.println("");
                 Controller.arrayListChuyenBay.add(chuyenBay);
             }
         } catch (SQLException ex) {
@@ -38,8 +44,9 @@ public class LoadData {
         }
     }
     
-    public static void loadTableGhe() {
-        ResultSet rs = DataConnection.retrieveData("select * from dbo.GHE");
+    public static ArrayList<Ghe> loadTableGhe(String maChuyenBay){ 
+        ArrayList<Ghe> arrayListGhe = new ArrayList<Ghe>();
+        ResultSet rs = DataConnection.retrieveData("select * from dbo.GHE where MaChuyenBay like '%"+ maChuyenBay +" %'");
         try {
             while (rs.next()) {
                 Ghe ghe = new Ghe(
@@ -47,11 +54,12 @@ public class LoadData {
                     rs.getString(2),
                     rs.getString(3),
                     rs.getByte(4));
-                Controller.arrayListGhe.add(ghe);
+                arrayListGhe.add(ghe);
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return arrayListGhe;
     }
     
     public static void loadTableHoaDon() {
@@ -179,10 +187,10 @@ public class LoadData {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    //
     public LoadData() {
         loadTableChuyenBay();
-        loadTableGhe();
         loadTableHoaDon();
         loadTableKhachHang();
         loadTableMayBay();

@@ -5,8 +5,13 @@
  */
 package controller;
 
+import connection.DataConnection;
 import connection.LoadData;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.ChuyenBay;
 import model.Ghe;
 import model.HoaDon;
@@ -23,7 +28,6 @@ import model.Ve;
  */
 public class Controller {
     public static ArrayList<ChuyenBay> arrayListChuyenBay = new ArrayList<ChuyenBay>();
-    public static ArrayList<Ghe> arrayListGhe = new ArrayList<Ghe>();
     public static ArrayList<HoaDon> arrayListHoaDon = new ArrayList<HoaDon>();
     public static ArrayList<KhachHang> arrayListKhachHang = new ArrayList<KhachHang>();
     public static ArrayList<MayBay> arrayListMayBay = new ArrayList<MayBay>();
@@ -31,8 +35,34 @@ public class Controller {
     public static ArrayList<SanBay> arrayListSanBay = new ArrayList<SanBay>();
     public static ArrayList<TaiKhoan> arrayListTaiKhoan = new ArrayList<TaiKhoan>();
     public static ArrayList<Ve> arrayListVe = new ArrayList<Ve>();
+    //them list ket qua tim kiem
+     public static ArrayList<ChuyenBay> arrayListKetQuaTimKiemChuyenBay = new ArrayList<ChuyenBay>();
+    //
+     
+     public static void loadKetQuaTheoNgay(String maSanBayDi, String maSanBayDen, String ngayDi, String ngayVe){
+        ResultSet rs = DataConnection.retrieveData("select * from dbo.CHUYENBAY where MaSanBayDi like '%"+maSanBayDi+"%' and "
+                + "MaSanBayDen like '%"+maSanBayDen+"%' and  NgayBay like '%"+ngayDi+"%'");
+
+        try {
+            while (rs.next()) {
+                ChuyenBay chuyenBay = new ChuyenBay(
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getDate(5),
+                    rs.getTime(6),
+                    rs.getString(7),
+                    rs.getInt(8));
+                Controller.arrayListKetQuaTimKiemChuyenBay.add(chuyenBay);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public static void main(String[] args) {
         new LoadData();
+        
     }
 }

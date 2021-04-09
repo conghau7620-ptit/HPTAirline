@@ -5,7 +5,18 @@
  */
 package view;
 
+import connection.DataConnection;
+import connection.LoadData;
+import controller.Controller;
 import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import model.ChuyenBay;
 
 /**
  *
@@ -16,11 +27,21 @@ public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
     /**
      * Creates new form FlightSearchResultFrame
      */
-    public GiaoDienKetQuaTimKiemChuyenBay() {
+    ArrayList <ChuyenBay> list;
+    DefaultTableModel dtm;
+    String maSanBayDi;
+    String maSanBayDen;
+    String ngayDi;
+    String ngayVe;
+    public GiaoDienKetQuaTimKiemChuyenBay(String maSanBayDi, String maSanBayDen, String ngayDi, String ngayVe) {
         initComponents();
-        jTable_KetQuaTimKiem.getTableHeader().setOpaque(false);
-        jTable_KetQuaTimKiem.getTableHeader().setBackground(Color.GRAY);
-        jTable_KetQuaTimKiem.getTableHeader().setForeground(Color.white);
+
+        dtm = (DefaultTableModel) jTable_KetQuaTimKiem.getModel();
+        dtm.setColumnIdentifiers(new Object[]{
+            "MaChuyenBay", "MaMayBay", "MaSanBayDi", "MaSanBayDen", "NgayBay", "GioBay", "GhiChu",
+             "KhoangCach"
+        });
+        showList();
     }
 
     /**
@@ -113,7 +134,6 @@ public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
         jButton_XacNhanChonChuyenBay.setBackground(new java.awt.Color(255, 77, 77));
         jButton_XacNhanChonChuyenBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_XacNhanChonChuyenBay.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_XacNhanChonChuyenBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_forward_30px.png"))); // NOI18N
         jButton_XacNhanChonChuyenBay.setText("Xác nhận");
         jButton_XacNhanChonChuyenBay.setBorderPainted(false);
         jButton_XacNhanChonChuyenBay.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -125,7 +145,6 @@ public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
         jButton_ThoatKetQuaTimKiemChuyenBay.setBackground(new java.awt.Color(0, 102, 102));
         jButton_ThoatKetQuaTimKiemChuyenBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_ThoatKetQuaTimKiemChuyenBay.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_ThoatKetQuaTimKiemChuyenBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_back_30px.png"))); // NOI18N
         jButton_ThoatKetQuaTimKiemChuyenBay.setText("Quay lại");
         jButton_ThoatKetQuaTimKiemChuyenBay.setBorderPainted(false);
         jButton_ThoatKetQuaTimKiemChuyenBay.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -167,6 +186,36 @@ public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+
+    private void showList() {
+        dtm.setRowCount(0);
+//        LoadData.loadKetQuaTimKiemChuyenBay("VII", "SGN", "2", "3");
+
+
+        Date ngayDi = null;
+        try {
+            ngayDi = new SimpleDateFormat("dd/MM/yyyy").parse("11/09/2000");
+        } catch (ParseException ex) {
+            Logger.getLogger(GiaoDienKetQuaTimKiemChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+              
+        String a = new SimpleDateFormat("yyyy-dd-MM").format(ngayDi);
+        System.out.println(a);
+        
+        Controller.loadKetQuaTheoNgay("VII","SGN",a,"");
+        
+        
+        list = Controller.arrayListKetQuaTimKiemChuyenBay;
+        
+        
+        for (ChuyenBay tmp : list) {
+            dtm.addRow(new Object[]{
+                tmp.getMaChuyenBay(), tmp.getMaMayBay(), tmp.getMaSanBayDi(), tmp.getMaSanBayDen(), new SimpleDateFormat("dd/MM/yyyy").format(tmp.getNgayBay()),
+                 tmp.getGioBay(), tmp.getGhiChu(), tmp.getKhoangCach()
+            });
+        }
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -193,11 +242,13 @@ public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GiaoDienKetQuaTimKiemChuyenBay().setVisible(true);
+                new GiaoDienKetQuaTimKiemChuyenBay("","","","").setVisible(true);
             }
-        });
+       });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
