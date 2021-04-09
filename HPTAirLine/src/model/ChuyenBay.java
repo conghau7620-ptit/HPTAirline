@@ -7,6 +7,7 @@ package model;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,10 +22,11 @@ public class ChuyenBay {
     private Time gioBay;
     private String ghiChu;
     private int khoangCach;
+    private ArrayList<Ghe> arrayListGhe = new ArrayList<Ghe>();
 
     public ChuyenBay() {
     }
-
+    
     public ChuyenBay(String maChuyenBay, String maMayBay, String maSanBayDi, String maSanBayDen, Date ngayBay, Time gioBay, String ghiChu, int khoangCach) {
         this.maChuyenBay = maChuyenBay;
         this.maMayBay = maMayBay;
@@ -67,6 +69,10 @@ public class ChuyenBay {
     public int getKhoangCach() {
         return khoangCach;
     }
+
+    public ArrayList<Ghe> getArrayListGhe() {
+        return arrayListGhe;
+    }
     public void setMaChuyenBay(String maChuyenBay) {
         this.maChuyenBay = maChuyenBay;
     }
@@ -97,6 +103,10 @@ public class ChuyenBay {
 
     public void setKhoangCach(int khoangCach) {
         this.khoangCach = khoangCach;
+    }
+
+    public void setArrayListGhe(ArrayList<Ghe> arrayListGhe) {
+        this.arrayListGhe = arrayListGhe;
     }
     
     

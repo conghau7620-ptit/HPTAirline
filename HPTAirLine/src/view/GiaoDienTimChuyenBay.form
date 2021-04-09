@@ -123,6 +123,9 @@
           </Border>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel2MousePressed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="90" width="560" height="390"/>
@@ -139,15 +142,10 @@
                           <Component id="jButton_TimChuyenBay" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jRadioButton_MotChieu" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jRadioButton_KhuHoi" min="-2" pref="90" max="-2" attributes="0"/>
-                                  </Group>
                                   <Component id="jLabel_SanBayDi" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel_SanBayDen" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jComboBox_SanBayDi" max="32767" attributes="0"/>
-                                  <Component id="jSanBayDen" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jComboBox_SanBayDen" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
@@ -183,10 +181,17 @@
                                   <Component id="jComboBox_SLEmBe" min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jRadioButton_MotChieu" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jRadioButton_KhuHoi" min="-2" pref="90" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                              <Component id="jTestLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <Component id="jLabel_HuongDanDatCho" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -197,6 +202,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jRadioButton_MotChieu" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jRadioButton_KhuHoi" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTestLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                   <Component id="jLabel_SanBayDi" min="-2" max="-2" attributes="0"/>
@@ -212,7 +218,7 @@
                   <Component id="jLabel_SanBayDen" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jSanBayDen" linkSize="7" min="-2" max="-2" attributes="0"/>
+                      <Component id="jComboBox_SanBayDen" linkSize="7" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="jLabel_TreEm" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jComboBox_SLTreEm" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -238,7 +244,7 @@
                   <Component id="jButton_TimChuyenBay" min="-2" pref="49" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel_HuongDanDatCho" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <EmptySpace pref="15" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -260,6 +266,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="M&#x1ed9;t chi&#x1ec1;u"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton_MotChieuActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButton_KhuHoi">
           <Properties>
@@ -284,7 +293,7 @@
         <Component class="javax.swing.JComboBox" name="jComboBox_SanBayDi">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto" size="15" style="0"/>
+              <Font name="Roboto" size="14" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
@@ -294,10 +303,10 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jSanBayDen">
+        <Component class="javax.swing.JComboBox" name="jComboBox_SanBayDen">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto" size="15" style="0"/>
+              <Font name="Roboto" size="14" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
@@ -383,6 +392,9 @@
             <Property name="text" type="java.lang.String" value="T&#xcc;M CHUY&#x1ebe;N BAY"/>
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_TimChuyenBayActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_HuongDanDatCho">
           <Properties>
@@ -392,8 +404,11 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="*H&#x1b0;&#x1edb;ng d&#x1eab;n &#x111;&#x1eb7;t ch&#x1ed7;"/>
+            <Property name="text" type="java.lang.String" value="&lt;HTML&gt;*&lt;U&gt;H&#x1b0;&#x1edb;ng d&#x1eab;n &#x111;&#x1eb7;t ch&#x1ed7;&lt;/U&gt;&lt;/HTML&gt;"/>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel_HuongDanDatChoMousePressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_NguoiLon">
           <Properties>
@@ -430,6 +445,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox_SLNguoiLon">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Roboto" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="6">
                 <StringItem index="0" value="0"/>
@@ -447,6 +465,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox_SLTreEm">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Roboto" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="6">
                 <StringItem index="0" value="0"/>
@@ -464,6 +485,9 @@
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox_SLEmBe">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Roboto" size="14" style="0"/>
+            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="6">
                 <StringItem index="0" value="0"/>
@@ -493,6 +517,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="14" style="0"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jTestLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
         </Component>
       </SubComponents>
