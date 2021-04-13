@@ -34,23 +34,23 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jlabel_DangKy = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jLabel_TenKhachHang = new javax.swing.JLabel();
+        jTextField_TenKhachHang = new javax.swing.JTextField();
+        jLabel_TaiKhoan = new javax.swing.JLabel();
+        jTextField_TaiKhoan = new javax.swing.JTextField();
+        jLabel_MatKhau = new javax.swing.JLabel();
+        jTextField_MatKhau = new javax.swing.JTextField();
+        jLabel_XacNhanMatKhau = new javax.swing.JLabel();
+        jTextField_xacNhanMatKhau = new javax.swing.JTextField();
+        jLabel_CMND = new javax.swing.JLabel();
+        jTextField_CMND = new javax.swing.JTextField();
+        jLabel_SoDienThoai = new javax.swing.JLabel();
+        jTextField_SoDienThoai = new javax.swing.JTextField();
+        jLabel_DiaChi = new javax.swing.JLabel();
+        jTextField_DiaChi = new javax.swing.JTextField();
+        jLabel_Email = new javax.swing.JLabel();
+        jTextField_Email = new javax.swing.JTextField();
+        jButton_DangKy = new javax.swing.JButton();
         jLabel_ThongBao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,39 +103,39 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame {
         jlabel_DangKy.setText("Đăng Ký Tài Khoản");
         jlabel_DangKy.setToolTipText("");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Tên Khách Hàng");
+        jLabel_TenKhachHang.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_TenKhachHang.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_TenKhachHang.setText("Tên Khách Hàng");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Tài Khoản");
+        jLabel_TaiKhoan.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_TaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_TaiKhoan.setText("Tài Khoản");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Mật Khẩu");
+        jLabel_MatKhau.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_MatKhau.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_MatKhau.setText("Mật Khẩu");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Xác Nhận Mật Khẩu");
+        jLabel_XacNhanMatKhau.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_XacNhanMatKhau.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_XacNhanMatKhau.setText("Xác Nhận Mật Khẩu");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("CMND");
+        jLabel_CMND.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_CMND.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_CMND.setText("CMND");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Số điện thoại");
+        jLabel_SoDienThoai.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_SoDienThoai.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_SoDienThoai.setText("Số điện thoại");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Địa Chỉ");
+        jLabel_DiaChi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_DiaChi.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_DiaChi.setText("Địa Chỉ");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Email");
+        jLabel_Email.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_Email.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Email.setText("Email");
 
-        jButton1.setText("ĐĂNG KÝ");
+        jButton_DangKy.setText("ĐĂNG KÝ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -147,24 +147,24 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame {
                     .addComponent(jSeparator1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField1)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField2)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField3)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                            .addComponent(jLabel_TenKhachHang)
+                            .addComponent(jTextField_TenKhachHang)
+                            .addComponent(jLabel_TaiKhoan)
+                            .addComponent(jTextField_TaiKhoan)
+                            .addComponent(jLabel_MatKhau)
+                            .addComponent(jTextField_MatKhau)
+                            .addComponent(jLabel_XacNhanMatKhau)
+                            .addComponent(jTextField_xacNhanMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
                         .addGap(90, 90, 90)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextField5)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextField6)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField8))))
+                            .addComponent(jLabel_Email)
+                            .addComponent(jLabel_DiaChi)
+                            .addComponent(jLabel_SoDienThoai)
+                            .addComponent(jTextField_CMND)
+                            .addComponent(jLabel_CMND)
+                            .addComponent(jTextField_SoDienThoai)
+                            .addComponent(jTextField_DiaChi)
+                            .addComponent(jTextField_Email))))
                 .addGap(95, 95, 95))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,14 +174,14 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame {
                             .addComponent(jlabel_DangKy)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jButton_DangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField1, jTextField2, jTextField3, jTextField4, jTextField5});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField_CMND, jTextField_MatKhau, jTextField_TaiKhoan, jTextField_TenKhachHang, jTextField_xacNhanMatKhau});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,44 +192,44 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel_TenKhachHang)
+                    .addComponent(jLabel_CMND))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_TenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_CMND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel_TaiKhoan)
+                    .addComponent(jLabel_SoDienThoai))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_TaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_SoDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel_MatKhau)
+                    .addComponent(jLabel_DiaChi))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_MatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_DiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel_XacNhanMatKhau)
+                    .addComponent(jLabel_Email))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField_xacNhanMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
-                .addComponent(jButton1)
+                .addComponent(jButton_DangKy)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextField1, jTextField5});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextField_CMND, jTextField_TenKhachHang});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -243,12 +243,12 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(264, Short.MAX_VALUE))
         );
 
         pack();
@@ -290,30 +290,30 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JButton jButton_DangKy;
     private javax.swing.JLabel jLabel_AirLines;
+    private javax.swing.JLabel jLabel_CMND;
+    private javax.swing.JLabel jLabel_DiaChi;
+    private javax.swing.JLabel jLabel_Email;
     private javax.swing.JLabel jLabel_HPT;
     private javax.swing.JLabel jLabel_IconMayBay;
+    private javax.swing.JLabel jLabel_MatKhau;
+    private javax.swing.JLabel jLabel_SoDienThoai;
+    private javax.swing.JLabel jLabel_TaiKhoan;
+    private javax.swing.JLabel jLabel_TenKhachHang;
     private javax.swing.JLabel jLabel_ThongBao;
+    private javax.swing.JLabel jLabel_XacNhanMatKhau;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField_CMND;
+    private javax.swing.JTextField jTextField_DiaChi;
+    private javax.swing.JTextField jTextField_Email;
+    private javax.swing.JTextField jTextField_MatKhau;
+    private javax.swing.JTextField jTextField_SoDienThoai;
+    private javax.swing.JTextField jTextField_TaiKhoan;
+    private javax.swing.JTextField jTextField_TenKhachHang;
+    private javax.swing.JTextField jTextField_xacNhanMatKhau;
     private javax.swing.JLabel jlabel_DangKy;
     // End of variables declaration//GEN-END:variables
 }
