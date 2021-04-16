@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.ChuyenBay;
-import model.Ghe;
 import model.HoaDon;
 import model.KhachHang;
 import model.MayBay;
