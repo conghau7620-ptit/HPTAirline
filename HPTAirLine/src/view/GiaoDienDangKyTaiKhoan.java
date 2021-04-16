@@ -5,19 +5,92 @@
  */
 package view;
 
+import controller.Controller;
+import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import model.TaiKhoan;
+
 /**
  *
  * @author conghau
  */
-public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame {
 
+public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
+                implements KeyListener{
+    
     /**
      * Creates new form GiaoDienDangKyTaiKhoan
      */
     public GiaoDienDangKyTaiKhoan() {
         initComponents();
+        jTextField_TaiKhoan.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                jLabel_ThongBao.setText("");
+                jLabel_TaiKhoan.setForeground(Color.white);
+                for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
+                    if(tk.getTenDangNhap().equals(jTextField_TaiKhoan.getText())) {
+                        jLabel_ThongBao.setText("*Tai khoan da ton tai");
+                        jLabel_TaiKhoan.setForeground(Color.red);
+                        break;
+                    }
+                }
+            }
+        });
+                
+        jTextField_CMND.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                 String cmnd = jTextField_CMND.getText();
+                 jLabel_ThongBao.setText("");
+                 jLabel_CMND.setForeground(Color.white);
+                 jTextField_CMND.setForeground(Color.black);
+                 for (int i=0; i<cmnd.length(); i++) {
+                     if (cmnd.charAt(i)<'0' || cmnd.charAt(i)>'9') {
+                         jLabel_ThongBao.setText("*CMND phải nhập số");
+                         jLabel_CMND.setForeground(Color.red);
+                         jTextField_CMND.setForeground(Color.red);
+                         break;
+                     }
+                 }
+            }
+        });
+        
+        jTextField_SoDienThoai.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                 String cmnd = jTextField_SoDienThoai.getText();
+                 jLabel_ThongBao.setText("");
+                 jLabel_SoDienThoai.setForeground(Color.white);
+                 jTextField_SoDienThoai.setForeground(Color.black);
+                 for (int i=0; i<cmnd.length(); i++) {
+                     if (cmnd.charAt(i)<'0' || cmnd.charAt(i)>'9') {
+                         jLabel_ThongBao.setText("*Số điện thoại phải nhập số");
+                         jLabel_SoDienThoai.setForeground(Color.red);
+                         jTextField_SoDienThoai.setForeground(Color.red);
+                         break;
+                     }
+                 }
+            }
+        }); 
+        
+        jTextField_xacNhanMatKhau.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (!jTextField_MatKhau.getText().equals(jTextField_xacNhanMatKhau.getText())) {
+                    jLabel_ThongBao.setText("*Mật khẩu không trùng khớp");
+                    jLabel_XacNhanMatKhau.setForeground(Color.red);
+                }
+                else {
+                    jLabel_ThongBao.setText("");
+                    jLabel_XacNhanMatKhau.setForeground(Color.white);
+                }
+            }
+        });
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,6 +209,9 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame {
         jLabel_Email.setText("Email");
 
         jButton_DangKy.setText("ĐĂNG KÝ");
+
+        jLabel_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel_ThongBao.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -316,4 +392,14 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField_xacNhanMatKhau;
     private javax.swing.JLabel jlabel_DangKy;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {}
+
+    @Override
+    public void keyReleased(KeyEvent e) {}
 }
