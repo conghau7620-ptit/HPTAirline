@@ -33,7 +33,7 @@ public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
     String maSanBayDen;
     String ngayDi;
     String ngayVe;
-    public GiaoDienKetQuaTimKiemChuyenBay(String maSanBayDi, String maSanBayDen, String ngayDi, String ngayVe) {
+    public GiaoDienKetQuaTimKiemChuyenBay(/*String maSanBayDi, String maSanBayDen, String ngayDi, String ngayVe*/) {
         initComponents();
 
         dtm = (DefaultTableModel) jTable_KetQuaTimKiem.getModel();
@@ -245,7 +245,7 @@ public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GiaoDienKetQuaTimKiemChuyenBay("","","","").setVisible(true);
+                new GiaoDienKetQuaTimKiemChuyenBay().setVisible(true);
             }
        });
 

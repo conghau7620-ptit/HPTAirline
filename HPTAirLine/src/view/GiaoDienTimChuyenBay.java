@@ -413,18 +413,17 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                 
             }
             else{
-                ngayDi = null;
-                try {
-                    ngayDi = new SimpleDateFormat("dd/MM/yyyy").parse(jDateChooser_NgayDi.getDate().toString());
-                } catch (ParseException ex) {
-                    Logger.getLogger(GiaoDienKetQuaTimKiemChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
+//                ngayDi = null;
+//                try {
+//                    ngayDi = new SimpleDateFormat("dd/MM/yyyy").parse(jDateChooser_NgayDi.getDate().toString());
+//                } catch (ParseException ex) {
+//                    Logger.getLogger(GiaoDienKetQuaTimKiemChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//              
+//                String a = new SimpleDateFormat("yyyy-dd-MM").format(ngayDi);
+//                System.out.println(a);
+                new GiaoDienKetQuaTimKiemChuyenBay().setVisible(true);
                 }
-              
-        String a = new SimpleDateFormat("yyyy-dd-MM").format(ngayDi);
-        System.out.println(a);
-                new GiaoDienKetQuaTimKiemChuyenBay(jComboBox_SanBayDi.getSelectedItem().toString().substring(0,2), 
-                        jComboBox_SanBayDi.getSelectedItem().toString().substring(0,2), a, date);
-            }
         }
         else{
             JOptionPane.showMessageDialog(rootPane, "Thông tin sai, xem hướng dẫn đặt vé để tìm hiểu thêm.");
