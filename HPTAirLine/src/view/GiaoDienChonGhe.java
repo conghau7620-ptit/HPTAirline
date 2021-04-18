@@ -6,6 +6,24 @@
 ======
 bấm vô một ghế hiện thêm một jfame để nhập thông tin người bay sau đó lưu vào bảng tên người bay để gọn lại
  */
+
+
+/*
+    - tạo đối tượng vé
+    - Xuất mã vé tự dộng gán vào mã vé của dối tượng vé 
+    - Lấy mã chuyến bay gán vào đối tượng
+    - Khai báo 2 biết chưa giá cho 2 hạng phổ thông và thương gia,
+duyện mảng để gán giá vé cho đúng ghế
+    - Trạng thái đổi ?????
+    - Trạng thái vé <thanh toán> <chưa thanh toán>
+    - mở một jframe cho phép nhập thông tin của người bay, thông tin nhập được
+gán vào các thuộc tính trong vé gồm : CMND, tên, email, sđt.
+    - Xuất mã hóa đơn vào vé
+    - Lấy mã ghế
+
+
+    - Xuất thông tin ra Bảng thông tin mua để ng mua dễ dàng theo dõi 
+*/
 package view;
 
 import java.awt.Color;
