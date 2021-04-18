@@ -112,6 +112,12 @@ public class GiaoDienHoaDon extends javax.swing.JFrame {
         jLabel_MaKhachHang.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_MaKhachHang.setText("Mã Khách Hàng");
 
+        jTextField_MaKhachHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_MaKhachHangActionPerformed(evt);
+            }
+        });
+
         jLabel_TenKhachHang.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel_TenKhachHang.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_TenKhachHang.setText("Tên Khách Hàng");
@@ -344,6 +350,10 @@ public class GiaoDienHoaDon extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField_MaKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_MaKhachHangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_MaKhachHangActionPerformed
 
     /**
      * @param args the command line arguments
