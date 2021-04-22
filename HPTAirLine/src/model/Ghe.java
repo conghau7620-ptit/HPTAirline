@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.util.ArrayList;
+import javax.swing.JTextField;
+
 /**
  *
  * @author conghau
@@ -14,6 +17,7 @@ public class Ghe {
     private String maChuyenBay;
     private String loaiGhe;
     private byte trong;
+//    private ArrayList<JTextField> list; 
 
     public Ghe() {
     }

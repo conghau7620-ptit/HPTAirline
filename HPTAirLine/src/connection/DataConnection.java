@@ -2,6 +2,8 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+jdbc:sqlserver://;databaseName=HPT_AIRLINES
+jdbc:sqlserver://;databaseName=HPT_AIRLINES [sa on SA
  */
 package connection;
 
@@ -34,8 +36,10 @@ public class DataConnection {
         }
     }
     
-    public static void createStatement() {
-        String url = "jdbc:sqlserver://localhost:1433;databaseName=HPT_AIRLINES";
+    public static Connection createStatement() {
+        
+        String url = "jdbc:sqlserver://;databaseName=HPT_AIRLINES";
+        
         String user = "sa";
         String pass = "123";
         try {
@@ -49,5 +53,6 @@ public class DataConnection {
             Logger.getLogger(DataConnection.class.getName()).log(Level.SEVERE, 
                     null, ex);
         }
+        return connect;
     }
 }
