@@ -55,7 +55,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
 //        String maChuyenBay = layMaChuyenBay();
         
 //        luuGhe(maChuyenBay);
-layMaChuyenBay();
+            layMaChuyenBay();
               
     }
 
