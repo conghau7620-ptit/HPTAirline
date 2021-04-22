@@ -19,8 +19,8 @@ import java.util.logging.Logger;
  */
 public class DataConnection {
     
-    private static Connection connection;
-    private static Statement statement;
+    public static Connection connection;
+    public static Statement statement;
     
     public static ResultSet retrieveData(String sqlCommand) {
         try {
@@ -42,7 +42,6 @@ public class DataConnection {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url,user,pass);
             statement = connection.createStatement();
-            
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DataConnection.class.getName()).log(Level.SEVERE, 
                     null, ex);
