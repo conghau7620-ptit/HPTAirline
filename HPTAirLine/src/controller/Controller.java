@@ -7,6 +7,7 @@ package controller;
 
 import connection.DataConnection;
 import connection.LoadData;
+import static connection.LoadData.loadTableGhe;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,9 +39,9 @@ public class Controller {
      public static ArrayList<ChuyenBay> arrayListKetQuaTimKiemChuyenBay = new ArrayList<ChuyenBay>();
     //
      
-     public static void loadKetQuaTheoNgay(String maSanBayDi, String maSanBayDen, String ngayDi, String ngayVe){
-        ResultSet rs = DataConnection.retrieveData("select * from dbo.CHUYENBAY where MaSanBayDi like '%"+maSanBayDi+"%' and "
-                + "MaSanBayDen like '%"+maSanBayDen+"%' and  NgayBay like '%"+ngayDi+"%'");
+     public static void loadKetQuaTheoNgay(String maSanBayDi, String maSanBayDen, String ngayDi){
+        ResultSet rs = DataConnection.retrieveData("select * from dbo.CHUYENBAY where MaSanBayDi like '%" + maSanBayDi + "%' and "
+                + "MaSanBayDen like '%" + maSanBayDen + "%' and  NgayBay like '%" + ngayDi + "%'");
 
         try {
             while (rs.next()) {
@@ -53,6 +54,7 @@ public class Controller {
                     rs.getTime(6),
                     rs.getString(7),
                     rs.getInt(8));
+                chuyenBay.setArrayListGhe(loadTableGhe(chuyenBay.getMaChuyenBay().trim()));
                 Controller.arrayListKetQuaTimKiemChuyenBay.add(chuyenBay);
             }
         } catch (SQLException ex) {
