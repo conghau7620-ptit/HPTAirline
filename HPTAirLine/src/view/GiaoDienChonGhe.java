@@ -47,14 +47,15 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
      */
     public GiaoDienChonGhe() {
         initComponents();
-        layGhe();
-        luuTextField();
-        layMauGhe();
+//        layGhe();
+//        luuTextField();
+//        layMauGhe();
         // lay duoc ma chuyen bay
         // dua tat ca ghe vao trong ds luu vao csdl
-        //String maChuyenBay = layMaChuyenBay();
+//        String maChuyenBay = layMaChuyenBay();
         
-       // luuGhe(maChuyenBay);
+//        luuGhe(maChuyenBay);
+            layMaChuyenBay();
               
     }
 
@@ -67,6 +68,8 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
           ArrayList <JTextField> dsTextField = new ArrayList();
           
         ArrayList <model.Ghe> dsGhe = new ArrayList <model.Ghe>();
+           ArrayList <model.Ghe> dsGheDau = new ArrayList <model.Ghe>();
+
 
           
 
@@ -178,7 +181,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         
         String LoaiPhoThong = "PThong";
         
-        byte trangThai = 0;
+        byte trangThai = 1;
         
          for(int k = 1; k<=15; k++){
             
@@ -214,28 +217,37 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
                      
                       ghe.setTrong(trangThai);
                       
-                      controller.Controller.arrayListGhe.add(ghe);
+//                      controller.Controller.arrayListGhe.add(ghe);
+                dsGheDau.add(ghe);
+
+                        
     
                 }
             }
+         
+         model.ChuyenBay mbay = new model.ChuyenBay();
+                        mbay.setArrayListGhe(dsGheDau);
+                        
+                        
          Connection connect = connection.DataConnection.createStatement();
          String sql = "insert into GHE values (?,?,?,?)";
          
          try {
             PreparedStatement ps = connect.prepareStatement(sql);
-            for(model.Ghe ghe : controller.Controller.arrayListGhe){
+            for(model.Ghe ghe : dsGheDau){
 
                 ps.setString(1, ghe.getMaGhe());
                 ps.setString(2, ghe.getMaChuyenBay());
                 ps.setString(3, ghe.getLoaiGhe());
                 ps.setByte(4, ghe.getTrong());
+                
                // JOptionPane.showMessageDialog(this, "them thanh cong");
                 System.err.println("thanh cong");
             ps.executeUpdate();
             }
             
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "them that bai");
+//            JOptionPane.showMessageDialog(this, "them that bai");
              System.err.println("that bai");
         }
         
@@ -263,7 +275,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
          return 1;
      
      }
-    private String layMaChuyenBay(){
+    private int layMaChuyenBay(){
         String maChuyenBay ="";
         Connection connect = connection.DataConnection.createStatement();
         String sql = "select * from CHUYENBAY";
@@ -273,7 +285,10 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
             
              while (rs.next()){
               maChuyenBay = rs.getString("MaChuyenBay");
-       
+                 System.out.println(maChuyenBay);
+                 
+                 luuGhe(maChuyenBay);
+//             
             }
            
             ps.close();
@@ -283,8 +298,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         }
 
         
-        
-        return maChuyenBay;
+        return 1;
     }
     
     private int layGhe(){
@@ -328,9 +342,9 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
                 this.listSelected.add(a);
                 System.err.println(a.getName());
          
-//                JFrame khach = new GiaoDienNhapThongTinNguoiBayKhiChonGhe();
-//                khach.pack();
-//                khach.setVisible(true);
+                JFrame khach = new GiaoDienNhapThongTinNguoiBayKhiChonGhe();
+                khach.pack();
+                khach.setVisible(true);
             }
  
             else if ((a.getBackground().getRed()) == 0 && (a.getBackground().getGreen() == 255)&&(a.getBackground().getBlue() == 0)) {
