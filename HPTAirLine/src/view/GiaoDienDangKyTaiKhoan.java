@@ -5,14 +5,20 @@
  */
 package view;
 
+import connection.InsertData;
+import connection.LoadData;
 import controller.Controller;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import model.KhachHang;
 import model.TaiKhoan;
 
-/**
+/*
+*
  *
  * @author conghau
  */
@@ -25,6 +31,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
      */
     public GiaoDienDangKyTaiKhoan() {
         initComponents();
+        new LoadData();
         jTextField_TaiKhoan.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -86,6 +93,70 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
                 else {
                     jLabel_ThongBao.setText("");
                     jLabel_XacNhanMatKhau.setForeground(Color.white);
+                }
+            }
+        });
+        
+        jTextField_TaiKhoan.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyReleased(KeyEvent e) {
+                for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
+                    if (tk.getTenDangNhap().equals(jTextField_TaiKhoan.getText())) {
+                        jLabel_ThongBao.setText("*Tài khoản đã được sử dụng");
+                        jLabel_TaiKhoan.setForeground(Color.red);
+                        break;
+                    }
+                    else {
+                        jLabel_ThongBao.setText("");
+                        jLabel_TaiKhoan.setForeground(Color.WHITE);
+                    }
+                }
+            }
+        });
+        
+        jTextField_SoDienThoai.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyReleased(KeyEvent e) {
+                for (KhachHang kh: Controller.arrayListKhachHang) {
+                    if (kh.getSdtKhachHang().equals(jTextField_SoDienThoai.getText())) {
+                        jLabel_ThongBao.setText("*Số điện thoại đã được sử dụng");
+                        jLabel_SoDienThoai.setForeground(Color.red);
+                        break;
+                    }
+                    else {
+                        jLabel_ThongBao.setText("");
+                        jLabel_SoDienThoai.setForeground(Color.WHITE);
+                    }
+                }
+            }
+        });
+        
+        jButton_DangKy.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (jLabel_ThongBao.getText().isEmpty()) {
+                    TaiKhoan tk = new TaiKhoan(
+                                    jTextField_TaiKhoan.getText(),
+                                    jTextField_MatKhau.getText(),
+                                    "Khach hang",
+                                    jTextField_SoDienThoai.getText());
+                    Controller.arrayListTaiKhoan.add(tk);
+                    InsertData.insertTaiKhoan(tk);
+                    
+                    KhachHang kh = new KhachHang(
+                                    jTextField_SoDienThoai.getText(),
+                                    jTextField_TenKhachHang.getText(),
+                                    jTextField_Email.getText(),
+                                    jTextField_DiaChi.getText(),
+                                    jTextField_TaiKhoan.getText(),
+                                    jTextField_CMND.getText(),
+                                    0);
+                    Controller.arrayListKhachHang.add(kh);
+                    InsertData.insertKhachHang(kh);
+                    
+                    
+                    
+                    
                 }
             }
         });

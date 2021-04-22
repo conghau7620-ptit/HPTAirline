@@ -12,36 +12,66 @@ import java.awt.Color;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
+import model.Ghe;
+import static view.GiaoDienTimChuyenBay.ngayHienTai;
 
 /**
  *
  * @author t0168
  */
-public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
+public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
 
     /**
      * Creates new form FlightSearchResultFrame
      */
+    
+    //SoGhe trong trong chuyen bay deu = 0; chưa sửa
+    
     ArrayList <ChuyenBay> list;
     DefaultTableModel dtm;
     String maSanBayDi;
     String maSanBayDen;
-    String ngayDi;
-    String ngayVe;
-    public GiaoDienKetQuaTimKiemChuyenBay(String maSanBayDi, String maSanBayDen, String ngayDi, String ngayVe) {
+    Date ngayDi;
+    int soGheNguoiLon;
+    int soGheTreEm;
+    int soGheEmBe;
+    
+    public GiaoDienChonChuyenBayVe(String maSanBayDi, String maSanBayDen, 
+            Date ngayDi, int soGheNguoiLon, int soGheTreEm, int soGheEmBe) {
+        
         initComponents();
-
+         this.maSanBayDi= maSanBayDi;
+         this.maSanBayDen = maSanBayDen;
+         this.ngayDi = ngayDi;
+         this.soGheNguoiLon = soGheNguoiLon;
+         this.soGheTreEm = soGheTreEm;
+         this.soGheEmBe = soGheEmBe;
+         
         dtm = (DefaultTableModel) jTable_KetQuaTimKiem.getModel();
         dtm.setColumnIdentifiers(new Object[]{
             "MaChuyenBay", "MaMayBay", "MaSanBayDi", "MaSanBayDen", "NgayBay", "GioBay", "GhiChu",
              "KhoangCach"
         });
-        showList();
+        System.out.println("soGheNguoiLon: "+this.soGheNguoiLon);
+        System.out.println("soGheTreEm: "+this.soGheTreEm);
+        System.out.println("soGheEmBe: "+this.soGheEmBe);
+        hienKetQua();
+        
+     //   
+
+        
+//        String date = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+//        try {
+//            ngayHienTai = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+//        } catch (ParseException ex) {
+//            Logger.getLogger(GiaoDienTimChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     /**
@@ -137,6 +167,11 @@ public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
         jButton_XacNhanChonChuyenBay.setText("Xác nhận");
         jButton_XacNhanChonChuyenBay.setBorderPainted(false);
         jButton_XacNhanChonChuyenBay.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jButton_XacNhanChonChuyenBay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XacNhanChonChuyenBayActionPerformed(evt);
+            }
+        });
 
         jLabel_ThongTinCanTimKiem.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel_ThongTinCanTimKiem.setForeground(new java.awt.Color(255, 255, 255));
@@ -148,6 +183,11 @@ public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
         jButton_ThoatKetQuaTimKiemChuyenBay.setText("Quay lại");
         jButton_ThoatKetQuaTimKiemChuyenBay.setBorderPainted(false);
         jButton_ThoatKetQuaTimKiemChuyenBay.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton_ThoatKetQuaTimKiemChuyenBay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -183,73 +223,111 @@ public class GiaoDienKetQuaTimKiemChuyenBay extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed
+
+    private void jButton_XacNhanChonChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanChonChuyenBayActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton_XacNhanChonChuyenBayActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
-    private void showList() {
+    private void hienKetQua() {
         dtm.setRowCount(0);
 //        LoadData.loadKetQuaTimKiemChuyenBay("VII", "SGN", "2", "3");
-
-
-        Date ngayDi = null;
-        try {
-            ngayDi = new SimpleDateFormat("dd/MM/yyyy").parse("11/09/2000");
-        } catch (ParseException ex) {
-            Logger.getLogger(GiaoDienKetQuaTimKiemChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
-        }
-              
-        String a = new SimpleDateFormat("yyyy-dd-MM").format(ngayDi);
-        System.out.println(a);
-        
-        Controller.loadKetQuaTheoNgay("VII","SGN",a,"");
-        
-        
+//        try {
+//            this.ngayDi = new SimpleDateFormat("dd/MM/yyyy").parse(ngayDi.toString());
+//        } catch (ParseException ex) {
+//            Logger.getLogger(TestKetQuaTimKiem.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//              
+        String stringNgayDi = new SimpleDateFormat("yyyy-MM-dd").format(ngayDi);
+//        System.out.println(stringNgayDi);
+//        System.out.println(this.maSanBayDi);
+//        System.out.println(this.maSanBayDen);
+        Controller.arrayListKetQuaTimKiemChuyenBay.removeAll(Controller.arrayListKetQuaTimKiemChuyenBay);
+        Controller.loadKetQuaTheoNgay(this.maSanBayDi, this.maSanBayDen, stringNgayDi);
+        LoadData.loadTableChuyenBay();
         list = Controller.arrayListKetQuaTimKiemChuyenBay;
-        
-        
+//        ArrayList<ChuyenBay> list2 = Controller.arrayListChuyenBay;
+//        for(ChuyenBay x: list2){
+//            int soGheTrong = 0;
+//            for(Ghe g : x.getArrayListGhe()){
+//                    System.out.println(g.getTrong());
+//                    System.out.println(g.getMaGhe());
+//            }
+//        }
+        ///   
+
         for (ChuyenBay tmp : list) {
-            dtm.addRow(new Object[]{
-                tmp.getMaChuyenBay(), tmp.getMaMayBay(), tmp.getMaSanBayDi(), tmp.getMaSanBayDen(), new SimpleDateFormat("dd/MM/yyyy").format(tmp.getNgayBay()),
-                 tmp.getGioBay(), tmp.getGhiChu(), tmp.getKhoangCach()
-            });
+            int soGheTrong = 0;
+            for(Ghe g : tmp.getArrayListGhe()){
+                if(g.getTrong()==1){
+                    soGheTrong ++;
+                }
+            }
+            
+//            if(soGheTrong >= (this.soGheNguoiLon + this.soGheTreEm + this.soGheEmBe)){
+                dtm.addRow(new Object[]{
+                    tmp.getMaChuyenBay(), tmp.getMaMayBay(), tmp.getMaSanBayDi(), tmp.getMaSanBayDen(), new SimpleDateFormat("dd/MM/yyyy").format(tmp.getNgayBay()),
+                    tmp.getGioBay(), tmp.getGhiChu(), tmp.getKhoangCach()
+                });
+//            }
+            
+            
+            
+            //
+//            System.out.println("tongSoGhe "+ tongSoGhe);
+//            System.out.println("soGheTrong "+ soGheTrong);
+            //
         }
     }
     
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GiaoDienKetQuaTimKiemChuyenBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GiaoDienKetQuaTimKiemChuyenBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GiaoDienKetQuaTimKiemChuyenBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GiaoDienKetQuaTimKiemChuyenBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GiaoDienKetQuaTimKiemChuyenBay("","","","").setVisible(true);
-            }
-       });
-
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Windows".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(TestKetQuaTimKiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(TestKetQuaTimKiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(TestKetQuaTimKiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(TestKetQuaTimKiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        
+////        java.awt.EventQueue.invokeLater(new Runnable() {
+////            public void run() {
+////                new TestKetQuaTimKiem("", "", ngayHienTai, ngayHienTai, true).setVisible(true);
+////            }
+////       });
+//
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_ThoatKetQuaTimKiemChuyenBay;
