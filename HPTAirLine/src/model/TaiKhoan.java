@@ -56,6 +56,10 @@ public class TaiKhoan {
     public void setSdt(String sdt) {
         this.sdt = sdt;
     }
+
+    public TaiKhoan trim() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
