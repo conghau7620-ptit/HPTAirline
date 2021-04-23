@@ -16,6 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
 import model.Ghe;
@@ -235,12 +236,27 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(this.khuHoi == true){
 //            this.dispose();
-            new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe
-                    , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
+                int row = jTable_KetQuaTimKiem.getSelectedRow();
+                if(row==-1){
+                    JOptionPane.showMessageDialog(rootPane, "Hay chon chuyen bay di.");
+                }
+                else{
+                    new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe
+                            , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe, 
+                            (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+                }
         }
         else{
-            //dang ra ph mo giao dien chon ghe
-            this.dispose();
+            int row = jTable_KetQuaTimKiem.getSelectedRow();
+            if(row==-1){
+                JOptionPane.showMessageDialog(rootPane, "Hay chon chuyen bay di.");
+            }
+            else{
+                this.dispose();
+                new GiaoDienChonGhe((String) jTable_KetQuaTimKiem.getValueAt(row, 0), ""
+                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
+
+            }       
         }
     }//GEN-LAST:event_jButton_XacNhanChonChuyenBayActionPerformed
 
