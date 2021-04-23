@@ -24,13 +24,13 @@ public class LoadData {
         try {
             while (rs.next()) {
                 ChuyenBay chuyenBay = new ChuyenBay(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4),
+                    rs.getString(1).trim(),
+                    rs.getString(2).trim(),
+                    rs.getString(3).trim(),
+                    rs.getString(4).trim(),
                     rs.getDate(5),
                     rs.getTime(6),
-                    rs.getString(7),
+                    rs.getString(7).trim(),
                     rs.getInt(8));
                 chuyenBay.setArrayListGhe(loadTableGhe(chuyenBay.getMaChuyenBay().trim()));
                 for (Ghe g: chuyenBay.getArrayListGhe()) {
@@ -50,9 +50,9 @@ public class LoadData {
         try {
             while (rs.next()) {
                 Ghe ghe = new Ghe(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
+                    rs.getString(1).trim(),
+                    rs.getString(2).trim(),
+                    rs.getString(3).trim(),
                     rs.getByte(4));
                 arrayListGhe.add(ghe);
             }
@@ -67,12 +67,12 @@ public class LoadData {
         try {
             while (rs.next()) {
                 HoaDon hoaDon = new HoaDon(
-                    rs.getString(1),
-                    rs.getString(2),
+                    rs.getString(1).trim(),
+                    rs.getString(2).trim(),
                     rs.getDate(3),
                     rs.getByte(4),
                     rs.getInt(5),
-                    rs.getString(6));
+                    rs.getString(6).trim());
                 Controller.arrayListHoaDon.add(hoaDon);
             }
         } catch (SQLException ex) {
@@ -85,12 +85,12 @@ public class LoadData {
         try {
             while (rs.next()) {
                 KhachHang khachHang = new KhachHang(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4),
-                    rs.getString(5),
-                    rs.getString(6),
+                    rs.getString(1).trim(),
+                    rs.getString(2).trim(),
+                    rs.getString(3).trim(),
+                    rs.getString(4).trim(),
+                    rs.getString(5).trim(),
+                    rs.getString(6).trim(),
                     rs.getInt(7));
                 Controller.arrayListKhachHang.add(khachHang);
             }
@@ -104,9 +104,9 @@ public class LoadData {
         try {
             while (rs.next()) {
                 MayBay mayBay = new MayBay(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
+                    rs.getString(1).trim(),
+                    rs.getString(2).trim(),
+                    rs.getString(3).trim(),
                     rs.getInt(4),
                     rs.getInt(5));
                 Controller.arrayListMayBay.add(mayBay);
@@ -121,11 +121,11 @@ public class LoadData {
         try {
             while (rs.next()) {
                 NhanVien nhanVien = new NhanVien(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4),
-                    rs.getString(5));
+                    rs.getString(1).trim(),
+                    rs.getString(2).trim(),
+                    rs.getString(3).trim(),
+                    rs.getString(4).trim(),
+                    rs.getString(5).trim());
                 Controller.arrayListNhanVien.add(nhanVien);
             }
         } catch (SQLException ex) {
@@ -138,8 +138,8 @@ public class LoadData {
         try {
             while (rs.next()) {
                 SanBay sanBay = new SanBay(
-                    rs.getString(1),
-                    rs.getString(2));
+                    rs.getString(1).trim(),
+                    rs.getString(2).trim());
                 Controller.arrayListSanBay.add(sanBay);
             }
         } catch (SQLException ex) {
@@ -152,10 +152,10 @@ public class LoadData {
         try {
             while (rs.next()) {
                 TaiKhoan taiKhoan = new TaiKhoan(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4));
+                    rs.getString(1).trim(),
+                    rs.getString(2).trim(),
+                    rs.getString(3).trim(),
+                    rs.getString(4).trim());
                 Controller.arrayListTaiKhoan.add(taiKhoan);
             }
         } catch (SQLException ex) {
@@ -168,19 +168,19 @@ public class LoadData {
         try {
             while (rs.next()) {
                 Ve ve = new Ve(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
+                    rs.getString(1).trim(),
+                    rs.getString(2).trim(),
+                    rs.getString(3).trim(),
                     rs.getInt(4),
                     rs.getShort(5),
                     rs.getByte(6),
                     rs.getByte(7),
-                    rs.getString(8),
-                    rs.getString(9),
-                    rs.getString(10),
-                    rs.getString(11),
-                    rs.getString(12),
-                    rs.getString(13));
+                    rs.getString(8).trim(),
+                    rs.getString(9).trim(),
+                    rs.getString(10).trim(),
+                    rs.getString(11).trim(),
+                    rs.getString(12).trim(),
+                    rs.getString(13).trim());
                 Controller.arrayListVe.add(ve);
             }
         } catch (SQLException ex) {
