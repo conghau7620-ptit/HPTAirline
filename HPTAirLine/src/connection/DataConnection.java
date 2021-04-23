@@ -39,7 +39,7 @@ public class DataConnection {
     
     public static Connection createStatement() {
         
-        String url = "jdbc:sqlserver://;databaseName=HPT_AIRLINES";
+        String url = "jdbc:sqlserver://;databaseNa  me=HPT_AIRLINES";
         
         String user = "sa";
         String pass = "123";
