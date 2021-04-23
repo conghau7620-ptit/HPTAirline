@@ -27,6 +27,7 @@ import model.Ve;
  * @author conghau
  */
 public class Controller {
+
     public static ArrayList<ChuyenBay> arrayListChuyenBay = new ArrayList<ChuyenBay>();
     public static ArrayList<HoaDon> arrayListHoaDon = new ArrayList<HoaDon>();
     public static ArrayList<KhachHang> arrayListKhachHang = new ArrayList<KhachHang>();
@@ -36,24 +37,25 @@ public class Controller {
     public static ArrayList<TaiKhoan> arrayListTaiKhoan = new ArrayList<TaiKhoan>();
     public static ArrayList<Ve> arrayListVe = new ArrayList<Ve>();
     //them list ket qua tim kiem
-     public static ArrayList<ChuyenBay> arrayListKetQuaTimKiemChuyenBay = new ArrayList<ChuyenBay>();
+    public static ArrayList<ChuyenBay> arrayListKetQuaTimKiemChuyenBay = new ArrayList<ChuyenBay>();
     //
-     
-     public static void loadKetQuaTheoNgay(String maSanBayDi, String maSanBayDen, String ngayDi){
+    public static String tenDangNhap;
+
+    public static void loadKetQuaTheoNgay(String maSanBayDi, String maSanBayDen, String ngayDi) {
         ResultSet rs = DataConnection.retrieveData("select * from dbo.CHUYENBAY where MaSanBayDi like '%" + maSanBayDi + "%' and "
                 + "MaSanBayDen like '%" + maSanBayDen + "%' and  NgayBay like '%" + ngayDi + "%'");
 
         try {
             while (rs.next()) {
                 ChuyenBay chuyenBay = new ChuyenBay(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4),
-                    rs.getDate(5),
-                    rs.getTime(6),
-                    rs.getString(7),
-                    rs.getInt(8));
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getDate(5),
+                        rs.getTime(6),
+                        rs.getString(7),
+                        rs.getInt(8));
                 chuyenBay.setArrayListGhe(loadTableGhe(chuyenBay.getMaChuyenBay().trim()));
                 Controller.arrayListKetQuaTimKiemChuyenBay.add(chuyenBay);
             }
@@ -61,9 +63,31 @@ public class Controller {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    public static boolean kiemTraThongTinDangNhap(String tenDangNhap, String matKhau) {
+        ResultSet rs = DataConnection.retrieveData("select * from dbo.TAIKHOAN where TenDangNhap like '%" + tenDangNhap
+                + "%' and MatKhau like '%" + matKhau + "%'");
+        try {
+            while (rs.next()) {
+                TaiKhoan taiKhoan = new TaiKhoan(
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4));
+                if(taiKhoan.getLoaiTaiKhoan()!=""){
+                    System.out.println("DangNhap thanh cong");
+                    return true;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("DangNhap that bai");
+        return false;
+    }
+
     public static void main(String[] args) {
         new LoadData();
-        
+
     }
 }
