@@ -16,6 +16,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
 import model.Ghe;
@@ -41,9 +42,9 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
     int soGheNguoiLon;
     int soGheTreEm;
     int soGheEmBe;
-    
+    String maChuyenBayDi;
     public GiaoDienChonChuyenBayVe(String maSanBayDi, String maSanBayDen, 
-            Date ngayDi, int soGheNguoiLon, int soGheTreEm, int soGheEmBe) {
+            Date ngayDi, int soGheNguoiLon, int soGheTreEm, int soGheEmBe, String maChuyenBayDi) {
         
         initComponents();
          this.maSanBayDi= maSanBayDi;
@@ -52,7 +53,7 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
          this.soGheNguoiLon = soGheNguoiLon;
          this.soGheTreEm = soGheTreEm;
          this.soGheEmBe = soGheEmBe;
-         
+         this.maChuyenBayDi = maChuyenBayDi;
         dtm = (DefaultTableModel) jTable_KetQuaTimKiem.getModel();
         dtm.setColumnIdentifiers(new Object[]{
             "MaChuyenBay", "MaMayBay", "MaSanBayDi", "MaSanBayDen", "NgayBay", "GioBay", "GhiChu",
@@ -230,7 +231,15 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
 
     private void jButton_XacNhanChonChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanChonChuyenBayActionPerformed
         // TODO add your handling code here:
-        
+        int row = jTable_KetQuaTimKiem.getSelectedRow();
+            if(row==-1){
+                JOptionPane.showMessageDialog(rootPane, "Hay chon chuyen bay ve.");
+            }
+            else{
+                this.dispose();
+                new GiaoDienChonGhe(this.maChuyenBayDi, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)
+                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
+            }       
     }//GEN-LAST:event_jButton_XacNhanChonChuyenBayActionPerformed
 
     /**
