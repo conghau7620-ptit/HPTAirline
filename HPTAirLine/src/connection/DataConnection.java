@@ -37,10 +37,9 @@ public class DataConnection {
         }
     }
     
-    public static Connection createStatement() {
-        
-        String url = "jdbc:sqlserver://;databaseNa  me=HPT_AIRLINES";
-        
+//    public static Connection createStatement() {
+    public static void createStatement() {    
+        String url = "jdbc:sqlserver://;databaseName=HPT_AIRLINES";
         String user = "sa";
         String pass = "123";
         try {
@@ -55,6 +54,6 @@ public class DataConnection {
             Logger.getLogger(DataConnection.class.getName()).log(Level.SEVERE, 
                     null, ex);
         }
-        return connection;
+//        return connection;
     }
 }

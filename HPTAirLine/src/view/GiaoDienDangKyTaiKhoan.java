@@ -153,9 +153,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
                                     0);
                     Controller.arrayListKhachHang.add(kh);
                     InsertData.insertKhachHang(kh);
-                    
-                    
-                    
+          
                     
                 }
             }

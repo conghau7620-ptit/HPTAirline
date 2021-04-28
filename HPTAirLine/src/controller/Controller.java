@@ -39,8 +39,7 @@ public class Controller {
     //them list ket qua tim kiem
     public static ArrayList<ChuyenBay> arrayListKetQuaTimKiemChuyenBay = new ArrayList<ChuyenBay>();
     //
-    public static String tenDangNhap;
-
+    public static TaiKhoan tk = new TaiKhoan();
     public static void loadKetQuaTheoNgay(String maSanBayDi, String maSanBayDen, String ngayDi) {
         ResultSet rs = DataConnection.retrieveData("select * from dbo.CHUYENBAY where MaSanBayDi like '%" + maSanBayDi + "%' and "
                 + "MaSanBayDen like '%" + maSanBayDen + "%' and  NgayBay like '%" + ngayDi + "%'");
@@ -63,31 +62,8 @@ public class Controller {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public static boolean kiemTraThongTinDangNhap(String tenDangNhap, String matKhau) {
-        ResultSet rs = DataConnection.retrieveData("select * from dbo.TAIKHOAN where TenDangNhap like '%" + tenDangNhap
-                + "%' and MatKhau like '%" + matKhau + "%'");
-        try {
-            while (rs.next()) {
-                TaiKhoan taiKhoan = new TaiKhoan(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4));
-                if(taiKhoan.getLoaiTaiKhoan()!=""){
-                    System.out.println("DangNhap thanh cong");
-                    return true;
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println("DangNhap that bai");
-        return false;
-    }
-
+    
     public static void main(String[] args) {
         new LoadData();
-
     }
 }
