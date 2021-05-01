@@ -26,9 +26,8 @@ gán vào các thuộc tính trong vé gồm : CMND, tên, email, sđt.
 */
 package view;
 
+import connection.DataConnection;
 import java.awt.Color;
-import java.sql.Array;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -229,11 +228,11 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
                         mbay.setArrayListGhe(dsGheDau);
                         
                         
-         Connection connect = connection.DataConnection.createStatement();
+         DataConnection.createStatement();
          String sql = "insert into GHE values (?,?,?,?)";
          
          try {
-            PreparedStatement ps = connect.prepareStatement(sql);
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
             for(model.Ghe ghe : dsGheDau){
 
                 ps.setString(1, ghe.getMaGhe());
@@ -277,10 +276,10 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
      }
     private int layMaChuyenBay(){
         String maChuyenBay ="";
-        Connection connect = connection.DataConnection.createStatement();
+        DataConnection.createStatement();
         String sql = "select * from CHUYENBAY";
         try {
-            PreparedStatement ps = connect.prepareStatement(sql);
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             
              while (rs.next()){
@@ -303,10 +302,10 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
     
     private int layGhe(){
         
-        Connection connect = connection.DataConnection.createStatement();
+        connection.DataConnection.createStatement();
         String sql = "select * from GHE";
         try {
-            PreparedStatement ps = connect.prepareStatement(sql);
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
@@ -377,11 +376,11 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
       
 private void changeColor(Color a){
     byte trong = 1;
-    Connection connect = connection.DataConnection.createStatement();
+    DataConnection.createStatement();
         String sql = "update GHE set Trong = ? where MaGhe = ? ";
 
     try {
-       PreparedStatement ps = connect.prepareStatement(sql);
+       PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
         for(int i =0;i < listSelected.size();i++){
 //   
               for (int j = 0;j< dsGhe.size();j++){
