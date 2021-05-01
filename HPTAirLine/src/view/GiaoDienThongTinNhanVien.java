@@ -374,22 +374,6 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel_XemThongTinTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_XemThongTinTaiKhoanMousePressed
-        // TODO add your handling code here:
-        if(jLabel_PhanQuyen.getText().equals("Nhân viên")){
-            new GiaoDienThongTinNhanVien().setVisible(true);
-        }
-        if(jLabel_PhanQuyen.getText().equals("Khách hàng")){
-            new GiaoDienThongTinKhachHang().setVisible(true);
-        }
-    }//GEN-LAST:event_jLabel_XemThongTinTaiKhoanMousePressed
-
-    private void jLabel_DangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangXuatMousePressed
-        // TODO add your handling code here:
-        this.dispose();
-        new GiaoDienDangNhap().setVisible(true);
-    }//GEN-LAST:event_jLabel_DangXuatMousePressed
-
     private void jButton_XacNhanSuaThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanSuaThongTinActionPerformed
         // TODO add your handling code here:
         int luaChon = JOptionPane.showConfirmDialog(this, "Xác nhân sửa thông tin cho nhân viên " + jLabel_TenNguoiDung.getText(), "Xác nhận sửa", JOptionPane.YES_NO_OPTION);
@@ -432,6 +416,22 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Mật khẩu cũ không khớp");
         }
     }//GEN-LAST:event_jButton_DoiMatKhauActionPerformed
+
+    private void jLabel_DangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangXuatMousePressed
+        // TODO add your handling code here:
+        this.dispose();
+        new GiaoDienDangNhap().setVisible(true);
+    }//GEN-LAST:event_jLabel_DangXuatMousePressed
+
+    private void jLabel_XemThongTinTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_XemThongTinTaiKhoanMousePressed
+        // TODO add your handling code here:
+        if(jLabel_PhanQuyen.getText().equals("Nhân viên")){
+            new GiaoDienThongTinNhanVien().setVisible(true);
+        }
+        if(jLabel_PhanQuyen.getText().equals("Khách hàng")){
+            new GiaoDienThongTinKhachHang().setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel_XemThongTinTaiKhoanMousePressed
 
     /**
      * @param args the command line arguments

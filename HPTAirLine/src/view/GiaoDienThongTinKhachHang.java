@@ -164,10 +164,11 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
             jPanel_TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_TaiKhoanLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel_TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_XinChao)
-                    .addComponent(jLabel_PhanQuyen)
-                    .addComponent(jLabel_TenNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel_TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_TenNguoiDung, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel_TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel_XinChao)
+                        .addComponent(jLabel_PhanQuyen)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel_TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_XemThongTinTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -411,17 +412,6 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton_ThoatGiaoDienThongTinKhachHangActionPerformed
 
-    private void jLabel_XemThongTinTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_XemThongTinTaiKhoanMousePressed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this, "Bạn đang xem thông tin tài khoản rồi.");
-    }//GEN-LAST:event_jLabel_XemThongTinTaiKhoanMousePressed
-
-    private void jLabel_DangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangXuatMousePressed
-        // TODO add your handling code here:
-        this.dispose();
-        new GiaoDienDangNhap().setVisible(true);
-    }//GEN-LAST:event_jLabel_DangXuatMousePressed
-
     private void jButton_XacNhanSuaThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanSuaThongTinActionPerformed
         // TODO add your handling code here:
         int luaChon = JOptionPane.showConfirmDialog(this, "Xác nhân sửa thông tin cho khách hàng " + jLabel_TenNguoiDung.getText(), "Xác nhận sửa", JOptionPane.YES_NO_OPTION);
@@ -460,6 +450,17 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Mật khẩu cũ không khớp");
         }
     }//GEN-LAST:event_jButton_DoiMatKhauActionPerformed
+
+    private void jLabel_DangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangXuatMousePressed
+        // TODO add your handling code here:
+        this.dispose();
+        new GiaoDienDangNhap().setVisible(true);
+    }//GEN-LAST:event_jLabel_DangXuatMousePressed
+
+    private void jLabel_XemThongTinTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_XemThongTinTaiKhoanMousePressed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Bạn đang xem thông tin tài khoản rồi.");
+    }//GEN-LAST:event_jLabel_XemThongTinTaiKhoanMousePressed
 
     /**
      * @param args the command line arguments

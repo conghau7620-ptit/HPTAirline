@@ -262,8 +262,8 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
             }
             else{
                 this.dispose();
-                new GiaoDienChonGhe((String) jTable_KetQuaTimKiem.getValueAt(row, 0), ""
-                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
+//                new GiaoDienChonGhe((String) jTable_KetQuaTimKiem.getValueAt(row, 0), ""
+//                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
 
             }       
         }
@@ -303,17 +303,17 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 //        }
         ///   
 
-        for (ChuyenBay tmp : list) {
+        for (ChuyenBay cb : list) {
             int soGheTrong = 0;
-            for(Ghe g : tmp.getArrayListGhe()){
+            for(Ghe g : cb.getArrayListGhe()){
                 if(g.getTrong()==1){
                     soGheTrong ++;
                 }
             }
             if(soGheTrong >= (this.soGheNguoiLon + this.soGheTreEm + this.soGheEmBe)){
                 dtm.addRow(new Object[]{
-                    tmp.getMaChuyenBay(), tmp.getMaMayBay(), tmp.getMaSanBayDi(), tmp.getMaSanBayDen(), new SimpleDateFormat("dd/MM/yyyy").format(tmp.getNgayBay()),
-                    tmp.getGioBay(), tmp.getGhiChu(), tmp.getKhoangCach()
+                    cb.getMaChuyenBay(), cb.getMaMayBay(), cb.getMaSanBayDi(), cb.getMaSanBayDen(), new SimpleDateFormat("dd/MM/yyyy").format(cb.getNgayBay()),
+                    cb.getGioBay(), cb.getGhiChu(), cb.getKhoangCach()
                 });
             }
             //

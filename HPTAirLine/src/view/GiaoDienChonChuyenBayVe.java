@@ -245,9 +245,9 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Hay chon chuyen bay ve.");
             }
             else{
-                this.dispose();
-                new GiaoDienChonGhe(this.maChuyenBayDi, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)
-                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
+//                this.dispose();
+//                new GiaoDienChonGhe(this.maChuyenBayDi, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)
+//                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
             }       
     }//GEN-LAST:event_jButton_XacNhanChonChuyenBayActionPerformed
 
