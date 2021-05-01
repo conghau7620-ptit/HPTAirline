@@ -37,10 +37,10 @@ public class DataConnection {
         }
     }
     
-    public static void createStatement() {
-        
+
+    public static void createStatement() {    
         String url = "jdbc:sqlserver://;databaseName=HPT_AIRLINES";
-        
+
         String user = "sa";
         String pass = "123";
         try {
