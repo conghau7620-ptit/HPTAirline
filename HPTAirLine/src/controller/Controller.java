@@ -40,6 +40,7 @@ public class Controller {
     public static ArrayList<ChuyenBay> arrayListKetQuaTimKiemChuyenBay = new ArrayList<ChuyenBay>();
     //
     public static TaiKhoan tk = new TaiKhoan();
+
     public static void loadKetQuaTheoNgay(String maSanBayDi, String maSanBayDen, String ngayDi) {
         ResultSet rs = DataConnection.retrieveData("select * from dbo.CHUYENBAY where MaSanBayDi like '%" + maSanBayDi + "%' and "
                 + "MaSanBayDen like '%" + maSanBayDen + "%' and  NgayBay like '%" + ngayDi + "%'");

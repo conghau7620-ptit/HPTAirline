@@ -47,7 +47,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         jLabel_HuongDanDatCho.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         //// Phần thông tin cơ bản , đăng xuất
         new LoadData();
-        
+
         for (NhanVien nv : controller.Controller.arrayListNhanVien) {
             if (nv.getSdtNhanVien().equals(controller.Controller.tk.getSdt())) {
                 jLabel_PhanQuyen.setText("Nhân viên");
@@ -595,10 +595,10 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
     private void jLabel_XemThongTinTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_XemThongTinTaiKhoanMousePressed
         // TODO add your handling code here:
         if (jLabel_PhanQuyen.getText().equals("Nhân viên")) {
-            new GiaoDienThongTinNhanVien().setVisible(true);
+//            new GiaoDienThongTinNhanVien().setVisible(true);
         }
         if (jLabel_PhanQuyen.getText().equals("Khách hàng")) {
-            new GiaoDienThongTinKhachHang().setVisible(true);
+//            new GiaoDienThongTinKhachHang().setVisible(true);
         }
     }//GEN-LAST:event_jLabel_XemThongTinTaiKhoanMousePressed
 
