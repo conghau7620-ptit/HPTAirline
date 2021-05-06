@@ -9,6 +9,8 @@ import connection.DataConnection;
 import connection.LoadData;
 import controller.Controller;
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
 import model.Ghe;
@@ -61,9 +64,21 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
             "MaChuyenBay", "MaMayBay", "MaSanBayDi", "MaSanBayDen", "NgayBay", "GioBay", "GhiChu",
              "KhoangCach"
         });
-        System.out.println("soGheNguoiLon: "+this.soGheNguoiLon);
-        System.out.println("soGheTreEm: "+this.soGheTreEm);
-        System.out.println("soGheEmBe: "+this.soGheEmBe);
+        
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+        
         hienKetQua();
         
      //   
