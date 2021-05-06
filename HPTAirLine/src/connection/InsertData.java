@@ -103,7 +103,7 @@ public class InsertData {
                 ps.setString(11, v.getSdtNguoiBay());
                 ps.setString(12, v.getMaHoaDon());
                 ps.setString(13, v.getMaGhe());              
-                if(!(ps.executeUpdate()>0)){
+                if(ps.executeUpdate()>0==false){
                     System.out.println("Khong the them danh sach ve");
                     return false;
                 }

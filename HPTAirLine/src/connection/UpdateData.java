@@ -42,6 +42,23 @@ public class UpdateData {
         System.out.println("sua khach hang that bai");
         return false;
     }
+    public static boolean updateDiemTichLuyKhachHang(KhachHang khachHang) {
+        String sqlCommand = "update dbo.KHACHHANG set DiemTichLuy=?"
+                + " where SoDienThoaiKhachHang=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setInt(1, khachHang.getDiemTichLuy());
+            ps.setString(2, khachHang.getSdtKhachHang());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sua khach hang that bai");
+        return false;
+    }
 
     public static boolean updateNhanVien(NhanVien nhanVien) {
         String sqlCommand = "update dbo.NHANVIEN set TenNhanVien=?, DiaChi=?, CMND=?"

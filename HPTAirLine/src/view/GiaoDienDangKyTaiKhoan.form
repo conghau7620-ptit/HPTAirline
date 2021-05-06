@@ -170,7 +170,9 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="268" pref="268" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                          <Component id="jButton_QuayLai" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jlabel_DangKy" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
@@ -236,7 +238,10 @@
                       <Component id="jTextField_Email" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                  <Component id="jButton_DangKy" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButton_DangKy" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_QuayLai" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel_ThongBao" min="-2" pref="71" max="-2" attributes="0"/>
                   <EmptySpace pref="26" max="32767" attributes="0"/>
@@ -384,6 +389,14 @@
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton_QuayLai">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Quay l&#x1ea1;i"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_QuayLaiActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
