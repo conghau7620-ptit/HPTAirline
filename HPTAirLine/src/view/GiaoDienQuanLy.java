@@ -43,12 +43,6 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton_ChuyenBay = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_KetQua = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,54 +111,23 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
 
         jButton4.setText("Thống kê");
 
-        jTable_KetQua.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable_KetQua.setRowHeight(25);
-        jTable_KetQua.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable_KetQua);
-
-        jButton5.setText("Thêm");
-
-        jButton6.setText("Sửa");
-
-        jButton7.setText("Xóa");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addGap(107, 107, 107)
-                        .addComponent(jButton6)
-                        .addGap(103, 103, 103)
-                        .addComponent(jButton7)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton_KhachHang)
-                                .addGap(103, 103, 103)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                                .addComponent(jButton_ChuyenBay)
-                                .addGap(94, 94, 94)
-                                .addComponent(jButton4)))
-                        .addGap(27, 27, 27))))
+                .addComponent(jButton_KhachHang)
+                .addGap(103, 103, 103)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(jButton_ChuyenBay)
+                .addGap(94, 94, 94)
+                .addComponent(jButton4)
+                .addGap(27, 27, 27))
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, jButton4, jButton5, jButton6, jButton7, jButton_ChuyenBay, jButton_KhachHang});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, jButton4, jButton_ChuyenBay, jButton_KhachHang});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,16 +138,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
                     .addComponent(jButton2)
                     .addComponent(jButton_ChuyenBay)
                     .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
-                .addContainerGap())
+                .addContainerGap(444, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,22 +169,6 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
 
     private void jButton_ChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ChuyenBayActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel dtm;
-        dtm = (DefaultTableModel) jTable_KetQua.getModel();
-        dtm.setColumnIdentifiers(new Object[]{
-            "MaChuyenBay", "MaMayBay", "MaSanBayDi", "MaSanBayDen", "NgayBay", "GioBay", "GhiChu",
-             "KhoangCach"
-        });
-        dtm.setRowCount(0);
-        LoadData.loadTableChuyenBay();
-        ArrayList <ChuyenBay> list;
-        list = Controller.arrayListChuyenBay;
-        for(ChuyenBay cb : list){
-            dtm.addRow(new Object[]{
-                    cb.getMaChuyenBay(), cb.getMaMayBay(), cb.getMaSanBayDi(), cb.getMaSanBayDen(), new SimpleDateFormat("dd/MM/yyyy").format(cb.getNgayBay()),
-                    cb.getGioBay(), cb.getGhiChu(), cb.getKhoangCach()
-                });
-        }
     }//GEN-LAST:event_jButton_ChuyenBayActionPerformed
 
     /**
@@ -271,9 +209,6 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton_ChuyenBay;
     private javax.swing.JButton jButton_KhachHang;
     private javax.swing.JLabel jLabel_AirLines;
@@ -281,8 +216,5 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_IconMayBay;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable_KetQua;
     // End of variables declaration//GEN-END:variables
 }
