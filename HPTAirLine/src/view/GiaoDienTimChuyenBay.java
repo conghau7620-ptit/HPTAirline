@@ -342,7 +342,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
         jLabel_NguoiLon.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel_NguoiLon.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_NguoiLon.setText("Người lớn (>=12t)");
+        jLabel_NguoiLon.setText("Người lớn (>=18t)");
 
         jLabel_TreEm.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel_TreEm.setForeground(new java.awt.Color(255, 255, 255));
@@ -520,9 +520,13 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
         if (Integer.parseInt(jComboBox_SLNguoiLon.getSelectedItem().toString()) == 0) {
             jComboBox_SLNguoiLon.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            jLabel_BaoLoi.setText("Trẻ em và em bé cần có người lớn đi cùng.");
             ktra = false;
+            return ktra;
         } else {
             jComboBox_SLNguoiLon.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+            jLabel_BaoLoi.setText("");
+            ktra = true;
         }
 
         if (jComboBox_SanBayDi.getSelectedItem().toString().equalsIgnoreCase(jComboBox_SanBayDen.getSelectedItem().toString())) {
@@ -530,6 +534,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             jComboBox_SanBayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
             jLabel_BaoLoi.setText("Sân bay đi và sân bay đến không thể trùng nhau.");
             ktra = false;
+            return ktra;
         } else {
             jComboBox_SanBayDi.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
             jComboBox_SanBayDen.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
@@ -542,15 +547,31 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         if ((ngayHienTai.after(ngayDi))) {
             jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
             ktra = false;
-            jLabel_BaoLoi.setText("Ngày đi không hợp lê.");
+            jLabel_BaoLoi.setText("Ngày đi không hợp lệ.");
+            return ktra;
         } else {
             jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+            jLabel_BaoLoi.setText("");
         }
         if ((ngayHienTai.after(ngayVe))) {
             jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.red, 1));
             ktra = false;
+            return ktra;
         } else {
             jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+        }
+        if(ngayDi.after(ngayVe)){
+            jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            jLabel_BaoLoi.setText("Ngày đi phải trước ngày về.");
+            jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            ktra = false;
+            return ktra;
+        }
+        else{
+            jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+            jLabel_BaoLoi.setText("");
+            jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+            ktra = true;
         }
         return ktra;
     }

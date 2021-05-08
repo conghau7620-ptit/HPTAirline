@@ -7,9 +7,10 @@ package view;
 
 import connection.LoadData;
 import controller.Controller;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import javax.swing.BorderFactory;
 import model.TaiKhoan;
 import model.Ve;
 
@@ -51,10 +52,12 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jPasswordField_MatKhau = new javax.swing.JPasswordField();
+        jLabel_BaoLoi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng nhập");
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -94,6 +97,8 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                     .addComponent(jLabel_IconMayBay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(89, 98, 117));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -137,6 +142,8 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         jLabel_DangNhap.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_DangNhap.setText("Đăng nhập");
 
+        jLabel_BaoLoi.setForeground(new java.awt.Color(255, 51, 51));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -162,7 +169,8 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel_MatKhau)
                                         .addComponent(jLabel_TenDangNhap))
-                                    .addGap(174, 174, 174))))))
+                                    .addGap(174, 174, 174)))
+                            .addComponent(jLabel_BaoLoi))))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -182,27 +190,16 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                 .addComponent(jPasswordField_MatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel_BaoLoi)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_DangKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, 340));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -343,18 +340,21 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
             }
         }
         if (index != -1) {
+            jTextField_TenDangNhap.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
             if (jPasswordField_MatKhau.getText().equals(Controller.arrayListTaiKhoan.get(index).getMatKhau())) {
                 controller.Controller.tk = Controller.arrayListTaiKhoan.get(index);
-
+                jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
 //                this.testHD1Chieu();
 //                this.testHD2Chieu();
                 new GiaoDienTimChuyenBay().setVisible(true);
                 this.dispose();
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Sai mật khẩu");
+                jLabel_BaoLoi.setText("*Sai mật khẩu");
+                jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.red, 1));
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Tên đăng nhập không tồn tại");
+            jLabel_BaoLoi.setText("*Tên đăng nhập không tồn tại");
+            jTextField_TenDangNhap.setBorder(BorderFactory.createLineBorder(Color.red, 1));
         }
     }//GEN-LAST:event_jButton_DangNhapActionPerformed
 
@@ -402,6 +402,7 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_DangNhap;
     private javax.swing.JLabel jLabel_AirLines;
+    private javax.swing.JLabel jLabel_BaoLoi;
     private javax.swing.JLabel jLabel_DangKy;
     private javax.swing.JLabel jLabel_DangNhap;
     private javax.swing.JLabel jLabel_HPT;

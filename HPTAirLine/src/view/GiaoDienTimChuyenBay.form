@@ -573,7 +573,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i l&#x1edb;n (&gt;=12t)"/>
+            <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i l&#x1edb;n (&gt;=18t)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_TreEm">

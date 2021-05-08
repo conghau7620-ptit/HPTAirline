@@ -281,7 +281,10 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel14" min="-2" pref="17" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                  <Component id="jTextField_TongTien" min="-2" pref="141" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jTextField_TongTien" min="-2" pref="141" max="-2" attributes="0"/>
+                                      <Component id="jCheckBox_TrangThaiThanhToan" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -362,14 +365,6 @@
                               <Component id="jScrollPane1" alignment="0" min="-2" pref="643" max="-2" attributes="0"/>
                               <Component id="jSeparator3" alignment="0" min="-2" pref="643" max="-2" attributes="0"/>
                               <Component id="jLabel_ChuyenBayDaChon" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton_ThoatGiaoDienHoaDon" min="-2" pref="281" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel_BaoLoi" max="32767" attributes="0"/>
-                                      <Component id="jButton_HoanTatHoaDon" pref="321" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
                               <Component id="jSeparator2" alignment="1" min="-2" pref="232" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                   <Component id="jLabel_BaoLoi2" min="-2" pref="196" max="-2" attributes="0"/>
@@ -377,6 +372,14 @@
                                       <Component id="jLabel_SoDienThoaiNhanVien" min="-2" pref="118" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                       <Component id="jTextField_SoDienThoaiNhanVien" min="-2" pref="144" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jButton_ThoatGiaoDienHoaDon" min="-2" pref="281" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel_BaoLoi" max="32767" attributes="0"/>
+                                      <Component id="jButton_HoanTatHoaDon" pref="321" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -462,11 +465,13 @@
                               <Component id="jTextField_SoDienThoaiNhanVien" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel_SoDienThoaiNhanVien" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jCheckBox_TrangThaiThanhToan" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel_BaoLoi" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="49" max="32767" attributes="0"/>
+                          <EmptySpace pref="70" max="32767" attributes="0"/>
                           <Component id="jLabel_BaoLoi2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -851,6 +856,17 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_BaoLoi2">
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="jCheckBox_TrangThaiThanhToan">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="75" green="62" red="59" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#x110;&#xe3; thanh to&#xe1;n"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
