@@ -190,6 +190,14 @@ public class LoadData {
     
     //
     public LoadData() {
+        controller.Controller.arrayListChuyenBay.removeAll(controller.Controller.arrayListChuyenBay);
+        controller.Controller.arrayListHoaDon.removeAll(controller.Controller.arrayListHoaDon);
+        controller.Controller.arrayListKhachHang.removeAll(controller.Controller.arrayListKhachHang);
+        controller.Controller.arrayListMayBay.removeAll(controller.Controller.arrayListMayBay);
+        controller.Controller.arrayListNhanVien.removeAll(controller.Controller.arrayListNhanVien);
+        controller.Controller.arrayListSanBay.removeAll(controller.Controller.arrayListSanBay);
+        controller.Controller.arrayListTaiKhoan.removeAll(controller.Controller.arrayListTaiKhoan);
+        controller.Controller.arrayListVe.removeAll(controller.Controller.arrayListVe);
         loadTableChuyenBay();
         loadTableHoaDon();
         loadTableKhachHang();

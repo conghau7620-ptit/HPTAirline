@@ -54,6 +54,18 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
                 }
             }
         });
+        
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                }
+            }
+        });
     }
 
     /**
@@ -90,6 +102,7 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jButton_DoiMatKhau = new javax.swing.JButton();
         jLabel_MatKhau = new javax.swing.JLabel();
+        jButton_XemLichSu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -223,6 +236,17 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
         jLabel_MatKhau.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_MatKhau.setText("Mật khẩu");
 
+        jButton_XemLichSu.setBackground(new java.awt.Color(153, 153, 153));
+        jButton_XemLichSu.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jButton_XemLichSu.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_XemLichSu.setText("Xem lịch sử");
+        jButton_XemLichSu.setBorderPainted(false);
+        jButton_XemLichSu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_XemLichSuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -231,11 +255,7 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel_ThongTinKhachHang)
-                        .addGap(249, 249, 249))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_TenDangNhap)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -254,14 +274,19 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
                             .addComponent(jTextField_DiemTichLuy)
                             .addComponent(jButton_DoiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel_DiemTichLuy)
                                     .addComponent(jLabel_DiaChi)
                                     .addComponent(jLabel_CMND)
                                     .addComponent(jTextField_CMND, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                    .addComponent(jLabel_MatKhau))
+                                    .addComponent(jLabel_MatKhau)
+                                    .addComponent(jButton_XemLichSu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(34, 34, 34))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(269, 269, 269)
+                .addComponent(jLabel_ThongTinKhachHang)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField_CMND, jTextField_Email, jTextField_SoDienThoai, jTextField_TenDangNhap, jTextField_TenKhachHang});
@@ -270,7 +295,7 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel_ThongTinKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel_ThongTinKhachHang)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -308,7 +333,9 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
                         .addComponent(jLabel_Email)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(45, 45, 45)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jButton_XemLichSu)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_XacNhanSuaThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_ThoatGiaoDienThongTinKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -324,10 +351,10 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(100, 100, 100)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -398,6 +425,11 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_DoiMatKhauActionPerformed
 
+    private void jButton_XemLichSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XemLichSuActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton_XemLichSuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -438,6 +470,7 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
     private javax.swing.JButton jButton_DoiMatKhau;
     private javax.swing.JButton jButton_ThoatGiaoDienThongTinKhachHang;
     private javax.swing.JButton jButton_XacNhanSuaThongTin;
+    private javax.swing.JButton jButton_XemLichSu;
     private javax.swing.JLabel jLabel_AirLines;
     private javax.swing.JLabel jLabel_CMND;
     private javax.swing.JLabel jLabel_DiaChi;
