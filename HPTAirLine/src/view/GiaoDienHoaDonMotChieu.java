@@ -691,7 +691,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                 int diemTichLuy = Integer.parseInt(jTextField_DiemTichLuy.getText());
                 int diemTichLuySuDung = Integer.parseInt(jComboBox_SuDungDiemTichLuy.getSelectedItem().toString());
                 int luaChon = JOptionPane.showConfirmDialog(this, "Sau khi hoàn tất hóa đơn điểm tích lũy sẽ là: "
-                        + (diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 5), null, JOptionPane.YES_NO_OPTION);
+                        + (diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 10), null, JOptionPane.YES_NO_OPTION);
                 if (luaChon == JOptionPane.YES_OPTION) {
                     //gọi hàm sửa thông tin
                     HoaDon hoaDon = new HoaDon();

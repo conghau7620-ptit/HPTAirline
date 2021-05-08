@@ -346,7 +346,11 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                 jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
 //                this.testHD1Chieu();
 //                this.testHD2Chieu();
-                new GiaoDienTimChuyenBay().setVisible(true);
+                new GiaoDienLichSuHoaDon().setVisible(true);
+
+    
+//                new GiaoDienTimChuyenBay().setVisible(true);
+
                 this.dispose();
             } else {
                 jLabel_BaoLoi.setText("*Sai mật khẩu");

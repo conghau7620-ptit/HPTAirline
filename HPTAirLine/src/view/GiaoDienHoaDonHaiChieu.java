@@ -976,7 +976,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                 int diemTichLuySuDung = diemTichLuyDiSuDung + diemTichLuyVeSuDung;
                 
                 int luaChon = JOptionPane.showConfirmDialog(this, "Sau khi hoàn tất hóa đơn điểm tích lũy sẽ là: "
-                        + (diemTichLuy - diemTichLuySuDung + this.soVePhoThongDi * 2 * 5 + this.soVeThuongGiaDi * 2 * 5), null, JOptionPane.YES_NO_OPTION);
+                        + (diemTichLuy - diemTichLuySuDung + this.soVePhoThongDi * 2 * 5 + this.soVeThuongGiaDi * 2 * 10), null, JOptionPane.YES_NO_OPTION);
                 if (luaChon == JOptionPane.YES_OPTION) {
                     //tạo hóa đơn đi để thêm vào csdl
                     HoaDon hoaDonDi = new HoaDon();
