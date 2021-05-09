@@ -427,7 +427,7 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
 
     private void jButton_XemLichSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XemLichSuActionPerformed
         // TODO add your handling code here:
-        
+        new GiaoDienLichSuHoaDon().setVisible(true);
     }//GEN-LAST:event_jButton_XemLichSuActionPerformed
 
     /**
