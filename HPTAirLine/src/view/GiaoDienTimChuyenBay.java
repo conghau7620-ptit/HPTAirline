@@ -36,6 +36,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
     public GiaoDienTimChuyenBay() {
         initComponents();
+        setVisible(true);
 
         String date = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
         try {
@@ -58,7 +59,14 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                         JOptionPane.YES_NO_OPTION);
 
                 if (confirmed == JOptionPane.YES_OPTION) {
-                    dispose();
+                    if (Controller.tk.getLoaiTaiKhoan().equals("KhachHang")) {
+                        dispose();
+                        new GiaoDienDangNhap();
+                    }
+                    else if (Controller.tk.getLoaiTaiKhoan().equals("NhanVien")) {
+                        dispose();
+                        new GiaoDienNhanVien();
+                    }
                 } else {
                     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }

@@ -30,7 +30,7 @@ public class LoadData {
                     rs.getString(4).trim(),
                     rs.getDate(5),
                     rs.getTime(6),
-                    rs.getString(7).trim(),
+                    rs.getString(7),
                     rs.getInt(8));
                 chuyenBay.setArrayListGhe(loadTableGhe(chuyenBay.getMaChuyenBay().trim()));
                 for (Ghe g: chuyenBay.getArrayListGhe()) {
@@ -87,8 +87,8 @@ public class LoadData {
                 KhachHang khachHang = new KhachHang(
                     rs.getString(1).trim(),
                     rs.getString(2).trim(),
-                    rs.getString(3).trim(),
-                    rs.getString(4).trim(),
+                    rs.getString(3),
+                    rs.getString(4),
                     rs.getString(5).trim(),
                     rs.getString(6).trim(),
                     rs.getInt(7));
