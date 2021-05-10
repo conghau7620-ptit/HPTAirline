@@ -2,7 +2,7 @@
     tạm hoàn thành mua dưới quyền khách hàng và nhân viên
     có xử lý điểm tích lũy
     có thêm khách hàng nếu khách hàng chưa tồn tại trong csdl
-    Truyền vào 2 arraylist đối tượng vé trong đó mã hóa đơn, mã chuyến bay, mã ghế và thông tin người 
+    Truyền vào 2 arraylist đối tượng vé trong đó mã hóa đơn, mã chuyến bay, mã ghế,... và thông tin người 
                 bay đã được set dữ liệu sẵn
  */
 package view;
@@ -34,7 +34,7 @@ import model.Ve;
 
 /**
  *
- * @author t0168
+ * @author tuanbuiquoc
  */
 public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
 

@@ -34,7 +34,7 @@ import model.Ve;
 
 /**
  *
- * @author t0168
+ * @author tuanbuiquoc
  */
 public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
 

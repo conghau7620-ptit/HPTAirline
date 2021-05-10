@@ -25,7 +25,7 @@ import model.NhanVien;
 
 /**
  *
- * @author t0168
+ * @author tuanbuiquoc
  */
 public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
