@@ -198,26 +198,15 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-=======
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
->>>>>>> cdd501be9118368473ceae22854f12c8abebe1ad
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-<<<<<<< HEAD
                 .addGap(90, 90, 90)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-=======
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
->>>>>>> cdd501be9118368473ceae22854f12c8abebe1ad
         );
 
         pack();
@@ -366,7 +355,6 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                 jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
 //                this.testHD1Chieu();
 //                this.testHD2Chieu();
-<<<<<<< HEAD
                 if (taiKhoanHienTai.getLoaiTaiKhoan().equals("KhachHang")) {
                     new GiaoDienTimChuyenBay().setVisible(true);
                     this.dispose();
@@ -375,11 +363,6 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                     new GiaoDienNhanVien();
                     this.dispose();
                 }
-=======
-//                new GiaoDienLichSuHoaDon().setVisible(true);    //testLichsu
-                new GiaoDienTimChuyenBay().setVisible(true);
-                this.dispose();
->>>>>>> cdd501be9118368473ceae22854f12c8abebe1ad
             } else {
                 jLabel_BaoLoi.setText("*Sai mật khẩu");
                 jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.red, 1));
