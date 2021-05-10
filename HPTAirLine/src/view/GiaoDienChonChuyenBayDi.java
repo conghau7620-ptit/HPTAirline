@@ -26,7 +26,7 @@ import model.Ghe;
 
 /**
  *
- * @author t0168
+ * @author tuanbuiquoc
  */
 public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 

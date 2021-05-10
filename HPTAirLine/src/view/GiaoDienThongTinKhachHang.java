@@ -17,14 +17,12 @@ import model.TaiKhoan;
 
 /**
  *
- * @author t0168
+ * @author tuanbuiquoc
  */
 //Tạm hoàn thành giao diện thông tin khách hàng, và xử lý sửa thông tin, đổi mật khẩu, chưa kiểm tra  input
+
 public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ThongTinKhachHang
-     */
     String tenKhachHang;
     public GiaoDienThongTinKhachHang() {
         initComponents();
