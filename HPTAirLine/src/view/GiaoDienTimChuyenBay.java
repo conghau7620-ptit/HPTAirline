@@ -499,8 +499,9 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void inputMacDinh() {
-        LoadData.loadTableSanBay();
-        for (model.SanBay sb : Controller.arrayListSanBay) {
+        controller.Controller.arrayListSanBay.removeAll(controller.Controller.arrayListSanBay);
+        new LoadData();
+        for (model.SanBay sb : controller.Controller.arrayListSanBay) {
             jComboBox_SanBayDi.addItem(sb.getMaSanBay().trim() + "-" + sb.getTenSanBay());
             jComboBox_SanBayDen.addItem(sb.getMaSanBay().trim() + "-" + sb.getTenSanBay());
         }

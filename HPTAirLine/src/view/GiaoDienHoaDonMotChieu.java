@@ -41,7 +41,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
     DefaultTableModel dtmVe;
     DefaultTableModel dtmChuyenBay;
     private Date ngayHienTai;
-    private int phanTramGiaThuongGia = 2;
+    public static int phanTramGiaThuongGia = 2;
     private int giaCoBan = 0;
     private int soVePhoThong = 0;
     private int soVeThuongGia = 0;
@@ -720,8 +720,6 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                     hoaDon.setTongTien(Integer.parseInt(jTextField_TongTien.getText()));
                     hoaDon.setSdtNhanVien(jTextField_SoDienThoaiNhanVien.getText());
 
-                    KhachHang kh = new KhachHang(jTextField_SoDienThoaiKhachHang.getText(), "", "", "", "", "",
-                             diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 10);
 
                     for (Ve ve : this.danhSachVe) {
                         ve.setMaHoaDon(hoaDon.getMaHoaDon());
@@ -731,7 +729,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                         System.out.println("Thêm hóa đơn thành công");
                         if (InsertData.insertVe(danhSachVe) == true) {
                             System.out.println("Thêm danh sách vé thành công");
-                            if (UpdateData.updateDiemTichLuyKhachHang(kh) == true) {
+                            if (UpdateData.updateDiemTichLuyKhachHang(jTextField_SoDienThoaiKhachHang.getText(), diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 10) == true) {
                                 System.out.println("Cập nhật điểm tích lũy thành công");
                                 this.dispose();
                                 new GiaoDienTimChuyenBay().setVisible(true);
