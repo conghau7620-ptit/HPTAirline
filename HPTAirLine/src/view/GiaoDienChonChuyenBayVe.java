@@ -5,19 +5,13 @@
  */
 package view;
 
-import connection.DataConnection;
 import connection.LoadData;
 import controller.Controller;
-import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
@@ -26,16 +20,10 @@ import model.Ghe;
 
 /**
  *
- * @author t0168
+ * @author tuanbuiquoc
  */
 public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FlightSearchResultFrame
-     */
-    
-    //SoGhe trong trong chuyen bay deu = 0; chưa sửa
-    
     ArrayList <ChuyenBay> list;
     DefaultTableModel dtm;
     String maSanBayDi;
@@ -188,7 +176,7 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
 
         jLabel_ThongTinCanTimKiem.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel_ThongTinCanTimKiem.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_ThongTinCanTimKiem.setText("__(Thông tin chuyến bay cần tìm)__");
+        jLabel_ThongTinCanTimKiem.setText("Chọn chuyến bay về");
 
         jButton_ThoatKetQuaTimKiemChuyenBay.setBackground(new java.awt.Color(0, 102, 102));
         jButton_ThoatKetQuaTimKiemChuyenBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N

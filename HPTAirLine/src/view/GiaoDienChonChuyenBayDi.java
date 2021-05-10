@@ -26,7 +26,7 @@ import model.Ghe;
 
 /**
  *
- * @author t0168
+ * @author tuanbuiquoc
  */
 public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 
@@ -190,7 +190,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 
         jLabel_ThongTinCanTimKiem.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel_ThongTinCanTimKiem.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_ThongTinCanTimKiem.setText("__(Thông tin chuyến bay cần tìm)__");
+        jLabel_ThongTinCanTimKiem.setText("Chọn chuyến bay");
 
         jButton_ThoatKetQuaTimKiemChuyenBay.setBackground(new java.awt.Color(0, 102, 102));
         jButton_ThoatKetQuaTimKiemChuyenBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N

@@ -2,7 +2,7 @@
     tạm hoàn thành mua dưới quyền khách hàng và nhân viên
     có xử lý điểm tích lũy
     có thêm khách hàng nếu khách hàng chưa tồn tại trong csdl
-    Truyền vào 2 arraylist đối tượng vé trong đó mã hóa đơn, mã chuyến bay, mã ghế và thông tin người 
+    Truyền vào 2 arraylist đối tượng vé trong đó mã hóa đơn, mã chuyến bay, mã ghế,... và thông tin người 
                 bay đã được set dữ liệu sẵn
  */
 package view;
@@ -34,7 +34,7 @@ import model.Ve;
 
 /**
  *
- * @author t0168
+ * @author tuanbuiquoc
  */
 public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
 
@@ -45,7 +45,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
     DefaultTableModel dtmChuyenBayVe;
 
     private Date ngayHienTai;
-    private int phanTramGiaThuongGia = 2;
+    public static int phanTramGiaThuongGia = 2;
     private int giaCoBan = 0;
     private int soVePhoThongDi = 0;
     private int soVeThuongGiaDi = 0;
@@ -73,7 +73,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         this.danhSachVeVe = danhSachVeVe;
         this.maHoaDonVe = danhSachVeVe.get(0).getMaHoaDon();
         this.maChuyenBayVe = danhSachVeVe.get(0).getMaChuyenBay();
-
+        // vẽ bảng trống
         dtmVeDi = (DefaultTableModel) jTable_VeDiDaChon.getModel();
         dtmVeDi.setColumnIdentifiers(new Object[]{
             "MaVe", "SDTKhachHang", "MaChuyenBay", "Gia", "KyGui", "TrangThaiDoi", "TrangThaiVe",
@@ -96,7 +96,8 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             "MaChuyenBay", "MaMayBay", "MaSanBayDi", "MaSanBayDen", "NgayBay", "GioBay", "GhiChu",
             "KhoangCach"
         });
-
+        //
+        //lấy ngày hiện tại cho vào ngày xuất hóa đơn
         String date = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
         try {
             ngayHienTai = new SimpleDateFormat("dd/MM/yyyy").parse(date);
@@ -105,10 +106,10 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         }
         jDateChooser_NgayXuatHoaDon.setDate(ngayHienTai);
         jDateChooser_NgayXuatHoaDon.setEnabled(false);
-
+        //
+        
         thongTinTaiKhoan();
         hienThongTin();
-
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -309,7 +310,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                 .addComponent(jLabel_HPT)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_AirLines, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 703, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel_TaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -899,11 +900,14 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(680, 680, 680)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(680, 680, 680)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -976,7 +980,8 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                 int diemTichLuySuDung = diemTichLuyDiSuDung + diemTichLuyVeSuDung;
                 
                 int luaChon = JOptionPane.showConfirmDialog(this, "Sau khi hoàn tất hóa đơn điểm tích lũy sẽ là: "
-                        + (diemTichLuy - diemTichLuySuDung + this.soVePhoThongDi * 2 * 5 + this.soVeThuongGiaDi * 2 * 5), null, JOptionPane.YES_NO_OPTION);
+                        + (diemTichLuy - diemTichLuySuDung + this.soVePhoThongDi * 5 + this.soVeThuongGiaDi  * 10 
+                                            +this.soVePhoThongVe *5 +this.soVeThuongGiaVe *10), null, JOptionPane.YES_NO_OPTION);
                 if (luaChon == JOptionPane.YES_OPTION) {
                     //tạo hóa đơn đi để thêm vào csdl
                     HoaDon hoaDonDi = new HoaDon();
@@ -997,7 +1002,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                         ex.printStackTrace();
                     }
 
-                    if(jCheckBox_TrangThaiThanhToanHoaDonVe.isSelected()){
+                    if(jCheckBox_TrangThaiThanhToanHoaDonDi.isSelected()){
                         hoaDonDi.setTrangThaiThanhToan((byte) 1);
                     }else{
                         hoaDonDi.setTrangThaiThanhToan((byte) 0);
@@ -1028,9 +1033,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                     hoaDonVe.setTongTien(Integer.parseInt(jTextField_TongTienVe.getText()));
                     hoaDonVe.setSdtNhanVien(jTextField_SoDienThoaiNhanVien.getText());
                     
-                    //tạo khách hàng để cập nhật điểm tích lũy
-                    KhachHang kh = new KhachHang(jTextField_SoDienThoaiKhachHang.getText(), "", "", "", "", "",
-                            diemTichLuy - diemTichLuySuDung + this.soVePhoThongDi * 2 * 5 + this.soVeThuongGiaDi * 2 * 10);
                     // chỉnh sửa một vài thông tin trong vé
                     for (Ve ve : this.danhSachVeDi) {
                         ve.setMaHoaDon(hoaDonDi.getMaHoaDon());
@@ -1045,7 +1047,9 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                         System.out.println("Thêm 2 hóa đơn thành công");
                         if (InsertData.insertVe(danhSachVeDi) == true && InsertData.insertVe(danhSachVeVe) == true) {
                             System.out.println("Thêm 2 danh sách vé thành công");
-                            if (UpdateData.updateDiemTichLuyKhachHang(kh) == true) {
+                            if (UpdateData.updateDiemTichLuyKhachHang(jTextField_SoDienThoaiKhachHang.getText()
+                                    , diemTichLuy - diemTichLuySuDung + this.soVePhoThongDi * 5 + this.soVeThuongGiaDi  * 10 
+                                            +this.soVePhoThongVe *5 +this.soVeThuongGiaVe *10) == true) {
                                 System.out.println("Cập nhật điểm tích lũy thành công");
                                 this.dispose();
                                 new GiaoDienTimChuyenBay().setVisible(true);

@@ -34,14 +34,14 @@ import model.Ve;
 
 /**
  *
- * @author t0168
+ * @author tuanbuiquoc
  */
 public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
 
     DefaultTableModel dtmVe;
     DefaultTableModel dtmChuyenBay;
     private Date ngayHienTai;
-    private int phanTramGiaThuongGia = 2;
+    public static int phanTramGiaThuongGia = 2;
     private int giaCoBan = 0;
     private int soVePhoThong = 0;
     private int soVeThuongGia = 0;
@@ -691,7 +691,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                 int diemTichLuy = Integer.parseInt(jTextField_DiemTichLuy.getText());
                 int diemTichLuySuDung = Integer.parseInt(jComboBox_SuDungDiemTichLuy.getSelectedItem().toString());
                 int luaChon = JOptionPane.showConfirmDialog(this, "Sau khi hoàn tất hóa đơn điểm tích lũy sẽ là: "
-                        + (diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 5), null, JOptionPane.YES_NO_OPTION);
+                        + (diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 10), null, JOptionPane.YES_NO_OPTION);
                 if (luaChon == JOptionPane.YES_OPTION) {
                     //gọi hàm sửa thông tin
                     HoaDon hoaDon = new HoaDon();
@@ -720,8 +720,6 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                     hoaDon.setTongTien(Integer.parseInt(jTextField_TongTien.getText()));
                     hoaDon.setSdtNhanVien(jTextField_SoDienThoaiNhanVien.getText());
 
-                    KhachHang kh = new KhachHang(jTextField_SoDienThoaiKhachHang.getText(), "", "", "", "", "",
-                             diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 10);
 
                     for (Ve ve : this.danhSachVe) {
                         ve.setMaHoaDon(hoaDon.getMaHoaDon());
@@ -731,7 +729,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                         System.out.println("Thêm hóa đơn thành công");
                         if (InsertData.insertVe(danhSachVe) == true) {
                             System.out.println("Thêm danh sách vé thành công");
-                            if (UpdateData.updateDiemTichLuyKhachHang(kh) == true) {
+                            if (UpdateData.updateDiemTichLuyKhachHang(jTextField_SoDienThoaiKhachHang.getText(), diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 10) == true) {
                                 System.out.println("Cập nhật điểm tích lũy thành công");
                                 this.dispose();
                                 new GiaoDienTimChuyenBay().setVisible(true);

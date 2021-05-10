@@ -25,7 +25,7 @@ import model.NhanVien;
 
 /**
  *
- * @author t0168
+ * @author tuanbuiquoc
  */
 public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
@@ -48,14 +48,13 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         //
         thongTinTaiKhoan();
         inputMacDinh();
-        
+
         jLabel_HuongDanDatCho.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-        
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
-                        "Bạn có chắc muốn thoát chương trình không?","Xác nhận",
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
                         JOptionPane.YES_NO_OPTION);
 
                 if (confirmed == JOptionPane.YES_OPTION) {
@@ -508,8 +507,9 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void inputMacDinh() {
-        LoadData.loadTableSanBay();
-        for (model.SanBay sb : Controller.arrayListSanBay) {
+        controller.Controller.arrayListSanBay.removeAll(controller.Controller.arrayListSanBay);
+        new LoadData();
+        for (model.SanBay sb : controller.Controller.arrayListSanBay) {
             jComboBox_SanBayDi.addItem(sb.getMaSanBay().trim() + "-" + sb.getTenSanBay());
             jComboBox_SanBayDen.addItem(sb.getMaSanBay().trim() + "-" + sb.getTenSanBay());
         }
@@ -561,26 +561,29 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
             jLabel_BaoLoi.setText("");
         }
-        if ((ngayHienTai.after(ngayVe))) {
-            jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-            ktra = false;
-            return ktra;
-        } else {
-            jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+
+        if (jRadioButton_KhuHoi.isSelected()) {
+            if ((ngayHienTai.after(ngayVe))) {
+                jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+                ktra = false;
+                return ktra;
+            } else {
+                jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+            }
+            if (ngayDi.after(ngayVe)) {
+                jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+                jLabel_BaoLoi.setText("Ngày đi phải trước ngày về.");
+                jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+                ktra = false;
+                return ktra;
+            } else {
+                jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+                jLabel_BaoLoi.setText("");
+                jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+                ktra = true;
+            }
         }
-        if(ngayDi.after(ngayVe)){
-            jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-            jLabel_BaoLoi.setText("Ngày đi phải trước ngày về.");
-            jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-            ktra = false;
-            return ktra;
-        }
-        else{
-            jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
-            jLabel_BaoLoi.setText("");
-            jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
-            ktra = true;
-        }
+
         return ktra;
     }
     private void jRadioButton_KhuHoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton_KhuHoiActionPerformed
