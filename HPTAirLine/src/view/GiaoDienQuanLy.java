@@ -13,6 +13,7 @@ import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
 import model.KhachHang;
@@ -38,6 +39,8 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
 
                 if (confirmed == JOptionPane.YES_OPTION) {
                     dispose();
+                }else{
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }
             }
         });
@@ -227,6 +230,11 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton_NhanVien.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_NhanVien.setMargin(new java.awt.Insets(14, 14, 14, 14));
         jButton_NhanVien.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jButton_NhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_NhanVienActionPerformed(evt);
+            }
+        });
 
         jButton_ThongKe.setBackground(new java.awt.Color(255, 77, 77));
         jButton_ThongKe.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
@@ -357,6 +365,12 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         dispose();
         new GiaoDienDangNhap().setVisible(true);
     }//GEN-LAST:event_jLabel_DangXuatMousePressed
+
+    private void jButton_NhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_NhanVienActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        new GiaoDienQuanLyNhanVien().setVisible(true);
+    }//GEN-LAST:event_jButton_NhanVienActionPerformed
 
     /**
      * @param args the command line arguments

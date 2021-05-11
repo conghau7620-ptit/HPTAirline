@@ -12,6 +12,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import model.HoaDon;
 import model.KhachHang;
@@ -60,6 +61,9 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
 
                 if (confirmed == JOptionPane.YES_OPTION) {
                     dispose();
+                }
+                else{
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }
             }
         });

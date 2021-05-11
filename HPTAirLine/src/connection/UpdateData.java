@@ -77,7 +77,7 @@ public class UpdateData {
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("sua nhan vine that bai");
+        System.out.println("Sửa nhân viên thất bại");
         return false;
     }
     // đổi mật khẩu
@@ -152,18 +152,36 @@ public class UpdateData {
         return false;
     }
     
-        public static boolean deleteHoaDon(String maHoaDon){
-         String sqlCommand = "delete from dbo.HOADON where MaHoaDon=?";
+    public static boolean deleteHoaDon(String maHoaDon) {
+        String sqlCommand = "delete from dbo.HOADON where MaHoaDon=?";
         try {
             DataConnection.createStatement();
-            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand); 
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
             ps.setString(1, maHoaDon);
             return ps.executeUpdate() > 0;
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("xoa hóa đơn that bai");
+        return false;
+    }
+    
+        public static boolean deleteNhanVien(String sdtNhanVien) {
+        String sqlCommand = "delete from dbo.NHANVIEN where SoDienThoaiNhanVien=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, sdtNhanVien);
+            if(ps.executeUpdate() > 0){
+                System.out.println("Xóa nhân viên thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("xóa nhân viên thất bại");
         return false;
     }
 }
