@@ -216,127 +216,128 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MousePressed
     ////////////////////////
-    private void testHD1Chieu(){
+    private void testHD1Chieu() {
         // để test hóa đơn 1 chiều
-                ArrayList<Ve> danhSachVe = new ArrayList<>();
-                String maChuyenBayDi = "CB01";
-                String maHoaDon = "HD01";
+        ArrayList<Ve> danhSachVe = new ArrayList<>();
+        String maChuyenBayDi = "CB01";
+        String maHoaDon = "HD01";
 
-                Ve v1 = new Ve();
-                v1.setKyGui((short) 20);
-                v1.setMaVe("V01");
-                v1.setCmndNguoiBay("CMNDNgu");
-                v1.setMaChuyenBay("CB01");
-                v1.setMaHoaDon(maHoaDon);
-                v1.setMaGhe("A01-CB01");
-                v1.setEmailNguoiBay("emai1");
-                v1.setTrangThaiDoi((byte) 0);
-                v1.setTrangThaiVe((byte) 0);
-                v1.setSdtKhachHang("");
-                v1.setGia(0);
-                v1.setTenNguoiBay("ten n");
-                v1.setSdtNguoiBay("123");
+        Ve v1 = new Ve();
+        v1.setKyGui((short) 20);
+        v1.setMaVe("V01");
+        v1.setCmndNguoiBay("CMNDNgu");
+        v1.setMaChuyenBay("CB01");
+        v1.setMaHoaDon(maHoaDon);
+        v1.setMaGhe("A01-CB01");
+        v1.setEmailNguoiBay("emai1");
+        v1.setTrangThaiDoi((byte) 0);
+        v1.setTrangThaiVe((byte) 0);
+        v1.setSdtKhachHang("");
+        v1.setGia(0);
+        v1.setTenNguoiBay("ten n");
+        v1.setSdtNguoiBay("123");
 
-                Ve v2 = new Ve();
-                v2.setKyGui((short) 20);
-                v2.setMaVe("V02");
-                v2.setCmndNguoiBay("CMNDNgu");
-                v2.setMaChuyenBay("CB01");
-                v2.setMaHoaDon(maHoaDon);
-                v2.setMaGhe("A02-CB01");
-                v2.setEmailNguoiBay("emailNo");
-                v2.setTrangThaiDoi((byte) 0);
-                v2.setTrangThaiVe((byte) 0);
-                v2.setSdtKhachHang("");
-                v2.setGia(0);
-                v2.setTenNguoiBay("ten ngu2");
-                v2.setSdtNguoiBay("223");
+        Ve v2 = new Ve();
+        v2.setKyGui((short) 20);
+        v2.setMaVe("V02");
+        v2.setCmndNguoiBay("CMNDNgu");
+        v2.setMaChuyenBay("CB01");
+        v2.setMaHoaDon(maHoaDon);
+        v2.setMaGhe("A02-CB01");
+        v2.setEmailNguoiBay("emailNo");
+        v2.setTrangThaiDoi((byte) 0);
+        v2.setTrangThaiVe((byte) 0);
+        v2.setSdtKhachHang("");
+        v2.setGia(0);
+        v2.setTenNguoiBay("ten ngu2");
+        v2.setSdtNguoiBay("223");
 
-                danhSachVe.add(v1);
-                danhSachVe.add(v2);
+        danhSachVe.add(v1);
+        danhSachVe.add(v2);
 
-                for (Ve v : danhSachVe) {
-                    System.out.println(v.toString());
-                }
-                new GiaoDienHoaDonMotChieu(danhSachVe).setVisible(true);
+        for (Ve v : danhSachVe) {
+            System.out.println(v.toString());
+        }
+        new GiaoDienHoaDonMotChieu(danhSachVe).setVisible(true);
     }
+
     ///////
-    private void testHD2Chieu(){
+    private void testHD2Chieu() {
         ArrayList<Ve> danhSachVeDi = new ArrayList<>();
-                String maChuyenBayDi = "CB01";
-                String maHoaDon = "HD01";
+        String maChuyenBayDi = "CB01";
+        String maHoaDon = "HD01";
 
-                Ve v1 = new Ve();
-                v1.setKyGui((short) 20);
-                v1.setMaVe("V01");
-                v1.setCmndNguoiBay("CMNDNgu");
-                v1.setMaChuyenBay("CB01");
-                v1.setMaHoaDon(maHoaDon);
-                v1.setMaGhe("A01-CB01");
-                v1.setEmailNguoiBay("emai1");
-                v1.setTrangThaiDoi((byte) 0);
-                v1.setTrangThaiVe((byte) 0);
-                v1.setSdtKhachHang("");
-                v1.setGia(0);
-                v1.setTenNguoiBay("ten n");
-                v1.setSdtNguoiBay("123");
+        Ve v1 = new Ve();
+        v1.setKyGui((short) 20);
+        v1.setMaVe("V01");
+        v1.setCmndNguoiBay("CMNDNgu");
+        v1.setMaChuyenBay("CB01");
+        v1.setMaHoaDon(maHoaDon);
+        v1.setMaGhe("A01-CB01");
+        v1.setEmailNguoiBay("emai1");
+        v1.setTrangThaiDoi((byte) 0);
+        v1.setTrangThaiVe((byte) 0);
+        v1.setSdtKhachHang("");
+        v1.setGia(0);
+        v1.setTenNguoiBay("ten n");
+        v1.setSdtNguoiBay("123");
 
-                Ve v2 = new Ve();
-                v2.setKyGui((short) 20);
-                v2.setMaVe("V02");
-                v2.setCmndNguoiBay("CMNDNgu");
-                v2.setMaChuyenBay("CB01");
-                v2.setMaHoaDon(maHoaDon);
-                v2.setMaGhe("A02-CB01");
-                v2.setEmailNguoiBay("emailNo");
-                v2.setTrangThaiDoi((byte) 0);
-                v2.setTrangThaiVe((byte) 0);
-                v2.setSdtKhachHang("");
-                v2.setGia(0);
-                v2.setTenNguoiBay("ten ngu2");
-                v2.setSdtNguoiBay("223");
+        Ve v2 = new Ve();
+        v2.setKyGui((short) 20);
+        v2.setMaVe("V02");
+        v2.setCmndNguoiBay("CMNDNgu");
+        v2.setMaChuyenBay("CB01");
+        v2.setMaHoaDon(maHoaDon);
+        v2.setMaGhe("A02-CB01");
+        v2.setEmailNguoiBay("emailNo");
+        v2.setTrangThaiDoi((byte) 0);
+        v2.setTrangThaiVe((byte) 0);
+        v2.setSdtKhachHang("");
+        v2.setGia(0);
+        v2.setTenNguoiBay("ten ngu2");
+        v2.setSdtNguoiBay("223");
 
-                danhSachVeDi.add(v1);
-                danhSachVeDi.add(v2);
+        danhSachVeDi.add(v1);
+        danhSachVeDi.add(v2);
 
-                ArrayList<Ve> danhSachVeVe = new ArrayList<>();
-                String maChuyenBayVe = "CB02";
-                String maHoaDonVe = "HD02";
+        ArrayList<Ve> danhSachVeVe = new ArrayList<>();
+        String maChuyenBayVe = "CB02";
+        String maHoaDonVe = "HD02";
 
-                Ve v3 = new Ve();
-                v3.setKyGui((short) 20);
-                v3.setMaVe("V03");
-                v3.setCmndNguoiBay("CMNDNgu");
-                v3.setMaChuyenBay(maChuyenBayVe);
-                v3.setMaHoaDon(maHoaDonVe);
-                v3.setMaGhe("A01-CB02");
-                v3.setEmailNguoiBay("emai1");
-                v3.setTrangThaiDoi((byte) 0);
-                v3.setTrangThaiVe((byte) 0);
-                v3.setSdtKhachHang("");
-                v3.setGia(0);
-                v3.setTenNguoiBay("ten n");
-                v3.setSdtNguoiBay("123");
+        Ve v3 = new Ve();
+        v3.setKyGui((short) 20);
+        v3.setMaVe("V03");
+        v3.setCmndNguoiBay("CMNDNgu");
+        v3.setMaChuyenBay(maChuyenBayVe);
+        v3.setMaHoaDon(maHoaDonVe);
+        v3.setMaGhe("A01-CB02");
+        v3.setEmailNguoiBay("emai1");
+        v3.setTrangThaiDoi((byte) 0);
+        v3.setTrangThaiVe((byte) 0);
+        v3.setSdtKhachHang("");
+        v3.setGia(0);
+        v3.setTenNguoiBay("ten n");
+        v3.setSdtNguoiBay("123");
 
-                Ve v4 = new Ve();
-                v4.setKyGui((short) 20);
-                v4.setMaVe("V04");
-                v4.setCmndNguoiBay("CMNDNgu");
-                v4.setMaChuyenBay(maChuyenBayVe);
-                v4.setMaHoaDon(maHoaDonVe);
-                v4.setMaGhe("A03-CB02");
-                v4.setEmailNguoiBay("emailNo");
-                v4.setTrangThaiDoi((byte) 0);
-                v4.setTrangThaiVe((byte) 0);
-                v4.setSdtKhachHang("");
-                v4.setGia(0);
-                v4.setTenNguoiBay("ten ngu2");
-                v4.setSdtNguoiBay("223");
+        Ve v4 = new Ve();
+        v4.setKyGui((short) 20);
+        v4.setMaVe("V04");
+        v4.setCmndNguoiBay("CMNDNgu");
+        v4.setMaChuyenBay(maChuyenBayVe);
+        v4.setMaHoaDon(maHoaDonVe);
+        v4.setMaGhe("A03-CB02");
+        v4.setEmailNguoiBay("emailNo");
+        v4.setTrangThaiDoi((byte) 0);
+        v4.setTrangThaiVe((byte) 0);
+        v4.setSdtKhachHang("");
+        v4.setGia(0);
+        v4.setTenNguoiBay("ten ngu2");
+        v4.setSdtNguoiBay("223");
 
-                danhSachVeVe.add(v3);
-                danhSachVeVe.add(v4);
+        danhSachVeVe.add(v3);
+        danhSachVeVe.add(v4);
 
-                new GiaoDienHoaDonHaiChieu(danhSachVeDi, danhSachVeVe).setVisible(true);
+        new GiaoDienHoaDonHaiChieu(danhSachVeDi, danhSachVeVe).setVisible(true);
     }
     private void jButton_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangNhapActionPerformed
         // TODO add your handling code here:
@@ -352,11 +353,26 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
             if (jPasswordField_MatKhau.getText().equals(Controller.arrayListTaiKhoan.get(index).getMatKhau())) {
                 controller.Controller.tk = Controller.arrayListTaiKhoan.get(index);
                 jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+                if (controller.Controller.tk.getLoaiTaiKhoan().equalsIgnoreCase("QuanLy")) {
+                    new GiaoDienQuanLy().setVisible(true);
+                    this.dispose();
+                }
+                if (controller.Controller.tk.getLoaiTaiKhoan().equalsIgnoreCase("KhachHang")) {
+                    new GiaoDienTimChuyenBay().setVisible(true);
+                    this.dispose();
 //                this.testHD1Chieu();
 //                this.testHD2Chieu();
 //                new GiaoDienLichSuHoaDon().setVisible(true);    //testLichsu
-                new GiaoDienTimChuyenBay().setVisible(true);
-                this.dispose();
+                }
+                if (controller.Controller.tk.getLoaiTaiKhoan().equalsIgnoreCase("NhanVien")) {
+                    
+                    new GiaoDienTimChuyenBay().setVisible(true);
+                    this.dispose();
+//                this.testHD1Chieu();
+//                this.testHD2Chieu();
+//                new GiaoDienLichSuHoaDon().setVisible(true);    //testLichsu
+                }
+
             } else {
                 jLabel_BaoLoi.setText("*Sai mật khẩu");
                 jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.red, 1));
