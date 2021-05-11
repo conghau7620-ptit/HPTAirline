@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.HoaDon;
 import model.KhachHang;
+import model.NhanVien;
 import model.TaiKhoan;
 import model.Ve;
 
@@ -115,6 +116,30 @@ public class InsertData {
         return true;
     }
 //    
+    
+    public static boolean insertNhanVien(NhanVien nv) {
+        String sqlCommand = "insert into dbo.NHANVIEN values(?,?,?,?,?)";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, nv.getSdtNhanVien());
+            ps.setString(2, nv.getTenNhanVien());
+            ps.setString(3, nv.getDiaChi());
+            ps.setString(4, nv.getTenDangNhap());
+            ps.setString(5, nv.getCmnd());
+
+            if(ps.executeUpdate()>0){
+                System.out.println("thêm nhân viên thành công");
+                return true;
+            }
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("thêm nhân viên thất bại");
+        return false;
+    }
 //    
     
 }
