@@ -206,7 +206,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
             }
         });
 
-        jButton_KhachHang.setBackground(new java.awt.Color(33, 140, 116));
+        jButton_KhachHang.setBackground(new java.awt.Color(45, 52, 54));
         jButton_KhachHang.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_KhachHang.setForeground(new java.awt.Color(255, 255, 255));
         jButton_KhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_customer_50px_2.png"))); // NOI18N
@@ -221,7 +221,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
             }
         });
 
-        jButton_NhanVien.setBackground(new java.awt.Color(255, 121, 63));
+        jButton_NhanVien.setBackground(new java.awt.Color(225, 112, 85));
         jButton_NhanVien.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_NhanVien.setForeground(new java.awt.Color(255, 255, 255));
         jButton_NhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_front_desk_52px.png"))); // NOI18N

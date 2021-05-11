@@ -9,6 +9,7 @@ import connection.InsertData;
 import connection.LoadData;
 import controller.Controller;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -166,6 +167,8 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
                 }
             }
         });
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThemNhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /**

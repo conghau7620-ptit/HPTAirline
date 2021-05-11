@@ -61,8 +61,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
 
                 if (confirmed == JOptionPane.YES_OPTION) {
                     dispose();
-                }
-                else{
+                } else {
                     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }
             }
@@ -111,6 +110,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jTextField_TimKiem = new javax.swing.JTextField();
+        jCheckBox_HoaDonDaThanhToan = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -289,6 +289,16 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox_HoaDonDaThanhToan.setBackground(new java.awt.Color(89, 98, 117));
+        jCheckBox_HoaDonDaThanhToan.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jCheckBox_HoaDonDaThanhToan.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox_HoaDonDaThanhToan.setText("Đã thanh toán");
+        jCheckBox_HoaDonDaThanhToan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox_HoaDonDaThanhToanItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -332,13 +342,16 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
                             .addComponent(jScrollPane3)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(1, 1, 1)
                                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel4)
                                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox_HoaDonDaThanhToan)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -348,8 +361,9 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
+                    .addComponent(jTextField_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox_HoaDonDaThanhToan))
+                .addGap(1, 1, 1)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -427,45 +441,49 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MousePressed
 
-    private void jTable_KhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_KhachHangMouseClicked
-        // TODO add your handling code here:
-        int row = jTable_KhachHang.getSelectedRow();
-        this.sdtKhachHang = (String) jTable_KhachHang.getValueAt(row, 0);
-        System.out.println("SDT của khách đã chọn: " + this.sdtKhachHang);
-        if (row == -1) {
+    private void loadBangHoaDonTheoSDTKhachHang() {
+        new LoadData();
+        dtmHoaDon.setRowCount(0);
+        for (KhachHang kh : controller.Controller.arrayListKhachHang) {
+            if (kh.getSdtKhachHang().equals(this.sdtKhachHang)) {
+                jTextField_SDTKhachHang.setText(kh.getSdtKhachHang());
+                jTextField_TenKhachHang.setText(kh.getTenKhachHang());
+                int soHoaDon = 0;
+                int soHoaDonDaThanhToan = 0;
+                int tongTienDaThanhToan = 0;
 
-        } else {
-            new LoadData();
-            dtmHoaDon.setRowCount(0);
-            for (KhachHang kh : controller.Controller.arrayListKhachHang) {
-                if (kh.getSdtKhachHang().equals(this.sdtKhachHang)) {
-                    jTextField_SDTKhachHang.setText(kh.getSdtKhachHang());
-                    jTextField_TenKhachHang.setText(kh.getTenKhachHang());
-                    int soHoaDon = 0;
-                    int soHoaDonDaThanhToan = 0;
-                    int tongTienDaThanhToan = 0;
-
-                    for (HoaDon hd : controller.Controller.arrayListHoaDon) {
-                        if (hd.getSdtKhachHang().equals(this.sdtKhachHang)) {
-                            dtmHoaDon.addRow(new Object[]{
-                                hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()),
-                                hd.getTrangThaiThanhToan(), hd.getTongTien(), hd.getSdtNhanVien()
-                            });
-                            soHoaDon++;
-                            if (hd.getTrangThaiThanhToan() == 1) {
-                                soHoaDonDaThanhToan++;
-                                tongTienDaThanhToan = tongTienDaThanhToan + hd.getTongTien();
-                            }
-
+                for (HoaDon hd : controller.Controller.arrayListHoaDon) {
+                    if (hd.getSdtKhachHang().equals(this.sdtKhachHang)) {
+                        dtmHoaDon.addRow(new Object[]{
+                            hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()),
+                            hd.getTrangThaiThanhToan(), hd.getTongTien(), hd.getSdtNhanVien()
+                        });
+                        soHoaDon++;
+                        if (hd.getTrangThaiThanhToan() == 1) {
+                            soHoaDonDaThanhToan++;
+                            tongTienDaThanhToan = tongTienDaThanhToan + hd.getTongTien();
                         }
 
                     }
-                    jTextField_SoHoaDon.setText(soHoaDon + "");
-                    jTextField_SoHoaDonDaThanhToan.setText(soHoaDonDaThanhToan + "");
-                    jTextField_TongTienDaThanhToan.setText(tongTienDaThanhToan + "");
-                }
-            }
 
+                }
+                jTextField_SoHoaDon.setText(soHoaDon + "");
+                jTextField_SoHoaDonDaThanhToan.setText(soHoaDonDaThanhToan + "");
+                jTextField_TongTienDaThanhToan.setText(tongTienDaThanhToan + "");
+            }
+        }
+    }
+
+    private void jTable_KhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_KhachHangMouseClicked
+        // TODO add your handling code here:
+        int row = jTable_KhachHang.getSelectedRow();
+
+        if (row == -1) {
+
+        } else {
+            this.sdtKhachHang = (String) jTable_KhachHang.getValueAt(row, 0);
+            System.out.println("SDT của khách đã chọn: " + this.sdtKhachHang);
+            loadBangHoaDonTheoSDTKhachHang();
         }
     }//GEN-LAST:event_jTable_KhachHangMouseClicked
 
@@ -529,6 +547,35 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField_TimKiemFocusLost
 
+    private void jCheckBox_HoaDonDaThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox_HoaDonDaThanhToanItemStateChanged
+        // TODO add your handling code here:
+        if (jCheckBox_HoaDonDaThanhToan.isSelected()) {
+            new LoadData();
+            dtmHoaDon.setRowCount(0);
+            for (HoaDon hd : controller.Controller.arrayListHoaDon) {
+                if (hd.getSdtKhachHang().equals(this.sdtKhachHang)) {
+                    if (hd.getTrangThaiThanhToan() == 1) {
+                        dtmHoaDon.addRow(new Object[]{
+                            hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()),
+                            hd.getTrangThaiThanhToan(), hd.getTongTien(), hd.getSdtNhanVien()
+                        });
+                    }
+                }
+
+            }
+        } else {
+            int row = jTable_KhachHang.getSelectedRow();
+
+            if (row == -1) {
+
+            } else {
+                this.sdtKhachHang = (String) jTable_KhachHang.getValueAt(row, 0);
+                System.out.println("SDT của khách đã chọn: " + this.sdtKhachHang);
+                loadBangHoaDonTheoSDTKhachHang();
+            }
+        }
+    }//GEN-LAST:event_jCheckBox_HoaDonDaThanhToanItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -566,6 +613,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_QuayLai;
+    private javax.swing.JCheckBox jCheckBox_HoaDonDaThanhToan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
