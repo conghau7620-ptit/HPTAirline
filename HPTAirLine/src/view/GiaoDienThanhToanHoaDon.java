@@ -6,6 +6,7 @@
 package view;
 
 import connection.LoadData;
+import java.awt.event.ItemEvent;
 import java.text.SimpleDateFormat;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -31,6 +32,8 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
     
     public GiaoDienThanhToanHoaDon() {
         initComponents();
+        setVisible(true);
+        hienThongTinVaoBangHoaDon();
     }
 
     /**
@@ -61,6 +64,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         jLabel_VeDaChon = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jButton_XoaVe = new javax.swing.JButton();
+        jCheckBox_DaThanhToan = new javax.swing.JCheckBox();
         jTextField_TimHoaDon = new java.awt.TextField();
         jLabel1 = new javax.swing.JLabel();
         jButton_TimHoaDon = new javax.swing.JButton();
@@ -177,6 +181,15 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
             }
         });
 
+        jCheckBox_DaThanhToan.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jCheckBox_DaThanhToan.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox_DaThanhToan.setText("Đã thanh toán");
+        jCheckBox_DaThanhToan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox_DaThanhToanItemStateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -192,6 +205,10 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                             .addComponent(jButton_XoaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jCheckBox_DaThanhToan)
+                .addGap(140, 140, 140))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,6 +219,8 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jCheckBox_DaThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton_XoaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
@@ -339,6 +358,8 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
             });
         }
     }
+    
+    
     
     private void jButton_XoaVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaVeActionPerformed
         // TODO add your handling code here:
@@ -837,6 +858,25 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_TimHoaDonActionPerformed
 
+    private void jCheckBox_DaThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox_DaThanhToanItemStateChanged
+        int rowHoaDon = jTable_HoaDon.getSelectedRow();
+        String maHoaDon = (String) jTable_HoaDon.getValueAt(rowHoaDon, 0);
+        int vtHoaDon = -1;
+        for (HoaDon hd : controller.Controller.arrayListHoaDon) {
+            if (hd.getMaHoaDon().equals(maHoaDon)) {
+                vtHoaDon = controller.Controller.arrayListHoaDon.indexOf(hd);
+                break;
+            }
+        }
+        if (evt.getStateChange()==ItemEvent.SELECTED) {
+            controller.Controller.arrayListHoaDon.get(vtHoaDon).setTrangThaiThanhToan((byte) 1);
+            controller.Controller.arrayListHoaDon.get(vtHoaDon).setSdtNhanVien(controller.Controller.tk.getSdt());
+        }
+        else {
+            controller.Controller.arrayListHoaDon.get(vtHoaDon).setTrangThaiThanhToan((byte) 0);
+        }
+    }//GEN-LAST:event_jCheckBox_DaThanhToanItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -878,6 +918,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
     private javax.swing.JButton jButton_TimHoaDon;
     private javax.swing.JButton jButton_XoaHoaDon;
     private javax.swing.JButton jButton_XoaVe;
+    private javax.swing.JCheckBox jCheckBox_DaThanhToan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_AirLines;
     private javax.swing.JLabel jLabel_BaoLoi;
