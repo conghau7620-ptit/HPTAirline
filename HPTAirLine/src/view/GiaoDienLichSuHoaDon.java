@@ -874,10 +874,10 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                controller.Controller.tk.setLoaiTaiKhoan("KhachHang");
-//                controller.Controller.tk.setSdt("123");
-//                controller.Controller.tk.setTenDangNhap("tuanbui");
-//                controller.Controller.tk.setMatKhau("456");
+                controller.Controller.tk.setLoaiTaiKhoan("KhachHang");
+                controller.Controller.tk.setSdt("123");
+                controller.Controller.tk.setTenDangNhap("tuanbui");
+                controller.Controller.tk.setMatKhau("456");
                 new GiaoDienLichSuHoaDon().setVisible(true);
             }
         });

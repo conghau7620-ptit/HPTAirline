@@ -61,8 +61,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
 
                 if (confirmed == JOptionPane.YES_OPTION) {
                     dispose();
-                }
-                else{
+                } else {
                     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }
             }
@@ -111,6 +110,8 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jTextField_TimKiem = new javax.swing.JTextField();
+        jCheckBox_HoaDonDaThanhToan = new javax.swing.JCheckBox();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -219,7 +220,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Hóa Đơn Của Khách Đã Chọn");
+        jLabel2.setText("Hóa Đơn Tương Ứng");
 
         jLabel3.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -287,7 +288,24 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField_TimKiemKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField_TimKiemKeyTyped(evt);
+            }
         });
+
+        jCheckBox_HoaDonDaThanhToan.setBackground(new java.awt.Color(89, 98, 117));
+        jCheckBox_HoaDonDaThanhToan.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jCheckBox_HoaDonDaThanhToan.setForeground(new java.awt.Color(255, 255, 255));
+        jCheckBox_HoaDonDaThanhToan.setText("Đã thanh toán");
+        jCheckBox_HoaDonDaThanhToan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCheckBox_HoaDonDaThanhToanItemStateChanged(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("| Tìm theo SĐT");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -308,7 +326,9 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
                                     .addGap(1, 1, 1)
                                     .addComponent(jLabel1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextField_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -332,13 +352,16 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
                             .addComponent(jScrollPane3)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(1, 1, 1)
                                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel4)
                                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBox_HoaDonDaThanhToan)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -348,8 +371,10 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
+                    .addComponent(jTextField_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox_HoaDonDaThanhToan)
+                    .addComponent(jLabel10))
+                .addGap(1, 1, 1)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -427,43 +452,60 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MousePressed
 
-    private void jTable_KhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_KhachHangMouseClicked
-        // TODO add your handling code here:
-        int row = jTable_KhachHang.getSelectedRow();
-        this.sdtKhachHang = (String) jTable_KhachHang.getValueAt(row, 0);
-        System.out.println("SDT của khách đã chọn: " + this.sdtKhachHang);
-        if (row == -1) {
+    private void loadBangHoaDonTheoSDTKhachHang() {
+        new LoadData();
+        dtmHoaDon.setRowCount(0);
+        for (KhachHang kh : controller.Controller.arrayListKhachHang) {
+            if (kh.getSdtKhachHang().equals(this.sdtKhachHang)) {
+                jTextField_SDTKhachHang.setText(kh.getSdtKhachHang());
+                jTextField_TenKhachHang.setText(kh.getTenKhachHang());
+                int soHoaDon = 0;
+                int soHoaDonDaThanhToan = 0;
+                int tongTienDaThanhToan = 0;
 
-        } else {
-            new LoadData();
-            dtmHoaDon.setRowCount(0);
-            for (KhachHang kh : controller.Controller.arrayListKhachHang) {
-                if (kh.getSdtKhachHang().equals(this.sdtKhachHang)) {
-                    jTextField_SDTKhachHang.setText(kh.getSdtKhachHang());
-                    jTextField_TenKhachHang.setText(kh.getTenKhachHang());
-                    int soHoaDon = 0;
-                    int soHoaDonDaThanhToan = 0;
-                    int tongTienDaThanhToan = 0;
-
-                    for (HoaDon hd : controller.Controller.arrayListHoaDon) {
-                        if (hd.getSdtKhachHang().equals(this.sdtKhachHang)) {
-                            dtmHoaDon.addRow(new Object[]{
-                                hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()),
-                                hd.getTrangThaiThanhToan(), hd.getTongTien(), hd.getSdtNhanVien()
-                            });
-                            soHoaDon++;
-                            if (hd.getTrangThaiThanhToan() == 1) {
-                                soHoaDonDaThanhToan++;
-                                tongTienDaThanhToan = tongTienDaThanhToan + hd.getTongTien();
-                            }
-
+                for (HoaDon hd : controller.Controller.arrayListHoaDon) {
+                    if (hd.getSdtKhachHang().equals(this.sdtKhachHang)) {
+                        dtmHoaDon.addRow(new Object[]{
+                            hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()),
+                            hd.getTrangThaiThanhToan(), hd.getTongTien(), hd.getSdtNhanVien()
+                        });
+                        soHoaDon++;
+                        if (hd.getTrangThaiThanhToan() == 1) {
+                            soHoaDonDaThanhToan++;
+                            tongTienDaThanhToan = tongTienDaThanhToan + hd.getTongTien();
                         }
 
                     }
-                    jTextField_SoHoaDon.setText(soHoaDon + "");
-                    jTextField_SoHoaDonDaThanhToan.setText(soHoaDonDaThanhToan + "");
-                    jTextField_TongTienDaThanhToan.setText(tongTienDaThanhToan + "");
+
                 }
+                jTextField_SoHoaDon.setText(soHoaDon + "");
+                jTextField_SoHoaDonDaThanhToan.setText(soHoaDonDaThanhToan + "");
+                jTextField_TongTienDaThanhToan.setText(tongTienDaThanhToan + "");
+            }
+        }
+    }
+
+    private void clearTextFieldThongTinKhachHang() {
+        jTextField_SDTKhachHang.setText("");
+        jTextField_TenKhachHang.setText("");
+        jTextField_SoHoaDon.setText("0");
+        jTextField_TongTienDaThanhToan.setText("0");
+        jTextField_SoHoaDonDaThanhToan.setText("0");
+    }
+
+    private void jTable_KhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_KhachHangMouseClicked
+        // TODO add your handling code here:
+        int row = jTable_KhachHang.getSelectedRow();
+
+        if (row == -1) {
+
+        } else {
+            this.sdtKhachHang = (String) jTable_KhachHang.getValueAt(row, 0);
+            System.out.println("SDT của khách đã chọn: " + this.sdtKhachHang);
+            if (jCheckBox_HoaDonDaThanhToan.isSelected()) {
+                loadBangHoaDonDaThanhToanTheoSDTKhachHang();
+            } else {
+                loadBangHoaDonTheoSDTKhachHang();
             }
 
         }
@@ -496,20 +538,27 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
 
     private void jTextField_TimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyReleased
         // TODO add your handling code here:
-        dtmKhachHang.setRowCount(0);
-        new LoadData();
-        int length = jTextField_TimKiem.getText().length();
-        for (KhachHang kh : controller.Controller.arrayListKhachHang) {
-            if ((jTextField_TimKiem.getText()).equalsIgnoreCase(kh.getSdtKhachHang().substring(0, length))) {
-                dtmKhachHang.addRow(new Object[]{
-                    kh.getSdtKhachHang(), kh.getTenKhachHang(), kh.getEmail(), kh.getDiaChi(), kh.getTenDangNhap(),
-                    kh.getCmnd(), kh.getDiemTichLuy()
-                });
+        clearTextFieldThongTinKhachHang();
+        if (jTextField_TimKiem.getText().length() >= 11) {
+//            evt.consume();
+            jTextField_TimKiem.setText(jTextField_TimKiem.getText().substring(0, jTextField_TimKiem.getText().length() - 1));
+        } else {
+            dtmKhachHang.setRowCount(0);
+            new LoadData();
+            int length = jTextField_TimKiem.getText().length();
+            for (KhachHang kh : controller.Controller.arrayListKhachHang) {
+                if ((jTextField_TimKiem.getText()).equalsIgnoreCase(kh.getSdtKhachHang().substring(0, length))) {
+                    dtmKhachHang.addRow(new Object[]{
+                        kh.getSdtKhachHang(), kh.getTenKhachHang(), kh.getEmail(), kh.getDiaChi(), kh.getTenDangNhap(),
+                        kh.getCmnd(), kh.getDiemTichLuy()
+                    });
+                }
+            }
+            if (jTextField_TimKiem.getText().isEmpty()) {
+                loadBangKhachHang();
             }
         }
-        if (jTextField_TimKiem.getText().isEmpty()) {
-            loadBangKhachHang();
-        }
+
     }//GEN-LAST:event_jTextField_TimKiemKeyReleased
 
     private void jTextField_TimKiemFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_TimKiemFocusGained
@@ -518,7 +567,6 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
             jTextField_TimKiem.setText("");
             jTextField_TimKiem.setForeground(Color.black);
         }
-
     }//GEN-LAST:event_jTextField_TimKiemFocusGained
 
     private void jTextField_TimKiemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_TimKiemFocusLost
@@ -528,6 +576,61 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
             jTextField_TimKiem.setForeground(Color.gray);
         }
     }//GEN-LAST:event_jTextField_TimKiemFocusLost
+
+    private void loadBangHoaDonDaThanhToanTheoSDTKhachHang() {
+        new LoadData();
+        dtmHoaDon.setRowCount(0);
+        for (KhachHang kh : controller.Controller.arrayListKhachHang) {
+            if (kh.getSdtKhachHang().equals(this.sdtKhachHang)) {
+                jTextField_SDTKhachHang.setText(kh.getSdtKhachHang());
+                jTextField_TenKhachHang.setText(kh.getTenKhachHang());
+                int soHoaDon = 0;
+                int soHoaDonDaThanhToan = 0;
+                int tongTienDaThanhToan = 0;
+
+                for (HoaDon hd : controller.Controller.arrayListHoaDon) {
+                    if (hd.getSdtKhachHang().equals(this.sdtKhachHang) && hd.getTrangThaiThanhToan() == 1) {
+                        dtmHoaDon.addRow(new Object[]{
+                            hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()),
+                            hd.getTrangThaiThanhToan(), hd.getTongTien(), hd.getSdtNhanVien()
+                        });
+                        soHoaDon++;
+                        if (hd.getTrangThaiThanhToan() == 1) {
+                            soHoaDonDaThanhToan++;
+                            tongTienDaThanhToan = tongTienDaThanhToan + hd.getTongTien();
+                        }
+
+                    }
+
+                }
+                jTextField_SoHoaDon.setText(soHoaDon + "");
+                jTextField_SoHoaDonDaThanhToan.setText(soHoaDonDaThanhToan + "");
+                jTextField_TongTienDaThanhToan.setText(tongTienDaThanhToan + "");
+            }
+        }
+    }
+    private void jCheckBox_HoaDonDaThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox_HoaDonDaThanhToanItemStateChanged
+        // TODO add your handling code here:
+        int row = jTable_KhachHang.getSelectedRow();
+
+        if (row == -1) {
+
+        } else {
+            this.sdtKhachHang = (String) jTable_KhachHang.getValueAt(row, 0);
+            System.out.println("SDT của khách đã chọn: " + this.sdtKhachHang);
+            if (jCheckBox_HoaDonDaThanhToan.isSelected()) {
+                loadBangHoaDonDaThanhToanTheoSDTKhachHang();
+            } else {
+                loadBangHoaDonTheoSDTKhachHang();
+            }
+
+        }
+
+    }//GEN-LAST:event_jCheckBox_HoaDonDaThanhToanItemStateChanged
+
+    private void jTextField_TimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_TimKiemKeyTyped
 
     /**
      * @param args the command line arguments
@@ -566,7 +669,9 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_QuayLai;
+    private javax.swing.JCheckBox jCheckBox_HoaDonDaThanhToan;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
