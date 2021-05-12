@@ -22,6 +22,7 @@ import model.SanBay;
 import model.TaiKhoan;
 import model.Ve;
 
+
 /**
  *
  * @author conghau
@@ -35,6 +36,9 @@ public class Controller {
     public static ArrayList<SanBay> arrayListSanBay = new ArrayList<SanBay>();
     public static ArrayList<TaiKhoan> arrayListTaiKhoan = new ArrayList<TaiKhoan>();
     public static ArrayList<Ve> arrayListVe = new ArrayList<Ve>();
+    
+    
+    
     //them list ket qua tim kiem
      public static ArrayList<ChuyenBay> arrayListKetQuaTimKiemChuyenBay = new ArrayList<ChuyenBay>();
     //
