@@ -26,11 +26,25 @@ public class Ve {
 
     public Ve() {
     }
-
+ // test 
+    public Ve (String maVe, String sdtKhachHang, String maChuyenBay, String cmndNguoibay, String tenNguoiBay,String emailNguoiBay, String sdtNguoiBay, String maGhe){
+        
+        this.maVe = maVe;
+        this.sdtKhachHang= sdtKhachHang;
+        this.maChuyenBay = maChuyenBay;
+        
+        this.cmndNguoiBay = cmndNguoibay;
+        this.tenNguoiBay = tenNguoiBay;
+        this.emailNguoiBay = emailNguoiBay;
+        this.sdtNguoiBay = sdtNguoiBay;
+        this.maGhe = maGhe;
+        
+    }
     public Ve(String maVe, String sdtKhachHang, String maChuyenBay, int gia, short kyGui, byte trangThaiDoi, byte trangThaiVe, String cmndNguoiBay, String tenNguoiBay, String emailNguoiBay, String sdtNguoiBay, String maHoaDon, String maGhe) {
         this.maVe = maVe;
         this.sdtKhachHang = sdtKhachHang;
         this.maChuyenBay = maChuyenBay;
+        
         this.gia = gia;
         this.kyGui = kyGui;
         this.trangThaiDoi = trangThaiDoi;
@@ -42,6 +56,7 @@ public class Ve {
         this.maHoaDon = maHoaDon;
         this.maGhe = maGhe;
     }
+   
 
     public String getMaVe() {
         return maVe;
