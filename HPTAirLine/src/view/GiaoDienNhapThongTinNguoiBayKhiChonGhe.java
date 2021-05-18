@@ -532,21 +532,43 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                 String SDTkhach = "*********";
 
                 String maChuyenBay = this.maChuyenBay;
-                
-                
+                String maGhe = this.maGhe;
+
+                // nguoi lon
                 String CMND = jTextField_CMND.getText();
                 String ten = jTextField_TenNguoiBay.getText();
+                System.out.println("+"+ten+"+");
                 String email = jTextField_Email.getText();
                 
                 String SDT = jTextField_SDT.getText();
-                String maGhe = this.maGhe;
- 
+                
+                // tre em
+                String tenTre = jTextField_TenTreEm.getText();
+                String ngaySinh = jTextField_NgaySinh.getText();
+                String tenNguoiDamHo = jTextField_TenNguoiDamHo.getText();
+                String diaChi = jTextField_DiaChiTreEM.getText();
+                model.Ve ve;
                 
                 
-                model.Ve ve = new model.Ve(maVe, SDTkhach, maChuyenBay, CMND, ten, email, SDT, maGhe);
-                
+                if(ten.equals("")) {
+                 
+                     ve = new model.Ve();
+                    ve.setMaVe(maVe);
+                    ve.setSdtKhachHang(SDTkhach);
+                    ve.setMaChuyenBay(maChuyenBay);
+                    ve.setTenNguoiBay(tenTre);
+                    ve.setMaChuyenBay(maChuyenBay);
+                    ve.setMaGhe(maGhe);
+                    System.out.println("tre em");
+                }
+                else {
+                   ve = new model.Ve(maVe, SDTkhach, maChuyenBay, CMND, ten, email, SDT, maGhe);
+                    System.out.println("nguoi lon");
+                }
 //                controller.Controller.arrayListVe.add(ve);
+                    
                     GiaoDienChonGhe.dsVe.add(ve);
+                    
                 
  //               xacDinhNutDuocBam(jButton_XacNhan);
                 new GiaoDienChonGhe().setVisible(true);
