@@ -137,12 +137,13 @@ public class UpdateData {
         return false;
     }
     
-    public static boolean deleteVe(String maVe){
-         String sqlCommand = "delete from dbo.VE where MaVe=?";
+    public static boolean deleteVe(String maVe, String maHoaDon){
+         String sqlCommand = "delete from dbo.VE where MaVe=? and MaHoaDon=?";
         try {
             DataConnection.createStatement();
             PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand); 
             ps.setString(1, maVe);
+            ps.setString(2, maHoaDon);
             return ps.executeUpdate() > 0;
             
         } catch (SQLException ex) {

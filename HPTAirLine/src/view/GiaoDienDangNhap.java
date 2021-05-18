@@ -25,6 +25,7 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
     public GiaoDienDangNhap() {
         initComponents();
         jLabel_DangKy.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_DangNhap.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -234,13 +235,13 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         v1.setMaChuyenBay("CB01");
         v1.setMaHoaDon(maHoaDon);
         v1.setMaGhe("A01-CB01");
-        v1.setEmailNguoiBay("emai1");
-        v1.setTrangThaiDoi((byte) 0);
-        v1.setTrangThaiVe((byte) 0);
-        v1.setSdtKhachHang("");
+//        v1.setEmailNguoiBay("emai1");
+//        v1.setTrangThaiDoi((byte) 0);
+//        v1.setTrangThaiVe((byte) 0);
+//        v1.setSdtKhachHang("");
         v1.setGia(0);
         v1.setTenNguoiBay("ten n");
-        v1.setSdtNguoiBay("123");
+//        v1.setSdtNguoiBay("123");
 
         Ve v2 = new Ve();
         v2.setKyGui((short) 20);
@@ -249,13 +250,13 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         v2.setMaChuyenBay("CB01");
         v2.setMaHoaDon(maHoaDon);
         v2.setMaGhe("A02-CB01");
-        v2.setEmailNguoiBay("emailNo");
-        v2.setTrangThaiDoi((byte) 0);
-        v2.setTrangThaiVe((byte) 0);
-        v2.setSdtKhachHang("");
+//        v2.setEmailNguoiBay("emailNo");
+//        v2.setTrangThaiDoi((byte) 0);
+//        v2.setTrangThaiVe((byte) 0);
+//        v2.setSdtKhachHang("");
         v2.setGia(0);
         v2.setTenNguoiBay("ten ngu2");
-        v2.setSdtNguoiBay("223");
+//        v2.setSdtNguoiBay("223");
 
         danhSachVe.add(v1);
         danhSachVe.add(v2);
@@ -279,13 +280,13 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         v1.setMaChuyenBay("CB01");
         v1.setMaHoaDon(maHoaDon);
         v1.setMaGhe("A01-CB01");
-        v1.setEmailNguoiBay("emai1");
-        v1.setTrangThaiDoi((byte) 0);
-        v1.setTrangThaiVe((byte) 0);
-        v1.setSdtKhachHang("");
+//        v1.setEmailNguoiBay("emai1");
+//        v1.setTrangThaiDoi((byte) 0);
+//        v1.setTrangThaiVe((byte) 0);
+//        v1.setSdtKhachHang("");
         v1.setGia(0);
         v1.setTenNguoiBay("ten n");
-        v1.setSdtNguoiBay("123");
+//        v1.setSdtNguoiBay("123");
 
         Ve v2 = new Ve();
         v2.setKyGui((short) 20);
@@ -294,13 +295,13 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         v2.setMaChuyenBay("CB01");
         v2.setMaHoaDon(maHoaDon);
         v2.setMaGhe("A02-CB01");
-        v2.setEmailNguoiBay("emailNo");
-        v2.setTrangThaiDoi((byte) 0);
-        v2.setTrangThaiVe((byte) 0);
-        v2.setSdtKhachHang("");
+//        v2.setEmailNguoiBay("emailNo");
+//        v2.setTrangThaiDoi((byte) 0);
+//        v2.setTrangThaiVe((byte) 0);
+//        v2.setSdtKhachHang("");
         v2.setGia(0);
         v2.setTenNguoiBay("ten ngu2");
-        v2.setSdtNguoiBay("223");
+//        v2.setSdtNguoiBay("223");
 
         danhSachVeDi.add(v1);
         danhSachVeDi.add(v2);
@@ -311,33 +312,33 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
 
         Ve v3 = new Ve();
         v3.setKyGui((short) 20);
-        v3.setMaVe("V03");
+        v3.setMaVe("V01");
         v3.setCmndNguoiBay("CMNDNgu");
         v3.setMaChuyenBay(maChuyenBayVe);
         v3.setMaHoaDon(maHoaDonVe);
         v3.setMaGhe("A01-CB02");
-        v3.setEmailNguoiBay("emai1");
-        v3.setTrangThaiDoi((byte) 0);
-        v3.setTrangThaiVe((byte) 0);
-        v3.setSdtKhachHang("");
+//        v3.setEmailNguoiBay("emai1");
+//        v3.setTrangThaiDoi((byte) 0);
+//        v3.setTrangThaiVe((byte) 0);
+//        v3.setSdtKhachHang("");
         v3.setGia(0);
         v3.setTenNguoiBay("ten n");
-        v3.setSdtNguoiBay("123");
+//        v3.setSdtNguoiBay("123");
 
         Ve v4 = new Ve();
         v4.setKyGui((short) 20);
-        v4.setMaVe("V04");
+        v4.setMaVe("V02");
         v4.setCmndNguoiBay("CMNDNgu");
         v4.setMaChuyenBay(maChuyenBayVe);
         v4.setMaHoaDon(maHoaDonVe);
         v4.setMaGhe("A03-CB02");
-        v4.setEmailNguoiBay("emailNo");
-        v4.setTrangThaiDoi((byte) 0);
-        v4.setTrangThaiVe((byte) 0);
-        v4.setSdtKhachHang("");
+//        v4.setEmailNguoiBay("emailNo");
+//        v4.setTrangThaiDoi((byte) 0);
+//        v4.setTrangThaiVe((byte) 0);
+//        v4.setSdtKhachHang("");
         v4.setGia(0);
         v4.setTenNguoiBay("ten ngu2");
-        v4.setSdtNguoiBay("223");
+//        v4.setSdtNguoiBay("223");
 
         danhSachVeVe.add(v3);
         danhSachVeVe.add(v4);
@@ -368,8 +369,7 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                     this.dispose();
                 }
                 else if (taiKhoanHienTai.getLoaiTaiKhoan().equals("NhanVien")) {
-                    this.testHD2Chieu();
-//                    new GiaoDienNhanVien();
+                    new GiaoDienNhanVien();
                     this.dispose();
                 }
             } else {
