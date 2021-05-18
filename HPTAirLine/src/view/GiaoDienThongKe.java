@@ -6,6 +6,7 @@
 package view;
 
 import connection.LoadData;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
@@ -79,7 +80,13 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
                 }
             }
         });
-
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThongTinChiTietHomNay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThongTinChiTietHomQua.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThongTinChiTietThangNay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThongTinChiTietThangTruoc.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));   
+        jButton_ThongTinChiTietNamNay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThongTinChiTietNamTruoc.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -101,7 +108,7 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton_ThongTinChiTietTrongNgay = new javax.swing.JButton();
+        jButton_ThongTinChiTietHomNay = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel_TongTrongNgay = new javax.swing.JLabel();
@@ -232,14 +239,14 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_expensive_price_64px_1.png"))); // NOI18N
 
-        jButton_ThongTinChiTietTrongNgay.setBackground(new java.awt.Color(39, 60, 117));
-        jButton_ThongTinChiTietTrongNgay.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        jButton_ThongTinChiTietTrongNgay.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_ThongTinChiTietTrongNgay.setText("Thông tin chi tiết");
-        jButton_ThongTinChiTietTrongNgay.setBorder(null);
-        jButton_ThongTinChiTietTrongNgay.addActionListener(new java.awt.event.ActionListener() {
+        jButton_ThongTinChiTietHomNay.setBackground(new java.awt.Color(39, 60, 117));
+        jButton_ThongTinChiTietHomNay.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jButton_ThongTinChiTietHomNay.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_ThongTinChiTietHomNay.setText("Thông tin chi tiết");
+        jButton_ThongTinChiTietHomNay.setBorder(null);
+        jButton_ThongTinChiTietHomNay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_ThongTinChiTietTrongNgayActionPerformed(evt);
+                jButton_ThongTinChiTietHomNayActionPerformed(evt);
             }
         });
 
@@ -276,7 +283,7 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton_ThongTinChiTietTrongNgay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton_ThongTinChiTietHomNay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -317,7 +324,7 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton_ThongTinChiTietTrongNgay, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addComponent(jButton_ThongTinChiTietHomNay, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1022,10 +1029,10 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
-    private void jButton_ThongTinChiTietTrongNgayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietTrongNgayActionPerformed
+    private void jButton_ThongTinChiTietHomNayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietHomNayActionPerformed
         // TODO add your handling code here:
         new GiaoDienChiTietThongKe(this.sHomNay).setVisible(true);
-    }//GEN-LAST:event_jButton_ThongTinChiTietTrongNgayActionPerformed
+    }//GEN-LAST:event_jButton_ThongTinChiTietHomNayActionPerformed
 
     private void jButton_ThongTinChiTietHomQuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietHomQuaActionPerformed
         // TODO add your handling code here:
@@ -1089,12 +1096,12 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_QuayLai;
+    private javax.swing.JButton jButton_ThongTinChiTietHomNay;
     private javax.swing.JButton jButton_ThongTinChiTietHomQua;
     private javax.swing.JButton jButton_ThongTinChiTietNamNay;
     private javax.swing.JButton jButton_ThongTinChiTietNamTruoc;
     private javax.swing.JButton jButton_ThongTinChiTietThangNay;
     private javax.swing.JButton jButton_ThongTinChiTietThangTruoc;
-    private javax.swing.JButton jButton_ThongTinChiTietTrongNgay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -18,31 +18,11 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,23,0,0,2,-96"/>
   </AuxValues>
 
-  <Layout>
-    <DimensionLayout dim="0">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-          <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
-      </Group>
-    </DimensionLayout>
-    <DimensionLayout dim="1">
-      <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-      </Group>
-    </DimensionLayout>
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+    <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanel1">
@@ -56,6 +36,11 @@
           </Border>
         </Property>
       </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="670" height="-1"/>
+        </Constraint>
+      </Constraints>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -67,7 +52,7 @@
                   <Component id="jLabel_HPT" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel_AirLines" min="-2" pref="132" max="-2" attributes="0"/>
-                  <EmptySpace pref="409" max="32767" attributes="0"/>
+                  <EmptySpace pref="350" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -133,69 +118,73 @@
           </Border>
         </Property>
       </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="85" width="670" height="450"/>
+        </Constraint>
+      </Constraints>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="jSeparator1" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel_TenKhachHang" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_TenKhachHang" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel_TaiKhoan" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_TaiKhoan" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel_MatKhau" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_MatKhau" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jLabel_XacNhanMatKhau" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_xacNhanMatKhau" linkSize="1" alignment="0" pref="250" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel_Email" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_DiaChi" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_SoDienThoai" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_CMND" linkSize="1" max="32767" attributes="0"/>
-                              <Component id="jLabel_CMND" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_SoDienThoai" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField_DiaChi" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField_Email" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
+                  <EmptySpace min="0" pref="18" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                          <Component id="jButton_QuayLai" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jlabel_DangKy" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                  <Component id="jButton_DangKy" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="jLabel_ThongBao" min="-2" pref="433" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jlabel_DangKy" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="jButton_QuayLai" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="jButton_DangKy" linkSize="3" min="-2" pref="146" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel_TenKhachHang" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_TenKhachHang" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel_TaiKhoan" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_TaiKhoan" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel_MatKhau" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_MatKhau" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel_XacNhanMatKhau" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_xacNhanMatKhau" linkSize="1" alignment="0" pref="250" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel_Email" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_DiaChi" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel_SoDienThoai" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_CMND" linkSize="1" max="32767" attributes="0"/>
+                                          <Component id="jLabel_CMND" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField_SoDienThoai" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTextField_DiaChi" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jTextField_Email" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
-                          <Component id="jLabel_ThongBao" min="-2" pref="433" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="jlabel_DangKy" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="11" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -239,12 +228,12 @@
                   </Group>
                   <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton_DangKy" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton_QuayLai" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_DangKy" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton_QuayLai" linkSize="4" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel_ThongBao" min="-2" pref="71" max="-2" attributes="0"/>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -377,7 +366,17 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton_DangKy">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="4d" green="4d" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Roboto" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#x102;NG K&#xdd;"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_ThongBao">
@@ -392,7 +391,17 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton_QuayLai">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="66" green="66" red="0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Roboto" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Quay l&#x1ea1;i"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_QuayLaiActionPerformed"/>
