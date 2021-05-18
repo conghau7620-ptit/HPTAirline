@@ -21,8 +21,8 @@ import java.util.logging.Logger;
  */
 public class DataConnection {
     
-    static Connection connection;
-    private static Statement statement;
+    public static Connection connection;
+    public static Statement statement;
 
     
     public static ResultSet retrieveData(String sqlCommand) {
@@ -37,10 +37,10 @@ public class DataConnection {
         }
     }
     
-    public static Connection createStatement() {
-        
-        String url = "jdbc:sqlserver://;databaseNa  me=HPT_AIRLINES";
-        
+
+    public static void createStatement() {    
+        String url = "jdbc:sqlserver://;databaseName=HPT_AIRLINES";
+
         String user = "sa";
         String pass = "123";
         try {
@@ -55,6 +55,14 @@ public class DataConnection {
             Logger.getLogger(DataConnection.class.getName()).log(Level.SEVERE, 
                     null, ex);
         }
-        return connection;
+    }
+    
+    public static void main(String[] args) {
+        createStatement();
+        
+    }
+
+    DataConnection() {
+        
     }
 }

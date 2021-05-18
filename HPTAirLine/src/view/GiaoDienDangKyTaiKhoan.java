@@ -153,9 +153,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
                                     0);
                     Controller.arrayListKhachHang.add(kh);
                     InsertData.insertKhachHang(kh);
-                    
-                    
-                    
+          
                     
                 }
             }
@@ -196,6 +194,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
         jTextField_Email = new javax.swing.JTextField();
         jButton_DangKy = new javax.swing.JButton();
         jLabel_ThongBao = new javax.swing.JLabel();
+        jButton_QuayLai = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -284,6 +283,13 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
         jLabel_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel_ThongBao.setForeground(new java.awt.Color(255, 0, 0));
 
+        jButton_QuayLai.setText("Quay lại");
+        jButton_QuayLai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_QuayLaiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -316,7 +322,9 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(268, 268, 268)
+                        .addGap(85, 85, 85)
+                        .addComponent(jButton_QuayLai)
+                        .addGap(110, 110, 110)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jlabel_DangKy)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -370,7 +378,9 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
                     .addComponent(jTextField_xacNhanMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
-                .addComponent(jButton_DangKy)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_DangKy)
+                    .addComponent(jButton_QuayLai))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -400,6 +410,11 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,6 +453,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_DangKy;
+    private javax.swing.JButton jButton_QuayLai;
     private javax.swing.JLabel jLabel_AirLines;
     private javax.swing.JLabel jLabel_CMND;
     private javax.swing.JLabel jLabel_DiaChi;

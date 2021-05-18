@@ -5,35 +5,25 @@
  */
 package view;
 
-import connection.DataConnection;
 import connection.LoadData;
 import controller.Controller;
-import java.awt.Color;
-import java.text.ParseException;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
 import model.Ghe;
-import static view.GiaoDienTimChuyenBay.ngayHienTai;
 
 /**
  *
- * @author t0168
+ * @author tuanbuiquoc
  */
 public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FlightSearchResultFrame
-     */
-    
-    //SoGhe trong trong chuyen bay deu = 0; chưa sửa
-    
     ArrayList <ChuyenBay> list;
     DefaultTableModel dtm;
     String maSanBayDi;
@@ -64,6 +54,19 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
         System.out.println("soGheEmBe: "+this.soGheEmBe);
         hienKetQua();
         
+                this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
      //   
 
         
@@ -96,7 +99,6 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
         jButton_ThoatKetQuaTimKiemChuyenBay = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -137,8 +139,6 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, -1));
-
         jPanel2.setBackground(new java.awt.Color(89, 98, 117));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
@@ -176,7 +176,7 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
 
         jLabel_ThongTinCanTimKiem.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel_ThongTinCanTimKiem.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_ThongTinCanTimKiem.setText("__(Thông tin chuyến bay cần tìm)__");
+        jLabel_ThongTinCanTimKiem.setText("Chọn chuyến bay về");
 
         jButton_ThoatKetQuaTimKiemChuyenBay.setBackground(new java.awt.Color(0, 102, 102));
         jButton_ThoatKetQuaTimKiemChuyenBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
@@ -219,7 +219,20 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 700, 430));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -236,9 +249,9 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Hay chon chuyen bay ve.");
             }
             else{
-                this.dispose();
-                new GiaoDienChonGhe(this.maChuyenBayDi, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)
-                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
+//                this.dispose();
+//                new GiaoDienChonGhe(this.maChuyenBayDi, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)
+//                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
             }       
     }//GEN-LAST:event_jButton_XacNhanChonChuyenBayActionPerformed
 
@@ -281,12 +294,12 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
                 }
             }
             
-//            if(soGheTrong >= (this.soGheNguoiLon + this.soGheTreEm + this.soGheEmBe)){
+            if(soGheTrong >= (this.soGheNguoiLon + this.soGheTreEm + this.soGheEmBe)){
                 dtm.addRow(new Object[]{
                     tmp.getMaChuyenBay(), tmp.getMaMayBay(), tmp.getMaSanBayDi(), tmp.getMaSanBayDen(), new SimpleDateFormat("dd/MM/yyyy").format(tmp.getNgayBay()),
                     tmp.getGioBay(), tmp.getGhiChu(), tmp.getKhoangCach()
                 });
-//            }
+            }
             
             
             
