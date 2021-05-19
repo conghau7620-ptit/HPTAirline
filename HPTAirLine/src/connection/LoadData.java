@@ -167,6 +167,7 @@ public class LoadData {
         ResultSet rs = DataConnection.retrieveData("select * from dbo.VE");
         try {
             while (rs.next()) {
+//                short a = rs.getShort(4);
                 Ve ve = new Ve(
 //                    rs.getString(1).trim(),
 //                    rs.getString(2).trim(),
@@ -194,6 +195,7 @@ public class LoadData {
                     rs.getString(6).trim(),
                     rs.getString(7).trim(),
                     rs.getString(8).trim());
+//                    ve.setKyGui(a);
                 Controller.arrayListVe.add(ve);
             }
         } catch (SQLException ex) {

@@ -88,6 +88,8 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton_ThanhToan = new javax.swing.JButton();
         jButton_BanVe = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel_TaiKhoan = new javax.swing.JPanel();
         jLabel_XinChao = new javax.swing.JLabel();
         jLabel_PhanQuyen = new javax.swing.JLabel();
@@ -115,32 +117,56 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(89, 98, 117));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
+        jButton_ThanhToan.setBackground(new java.awt.Color(200, 112, 85));
+        jButton_ThanhToan.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jButton_ThanhToan.setForeground(new java.awt.Color(255, 255, 255));
         jButton_ThanhToan.setText("Thanh Toán Hóa Đơn");
+        jButton_ThanhToan.setBorderPainted(false);
 
+        jButton_BanVe.setBackground(new java.awt.Color(255, 77, 77));
+        jButton_BanVe.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jButton_BanVe.setForeground(new java.awt.Color(255, 255, 255));
         jButton_BanVe.setText("Bán Vé Trực Tiếp");
+        jButton_BanVe.setBorderPainted(false);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_paid_bill_96px_2.png"))); // NOI18N
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_airplane_96px_3.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(jButton_ThanhToan)
-                .addGap(144, 144, 144)
-                .addComponent(jButton_BanVe)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_ThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton_BanVe, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton_BanVe, jButton_ThanhToan});
-
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_ThanhToan)
-                    .addComponent(jButton_BanVe))
-                .addGap(145, 145, 145))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jButton_ThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(55, 55, 55)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jButton_BanVe, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jPanel_TaiKhoan.setBackground(new java.awt.Color(48, 57, 82));
@@ -322,6 +348,8 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_BanVe;
     private javax.swing.JButton jButton_ThanhToan;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_AirLines;
     private javax.swing.JLabel jLabel_DangXuat;

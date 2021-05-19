@@ -230,7 +230,7 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
             }
         });
 
-        jPanel3.setBackground(new java.awt.Color(225, 112, 85));
+        jPanel3.setBackground(new java.awt.Color(200, 112, 85));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -328,7 +328,7 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel4.setBackground(new java.awt.Color(0, 184, 148));
+        jPanel4.setBackground(new java.awt.Color(0, 184, 160));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -631,7 +631,7 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
                 .addGap(6, 6, 6))
         );
 
-        jPanel7.setBackground(new java.awt.Color(108, 92, 231));
+        jPanel7.setBackground(new java.awt.Color(100, 92, 231));
         jPanel7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -732,7 +732,7 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
                 .addGap(6, 6, 6))
         );
 
-        jPanel8.setBackground(new java.awt.Color(83, 92, 104));
+        jPanel8.setBackground(new java.awt.Color(83, 92, 110));
         jPanel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N

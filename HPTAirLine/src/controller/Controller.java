@@ -186,6 +186,9 @@ public class Controller {
     }
     public static void main(String[] args) {
         new LoadData();
-        insertListGhe("CB07");
+//        insertListGhe("CB07");
+        for(Ve v: arrayListVe){
+            System.err.println(v.getKyGui());
+        }
     }
 }

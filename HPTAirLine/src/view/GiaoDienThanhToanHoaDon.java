@@ -7,6 +7,8 @@ package view;
 
 import connection.LoadData;
 import java.awt.event.ItemEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -32,8 +34,29 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
     
     public GiaoDienThanhToanHoaDon() {
         initComponents();
+        dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
+        dtmHoaDon.setColumnIdentifiers(new Object[]{
+            "MaHoaDon", "SDTKhachHang", "NgayXuatHoaDon", "TrangThaiThanhToan", "TongTien", "SDTNhanVien"
+        });
         setVisible(true);
         hienThongTinVaoBangHoaDon();
+        dtmVe = (DefaultTableModel) jTable_VeDaChon.getModel();
+        dtmVe.setColumnIdentifiers(new Object[]{
+            "MaVe", "MaChuyenBay", "Gia", "KyGui",
+            "CMNDNguoiBay", "TenNguoiBay", "MaHoaDon", "MaGhe"
+        });
+
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                }
+            }
+        });
     }
 
     /**
@@ -377,7 +400,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 String maHoaDon = (String) jTable_HoaDon.getValueAt(rowHoaDon, 0);
                 String sdtKhachHang = (String) jTable_HoaDon.getValueAt(rowHoaDon, 1);
                 String maVe = (String) jTable_VeDaChon.getValueAt(row, 0);
-                String maGhe = (String) jTable_VeDaChon.getValueAt(row, 12);
+                String maGhe = (String) jTable_VeDaChon.getValueAt(row, 7);
                 String hangGheCuaVeDaChon = "";
                 int giaCoBan = 0;
                 int soVePhoThong = 0;
@@ -399,7 +422,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                     //tính giá cơ bản của các vé trong hóa đơn
                     jLabel_BaoLoi.setText("");
                     for (Ve v : controller.Controller.arrayListVe) {
-                        if (maVe.equals(v.getMaVe())) {
+                        if (maVe.equals(v.getMaVe())&&v.getMaHoaDon().equals(maHoaDon)) {
                             for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
                                 if (v.getMaChuyenBay().equals(cb.getMaChuyenBay())) {
                                     index = controller.Controller.arrayListChuyenBay.indexOf(cb);
@@ -477,7 +500,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                     int luaChon = JOptionPane.showConfirmDialog(rootPane, "Xóa vé " + maVe + " trong hóa đơn đã chọn?", "Xác nhận", JOptionPane.OK_CANCEL_OPTION);
                     if (luaChon == JOptionPane.OK_OPTION) {
                         if (connection.UpdateData.updateGhe(maGhe)) {// chuyển ghế thành trạng thái còn trống
-                            if (connection.UpdateData.deleteVe(maVe)) {
+                            if (connection.UpdateData.deleteVe(maVe,maHoaDon)) {
                                 if (tongTienSauXoa == 0) {
                                     if (connection.UpdateData.deleteHoaDon(maHoaDon)) {
                                         if (connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuySauXoa)) {
@@ -489,8 +512,8 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                                             for (Ve v : controller.Controller.arrayListVe) {
                                                 if (v.getMaHoaDon().equals(maHoaDon)) {
                                                     dtmVe.addRow(new Object[]{
-                                                        v.getMaVe(), v.getSdtKhachHang(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(), v.getTrangThaiDoi(),
-                                                        v.getTrangThaiVe(), v.getCmndNguoiBay(), v.getTenNguoiBay(), v.getEmailNguoiBay(), v.getSdtNguoiBay(),
+                                                        v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                                                        v.getCmndNguoiBay(), v.getTenNguoiBay(),
                                                         v.getMaHoaDon(), v.getMaGhe()
                                                     });
                                                 }
@@ -510,8 +533,8 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                                             for (Ve v : controller.Controller.arrayListVe) {
                                                 if (v.getMaHoaDon().equals(maHoaDon)) {
                                                     dtmVe.addRow(new Object[]{
-                                                        v.getMaVe(), v.getSdtKhachHang(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(), v.getTrangThaiDoi(),
-                                                        v.getTrangThaiVe(), v.getCmndNguoiBay(), v.getTenNguoiBay(), v.getEmailNguoiBay(), v.getSdtNguoiBay(),
+                                                        v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                                                        v.getCmndNguoiBay(), v.getTenNguoiBay(), 
                                                         v.getMaHoaDon(), v.getMaGhe()
                                                     });
                                                 }
@@ -541,8 +564,8 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
             for (Ve v : controller.Controller.arrayListVe) {
                 if (v.getMaHoaDon().equals(maHoaDon)) {
                     dtmVe.addRow(new Object[]{
-                        v.getMaVe(), v.getSdtKhachHang(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(), v.getTrangThaiDoi(),
-                        v.getTrangThaiVe(), v.getCmndNguoiBay(), v.getTenNguoiBay(), v.getEmailNguoiBay(), v.getSdtNguoiBay(),
+                        v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(), 
+                        v.getCmndNguoiBay(), v.getTenNguoiBay(),
                         v.getMaHoaDon(), v.getMaGhe()
                     });
                 }
@@ -596,7 +619,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
 
                 // tính giá cơ bản
                 for (Ve v : controller.Controller.arrayListVe) {
-                    if (maVe.equals(v.getMaVe())) {
+                    if (maVe.equals(v.getMaVe())&&v.getMaHoaDon().equals(maHoaDon)) {
                         for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
                             if (v.getMaChuyenBay().equals(cb.getMaChuyenBay())) {
                                 index = controller.Controller.arrayListChuyenBay.indexOf(cb);
@@ -692,8 +715,8 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                             for (Ve v : controller.Controller.arrayListVe) {
                                 if (v.getMaHoaDon().equals(maHoaDon)) {
                                     dtmVe.addRow(new Object[]{
-                                        v.getMaVe(), v.getSdtKhachHang(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(), v.getTrangThaiDoi(),
-                                        v.getTrangThaiVe(), v.getCmndNguoiBay(), v.getTenNguoiBay(), v.getEmailNguoiBay(), v.getSdtNguoiBay(),
+                                        v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                                        v.getCmndNguoiBay(), v.getTenNguoiBay(),
                                         v.getMaHoaDon(), v.getMaGhe()
                                     });
                                 }
@@ -751,7 +774,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
 
                 // tính giá cơ bản
                 for (Ve v : controller.Controller.arrayListVe) {
-                    if (maVe.equals(v.getMaVe())) {
+                    if (maVe.equals(v.getMaVe())&&v.getMaHoaDon().equals(maHoaDon)) {
                         for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
                             if (v.getMaChuyenBay().equals(cb.getMaChuyenBay())) {
                                 index = controller.Controller.arrayListChuyenBay.indexOf(cb);
@@ -812,7 +835,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                                     connection.UpdateData.updateGhe(v.getMaGhe()); // cập nhật các ghế có trong hóa đơn thành trống
                                 }
                             }
-                            connection.UpdateData.deleteVe(v.getMaVe()); // xóa các vé có trong hóa đơn
+                            connection.UpdateData.deleteVe(v.getMaVe(),maHoaDon); // xóa các vé có trong hóa đơn
                         }
 
                     }
@@ -831,8 +854,8 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                     for (Ve v : controller.Controller.arrayListVe) {
                         if (v.getMaHoaDon().equals(maHoaDon)) {
                             dtmVe.addRow(new Object[]{
-                                v.getMaVe(), v.getSdtKhachHang(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(), v.getTrangThaiDoi(),
-                                v.getTrangThaiVe(), v.getCmndNguoiBay(), v.getTenNguoiBay(), v.getEmailNguoiBay(), v.getSdtNguoiBay(),
+                                v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(), 
+                                v.getCmndNguoiBay(), v.getTenNguoiBay(),
                                 v.getMaHoaDon(), v.getMaGhe()
                             });
                         }
@@ -871,9 +894,13 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         if (evt.getStateChange()==ItemEvent.SELECTED) {
             controller.Controller.arrayListHoaDon.get(vtHoaDon).setTrangThaiThanhToan((byte) 1);
             controller.Controller.arrayListHoaDon.get(vtHoaDon).setSdtNhanVien(controller.Controller.tk.getSdt());
+            connection.UpdateData.updateHoaDon(maHoaDon, (byte)1);
+            hienThongTinVaoBangHoaDon();
         }
         else {
             controller.Controller.arrayListHoaDon.get(vtHoaDon).setTrangThaiThanhToan((byte) 0);
+            connection.UpdateData.updateHoaDon(maHoaDon, (byte)0);
+            hienThongTinVaoBangHoaDon();
         }
     }//GEN-LAST:event_jCheckBox_DaThanhToanItemStateChanged
 
