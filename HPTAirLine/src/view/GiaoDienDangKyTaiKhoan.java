@@ -50,7 +50,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
         jTextField_CMND.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                 String cmnd = jTextField_CMND.getText();
+                 String cmnd = jTextField_CMND.getText().trim();
                  jLabel_ThongBao.setText("");
                  jLabel_CMND.setForeground(Color.white);
                  jTextField_CMND.setForeground(Color.black);
@@ -68,12 +68,12 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
         jTextField_SoDienThoai.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                 String cmnd = jTextField_SoDienThoai.getText();
+                 String sdt = jTextField_SoDienThoai.getText().trim();
                  jLabel_ThongBao.setText("");
                  jLabel_SoDienThoai.setForeground(Color.white);
                  jTextField_SoDienThoai.setForeground(Color.black);
-                 for (int i=0; i<cmnd.length(); i++) {
-                     if (cmnd.charAt(i)<'0' || cmnd.charAt(i)>'9') {
+                 for (int i=0; i<sdt.length(); i++) {
+                     if (sdt.charAt(i)<'0' || sdt.charAt(i)>'9') {
                          jLabel_ThongBao.setText("*Số điện thoại phải nhập số");
                          jLabel_SoDienThoai.setForeground(Color.red);
                          jTextField_SoDienThoai.setForeground(Color.red);
@@ -134,6 +134,62 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
         jButton_DangKy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                jLabel_ThongBao.setText("");
+                if (jTextField_TenKhachHang.getText().trim().isEmpty()) {
+                    jLabel_ThongBao.setText("*Tên khách hàng chưa được điền");
+                    jLabel_TenKhachHang.setForeground(Color.red);
+                }
+                else {
+                    jLabel_TenKhachHang.setForeground(Color.WHITE);
+                }
+                if (jTextField_CMND.getText().trim().isEmpty()) {
+                    jLabel_ThongBao.setText("*CMND chưa được điền");
+                    jLabel_CMND.setForeground(Color.red);
+                }
+                else {
+                    jLabel_CMND.setForeground(Color.WHITE);
+                }
+                if (jTextField_TaiKhoan.getText().trim().isEmpty()) {
+                    jLabel_ThongBao.setText("*Tài khoản chưa được điền");
+                    jLabel_TaiKhoan.setForeground(Color.red);
+                }
+                else {
+                    jLabel_TaiKhoan.setForeground(Color.WHITE);
+                }
+                if (jTextField_MatKhau.getText().trim().isEmpty()) {
+                    jLabel_ThongBao.setText("*Mật khẩu chưa được điền");
+                    jLabel_MatKhau.setForeground(Color.red);
+                }
+                else {
+                    jLabel_MatKhau.setForeground(Color.WHITE);
+                }
+                if (jTextField_SoDienThoai.getText().trim().isEmpty()) {
+                    jLabel_ThongBao.setText("*Số điện thoại chưa được điền");
+                    jLabel_SoDienThoai.setForeground(Color.red);
+                }
+                else {
+                    jLabel_SoDienThoai.setForeground(Color.WHITE);
+                }
+                if (jTextField_xacNhanMatKhau.getText().trim().isEmpty()) {
+                    jLabel_ThongBao.setText("*Xác nhận mật khẩu chưa được điền");
+                    jLabel_XacNhanMatKhau.setForeground(Color.red);
+                }
+                else {
+                    jLabel_XacNhanMatKhau.setForeground(Color.WHITE);
+                }
+                
+                String sdt = jTextField_SoDienThoai.getText().trim();
+                 jLabel_SoDienThoai.setForeground(Color.white);
+                 jTextField_SoDienThoai.setForeground(Color.black);
+                 for (int i=0; i<sdt.length(); i++) {
+                     if (sdt.charAt(i)<'0' || sdt.charAt(i)>'9') {
+                         jLabel_ThongBao.setText("*Số điện thoại phải nhập số");
+                         jLabel_SoDienThoai.setForeground(Color.red);
+                         jTextField_SoDienThoai.setForeground(Color.red);
+                         break;
+                     }
+                 }
+                
                 if (jLabel_ThongBao.getText().isEmpty()) {
                     TaiKhoan tk = new TaiKhoan(
                                     jTextField_TaiKhoan.getText(),
@@ -442,7 +498,8 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GiaoDienDangKyTaiKhoan().setVisible(true);
+                GiaoDienDangKyTaiKhoan gd = new GiaoDienDangKyTaiKhoan();
+                gd.setVisible(true);
             }
         });
     }
