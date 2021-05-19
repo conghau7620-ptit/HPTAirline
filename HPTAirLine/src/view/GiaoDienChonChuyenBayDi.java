@@ -44,10 +44,10 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
     Date ngayVe;
     int soGheNguoiLon;
     int soGheTreEm;
-    int soGheEmBe;
+//    int soGheEmBe;
     boolean khuHoi;
     public GiaoDienChonChuyenBayDi(String maSanBayDi, String maSanBayDen, 
-            Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm, int soGheEmBe) {
+            Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
         
         initComponents();
          this.maSanBayDi= maSanBayDi;
@@ -56,7 +56,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
          this.ngayVe = ngayVe;
          this.soGheNguoiLon = soGheNguoiLon;
          this.soGheTreEm = soGheTreEm;
-         this.soGheEmBe = soGheEmBe;
+//         this.soGheEmBe = soGheEmBe;
          this.khuHoi = khuHoi;
          
         dtm = (DefaultTableModel) jTable_KetQuaTimKiem.getModel();
@@ -266,7 +266,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
                 }
                 else{
                     new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe
-                            , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe, 
+                            , this.soGheNguoiLon, this.soGheTreEm/*, this.soGheEmBe*/, 
                             (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
                 }
         }
@@ -325,7 +325,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
                     soGheTrong ++;
                 }
             }
-            if(soGheTrong >= (this.soGheNguoiLon + this.soGheTreEm + this.soGheEmBe)){
+            if(soGheTrong >= (this.soGheNguoiLon + this.soGheTreEm /*+ this.soGheEmBe*/)){
                 dtm.addRow(new Object[]{
                     cb.getMaChuyenBay(), cb.getMaMayBay(), cb.getMaSanBayDi(), cb.getMaSanBayDen(), new SimpleDateFormat("dd/MM/yyyy").format(cb.getNgayBay()),
                     cb.getGioBay(), cb.getGhiChu(), cb.getKhoangCach()

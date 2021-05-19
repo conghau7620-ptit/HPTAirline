@@ -947,12 +947,12 @@
                       <Component id="jLabel_SoDienThoaiNhanVien" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jLabel_BaoLoi2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel_BaoLoi2" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jCheckBox_TrangThaiThanhToanHoaDonDi" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButton_ThoatGiaoDienHoaDon" min="-2" pref="41" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1304,6 +1304,11 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_BaoLoi2">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="33" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBox_TrangThaiThanhToanHoaDonDi">
           <Properties>

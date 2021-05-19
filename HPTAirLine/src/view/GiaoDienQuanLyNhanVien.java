@@ -44,8 +44,8 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
 
         dtmVe = (DefaultTableModel) jTable_Ve.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
-            "MaVe", "SDTKhachHang", "MaChuyenBay", "Gia", "KyGui", "TrangThaiDoi", "TrangThaiVe",
-            "CMNDNguoiBay", "TenNguoiBay", "EmailNguoiBay", "SDTNguoiBay", "MaHoaDon", "MaGhe"
+            "MaVe", "MaChuyenBay", "Gia", "KyGui",
+            "CMNDNguoiBay", "TenNguoiBay", "MaHoaDon", "MaGhe"
         });
 
         dtmNhanVien = (DefaultTableModel) jTable_NhanVien.getModel();
@@ -634,8 +634,8 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
             for (Ve v : controller.Controller.arrayListVe) {
                 if (v.getMaHoaDon().equals(maHoaDon)) {
                     dtmVe.addRow(new Object[]{
-                        v.getMaVe(), v.getSdtKhachHang(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(), v.getTrangThaiDoi(),
-                        v.getTrangThaiVe(), v.getCmndNguoiBay(), v.getTenNguoiBay(), v.getEmailNguoiBay(), v.getSdtNguoiBay(),
+                        v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                        v.getCmndNguoiBay(), v.getTenNguoiBay(),
                         v.getMaHoaDon(), v.getMaGhe()
                     });
                 }

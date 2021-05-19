@@ -168,19 +168,32 @@ public class LoadData {
         try {
             while (rs.next()) {
                 Ve ve = new Ve(
+//                    rs.getString(1).trim(),
+//                    rs.getString(2).trim(),
+//                    rs.getString(3).trim(),
+//                    rs.getInt(4),
+//                    rs.getShort(5),
+//                    rs.getByte(6),
+//                    rs.getByte(7),
+//                    rs.getString(8).trim(),
+//                    rs.getString(9).trim(),
+//                    rs.getString(10).trim(),
+//                    rs.getString(11).trim(),
+//                    rs.getString(12).trim(),
+//                    rs.getString(13).trim());
                     rs.getString(1).trim(),
                     rs.getString(2).trim(),
-                    rs.getString(3).trim(),
-                    rs.getInt(4),
-                    rs.getShort(5),
-                    rs.getByte(6),
-                    rs.getByte(7),
-                    rs.getString(8).trim(),
-                    rs.getString(9).trim(),
-                    rs.getString(10).trim(),
-                    rs.getString(11).trim(),
-                    rs.getString(12).trim(),
-                    rs.getString(13).trim());
+//                    rs.getString(3).trim(),
+                    rs.getInt(3),
+                    rs.getShort(4),
+//                    rs.getByte(6),
+//                    rs.getByte(7),
+//                    rs.getString(8).trim(),
+//                    rs.getString(9).trim(),
+                    rs.getString(5).trim(),
+                    rs.getString(6).trim(),
+                    rs.getString(7).trim(),
+                    rs.getString(8).trim());
                 Controller.arrayListVe.add(ve);
             }
         } catch (SQLException ex) {

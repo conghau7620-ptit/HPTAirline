@@ -53,9 +53,6 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
     /**
      * Creates new form chonGhe
      */
-
-  
-    
         public static ArrayList<model.Ve> dsVe = new ArrayList(); // ds ve duoc chon    
         ArrayList <JTextField> listSelected = new ArrayList();  // ds cac nut dc click
         ArrayList <JTextField> dsTextField = new ArrayList();   // ds tat ca cac ghe

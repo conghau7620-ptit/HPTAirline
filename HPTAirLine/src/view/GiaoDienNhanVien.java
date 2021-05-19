@@ -34,6 +34,14 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             }
         });
         
+        jButton_ThanhToan.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new GiaoDienThanhToanHoaDon();
+            }
+        });
+        
     }
     
     private void thongTinTaiKhoan() {
