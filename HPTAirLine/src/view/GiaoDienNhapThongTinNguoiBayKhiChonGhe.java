@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.awt.Color;
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -33,7 +35,31 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
         initComponents(); 
     this.maGhe = maGhe;
     this.maChuyenBay= maChuyenBay;   
-   
+    if(GiaoDienChonGhe.ngLon != 0 ){
+        jbutton_NguoiLon.setEnabled(true);
+    }
+    else {
+         jbutton_NguoiLon.setEnabled(false);
+         jTextField_TenNguoiBay.setEditable(false);
+         jTextField_TenNguoiBay.setBackground(Color.lightGray);
+         jTextField_CMND.setEditable(false);
+         jTextField_SDT.setEditable(false);
+         jTextField_Email.setEditable(false);
+         jTextField_DiaChi.setEditable(false);
+
+//            for (Component tmp : jPanel6.getComponents()){
+//                if (!tmp.getClass().getName().equals("javax.swing.JLabel")){
+//                    tmp.setBackground(Color.lightGray);
+//                    tmp.setEnabled(false);
+//                    
+//                }
+//            }
+         
+     }
+    if (GiaoDienChonGhe.treEm != 0 ){
+        jbutton_TreEm.setEnabled(true);
+    }
+    else jbutton_TreEm.setEnabled(false);
     }
      
      

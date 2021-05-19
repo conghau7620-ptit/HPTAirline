@@ -63,7 +63,8 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         ArrayList <model.Ghe> dsGhe = new ArrayList <model.Ghe>(); // ds ghe lay tu trong csdl
         ArrayList <model.Ghe> dsGheDau = new ArrayList <model.Ghe>(); //  quen ròi :)))))))))
         
-        
+        public static int ngLon = 0;
+        public static int treEm = 0;
     public GiaoDienChonGhe() {
         initComponents();
         
@@ -415,7 +416,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
    
     // khi mà click vào ghế thì tạm thời đổi màu
         private void setColor(JTextField a){
-            
+          //  int k = 0;
             JFrame khach = new GiaoDienNhapThongTinNguoiBayKhiChonGhe(a.getName(), layMaChuyenBay());
             
                 khach.pack();
