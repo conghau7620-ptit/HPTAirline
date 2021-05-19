@@ -364,7 +364,13 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                     new GiaoDienQuanLy().setVisible(true);
                     this.dispose();
                 }
-                if (taiKhoanHienTai.getLoaiTaiKhoan().equals("KhachHang")) {
+
+//                this.testHD1Chieu();
+//                this.testHD2Chieu();
+//                new GiaoDienLichSuHoaDon().setVisible(true);    //testLichsu
+
+                else if (taiKhoanHienTai.getLoaiTaiKhoan().equals("KhachHang")) {
+
                     new GiaoDienTimChuyenBay().setVisible(true);
                     this.dispose();
                 }
