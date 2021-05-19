@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.HoaDon;
 import model.KhachHang;
+import model.NhanVien;
 import model.TaiKhoan;
 import model.Ve;
 
@@ -84,29 +85,43 @@ public class InsertData {
     }
 
     public static boolean insertVe(ArrayList<Ve> danhSachVe) {
-        String sqlCommand = "insert into dbo.VE values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sqlCommand = "insert into dbo.VE values(?,?,?,?,?,?,?,?)";
         try {
 
             for (Ve v : danhSachVe) {
                 DataConnection.createStatement();
                 PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+//                ps.setString(1, v.getMaVe());
+//                ps.setString(2, v.getSdtKhachHang());
+//                ps.setString(3, v.getMaChuyenBay());
+//                ps.setInt(4, v.getGia());
+//                ps.setShort(5, v.getKyGui());
+//                ps.setByte(6, v.getTrangThaiDoi());
+//                ps.setByte(7, v.getTrangThaiVe());
+//                ps.setString(8, v.getCmndNguoiBay());
+//                ps.setString(9, v.getTenNguoiBay());
+//                ps.setString(10, v.getEmailNguoiBay());
+//                ps.setString(11, v.getSdtNguoiBay());
+//                ps.setString(12, v.getMaHoaDon());
+//                ps.setString(13, v.getMaGhe());     
                 ps.setString(1, v.getMaVe());
-                ps.setString(2, v.getSdtKhachHang());
-                ps.setString(3, v.getMaChuyenBay());
-                ps.setInt(4, v.getGia());
-                ps.setShort(5, v.getKyGui());
-                ps.setByte(6, v.getTrangThaiDoi());
-                ps.setByte(7, v.getTrangThaiVe());
-                ps.setString(8, v.getCmndNguoiBay());
-                ps.setString(9, v.getTenNguoiBay());
-                ps.setString(10, v.getEmailNguoiBay());
-                ps.setString(11, v.getSdtNguoiBay());
-                ps.setString(12, v.getMaHoaDon());
-                ps.setString(13, v.getMaGhe());              
-                if(ps.executeUpdate()>0==false){
-                    System.out.println("Khong the them danh sach ve");
-                    return false;
-                }
+//                ps.setString(2, v.getSdtKhachHang());
+                ps.setString(2, v.getMaChuyenBay());
+                ps.setInt(3, v.getGia());
+                ps.setShort(4, v.getKyGui());
+//                ps.setByte(6, v.getTrangThaiDoi());
+//                ps.setByte(7, v.getTrangThaiVe());
+                ps.setString(5, v.getCmndNguoiBay());
+                ps.setString(6, v.getTenNguoiBay());
+//                ps.setString(10, v.getEmailNguoiBay());
+//                ps.setString(11, v.getSdtNguoiBay());
+                ps.setString(7, v.getMaHoaDon());
+                ps.setString(8, v.getMaGhe());    
+                ps.executeUpdate();
+//                if(ps.executeUpdate()<=0){
+//                    System.out.println("Khong the them danh sach ve");
+//                    return false;
+//                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
@@ -115,6 +130,30 @@ public class InsertData {
         return true;
     }
 //    
+    
+    public static boolean insertNhanVien(NhanVien nv) {
+        String sqlCommand = "insert into dbo.NHANVIEN values(?,?,?,?,?)";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, nv.getSdtNhanVien());
+            ps.setString(2, nv.getTenNhanVien());
+            ps.setString(3, nv.getDiaChi());
+            ps.setString(4, nv.getTenDangNhap());
+            ps.setString(5, nv.getCmnd());
+
+            if(ps.executeUpdate()>0){
+                System.out.println("thêm nhân viên thành công");
+                return true;
+            }
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("thêm nhân viên thất bại");
+        return false;
+    }
 //    
     
 }

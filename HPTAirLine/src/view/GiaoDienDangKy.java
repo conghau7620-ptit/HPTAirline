@@ -41,21 +41,21 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
         return maKH;
     }
     private int dangKiTaiKhoan(String taikhoang,String mk, String loai,String SDT){
-       Connection connect = connection.DataConnection.createStatement();
-       String sql = "insert into TAIKHOAN values (?,?,?,?)";
-        try {
-            PreparedStatement ps = connect.prepareStatement(sql);
-            
-            ps.setString(1, taikhoang);
-            ps.setString(2, mk);
-            ps.setString(3, loai);
-            ps.setString(4, SDT);
-            JOptionPane.showMessageDialog(this, "them thanh cong");
-            ps.executeUpdate();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "them that bai");
-
-        }
+//       Connection connect = connection.DataConnection.createStatement();
+//       String sql = "insert into TAIKHOAN values (?,?,?,?)";
+//        try {
+//            PreparedStatement ps = connect.prepareStatement(sql);
+//            
+//            ps.setString(1, taikhoang);
+//            ps.setString(2, mk);
+//            ps.setString(3, loai);
+//            ps.setString(4, SDT);
+//            JOptionPane.showMessageDialog(this, "them thanh cong");
+//            ps.executeUpdate();
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "them that bai");
+//
+//        }
 
         
         
@@ -64,27 +64,27 @@ public class GiaoDienDangKy extends javax.swing.JFrame {
     }
     private int luuThongTinKhachHang(String taiKhoang, String ten, String CMND,String email, String SDT,String diaChi,int DTL){
         
-       Connection connect = connection.DataConnection.createStatement();
-       String sql = "insert into KHACHHANG values (?,?,?,?,?,?,?)";
-       
-        try {
-            PreparedStatement ps = connect.prepareStatement(sql);
-            
-            ps.setString(1,SDT);
-            ps.setString(2,ten);
-            ps.setString(3,email);
-            ps.setString(4,diaChi);
-            ps.setString(5,taiKhoang);
-            ps.setString(6,CMND);
-            ps.setInt(7, DTL); 
-            
-            JOptionPane.showMessageDialog(this, "them thanh cong");
-            ps.executeUpdate();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "them that bai");
-        }
-        
-        return 1;
+//       Connection connect = connection.DataConnection.createStatement();
+//       String sql = "insert into KHACHHANG values (?,?,?,?,?,?,?)";
+//       
+//        try {
+//            PreparedStatement ps = connect.prepareStatement(sql);
+//            
+//            ps.setString(1,SDT);
+//            ps.setString(2,ten);
+//            ps.setString(3,email);
+//            ps.setString(4,diaChi);
+//            ps.setString(5,taiKhoang);
+//            ps.setString(6,CMND);
+//            ps.setInt(7, DTL); 
+//            
+//            JOptionPane.showMessageDialog(this, "them thanh cong");
+//            ps.executeUpdate();
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "them that bai");
+//        }
+//        
+//        return 1;
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

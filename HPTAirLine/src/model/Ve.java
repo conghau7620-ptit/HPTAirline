@@ -11,45 +11,60 @@ package model;
  */
 public class Ve {
     private String maVe;
-    private String sdtKhachHang;
+//    private String sdtKhachHang;
     private String maChuyenBay;
     private int gia;
     private short kyGui;
-    private byte trangThaiDoi;
-    private byte trangThaiVe;
+//    private byte trangThaiDoi;
+//    private byte trangThaiVe;
     private String cmndNguoiBay;
     private String tenNguoiBay;
-    private String emailNguoiBay;
-    private String sdtNguoiBay;
+//    private String emailNguoiBay;
+//    private String sdtNguoiBay;
     private String maHoaDon;
     private String maGhe;
 
     public Ve() {
     }
-
-    public Ve(String maVe, String sdtKhachHang, String maChuyenBay, int gia, short kyGui, byte trangThaiDoi, byte trangThaiVe, String cmndNguoiBay, String tenNguoiBay, String emailNguoiBay, String sdtNguoiBay, String maHoaDon, String maGhe) {
+ // test 
+    public Ve (String maVe, String sdtKhachHang, String maChuyenBay, String cmndNguoibay, String tenNguoiBay,String emailNguoiBay, String sdtNguoiBay, String maGhe){
+        
         this.maVe = maVe;
-        this.sdtKhachHang = sdtKhachHang;
+//        this.sdtKhachHang= sdtKhachHang;
         this.maChuyenBay = maChuyenBay;
+        
+        this.cmndNguoiBay = cmndNguoibay;
+        this.tenNguoiBay = tenNguoiBay;
+//        this.emailNguoiBay = emailNguoiBay;
+//        this.sdtNguoiBay = sdtNguoiBay;
+        this.maGhe = maGhe;
+        
+    }
+    public Ve(String maVe/*, String sdtKhachHang*/, String maChuyenBay, int gia, short kyGui/*, byte trangThaiDoi*//*, byte trangThaiVe*/, String cmndNguoiBay, String tenNguoiBay/*, String emailNguoiBay, String sdtNguoiBay*/, String maHoaDon, String maGhe) {
+        this.maVe = maVe;
+//        this.sdtKhachHang = sdtKhachHang;
+        this.maChuyenBay = maChuyenBay;
+        
         this.gia = gia;
         this.kyGui = kyGui;
-        this.trangThaiDoi = trangThaiDoi;
-        this.trangThaiVe = trangThaiVe;
+//        this.trangThaiDoi = trangThaiDoi;
+//        this.trangThaiVe = trangThaiVe;
         this.cmndNguoiBay = cmndNguoiBay;
         this.tenNguoiBay = tenNguoiBay;
-        this.emailNguoiBay = emailNguoiBay;
-        this.sdtNguoiBay = sdtNguoiBay;
+//        this.emailNguoiBay = emailNguoiBay;
+//        this.sdtNguoiBay = sdtNguoiBay;
         this.maHoaDon = maHoaDon;
         this.maGhe = maGhe;
     }
+   
 
     public String getMaVe() {
         return maVe;
     }
 
-    public String getSdtKhachHang() {
-        return sdtKhachHang;
-    }
+//    public String getSdtKhachHang() {
+//        return sdtKhachHang;
+//    }
 
     public String getMaChuyenBay() {
         return maChuyenBay;
@@ -63,13 +78,13 @@ public class Ve {
         return kyGui;
     }
 
-    public byte getTrangThaiDoi() {
-        return trangThaiDoi;
-    }
+//    public byte getTrangThaiDoi() {
+//        return trangThaiDoi;
+//    }
 
-    public byte getTrangThaiVe() {
-        return trangThaiVe;
-    }
+//    public byte getTrangThaiVe() {
+//        return trangThaiVe;
+//    }
 
     public String getCmndNguoiBay() {
         return cmndNguoiBay;
@@ -79,13 +94,13 @@ public class Ve {
         return tenNguoiBay;
     }
 
-    public String getEmailNguoiBay() {
-        return emailNguoiBay;
-    }
+//    public String getEmailNguoiBay() {
+//        return emailNguoiBay;
+//    }
 
-    public String getSdtNguoiBay() {
-        return sdtNguoiBay;
-    }
+//    public String getSdtNguoiBay() {
+//        return sdtNguoiBay;
+//    }
 
     public String getMaHoaDon() {
         return maHoaDon;
@@ -99,9 +114,9 @@ public class Ve {
         this.maVe = maVe;
     }
 
-    public void setSdtKhachHang(String sdtKhachHang) {
-        this.sdtKhachHang = sdtKhachHang;
-    }
+//    public void setSdtKhachHang(String sdtKhachHang) {
+//        this.sdtKhachHang = sdtKhachHang;
+//    }
 
     public void setMaChuyenBay(String maChuyenBay) {
         this.maChuyenBay = maChuyenBay;
@@ -115,13 +130,13 @@ public class Ve {
         this.kyGui = kyGui;
     }
 
-    public void setTrangThaiDoi(byte trangThaiDoi) {
-        this.trangThaiDoi = trangThaiDoi;
-    }
-
-    public void setTrangThaiVe(byte trangThaiVe) {
-        this.trangThaiVe = trangThaiVe;
-    }
+//    public void setTrangThaiDoi(byte trangThaiDoi) {
+//        this.trangThaiDoi = trangThaiDoi;
+//    }
+//
+//    public void setTrangThaiVe(byte trangThaiVe) {
+//        this.trangThaiVe = trangThaiVe;
+//    }
 
     public void setCmndNguoiBay(String cmndNguoiBay) {
         this.cmndNguoiBay = cmndNguoiBay;
@@ -131,13 +146,13 @@ public class Ve {
         this.tenNguoiBay = tenNguoiBay;
     }
 
-    public void setEmailNguoiBay(String emailNguoiBay) {
-        this.emailNguoiBay = emailNguoiBay;
-    }
-
-    public void setSdtNguoiBay(String sdtNguoiBay) {
-        this.sdtNguoiBay = sdtNguoiBay;
-    }
+//    public void setEmailNguoiBay(String emailNguoiBay) {
+//        this.emailNguoiBay = emailNguoiBay;
+//    }
+//
+//    public void setSdtNguoiBay(String sdtNguoiBay) {
+//        this.sdtNguoiBay = sdtNguoiBay;
+//    }
 
     public void setMaHoaDon(String maHoaDon) {
         this.maHoaDon = maHoaDon;

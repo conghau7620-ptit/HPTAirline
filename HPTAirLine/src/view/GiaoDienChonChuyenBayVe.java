@@ -31,10 +31,10 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
     Date ngayDi;
     int soGheNguoiLon;
     int soGheTreEm;
-    int soGheEmBe;
+//    int soGheEmBe;
     String maChuyenBayDi;
     public GiaoDienChonChuyenBayVe(String maSanBayDi, String maSanBayDen, 
-            Date ngayDi, int soGheNguoiLon, int soGheTreEm, int soGheEmBe, String maChuyenBayDi) {
+            Date ngayDi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/, String maChuyenBayDi) {
         
         initComponents();
          this.maSanBayDi= maSanBayDi;
@@ -42,7 +42,7 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
          this.ngayDi = ngayDi;
          this.soGheNguoiLon = soGheNguoiLon;
          this.soGheTreEm = soGheTreEm;
-         this.soGheEmBe = soGheEmBe;
+//         this.soGheEmBe = soGheEmBe;
          this.maChuyenBayDi = maChuyenBayDi;
         dtm = (DefaultTableModel) jTable_KetQuaTimKiem.getModel();
         dtm.setColumnIdentifiers(new Object[]{
@@ -51,7 +51,7 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
         });
         System.out.println("soGheNguoiLon: "+this.soGheNguoiLon);
         System.out.println("soGheTreEm: "+this.soGheTreEm);
-        System.out.println("soGheEmBe: "+this.soGheEmBe);
+//        System.out.println("soGheEmBe: "+this.soGheEmBe);
         hienKetQua();
         
                 this.addWindowListener(new WindowAdapter() {
@@ -251,7 +251,7 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
             else{
 //                this.dispose();
 //                new GiaoDienChonGhe(this.maChuyenBayDi, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)
-//                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
+//                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe, ).setVisible(true);
             }       
     }//GEN-LAST:event_jButton_XacNhanChonChuyenBayActionPerformed
 
@@ -294,7 +294,7 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
                 }
             }
             
-            if(soGheTrong >= (this.soGheNguoiLon + this.soGheTreEm + this.soGheEmBe)){
+            if(soGheTrong >= (this.soGheNguoiLon + this.soGheTreEm /*+ this.soGheEmBe*/)){
                 dtm.addRow(new Object[]{
                     tmp.getMaChuyenBay(), tmp.getMaMayBay(), tmp.getMaSanBayDi(), tmp.getMaSanBayDen(), new SimpleDateFormat("dd/MM/yyyy").format(tmp.getNgayBay()),
                     tmp.getGioBay(), tmp.getGhiChu(), tmp.getKhoangCach()
