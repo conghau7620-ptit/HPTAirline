@@ -163,10 +163,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel_XinChao" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel_PhanQuyen" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel_TenNguoiDung" alignment="1" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel_XinChao" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_PhanQuyen" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -305,18 +307,14 @@
                                   </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel_NguoiLon" max="32767" attributes="0"/>
-                                      <Component id="jLabel_TreEm" min="-2" pref="109" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jLabel_EmBe" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jLabel_NguoiLon" max="32767" attributes="0"/>
+                                  <Component id="jLabel_TreEm" min="-2" pref="109" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jComboBox_SLTreEm" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jComboBox_SLNguoiLon" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Component id="jComboBox_SLEmBe" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -371,21 +369,10 @@
                       <Component id="jLabel_IconNgayVe" linkSize="8" alignment="1" min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="jLabel_IconNgayDi" linkSize="8" alignment="1" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jDateChooser_NgayVe" pref="28" max="32767" attributes="0"/>
-                              <Component id="jDateChooser_NgayDi" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jComboBox_SLEmBe" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel_EmBe" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jDateChooser_NgayVe" pref="28" max="32767" attributes="0"/>
+                      <Component id="jDateChooser_NgayDi" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="jButton_TimChuyenBay" min="-2" pref="49" max="-2" attributes="0"/>
@@ -571,7 +558,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i l&#x1edb;n (&gt;=12t)"/>
+            <Property name="text" type="java.lang.String" value="Ng&#x1b0;&#x1edd;i l&#x1edb;n (&gt;=18t)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_TreEm">
@@ -583,17 +570,6 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Tr&#x1ebb; em (2-11t)"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_EmBe">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto" size="14" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Em b&#xe9;  (&lt;2t)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox_SLNguoiLon">
@@ -617,26 +593,6 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox_SLTreEm">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Roboto" size="14" style="0"/>
-            </Property>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
-                <StringItem index="0" value="0"/>
-                <StringItem index="1" value="1"/>
-                <StringItem index="2" value="2"/>
-                <StringItem index="3" value="3"/>
-                <StringItem index="4" value="4"/>
-                <StringItem index="5" value="5"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox_SLEmBe">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="14" style="0"/>

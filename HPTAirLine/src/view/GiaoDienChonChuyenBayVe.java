@@ -12,6 +12,7 @@ import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
@@ -33,8 +34,12 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
     int soGheTreEm;
 //    int soGheEmBe;
     String maChuyenBayDi;
+    
+    public GiaoDienChonChuyenBayVe(){
+        initComponents();
+    }
     public GiaoDienChonChuyenBayVe(String maSanBayDi, String maSanBayDen, 
-            Date ngayDi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/, String maChuyenBayDi) {
+            Date ngayDi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBeString maChuyenBayDi*/) {
         
         initComponents();
          this.maSanBayDi= maSanBayDi;
@@ -43,13 +48,13 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
          this.soGheNguoiLon = soGheNguoiLon;
          this.soGheTreEm = soGheTreEm;
 //         this.soGheEmBe = soGheEmBe;
-         this.maChuyenBayDi = maChuyenBayDi;
+       //  this.maChuyenBayDi = maChuyenBayDi;
         dtm = (DefaultTableModel) jTable_KetQuaTimKiem.getModel();
         dtm.setColumnIdentifiers(new Object[]{
             "MaChuyenBay", "MaMayBay", "MaSanBayDi", "MaSanBayDen", "NgayBay", "GioBay", "GhiChu",
              "KhoangCach"
         });
-        System.out.println("soGheNguoiLon: "+this.soGheNguoiLon);
+        System.out.println("soGheNguoiLonaa: "+this.soGheNguoiLon);
         System.out.println("soGheTreEm: "+this.soGheTreEm);
 //        System.out.println("soGheEmBe: "+this.soGheEmBe);
         hienKetQua();
@@ -249,9 +254,11 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Hay chon chuyen bay ve.");
             }
             else{
-//                this.dispose();
-//                new GiaoDienChonGhe(this.maChuyenBayDi, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)
-//                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe, ).setVisible(true);
+                new GiaoDienChonGhe(/*this.maChuyenBayDi,*/ (String) jTable_KetQuaTimKiem.getValueAt(row, 0)
+                        , this.soGheNguoiLon, this.soGheTreEm ).setVisible(true);
+
+                this.dispose();
+
             }       
     }//GEN-LAST:event_jButton_XacNhanChonChuyenBayActionPerformed
 

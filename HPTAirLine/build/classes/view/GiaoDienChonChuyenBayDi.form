@@ -228,7 +228,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="__(Th&#xf4;ng tin chuy&#x1ebf;n bay c&#x1ea7;n t&#xec;m)__"/>
+            <Property name="text" type="java.lang.String" value="Ch&#x1ecd;n chuy&#x1ebf;n bay"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton_ThoatKetQuaTimKiemChuyenBay">

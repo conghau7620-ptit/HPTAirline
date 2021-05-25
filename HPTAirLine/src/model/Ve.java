@@ -40,19 +40,14 @@ public class Ve {
         this.maGhe = maGhe;
         
     }
-    public Ve(String maVe/*, String sdtKhachHang*/, String maChuyenBay, int gia, short kyGui/*, byte trangThaiDoi*//*, byte trangThaiVe*/, String cmndNguoiBay, String tenNguoiBay/*, String emailNguoiBay, String sdtNguoiBay*/, String maHoaDon, String maGhe) {
+    public Ve(String maVe, String maChuyenBay, int gia, short kyGui, String cmndNguoiBay, String tenNguoiBay, String maHoaDon, String maGhe) {
         this.maVe = maVe;
-//        this.sdtKhachHang = sdtKhachHang;
         this.maChuyenBay = maChuyenBay;
         
         this.gia = gia;
         this.kyGui = kyGui;
-//        this.trangThaiDoi = trangThaiDoi;
-//        this.trangThaiVe = trangThaiVe;
         this.cmndNguoiBay = cmndNguoiBay;
         this.tenNguoiBay = tenNguoiBay;
-//        this.emailNguoiBay = emailNguoiBay;
-//        this.sdtNguoiBay = sdtNguoiBay;
         this.maHoaDon = maHoaDon;
         this.maGhe = maGhe;
     }
