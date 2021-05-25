@@ -505,15 +505,13 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                 System.out.println("+"+ten+"+");
                 String email = jTextField_NgaySinhNguoiLon.getText();
                 
-              //  String SDT = jTextField_SDT.getText();
                 
                 // tre em
                 String tenTre = jTextField_TenTreEm.getText();
                 String ngaySinh = jTextField_NgaySinhTreEm.getText();
                 String maHoaDon = "hoadon";
-              //  String tenNguoiDamHo = jTextField_TenNguoiDamHo.getText();
-               // String diaChi = jTextField_DiaChiTreEM.getText();
-               int gia = 9999;
+
+                int gia = 9999;
                short kiGui = 0;
                 model.Ve ve;
                 
@@ -522,7 +520,6 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                  
                      ve = new model.Ve();
                    ve.setMaVe(maVe);
-                   // ve.setSdtKhachHang(SDTkhach);
                     ve.setMaChuyenBay(maChuyenBay);
                     
                     ve.setGia(gia);
@@ -530,21 +527,13 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                     ve.setMaChuyenBay(maChuyenBay);
                     ve.setMaGhe(maGhe);
                     System.out.println("tre em");
-//                    System.out.println("so tre em hien tai "+ this.soGheTreEm );
-//                    this.soGheTreEm --  ;
-//                    System.out.println("so tre em con lai "+ this.soGheTreEm);
                 }
                 else {
                   // ve = new model.Ve(maVe, maChuyenBay, gia, 0, CMND, ten, maHoaDon, maGhe);
                   ve = new model.Ve(maVe, maChuyenBay, gia, kiGui, CMND, ten, maHoaDon, maGhe);
                     System.out.println("nguoi lon");
-//                    System.out.println("so ghe ng lon hien tai: " + GiaoDienChonGhe.soGheNguoiLon);
-//                    GiaoDienChonGhe.soGheNguoiLon --;
-//                    System.out.println("so ghe ng lon con lai: " + GiaoDienChonGhe.soGheNguoiLon);
                 }
-//                controller.Controller.arrayListVe.add(ve);
                     
-                 //   GiaoDienChonGhe.dsVe.add(ve);
                     
                 if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di) {
                     GiaoDienChonGhe.dsVeVe.add(ve);
