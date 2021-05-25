@@ -5,8 +5,11 @@
         <group>
             <file>file:/D:/HPTAirline/HPTAirLine/src/view/GiaoDienChonChuyenBayVe.java</file>
             <file>file:/D:/HPTAirline/HPTAirLine/src/view/GiaoDienChonGhe.java</file>
+            <file>file:/D:/HPTAirline/HPTAirLine/src/controller/Controller.java</file>
+            <file>file:/D:/HPTAirline/HPTAirLine/src/connection/InsertData.java</file>
             <file>file:/D:/HPTAirline/HPTAirLine/src/view/GiaoDienNhapThongTinNguoiBayKhiChonGhe.java</file>
             <file>file:/D:/HPTAirline/HPTAirLine/src/view/GiaoDienChonChuyenBayDi.java</file>
+            <file>file:/D:/HPTAirline/HPTAirLine/src/view/GiaoDienTimChuyenBay.java</file>
         </group>
     </open-files>
 </project-private>

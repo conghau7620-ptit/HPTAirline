@@ -35,6 +35,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import controller.Controller;
+import java.util.Date;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import model.Ve;
@@ -53,7 +54,13 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
     /**
      * Creates new form chonGhe
      */
-        public static ArrayList<model.Ve> dsVe = new ArrayList(); // ds ve duoc chon    
+        public static ArrayList<model.Ve> dsVe = new ArrayList(); // ds ve duoc chon   // cần có ds vé đi và ds vé về  
+        
+         public static ArrayList<model.Ve> dsVeDi = new ArrayList();
+         public static ArrayList<model.Ve> dsVeVe = new ArrayList(); // thế này dược chưa ok, hóa đơn 2 chiều thì 2 danh sách truyền vào nhe, có mã hóa đơn luôn thì càng tốt
+                                                            // oke cái đó để xem, vậy phải có hóa đơn trước khi chọn vé rồi, chỉ cần mã hóa đơn thôi, lúc tạo hóa đơn t mowis 
+//         /insert hóa đơn á, vậy mã Hóa đơn mình cho tự động sinh luôn ha, ừ,  còn vé thì khóa là mã vé với mã hóa đơn nên mối danh sách cứ đặt từ V01 ròi oke, về lại chỗ thêm ghế nha, ừ
+        
         ArrayList <JTextField> listSelected = new ArrayList();  // ds cac nut dc click
         ArrayList <JTextField> dsTextField = new ArrayList();   // ds tat ca cac ghe
           
@@ -61,7 +68,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         ArrayList <model.Ghe> dsGheDau = new ArrayList <model.Ghe>(); //  quen ròi :)))))))))
         
         public static int ngLon = 0;
-        public static int treEm = 0;
+        public static int treEm = 10;
     public GiaoDienChonGhe() {
         initComponents();
         
@@ -71,21 +78,62 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
 //        layMauGhe();
         // lay duoc ma chuyen bay
         // dua tat ca ghe vao trong ds luu vao csdl
-//        String maChuyenBay = layMaChuyenBay();
-        
+     //   String maChuyenBayyy = layMaChuyenBay();
 //        luuGhe(maChuyenBay);
 //          xuatThongTinVaoBang();
-            layMaChuyenBay();
+ //           layMaChuyenBay();
+          // String aaa = "CB09";
+           // luuGheVaoCSDL(aaa);
+           layGheTuCSDL("CB01");
+           
+           layMauGhe();
+           
             xuatThongTinVaoBang();
             
        
     }
+   public static String maSanBayDi;
+    public static String maSanBayDen;
     
-    public GiaoDienChonGhe(int xacNhan,  model.Ve ve){
-        
+    public static Date ngayDi;
+    public static Date ngayVe;
+    
+    public static int soGheNguoiLonDi;
+    public static int soGheNguoiLonVe;
+    public static int soGheTreEmDi;
+    public static int soGheTreEmVe;
+//    int soGheEmBe;
+     public static String maChuyenBay;
+    public static boolean khuHoi;
+    public static boolean di,ve;
+    
+    public GiaoDienChonGhe(String maSanBayDi, String maSanBayDen, 
+          //  Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm, String maChuyenBay){
+            Date ngayDi, Date ngayVe, boolean di, boolean ve, int soGheNguoiLon, int soGheTreEm, String maChuyenBay){
         initComponents();
-        
+        this.maSanBayDi = maSanBayDi;
+        this.maSanBayDen = maSanBayDen;
+        this.ngayDi = ngayDi;
+        this.ngayVe = ngayVe;
+        this.soGheNguoiLonDi = soGheNguoiLon;
+        this.soGheNguoiLonVe = soGheNguoiLon;
+        this.soGheTreEmDi = soGheTreEm;
+        this.soGheTreEmVe = soGheTreEm;
+        this.maChuyenBay = maChuyenBay;
+        this.di = di;
+        this.ve = ve;
+        this.khuHoi = khuHoi; 
+//        maChuyenBay = "phong";
+//        luuGheVaoCSDL(maChuyenBay);
 
+    }
+    public GiaoDienChonGhe(String maChuyenBay, int soGheNguoiLon, int soGheTreEm){
+        initComponents();
+        this.maChuyenBay = maChuyenBay;
+        this.soGheNguoiLonDi = soGheNguoiLon;
+        this.soGheNguoiLonVe = soGheNguoiLon;
+        this.soGheTreEmDi = soGheTreEm;
+        this.soGheTreEmVe = soGheTreEm;
     }
     
     /**
@@ -107,24 +155,64 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
           DefaultTableModel dtm = (DefaultTableModel) jTable_ThongTinNguoiBay.getModel();
         dtm.setNumRows(0);
         Vector vt ;
-        
-        for(int i = 0; i < dsVe.size();i++){
+        if (di && ve){
+        for(int i = 0; i < dsVeDi.size();i++){
             vt = new Vector();
             
-            vt.add(dsVe.get(i).getMaChuyenBay());
-            vt.add(dsVe.get(i).getTenNguoiBay());
-            vt.add(dsVe.get(i).getMaGhe());
-            vt.add("9999");
+            vt.add(dsVeDi.get(i).getMaChuyenBay());
+            vt.add(dsVeDi.get(i).getTenNguoiBay());
+            vt.add(dsVeDi.get(i).getMaGhe());
+            vt.add(dsVeDi.get(i).getGia());
             
             
-            System.out.println(dsVe.get(i));
+            System.out.println(dsVeDi.get(i));
             
             dtm.addRow(vt);
             //System.out.println(dsTextField.get(5).getName());
             for (int j = 0 ; j < dsTextField.size();j++){
                 
                 // đổi textfield thành màu xanh
-                if(dsTextField.get(j).getName().trim().equals(dsVe.get(i).getMaGhe().trim())){
+                if(dsTextField.get(j).getName().trim().equals(dsVeDi.get(i).getMaGhe().trim())){
+                    System.out.println("vonglap"+ dsTextField.get(j).getName());
+//                    System.out.println(dsVe.get(i).getMaVe());
+                    System.out.println("true");
+                    dsTextField.get(j).setBackground(Color.GREEN);
+                    listSelected.add(dsTextField.get(j));
+
+                   break;
+                }
+                
+                else {
+                    System.out.println("vonglap"+ dsTextField.get(j).getName());
+                    System.out.println("false");
+                }
+            }
+        }
+        jTable_ThongTinNguoiBay.setModel(dtm);
+            
+                for(int k =0 ; k< listSelected.size();k++){
+//            System.out.println();
+            System.out.println("alo: "+listSelected.get(k).getName());
+        }
+        }
+        else if (!ve && !di){
+            for(int i = 0; i < dsVeVe.size();i++){
+            vt = new Vector();
+            
+            vt.add(dsVeVe.get(i).getMaChuyenBay());
+            vt.add(dsVeVe.get(i).getTenNguoiBay());
+            vt.add(dsVeVe.get(i).getMaGhe());
+            vt.add(dsVeVe.get(i).getGia());
+            
+            
+            System.out.println(dsVeVe.get(i));
+            
+            dtm.addRow(vt);
+            //System.out.println(dsTextField.get(5).getName());
+            for (int j = 0 ; j < dsTextField.size();j++){
+                
+                // đổi textfield thành màu xanh
+                if(dsTextField.get(j).getName().trim().equals(dsVeVe.get(i).getMaGhe().trim())){
                     System.out.println("vonglap"+ dsTextField.get(j).getName());
 //                    System.out.println(dsVe.get(i).getMaVe());
                     System.out.println("true");
@@ -146,48 +234,13 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
 //            System.out.println();
             System.out.println("alo: "+listSelected.get(k).getName());
         }
-       
+        }
+
         
 
         
     }
     private int luuTextField(){
-        dsTextField.add(Ghe_10A);
-        dsTextField.add(Ghe_10B);
-        dsTextField.add(Ghe_10C);
-        dsTextField.add(Ghe_10D);
-        dsTextField.add(Ghe_10E);
-        dsTextField.add(Ghe_10F);
-        dsTextField.add(Ghe_11A);
-        dsTextField.add(Ghe_11B);
-        dsTextField.add(Ghe_11C);
-        dsTextField.add(Ghe_11D);
-        dsTextField.add(Ghe_11E);
-        dsTextField.add(Ghe_11F);
-        dsTextField.add(Ghe_12A);
-        dsTextField.add(Ghe_12B);
-        dsTextField.add(Ghe_12C);
-        dsTextField.add(Ghe_12D);
-        dsTextField.add(Ghe_12E);
-        dsTextField.add(Ghe_12F);
-        dsTextField.add(Ghe_13A);
-        dsTextField.add(Ghe_13B);
-        dsTextField.add(Ghe_13C);
-        dsTextField.add(Ghe_13D);
-        dsTextField.add(Ghe_13E);
-        dsTextField.add(Ghe_13F);
-        dsTextField.add(Ghe_14A);
-        dsTextField.add(Ghe_14B);
-        dsTextField.add(Ghe_14C);
-        dsTextField.add(Ghe_14D);
-        dsTextField.add(Ghe_14E);
-        dsTextField.add(Ghe_14F);
-        dsTextField.add(Ghe_15A);
-        dsTextField.add(Ghe_15B);
-        dsTextField.add(Ghe_15C);
-        dsTextField.add(Ghe_15D);
-        dsTextField.add(Ghe_15E);
-        dsTextField.add(Ghe_15F);
         dsTextField.add(Ghe_1A);
         dsTextField.add(Ghe_1B);
         dsTextField.add(Ghe_1C);
@@ -242,143 +295,197 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         dsTextField.add(Ghe_9D);
         dsTextField.add(Ghe_9E);
         dsTextField.add(Ghe_9F);
+        dsTextField.add(Ghe_10A);
+        dsTextField.add(Ghe_10B);
+        dsTextField.add(Ghe_10C);
+        dsTextField.add(Ghe_10D);
+        dsTextField.add(Ghe_10E);
+        dsTextField.add(Ghe_10F);
+        dsTextField.add(Ghe_11A);
+        dsTextField.add(Ghe_11B);
+        dsTextField.add(Ghe_11C);
+        dsTextField.add(Ghe_11D);
+        dsTextField.add(Ghe_11E);
+        dsTextField.add(Ghe_11F);
+        dsTextField.add(Ghe_12A);
+        dsTextField.add(Ghe_12B);
+        dsTextField.add(Ghe_12C);
+        dsTextField.add(Ghe_12D);
+        dsTextField.add(Ghe_12E);
+        dsTextField.add(Ghe_12F);
+        dsTextField.add(Ghe_13A);
+        dsTextField.add(Ghe_13B);
+        dsTextField.add(Ghe_13C);
+        dsTextField.add(Ghe_13D);
+        dsTextField.add(Ghe_13E);
+        dsTextField.add(Ghe_13F);
+        dsTextField.add(Ghe_14A);
+        dsTextField.add(Ghe_14B);
+        dsTextField.add(Ghe_14C);
+        dsTextField.add(Ghe_14D);
+        dsTextField.add(Ghe_14E);
+        dsTextField.add(Ghe_14F);
+        dsTextField.add(Ghe_15A);
+        dsTextField.add(Ghe_15B);
+        dsTextField.add(Ghe_15C);
+        dsTextField.add(Ghe_15D);
+        dsTextField.add(Ghe_15E);
+        dsTextField.add(Ghe_15F);
         
-        System.err.println("luu ghe thanh cong");
         
-        for (int i =0; i < dsTextField.size();i++){
-            System.err.println(dsTextField.get(i).getName());
-        }
+//        System.err.println("luu ghe thanh cong");
+//        
+//        for (int i =0; i < dsTextField.size();i++){
+//            System.err.println(dsTextField.get(i).getName());
+//        }
         return 1;
     }
-     private int luuGhe(String maChuyenBay){
 
-        String maGhe = "ghe_";
-        
-        String LoaiThuongGia= "TGia";
-        
-        String LoaiPhoThong = "PThong";
-        
-        byte trangThai = 1;
-        
-         for(int k = 1; k<=15; k++){
-            
-
-                for(int j = 1; j<=6;j++ ){
-                     model.Ghe ghe = new model.Ghe() ;
-                     
-                     if(j == 1){
-                       ghe.setMaGhe(maGhe + k +"A");
-     
-                     }
-                     else if(j==2){
-                         ghe.setMaGhe(maGhe + k +"B");
-                     } else if(j==3){
-                         ghe.setMaGhe(maGhe + k +"C");
-                     } else if(j==4){
-                         ghe.setMaGhe(maGhe + k +"D");
-                     } else if(j==5){
-                         ghe.setMaGhe(maGhe + k +"E");
-                     } else if(j==6){
-                         ghe.setMaGhe(maGhe + k +"F");
-                     }
-            
-
-            
-                     ghe.setMaChuyenBay(maChuyenBay);
-
-                     if(k<6){
-                         ghe.setLoaiGhe(LoaiThuongGia);
-
-                     }
-                     else ghe.setLoaiGhe(LoaiPhoThong);
-                     
-                      ghe.setTrong(trangThai);
-                      
-//                      controller.Controller.arrayListGhe.add(ghe);
-                dsGheDau.add(ghe);
-
-                        
-    
-                }
-            }
+//     private int luuGheVaoCSDL(String maChuyenBay){
+//         String maGhe= "";
+//
+//         maGhe = maChuyenBay.trim()+"-Ghe_"; // quy tắc đặt tên ghế là sẽ thêm mã chuyến bay vô trước // không giống như trước lắm nhưng mà
+//                                                    // tui đang làm để tiện ss, có gì thay đổi sau nè, oke chưa. khoan,lúc load ghế thì ph load từ trong csdl ra chứ dúng luôn, trong controller có viết cái tạo ghế theo mã cb r á. dùngtet thôi, mà nói tiếp đi
+//        // System.out.println(maGhe);                 // cái kiểu dặt tên trongconttoller nó hơi khó để so sánh với cái tên ghế , hiểu mà, sửa sau đc  o ke
+//         
+//        String LoaiThuongGia= "TGia";
+//        
+//        String LoaiPhoThong = "PThong";
+//        
+//        byte trangThai = 1;
+//            //danhMaGhe(maGhe, LoaiThuongGia, LoaiPhoThong, trangThai);
+//         for(int k = 1; k<=15; k++){
+//            
+//
+//                for(int j = 1; j<=6;j++ ){
+//                     model.Ghe ghe = new model.Ghe() ;
+//                     System.out.println(maGhe);
+//                     if(j == 1){
+//                       ghe.setMaGhe( maGhe + k +"A");
+//                        
+//                     }
+//                     else if(j==2){
+//                         ghe.setMaGhe(maGhe + k +"B");
+//                     } else if(j==3){
+//                         ghe.setMaGhe(maGhe + k +"C");
+//                     } else if(j==4){
+//                         ghe.setMaGhe(maGhe + k +"D");
+//                     } else if(j==5){
+//                         ghe.setMaGhe(maGhe + k +"E");
+//                     } else if(j==6){
+//                         ghe.setMaGhe(maGhe + k +"F");
+//                     }
+//            
+//
+//            
+//                     ghe.setMaChuyenBay(maChuyenBay);
+//
+//                     if(k<6){
+//                         ghe.setLoaiGhe(LoaiThuongGia);
+//
+//                     }
+//                     else ghe.setLoaiGhe(LoaiPhoThong);
+//                     
+//                      ghe.setTrong(trangThai);
+//                      
+////                      controller.Controller.arrayListGhe.add(ghe);
+////                        System.out.println(ghe.getMaGhe());
+//                        dsGheDau.add(ghe);
+////                      System.out.println(dsGheDau.size());
+//                       //; đến đây là nó sẽ load 15 hàng  ghế dô một ds trống oke chưa ok. nhưng ghế nào cũng trống hết à? đúng
+//                        // hàm này để khi mà có 1 chuyến bay mới xh thì nó sẽ thêm ghế vào chuyến bay đó, sau đến lúc ta thêm chuyến bay thì tạo bảng ghế của chuyến bay đó luôn mà
+//                          // trong 1 model chuyến bay có arraylist ghế r á.
+//                          // vậy chuyến bay tạo bằng tay rồi tạo bảng ghế lúc đó luôn hay sao
+//                          // cái đấy t làm sau, tạm thời thì tạo cb tay, thêm ds ghế tay,oke vậy là tạm thời dùng cái hàm thêm ghế bên controller để thêm vào ha,
+//                          // lúc tìm chuyến bay sẽ tìm chuyến nào có đủ ghế trống ấy, nên lúc mở thì ph xét luôn chỗ nào trống chỗ nào k
+//                          // vậy là load ghế từ lúc mở ctrinh luôn đúng k, là lúc mở giao diện chọn ghế ấy, sẽ có mã chuyến bay đi vào đúng k?. 
+//                          // đúng, nhưng mà luc sđó là chuyến bay đã chọn rồi mà, nếu mà chuyến bay đó k có đủ ghế thì k hiện cho người ta chọn luôn chứ, đúng.
+//                          // vậy thì phải load từ trước khi hiện chuyến bay cho người chọn chứ. là sao 
+//                          // thế này nha: đăng nhập -> load ghế -> chọn chuyến bay -> chọn ghế. 
+//                          // thì k cho hiện chuyến bay lúc chọn thì có phải nó phải load ngay chỗ này k
+//                          // ghế trong csdl ph có sẵn r chứ. đúng luôn, mình có chuyến bay thì có ghế trống liền luôn , xong rồi ai chọn mua gì đó mình sẽ update vào, thì đúng
+//                          // rồi ông nói thêm gì k đc chỉ đi, nhưng mà lúc từ chọn ghế sang hóa đơn là danh sách vé nha. có luôn!d dể mở cho xem
+//
+//                        
+//    
+//                }
+//            }
+//         
+////         model.ChuyenBay mbay = new model.ChuyenBay();
+////                        mbay.setArrayListGhe(dsGheDau);
+//                        
+//                        
+//         DataConnection.createStatement();
+//         String sql = "insert into GHE values(?,?,?,?)"; //xem cái chỗ này thử sai đâu mà thêm là thất bạn thôi ???
+//         
+//         try {
+//            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
+//            for(model.Ghe ghe : dsGheDau){
+//        //  for (int i = 0; i < dsGheDau.size();i++){
+//              
+////              ps.setString(1, dsGhe.get(i).getMaGhe());
+////              System.out.println(dsGhe.get(i).getMaGhe());
+////              ps.setString(2, dsGhe.get(i).getMaChuyenBay());
+////              ps.setString(3, dsGhe.get(i).getLoaiGhe());
+////              ps.setByte(4,dsGhe.get(i).getTrong());
+//
+//
+//                ps.setString(1, ghe.getMaGhe());
+//                System.out.println("insert " +ghe.getMaGhe());
+//                
+//                ps.setString(2, ghe.getMaChuyenBay());
+//                System.out.println(ghe.getMaChuyenBay());
+//                
+//                ps.setString(3, ghe.getLoaiGhe());
+//                System.out.println(ghe.getLoaiGhe());
+//                
+//                ps.setByte(4, ghe.getTrong());
+//                System.out.println(ghe.getTrong());
+//                
+//               // JOptionPane.showMessageDialog(this, "them thanh cong");
+//                ps.executeUpdate();
+//            }
+//            System.err.println("thanh cong");
+//            
+//        } catch (Exception e) {
+////            JOptionPane.showMessageDialog(this, "them that bai");
+//             System.err.println("that bai");
+//        }
+//        
+//        
+//        return 1;
+//    }
+//         private String layMaChuyenBay(){
+//        String maChuyenBayy ="";
+//        DataConnection.createStatement();
+//        String sql = "select * from CHUYENBAY"; 
+//        try {
+//            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            
+//             while (rs.next()){
+//              maChuyenBayy = rs.getString("MaChuyenBay");  // đến chỗ này là nó lấy ra từng mã chuyến bay ok hong ? ok
+//              //   System.out.println(maChuyenBayy+"ádsadas");
+//                 
+//                 luuGheVaoCSDL(maChuyenBayy); 
+////             
+//            }
+//           
+////           ps.close();
+//      
+//        }
+//         catch (Exception e) {
+//        }
+//
+//        
+//        return maChuyenBay;
+//    }
          
-         model.ChuyenBay mbay = new model.ChuyenBay();
-                        mbay.setArrayListGhe(dsGheDau);
-                        
-                        
-         DataConnection.createStatement();
-         String sql = "insert into GHE values (?,?,?,?)";
          
-         try {
-            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
-            for(model.Ghe ghe : dsGheDau){
+ 
 
-                ps.setString(1, ghe.getMaGhe());
-                ps.setString(2, ghe.getMaChuyenBay());
-                ps.setString(3, ghe.getLoaiGhe());
-                ps.setByte(4, ghe.getTrong());
-                
-               // JOptionPane.showMessageDialog(this, "them thanh cong");
-                System.err.println("thanh cong");
-            ps.executeUpdate();
-            }
-            
-        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "them that bai");
-             System.err.println("that bai");
-        }
-        
-        
-        return 1;
-    }
-     private int layMauGhe(){
-         byte trong = 1;
-         for(int i = 0 ; i< dsGhe.size();i++){
-             
-             if (dsGhe.get(i).getTrong() == trong){
-                 System.err.println("mau "+dsGhe.get(i).getMaGhe());
-                  for (int j=0;j< dsTextField.size();j++){
-                      
-                // if(dsTextField.get(j).getName().trim().equals(dsGhe.get(i).getMaGhe().trim())){
-                if(dsGhe.get(i).getMaGhe().trim().equals(dsTextField.get(j).getName())){
-                     dsTextField.get(j).setBackground(Color.red);
-                     System.err.println("bang nhau");
-                     
-                 }
-             }   
-                 
-             
-         }}
-         return 1;
-     
-     }
-    private String layMaChuyenBay(){
-        String maChuyenBay ="";
-        DataConnection.createStatement();
-        String sql = "select * from CHUYENBAY";
-        try {
-            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            
-             while (rs.next()){
-              maChuyenBay = rs.getString("MaChuyenBay");
-                 System.out.println(maChuyenBay);
-                 
-                 luuGhe(maChuyenBay);
-//             
-            }
-           
-            ps.close();
-      
-        }
-         catch (Exception e) {
-        }
-
-        
-        return maChuyenBay;
-    }
     
-    private int layGhe(){
+    private int layGheTuCSDL(String maChuyenBay){
         
         connection.DataConnection.createStatement();
         String sql = "select * from GHE";
@@ -389,12 +496,15 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
             while(rs.next()){
                   model.Ghe ghe = new model.Ghe() ;
                   // 
-                  ghe.setMaGhe(rs.getString("MaGhe"));
+                  if(rs.getString("MaChuyenBay").trim().equals(maChuyenBay)){
+                      ghe.setMaGhe(rs.getString("MaGhe"));
                   ghe.setMaChuyenBay(rs.getString("MaChuyenBay"));
                   ghe.setLoaiGhe(rs.getString("LoaiGhe"));
                   ghe.setTrong(rs.getByte("Trong"));
                   //
                   dsGhe.add(ghe);
+                  }
+                  
                   
                   
                 
@@ -403,28 +513,62 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "lay that bai");
         }
         
-        for (int i =0;i< dsGhe.size();i++){
-            System.err.println("SQL "+dsGhe.get(i).getMaGhe().trim()+"00");
-        }
-        
+//        for (int i =0;i< dsGhe.size();i++){
+//            System.err.println("SQL "+dsGhe.get(i).getMaGhe().trim());
+//        }
+//        
         return 1;
     }
-   
+    
+    
+       private int layMauGhe(){
+         byte trong = 0;
+         for(int i = 0 ; i< dsGhe.size();i++){
+             
+             if (dsGhe.get(i).getTrong() == trong){
+                 System.out.println(dsGhe.get(i).getMaGhe().substring(5));
+                 
+                  for (int j=0;j< dsTextField.size();j++){
+                      
+                // if(dsTextField.get(j).getName().trim().equals(dsGhe.get(i).getMaGhe().trim())){
+                if(dsGhe.get(i).getMaGhe().substring(5).trim().equalsIgnoreCase(dsTextField.get(j).getName().trim())){
+             //  if (dsTextField.get(j).getName().equalsIgnoreCase(dsGhe.get(i).getMaGhe().substring(5)))  {
+               dsTextField.get(j).setBackground(Color.red);
+                     System.err.println("bang nhau");
+                  //    System.err.println("mau "+dsGhe.get(i).getMaGhe().substring(5));
+                  //   System.out.println("text "+dsTextField.get(j).getName());
+                 }
+                else {
+               //     System.out.println("text "+dsTextField.get(j).getName());
+               //      System.err.println("mau "+dsGhe.get(i).getMaGhe().substring(5));
+                //  System.out.println("khac nhau");
+                   System.out.println(dsTextField.get(j).getName());
+                }
+             }   
+                 
+             
+         }}
+         return 1;
+     
+     }
    
     // khi mà click vào ghế thì tạm thời đổi màu
-        private void setColor(JTextField a){
-          //  int k = 0;
-            JFrame khach = new GiaoDienNhapThongTinNguoiBayKhiChonGhe(a.getName(), layMaChuyenBay());
-            
-                khach.pack();
-     if ((a.getBackground().getRed()) == 255 && (a.getBackground().getGreen() == 255)&&(a.getBackground().getBlue() == 255)){
-                System.err.println("trang");
+    
+    // ở đây là đầu tiên là hàm đổi màu ghế nên chưa đổi tên lại
+    
+        private void xuLiSuKienClickVaMoBangNhapThongTin(JTextField a){
+
+           // a.setBackground(Color.getHSBColor(255, 255, 255));
+            // System.out.println(a.getBackground().getRed()+"-"+a.getBackground().getGreen()+"-"+a.getBackground().getBlue()); // 240 240 240
+     if ((a.getBackground().getRed()) == 240 && (a.getBackground().getGreen() == 240)&&(a.getBackground().getBlue() == 240)){ // so sánh nếu mà ghế màu trắng mới cho click
+                System.err.println("trang");            //khi ông chọn xong r mở cái này lên mấy nút kia vẫn ấn đc mà, nhưng mấy cái ghế đấy nó k chạy event thì ph
                 a.setBackground(Color.GREEN);
                 this.listSelected.add(a);
                 System.err.println(a.getName());
 
-                khach.setVisible(true);
-
+               // new GiaoDienNhapThongTinNguoiBayKhiChonGhe(a.getName(), maChuyenBay).setVisible(true);
+               
+               new GiaoDienNhapThongTinNguoiBayKhiChonGhe(a.getName(), this.maChuyenBay, this.soGheNguoiLonDi, this.soGheTreEmDi).setVisible(true);
                 // giai phap tam 
                 this.dispose();
                 
@@ -2152,8 +2296,8 @@ private void changeColor(Color a){
                 .addGap(0, 20, Short.MAX_VALUE))
         );
 
-        Ghe_1A.setName("ghe_1A");
-        Ghe_1B.setName("ghe_1B");
+        Ghe_1A.setName("Ghe_1A");
+        Ghe_1B.setName("Ghe_1B");
         Ghe_1C.setName("ghe_1C");
         Ghe_1D.setName("ghe_1D");
         Ghe_1E.setName("ghe_1E");
@@ -2905,468 +3049,484 @@ private void changeColor(Color a){
 
     private void Ghe_1AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_1AMouseClicked
             // TODO add your handling code here:
-             this.setColor(Ghe_1A);
+            System.out.println("àaaaaa");
+             this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_1A);
+             // là sao không hiểu lắm nói rõ ra xem thử, kiểu ông ấn vào mà code nó k chạy á, chứ 2 nút hủy với xác nhân hình như vẫn ấn được
+             // đúng rồi hai cái button vẫn nhấn được nhưng mà cái textfield nó bị sao á nhìn nó cũng k giống như bth, chạy lại lần nữa thử, từ lúc chọn chuyến bay áoke
             
     }//GEN-LAST:event_Ghe_1AMouseClicked
 
     private void Ghe_1BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_1BMouseClicked
         // TODO add your handling code here:
-              this.setColor(Ghe_1B);
+              this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_1B);
 
     }//GEN-LAST:event_Ghe_1BMouseClicked
 
     private void Ghe_1CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_1CMouseClicked
         // TODO add your handling code here:
-         this.setColor(Ghe_1C);
+         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_1C);
     }//GEN-LAST:event_Ghe_1CMouseClicked
 
     private void Ghe_1DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_1DMouseClicked
         // TODO add your handling code here:
-        this.setColor(Ghe_1D);
+        this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_1D);
     }//GEN-LAST:event_Ghe_1DMouseClicked
 
     private void Ghe_1EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_1EMouseClicked
         // TODO add your handling code here: 
-       this.setColor(Ghe_1E);
+       this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_1E);
     }//GEN-LAST:event_Ghe_1EMouseClicked
 
     private void Ghe_1FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_1FMouseClicked
         // TODO add your handling code here:
-        this.setColor(Ghe_1F);
+        this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_1F);
     }//GEN-LAST:event_Ghe_1FMouseClicked
 
     private void Ghe_2AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_2AMouseClicked
         // TODO add your handling code here:
-   this.setColor(Ghe_2A);
+   this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_2A);
 
     }//GEN-LAST:event_Ghe_2AMouseClicked
 
     private void Ghe_2BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_2BMouseClicked
         // TODO add your handling code here:
-          this.setColor(Ghe_2B);
+          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_2B);
 
     }//GEN-LAST:event_Ghe_2BMouseClicked
 
     private void Ghe_2CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_2CMouseClicked
         // TODO add your handling code here:
-                         this.setColor(Ghe_2C);
+                         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_2C);
 
     }//GEN-LAST:event_Ghe_2CMouseClicked
 
     private void Ghe_2DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_2DMouseClicked
         // TODO add your handling code here:
-                         this.setColor(Ghe_2D);
+                         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_2D);
 
     }//GEN-LAST:event_Ghe_2DMouseClicked
 
     private void Ghe_2EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_2EMouseClicked
         // TODO add your handling code here:
-                         this.setColor(Ghe_2E);
+                         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_2E);
 
     }//GEN-LAST:event_Ghe_2EMouseClicked
 
     private void Ghe_2FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_2FMouseClicked
-                        this.setColor(Ghe_2F);
+                        this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_2F);
 
     }//GEN-LAST:event_Ghe_2FMouseClicked
 
     private void Ghe_3AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_3AMouseClicked
-                        this.setColor(Ghe_3A);
+                        this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_3A);
 
     }//GEN-LAST:event_Ghe_3AMouseClicked
 
     private void Ghe_4AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_4AMouseClicked
-                               this.setColor(Ghe_4A);
+                               this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_4A);
 
     }//GEN-LAST:event_Ghe_4AMouseClicked
 
     private void Ghe_5AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_5AMouseClicked
-                               this.setColor(Ghe_5A);
+                               this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_5A);
 
     }//GEN-LAST:event_Ghe_5AMouseClicked
 
     private void Ghe_6AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_6AMouseClicked
-                               this.setColor(Ghe_6A);
+                               this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_6A);
 
     }//GEN-LAST:event_Ghe_6AMouseClicked
 
     private void Ghe_7AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_7AMouseClicked
-                               this.setColor(Ghe_7A);
+                               this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_7A);
 
     }//GEN-LAST:event_Ghe_7AMouseClicked
 
     private void Ghe_8AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_8AMouseClicked
-                               this.setColor(Ghe_8A);
+                               this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_8A);
 
     }//GEN-LAST:event_Ghe_8AMouseClicked
 
     private void Ghe_9AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_9AMouseClicked
-                                this.setColor(Ghe_9A);
+                                this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_9A);
 
     }//GEN-LAST:event_Ghe_9AMouseClicked
 
     private void Ghe_10AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_10AMouseClicked
-                               this.setColor(Ghe_10A);
+                               this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_10A);
 
     }//GEN-LAST:event_Ghe_10AMouseClicked
 
     private void Ghe_11AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_11AMouseClicked
-                                     this.setColor(Ghe_11A);
+                                     this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_11A);
 
     }//GEN-LAST:event_Ghe_11AMouseClicked
 
     private void Ghe_12AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_12AMouseClicked
-                                        this.setColor(Ghe_12A);
+                                        this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_12A);
 
     }//GEN-LAST:event_Ghe_12AMouseClicked
 
     private void Ghe_13AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_13AMouseClicked
-                                    this.setColor(Ghe_13A);
+                                    this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_13A);
 
     }//GEN-LAST:event_Ghe_13AMouseClicked
 
     private void Ghe_14AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_14AMouseClicked
-                                          this.setColor(Ghe_14A);
+                                          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_14A);
 
     }//GEN-LAST:event_Ghe_14AMouseClicked
 
     private void Ghe_15AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_15AMouseClicked
-                                           this.setColor(Ghe_15A);
+                                           this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_15A);
 
     }//GEN-LAST:event_Ghe_15AMouseClicked
 
     private void Ghe_3BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_3BMouseClicked
-                                           this.setColor(Ghe_3B);
+                                           this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_3B);
 
     }//GEN-LAST:event_Ghe_3BMouseClicked
 
     private void Ghe_4BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_4BMouseClicked
-                                                  this.setColor(Ghe_4B);
+                                                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_4B);
 
     }//GEN-LAST:event_Ghe_4BMouseClicked
 
     private void Ghe_5BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_5BMouseClicked
-                                                  this.setColor(Ghe_5B);
+                                                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_5B);
 
     }//GEN-LAST:event_Ghe_5BMouseClicked
 
     private void Ghe_6BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_6BMouseClicked
-                                                    this.setColor(Ghe_6B);
+                                                    this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_6B);
 
     }//GEN-LAST:event_Ghe_6BMouseClicked
 
     private void Ghe_7BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_7BMouseClicked
-                                                  this.setColor(Ghe_7B);
+                                                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_7B);
 
     }//GEN-LAST:event_Ghe_7BMouseClicked
 
     private void Ghe_8BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_8BMouseClicked
-                                                   this.setColor(Ghe_8B);
+                                                   this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_8B);
 
     }//GEN-LAST:event_Ghe_8BMouseClicked
 
     private void Ghe_9BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_9BMouseClicked
-                                                  this.setColor(Ghe_9B);
+                                                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_9B);
 
     }//GEN-LAST:event_Ghe_9BMouseClicked
 
     private void Ghe_10BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_10BMouseClicked
-                                                  this.setColor(Ghe_10B);
+                                                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_10B);
 
     }//GEN-LAST:event_Ghe_10BMouseClicked
 
     private void Ghe_11BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_11BMouseClicked
-                                                          this.setColor(Ghe_11B);
+                                                          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_11B);
 
     }//GEN-LAST:event_Ghe_11BMouseClicked
 
     private void Ghe_12BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_12BMouseClicked
-                                                          this.setColor(Ghe_12B);
+                                                          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_12B);
 
     }//GEN-LAST:event_Ghe_12BMouseClicked
 
     private void Ghe_13BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_13BMouseClicked
-                                                         this.setColor(Ghe_13B);
+                                                         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_13B);
 
     }//GEN-LAST:event_Ghe_13BMouseClicked
 
     private void Ghe_14BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_14BMouseClicked
-                                                         this.setColor(Ghe_14B);
+                                                         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_14B);
 
     }//GEN-LAST:event_Ghe_14BMouseClicked
 
     private void Ghe_15BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_15BMouseClicked
-                                                           this.setColor(Ghe_15B);
+                                                           this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_15B);
 
     }//GEN-LAST:event_Ghe_15BMouseClicked
 
     private void Ghe_3CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_3CMouseClicked
-               this.setColor(Ghe_3C);
+               this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_3C);
 
     }//GEN-LAST:event_Ghe_3CMouseClicked
 
     private void Ghe_4CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_4CMouseClicked
-                       this.setColor(Ghe_4C);
+                       this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_4C);
 
     }//GEN-LAST:event_Ghe_4CMouseClicked
 
     private void Ghe_5CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_5CMouseClicked
-                        this.setColor(Ghe_5C);
+                        this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_5C);
 
     }//GEN-LAST:event_Ghe_5CMouseClicked
 
     private void Ghe_6CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_6CMouseClicked
-                        this.setColor(Ghe_6C);
+                        this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_6C);
 
     }//GEN-LAST:event_Ghe_6CMouseClicked
 
     private void Ghe_7CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_7CMouseClicked
-                        this.setColor(Ghe_7C);
+                        this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_7C);
 
     }//GEN-LAST:event_Ghe_7CMouseClicked
 
     private void Ghe_8CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_8CMouseClicked
-                       this.setColor(Ghe_8C);
+                       this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_8C);
 
     }//GEN-LAST:event_Ghe_8CMouseClicked
 
     private void Ghe_9CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_9CMouseClicked
-                        this.setColor(Ghe_9C);
+                        this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_9C);
 
     }//GEN-LAST:event_Ghe_9CMouseClicked
 
     private void Ghe_10CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_10CMouseClicked
-                       this.setColor(Ghe_10C);
+                       this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_10C);
 
     }//GEN-LAST:event_Ghe_10CMouseClicked
 
     private void Ghe_11CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_11CMouseClicked
-                               this.setColor(Ghe_11C);
+                               this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_11C);
 
     }//GEN-LAST:event_Ghe_11CMouseClicked
 
     private void Ghe_12CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_12CMouseClicked
-                                 this.setColor(Ghe_12C);
+                                 this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_12C);
 
     }//GEN-LAST:event_Ghe_12CMouseClicked
 
     private void Ghe_13CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_13CMouseClicked
-                               this.setColor(Ghe_13C);
+                               this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_13C);
 
     }//GEN-LAST:event_Ghe_13CMouseClicked
 
     private void Ghe_14CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_14CMouseClicked
-                                this.setColor(Ghe_14C);
+                                this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_14C);
 
     }//GEN-LAST:event_Ghe_14CMouseClicked
 
     private void Ghe_15CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_15CMouseClicked
-                                this.setColor(Ghe_15C);
+                                this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_15C);
 
     }//GEN-LAST:event_Ghe_15CMouseClicked
 
     private void Ghe_3DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_3DMouseClicked
- this.setColor(Ghe_3D);
+ this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_3D);
 
     }//GEN-LAST:event_Ghe_3DMouseClicked
 
     private void Ghe_4DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_4DMouseClicked
-          this.setColor(Ghe_4D);
+          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_4D);
 
     }//GEN-LAST:event_Ghe_4DMouseClicked
 
     private void Ghe_5DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_5DMouseClicked
-         this.setColor(Ghe_5D);
+         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_5D);
 
     }//GEN-LAST:event_Ghe_5DMouseClicked
 
     private void Ghe_6DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_6DMouseClicked
-        this.setColor(Ghe_6D);
+        this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_6D);
 
     }//GEN-LAST:event_Ghe_6DMouseClicked
 
     private void Ghe_7DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_7DMouseClicked
-          this.setColor(Ghe_7D);
+          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_7D);
 
     }//GEN-LAST:event_Ghe_7DMouseClicked
 
     private void Ghe_8DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_8DMouseClicked
-        this.setColor(Ghe_8D);
+        this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_8D);
 
     }//GEN-LAST:event_Ghe_8DMouseClicked
 
     private void Ghe_9DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_9DMouseClicked
-           this.setColor(Ghe_9D);
+           this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_9D);
 
     }//GEN-LAST:event_Ghe_9DMouseClicked
 
     private void Ghe_10DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_10DMouseClicked
-          this.setColor(Ghe_10D);
+          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_10D);
 
     }//GEN-LAST:event_Ghe_10DMouseClicked
 
     private void Ghe_11DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_11DMouseClicked
-                   this.setColor(Ghe_11D);
+                   this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_11D);
 
     }//GEN-LAST:event_Ghe_11DMouseClicked
 
     private void Ghe_12DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_12DMouseClicked
-                   this.setColor(Ghe_12D);
+                   this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_12D);
 
     }//GEN-LAST:event_Ghe_12DMouseClicked
 
     private void Ghe_13DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_13DMouseClicked
-                    this.setColor(Ghe_13D);
+                    this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_13D);
 
     }//GEN-LAST:event_Ghe_13DMouseClicked
 
     private void Ghe_14DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_14DMouseClicked
-                   this.setColor(Ghe_14D);
+                   this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_14D);
 
     }//GEN-LAST:event_Ghe_14DMouseClicked
 
     private void Ghe_15DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_15DMouseClicked
 
-                  this.setColor(Ghe_15D);
+                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_15D);
 
        
          
     }//GEN-LAST:event_Ghe_15DMouseClicked
 
     private void Ghe_3EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_3EMouseClicked
-                  this.setColor(Ghe_3E);
+                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_3E);
 
     }//GEN-LAST:event_Ghe_3EMouseClicked
 
     private void Ghe_4EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_4EMouseClicked
-                          this.setColor(Ghe_4E);
+                          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_4E);
 
     }//GEN-LAST:event_Ghe_4EMouseClicked
 
     private void Ghe_5EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_5EMouseClicked
-                           this.setColor(Ghe_5E);
+                           this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_5E);
 
     }//GEN-LAST:event_Ghe_5EMouseClicked
 
     private void Ghe_6EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_6EMouseClicked
-                         this.setColor(Ghe_6E);
+                         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_6E);
 
     }//GEN-LAST:event_Ghe_6EMouseClicked
 
     private void Ghe_7EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_7EMouseClicked
-                          this.setColor(Ghe_7E);
+                          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_7E);
 
     }//GEN-LAST:event_Ghe_7EMouseClicked
 
     private void Ghe_8EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_8EMouseClicked
-                          this.setColor(Ghe_8E);
+                          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_8E);
 
     }//GEN-LAST:event_Ghe_8EMouseClicked
 
     private void Ghe_9EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_9EMouseClicked
-                        this.setColor(Ghe_9E);
+                        this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_9E);
 
     }//GEN-LAST:event_Ghe_9EMouseClicked
 
     private void Ghe_10EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_10EMouseClicked
-                         this.setColor(Ghe_10E);
+                         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_10E);
 
     }//GEN-LAST:event_Ghe_10EMouseClicked
 
     private void Ghe_11EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_11EMouseClicked
-                                this.setColor(Ghe_11E);
+                                this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_11E);
 
     }//GEN-LAST:event_Ghe_11EMouseClicked
 
     private void Ghe_12EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_12EMouseClicked
-                                  this.setColor(Ghe_12E);
+                                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_12E);
 
     }//GEN-LAST:event_Ghe_12EMouseClicked
 
     private void Ghe_13EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_13EMouseClicked
-                                this.setColor(Ghe_13E);
+                                this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_13E);
 
     }//GEN-LAST:event_Ghe_13EMouseClicked
 
     private void Ghe_14EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_14EMouseClicked
-                                  this.setColor(Ghe_14E);
+                                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_14E);
 
     }//GEN-LAST:event_Ghe_14EMouseClicked
 
     private void Ghe_15EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_15EMouseClicked
-                                  this.setColor(Ghe_15E);
+                                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_15E);
 
     }//GEN-LAST:event_Ghe_15EMouseClicked
 
     private void Ghe_3FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_3FMouseClicked
- this.setColor(Ghe_3F);
+ this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_3F);
 
     }//GEN-LAST:event_Ghe_3FMouseClicked
 
     private void Ghe_4FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_4FMouseClicked
-         this.setColor(Ghe_4F);
+         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_4F);
 
     }//GEN-LAST:event_Ghe_4FMouseClicked
 
     private void Ghe_5FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_5FMouseClicked
-         this.setColor(Ghe_5F);
+         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_5F);
 
     }//GEN-LAST:event_Ghe_5FMouseClicked
 
     private void Ghe_6FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_6FMouseClicked
-         this.setColor(Ghe_6F);
+         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_6F);
 
     }//GEN-LAST:event_Ghe_6FMouseClicked
 
     private void Ghe_7FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_7FMouseClicked
-       this.setColor(Ghe_7F);
+       this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_7F);
 
     }//GEN-LAST:event_Ghe_7FMouseClicked
 
     private void Ghe_8FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_8FMouseClicked
-          this.setColor(Ghe_8F);
+          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_8F);
 
     }//GEN-LAST:event_Ghe_8FMouseClicked
 
     private void Ghe_9FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_9FMouseClicked
-          this.setColor(Ghe_9F);
+          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_9F);
 
     }//GEN-LAST:event_Ghe_9FMouseClicked
 
     private void Ghe_10FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_10FMouseClicked
-          this.setColor(Ghe_10F);
+          this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_10F);
 
     }//GEN-LAST:event_Ghe_10FMouseClicked
 
     private void Ghe_11FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_11FMouseClicked
-                   this.setColor(Ghe_11F);
+                   this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_11F);
 
     }//GEN-LAST:event_Ghe_11FMouseClicked
 
     private void Ghe_12FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_12FMouseClicked
-                  this.setColor(Ghe_12F);
+                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_12F);
 
     }//GEN-LAST:event_Ghe_12FMouseClicked
 
     private void Ghe_13FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_13FMouseClicked
-                  this.setColor(Ghe_13F);
+                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_13F);
 
     }//GEN-LAST:event_Ghe_13FMouseClicked
 
     private void Ghe_14FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_14FMouseClicked
-                  this.setColor(Ghe_14F);
+                  this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_14F);
 
     }//GEN-LAST:event_Ghe_14FMouseClicked
 
     private void Ghe_15FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_15FMouseClicked
-                 this.setColor(Ghe_15F);
+                 this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_15F);
 
     }//GEN-LAST:event_Ghe_15FMouseClicked
 
     private void Xac_NhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Xac_NhanActionPerformed
         // TODO add your handling code here:
-        changeColor(Color.RED);
-        
+       
+//        this.khuHoi = true;
+       if(this.ve == true){ 
+                ve = false;
+                di = false;
+           new GiaoDienChonChuyenBayVe(maSanBayDen, maSanBayDi, ngayVe, soGheNguoiLonVe, soGheTreEmVe).setVisible(true); // looix k mở được chọn chuyến bay về khi truyền thamn số vào
+          // khuHoi = false;
+          
+            changeColor(Color.RED);
+           this.dispose();
+       }
+       else {
+            changeColor(Color.RED);
+            this.dispose();
+       }
     }//GEN-LAST:event_Xac_NhanActionPerformed
 
     /**

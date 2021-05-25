@@ -576,7 +576,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Ghe_1AActionPerformed"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="Ghe_1A.setName(&quot;ghe_1A&quot;);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="Ghe_1A.setName(&quot;Ghe_1A&quot;);"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="Ghe_1B">
@@ -588,7 +588,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Ghe_1BActionPerformed"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="Ghe_1B.setName(&quot;ghe_1B&quot;);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="Ghe_1B.setName(&quot;Ghe_1B&quot;);"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="Ghe_1C">
