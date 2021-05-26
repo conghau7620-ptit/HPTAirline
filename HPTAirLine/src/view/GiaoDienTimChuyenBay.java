@@ -579,7 +579,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             String maSanBayDen = jComboBox_SanBayDen.getSelectedItem().toString().substring(0, 3);
             Date ngayDi = jDateChooser_NgayDi.getDate();
             Date ngayVe = null;
-          //  boolean khuHoi = false;
+            boolean khuHoi = false;
           boolean di = true;
           boolean ve = false;
             int soGheNguoiLon = Integer.parseInt(jComboBox_SLNguoiLon.getSelectedItem().toString());
@@ -589,6 +589,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
               //  khuHoi = true;
             //  di = true;
               ve = true;
+              khuHoi = true;
                 ngayVe = jDateChooser_NgayVe.getDate();
             }
             //
@@ -597,7 +598,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 //            System.out.println(soGheEmBe);
 //        this.dispose();
      //       new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm).setVisible(true);
-                    new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve,  soGheNguoiLon, soGheTreEm).setVisible(true);
+                    new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve,khuHoi,  soGheNguoiLon, soGheTreEm).setVisible(true);
             this.dispose();
         }
         if (baoLoiInput() == false) {

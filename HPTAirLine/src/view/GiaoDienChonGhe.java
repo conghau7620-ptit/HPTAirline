@@ -67,28 +67,29 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         ArrayList <model.Ghe> dsGhe = new ArrayList <model.Ghe>(); // ds ghe lay tu trong csdl
         ArrayList <model.Ghe> dsGheDau = new ArrayList <model.Ghe>(); //  quen ròi :)))))))))
         
-        public static int ngLon = 0;
-        public static int treEm = 10;
+
     public GiaoDienChonGhe() {
         initComponents();
         
         
 //       layGhe();
        luuTextField();
-//        layMauGhe();
-        // lay duoc ma chuyen bay
-        // dua tat ca ghe vao trong ds luu vao csdl
-     //   String maChuyenBayyy = layMaChuyenBay();
-//        luuGhe(maChuyenBay);
-//          xuatThongTinVaoBang();
- //           layMaChuyenBay();
-          // String aaa = "CB09";
-           // luuGheVaoCSDL(aaa);
-           layGheTuCSDL("CB01");
-           
-           layMauGhe();
+           layGheTuCSDL(this.maChuyenBay);
+            
+                layMauGhe();
+                
+                    System.out.println("tre ve: " + GiaoDienChonGhe.soGheTreEmVe);
+                    System.out.println("tre di: "+ GiaoDienChonGhe.soGheTreEmDi);
+                     System.out.println("lon ve: "+ GiaoDienChonGhe.soGheNguoiLonVe);
+                     System.out.println("lon di: "+  GiaoDienChonGhe.soGheNguoiLonDi);
+//layGheTuCSDL("CB01");
+//           
+//           layMauGhe();
            
             xuatThongTinVaoBang();
+
+
+            
             
        
     }
@@ -97,7 +98,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
     
     public static Date ngayDi;
     public static Date ngayVe;
-    
+
     public static int soGheNguoiLonDi;
     public static int soGheNguoiLonVe;
     public static int soGheTreEmDi;
@@ -109,7 +110,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
     
     public GiaoDienChonGhe(String maSanBayDi, String maSanBayDen, 
           //  Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm, String maChuyenBay){
-            Date ngayDi, Date ngayVe, boolean di, boolean ve, int soGheNguoiLon, int soGheTreEm, String maChuyenBay){
+            Date ngayDi, Date ngayVe, boolean di, boolean ve,  boolean khuHoi, int soGheNguoiLon, int soGheTreEm, String maChuyenBay){
         initComponents();
         this.maSanBayDi = maSanBayDi;
         this.maSanBayDen = maSanBayDen;
@@ -117,6 +118,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         this.ngayVe = ngayVe;
         this.soGheNguoiLonDi = soGheNguoiLon;
         this.soGheNguoiLonVe = soGheNguoiLon;
+
         this.soGheTreEmDi = soGheTreEm;
         this.soGheTreEmVe = soGheTreEm;
         this.maChuyenBay = maChuyenBay;
@@ -126,16 +128,33 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
 //        maChuyenBay = "phong";
 //        luuGheVaoCSDL(maChuyenBay);
 
+
+
+        System.out.println("chon bay di");
+            layGheTuCSDL(this.maChuyenBay);
+          
+           luuTextField();
+           layMauGhe();
+           
+           
+           
+
     }
-    public GiaoDienChonGhe(String maChuyenBay, int soGheNguoiLon, int soGheTreEm){
+    public GiaoDienChonGhe(String maChuyenBay,int soGheNguoiLon, int soGheTreEm){
         initComponents();
         this.maChuyenBay = maChuyenBay;
-        this.soGheNguoiLonDi = soGheNguoiLon;
-        this.soGheNguoiLonVe = soGheNguoiLon;
-        this.soGheTreEmDi = soGheTreEm;
-        this.soGheTreEmVe = soGheTreEm;
+       // this.soGheNguoiLonDi = soGheNguoiLon;
+       this.soGheNguoiLonVe = soGheNguoiLon;
+      //  this.soGheTreEmDi = soGheTreEm;
+      this.soGheTreEmVe = soGheTreEm;
+        
+              System.out.println("chon bay ve");
+            layGheTuCSDL(this.maChuyenBay);
+          
+           luuTextField();
+           layMauGhe();
+           
     }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,37 +170,34 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
 
     private void xuatThongTinVaoBang(){
 
-        
+        System.out.println("dsvedi "+ dsVeDi.size());
           DefaultTableModel dtm = (DefaultTableModel) jTable_ThongTinNguoiBay.getModel();
         dtm.setNumRows(0);
         Vector vt ;
-        if (di && ve){
+          if (di){
         for(int i = 0; i < dsVeDi.size();i++){
             vt = new Vector();
-            
+
             vt.add(dsVeDi.get(i).getMaChuyenBay());
             vt.add(dsVeDi.get(i).getTenNguoiBay());
             vt.add(dsVeDi.get(i).getMaGhe());
             vt.add(dsVeDi.get(i).getGia());
-            
-            
+
+
             System.out.println(dsVeDi.get(i));
-            
+
             dtm.addRow(vt);
-            //System.out.println(dsTextField.get(5).getName());
             for (int j = 0 ; j < dsTextField.size();j++){
-                
+
                 // đổi textfield thành màu xanh
                 if(dsTextField.get(j).getName().trim().equals(dsVeDi.get(i).getMaGhe().trim())){
                     System.out.println("vonglap"+ dsTextField.get(j).getName());
-//                    System.out.println(dsVe.get(i).getMaVe());
-                    System.out.println("true");
                     dsTextField.get(j).setBackground(Color.GREEN);
                     listSelected.add(dsTextField.get(j));
 
                    break;
                 }
-                
+
                 else {
                     System.out.println("vonglap"+ dsTextField.get(j).getName());
                     System.out.println("false");
@@ -189,51 +205,44 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
             }
         }
         jTable_ThongTinNguoiBay.setModel(dtm);
-            
+
                 for(int k =0 ; k< listSelected.size();k++){
-//            System.out.println();
             System.out.println("alo: "+listSelected.get(k).getName());
         }
         }
         else if (!ve && !di){
             for(int i = 0; i < dsVeVe.size();i++){
             vt = new Vector();
-            
+
             vt.add(dsVeVe.get(i).getMaChuyenBay());
             vt.add(dsVeVe.get(i).getTenNguoiBay());
             vt.add(dsVeVe.get(i).getMaGhe());
             vt.add(dsVeVe.get(i).getGia());
-            
-            
+
+
             System.out.println(dsVeVe.get(i));
-            
+
             dtm.addRow(vt);
-            //System.out.println(dsTextField.get(5).getName());
             for (int j = 0 ; j < dsTextField.size();j++){
-                
+
                 // đổi textfield thành màu xanh
                 if(dsTextField.get(j).getName().trim().equals(dsVeVe.get(i).getMaGhe().trim())){
                     System.out.println("vonglap"+ dsTextField.get(j).getName());
-//                    System.out.println(dsVe.get(i).getMaVe());
-                    System.out.println("true");
                     dsTextField.get(j).setBackground(Color.GREEN);
                     listSelected.add(dsTextField.get(j));
-
                    break;
                 }
                 
-                else {
-                    System.out.println("vonglap"+ dsTextField.get(j).getName());
-                    System.out.println("false");
-                }
+//                else {
+//                }
             }
         }
         jTable_ThongTinNguoiBay.setModel(dtm);
             
- for(int k =0 ; k< listSelected.size();k++){
-//            System.out.println();
-            System.out.println("alo: "+listSelected.get(k).getName());
-        }
+// for(int k =0 ; k< listSelected.size();k++){
+////            System.out.println();
+//            System.out.println("alo: "+listSelected.get(k).getName());
+//        }
         }
 
         
@@ -339,154 +348,13 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
 //            System.err.println(dsTextField.get(i).getName());
 //        }
         return 1;
-    }
-
-//     private int luuGheVaoCSDL(String maChuyenBay){
-//         String maGhe= "";
-//
-//         maGhe = maChuyenBay.trim()+"-Ghe_"; // quy tắc đặt tên ghế là sẽ thêm mã chuyến bay vô trước // không giống như trước lắm nhưng mà
-//                                                    // tui đang làm để tiện ss, có gì thay đổi sau nè, oke chưa. khoan,lúc load ghế thì ph load từ trong csdl ra chứ dúng luôn, trong controller có viết cái tạo ghế theo mã cb r á. dùngtet thôi, mà nói tiếp đi
-//        // System.out.println(maGhe);                 // cái kiểu dặt tên trongconttoller nó hơi khó để so sánh với cái tên ghế , hiểu mà, sửa sau đc  o ke
-//         
-//        String LoaiThuongGia= "TGia";
-//        
-//        String LoaiPhoThong = "PThong";
-//        
-//        byte trangThai = 1;
-//            //danhMaGhe(maGhe, LoaiThuongGia, LoaiPhoThong, trangThai);
-//         for(int k = 1; k<=15; k++){
-//            
-//
-//                for(int j = 1; j<=6;j++ ){
-//                     model.Ghe ghe = new model.Ghe() ;
-//                     System.out.println(maGhe);
-//                     if(j == 1){
-//                       ghe.setMaGhe( maGhe + k +"A");
-//                        
-//                     }
-//                     else if(j==2){
-//                         ghe.setMaGhe(maGhe + k +"B");
-//                     } else if(j==3){
-//                         ghe.setMaGhe(maGhe + k +"C");
-//                     } else if(j==4){
-//                         ghe.setMaGhe(maGhe + k +"D");
-//                     } else if(j==5){
-//                         ghe.setMaGhe(maGhe + k +"E");
-//                     } else if(j==6){
-//                         ghe.setMaGhe(maGhe + k +"F");
-//                     }
-//            
-//
-//            
-//                     ghe.setMaChuyenBay(maChuyenBay);
-//
-//                     if(k<6){
-//                         ghe.setLoaiGhe(LoaiThuongGia);
-//
-//                     }
-//                     else ghe.setLoaiGhe(LoaiPhoThong);
-//                     
-//                      ghe.setTrong(trangThai);
-//                      
-////                      controller.Controller.arrayListGhe.add(ghe);
-////                        System.out.println(ghe.getMaGhe());
-//                        dsGheDau.add(ghe);
-////                      System.out.println(dsGheDau.size());
-//                       //; đến đây là nó sẽ load 15 hàng  ghế dô một ds trống oke chưa ok. nhưng ghế nào cũng trống hết à? đúng
-//                        // hàm này để khi mà có 1 chuyến bay mới xh thì nó sẽ thêm ghế vào chuyến bay đó, sau đến lúc ta thêm chuyến bay thì tạo bảng ghế của chuyến bay đó luôn mà
-//                          // trong 1 model chuyến bay có arraylist ghế r á.
-//                          // vậy chuyến bay tạo bằng tay rồi tạo bảng ghế lúc đó luôn hay sao
-//                          // cái đấy t làm sau, tạm thời thì tạo cb tay, thêm ds ghế tay,oke vậy là tạm thời dùng cái hàm thêm ghế bên controller để thêm vào ha,
-//                          // lúc tìm chuyến bay sẽ tìm chuyến nào có đủ ghế trống ấy, nên lúc mở thì ph xét luôn chỗ nào trống chỗ nào k
-//                          // vậy là load ghế từ lúc mở ctrinh luôn đúng k, là lúc mở giao diện chọn ghế ấy, sẽ có mã chuyến bay đi vào đúng k?. 
-//                          // đúng, nhưng mà luc sđó là chuyến bay đã chọn rồi mà, nếu mà chuyến bay đó k có đủ ghế thì k hiện cho người ta chọn luôn chứ, đúng.
-//                          // vậy thì phải load từ trước khi hiện chuyến bay cho người chọn chứ. là sao 
-//                          // thế này nha: đăng nhập -> load ghế -> chọn chuyến bay -> chọn ghế. 
-//                          // thì k cho hiện chuyến bay lúc chọn thì có phải nó phải load ngay chỗ này k
-//                          // ghế trong csdl ph có sẵn r chứ. đúng luôn, mình có chuyến bay thì có ghế trống liền luôn , xong rồi ai chọn mua gì đó mình sẽ update vào, thì đúng
-//                          // rồi ông nói thêm gì k đc chỉ đi, nhưng mà lúc từ chọn ghế sang hóa đơn là danh sách vé nha. có luôn!d dể mở cho xem
-//
-//                        
-//    
-//                }
-//            }
-//         
-////         model.ChuyenBay mbay = new model.ChuyenBay();
-////                        mbay.setArrayListGhe(dsGheDau);
-//                        
-//                        
-//         DataConnection.createStatement();
-//         String sql = "insert into GHE values(?,?,?,?)"; //xem cái chỗ này thử sai đâu mà thêm là thất bạn thôi ???
-//         
-//         try {
-//            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
-//            for(model.Ghe ghe : dsGheDau){
-//        //  for (int i = 0; i < dsGheDau.size();i++){
-//              
-////              ps.setString(1, dsGhe.get(i).getMaGhe());
-////              System.out.println(dsGhe.get(i).getMaGhe());
-////              ps.setString(2, dsGhe.get(i).getMaChuyenBay());
-////              ps.setString(3, dsGhe.get(i).getLoaiGhe());
-////              ps.setByte(4,dsGhe.get(i).getTrong());
-//
-//
-//                ps.setString(1, ghe.getMaGhe());
-//                System.out.println("insert " +ghe.getMaGhe());
-//                
-//                ps.setString(2, ghe.getMaChuyenBay());
-//                System.out.println(ghe.getMaChuyenBay());
-//                
-//                ps.setString(3, ghe.getLoaiGhe());
-//                System.out.println(ghe.getLoaiGhe());
-//                
-//                ps.setByte(4, ghe.getTrong());
-//                System.out.println(ghe.getTrong());
-//                
-//               // JOptionPane.showMessageDialog(this, "them thanh cong");
-//                ps.executeUpdate();
-//            }
-//            System.err.println("thanh cong");
-//            
-//        } catch (Exception e) {
-////            JOptionPane.showMessageDialog(this, "them that bai");
-//             System.err.println("that bai");
-//        }
-//        
-//        
-//        return 1;
-//    }
-//         private String layMaChuyenBay(){
-//        String maChuyenBayy ="";
-//        DataConnection.createStatement();
-//        String sql = "select * from CHUYENBAY"; 
-//        try {
-//            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
-//            
-//             while (rs.next()){
-//              maChuyenBayy = rs.getString("MaChuyenBay");  // đến chỗ này là nó lấy ra từng mã chuyến bay ok hong ? ok
-//              //   System.out.println(maChuyenBayy+"ádsadas");
-//                 
-//                 luuGheVaoCSDL(maChuyenBayy); 
-////             
-//            }
-//           
-////           ps.close();
-//      
-//        }
-//         catch (Exception e) {
-//        }
-//
-//        
-//        return maChuyenBay;
-//    }
-         
+    }            
          
  
 
     
     private int layGheTuCSDL(String maChuyenBay){
-        
+        System.out.println("lay ghe");
         connection.DataConnection.createStatement();
         String sql = "select * from GHE";
         try {
@@ -496,27 +364,28 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
             while(rs.next()){
                   model.Ghe ghe = new model.Ghe() ;
                   // 
-                  if(rs.getString("MaChuyenBay").trim().equals(maChuyenBay)){
+                  if(rs.getString("MaChuyenBay").trim().equals(maChuyenBay.trim())){
+                      
                       ghe.setMaGhe(rs.getString("MaGhe"));
                   ghe.setMaChuyenBay(rs.getString("MaChuyenBay"));
                   ghe.setLoaiGhe(rs.getString("LoaiGhe"));
                   ghe.setTrong(rs.getByte("Trong"));
                   //
+//                      System.out.println(ghe.getMaGhe());
                   dsGhe.add(ghe);
                   }
+//                  else {
+//                  }
                   
                   
                   
                 
             }
+//            System.out.println(dsGhe.size());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "lay that bai");
         }
-        
-//        for (int i =0;i< dsGhe.size();i++){
-//            System.err.println("SQL "+dsGhe.get(i).getMaGhe().trim());
-//        }
-//        
+
         return 1;
     }
     
@@ -526,24 +395,19 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
          for(int i = 0 ; i< dsGhe.size();i++){
              
              if (dsGhe.get(i).getTrong() == trong){
-                 System.out.println(dsGhe.get(i).getMaGhe().substring(5));
+//                 System.out.println(dsGhe.get(i).getMaGhe().substring(5));
                  
                   for (int j=0;j< dsTextField.size();j++){
                       
-                // if(dsTextField.get(j).getName().trim().equals(dsGhe.get(i).getMaGhe().trim())){
                 if(dsGhe.get(i).getMaGhe().substring(5).trim().equalsIgnoreCase(dsTextField.get(j).getName().trim())){
-             //  if (dsTextField.get(j).getName().equalsIgnoreCase(dsGhe.get(i).getMaGhe().substring(5)))  {
                dsTextField.get(j).setBackground(Color.red);
-                     System.err.println("bang nhau");
-                  //    System.err.println("mau "+dsGhe.get(i).getMaGhe().substring(5));
-                  //   System.out.println("text "+dsTextField.get(j).getName());
+//                     System.err.println("bang nhau");
+
                  }
-                else {
-               //     System.out.println("text "+dsTextField.get(j).getName());
-               //      System.err.println("mau "+dsGhe.get(i).getMaGhe().substring(5));
-                //  System.out.println("khac nhau");
-                   System.out.println(dsTextField.get(j).getName());
-                }
+//                else {
+//
+//                   System.out.println(dsTextField.get(j).getName());
+//                }
              }   
                  
              
@@ -558,18 +422,16 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
     
         private void xuLiSuKienClickVaMoBangNhapThongTin(JTextField a){
 
-           // a.setBackground(Color.getHSBColor(255, 255, 255));
             // System.out.println(a.getBackground().getRed()+"-"+a.getBackground().getGreen()+"-"+a.getBackground().getBlue()); // 240 240 240
      if ((a.getBackground().getRed()) == 240 && (a.getBackground().getGreen() == 240)&&(a.getBackground().getBlue() == 240)){ // so sánh nếu mà ghế màu trắng mới cho click
-                System.err.println("trang");            //khi ông chọn xong r mở cái này lên mấy nút kia vẫn ấn đc mà, nhưng mấy cái ghế đấy nó k chạy event thì ph
+//                System.err.println("trang");            //khi ông chọn xong r mở cái này lên mấy nút kia vẫn ấn đc mà, nhưng mấy cái ghế đấy nó k chạy event thì ph
                 a.setBackground(Color.GREEN);
                 this.listSelected.add(a);
-                System.err.println(a.getName());
+//                System.err.println(a.getName());
 
-               // new GiaoDienNhapThongTinNguoiBayKhiChonGhe(a.getName(), maChuyenBay).setVisible(true);
+               if (di){new GiaoDienNhapThongTinNguoiBayKhiChonGhe(a.getName(), this.maChuyenBay, this.soGheNguoiLonDi, this.soGheTreEmDi).setVisible(true);}
+               else if (!di &&!ve) new GiaoDienNhapThongTinNguoiBayKhiChonGhe(a.getName(), this.maChuyenBay, this.soGheNguoiLonVe, this.soGheTreEmVe).setVisible(true);
                
-               new GiaoDienNhapThongTinNguoiBayKhiChonGhe(a.getName(), this.maChuyenBay, this.soGheNguoiLonDi, this.soGheTreEmDi).setVisible(true);
-                // giai phap tam 
                 this.dispose();
                 
                 //
@@ -577,8 +439,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
  
             else if ((a.getBackground().getRed()) == 0 && (a.getBackground().getGreen() == 255)&&(a.getBackground().getBlue() == 0)) {
                 a.setBackground(Color.white);
-                System.err.println("chuyen tu xanh sang trang");
-              //  this.listUnSelected.add(a);
+//                System.err.println("chuyen tu xanh sang trang");
                 
 // viet thu tim ghe moi chon de xoa ra khoi danh sach
             for(int i =0;i < listSelected.size();i++){
@@ -638,19 +499,6 @@ private void changeColor(Color a){
               
             } 
   
- // hàm clean hai danh sách được chọn và không được chọn sau khi xác nhận hoặc hủy xác nhận
-
-  //listSelected.removeAll(listSelected);
-  
-//  listUnSelected.removeAll(listUnSelected);
-  
- // ---------------------------------------------- 
-  
- // test code 
-//  if (listSelected.size() == 0){
-//              System.err.println("ds chon trong");
-//
-//  }
 
    
 }
@@ -2296,8 +2144,8 @@ private void changeColor(Color a){
                 .addGap(0, 20, Short.MAX_VALUE))
         );
 
-        Ghe_1A.setName("Ghe_1A");
-        Ghe_1B.setName("Ghe_1B");
+        Ghe_1A.setName("ghe_1A");
+        Ghe_1B.setName("ghe_1B");
         Ghe_1C.setName("ghe_1C");
         Ghe_1D.setName("ghe_1D");
         Ghe_1E.setName("ghe_1E");
@@ -3517,15 +3365,27 @@ private void changeColor(Color a){
        if(this.ve == true){ 
                 ve = false;
                 di = false;
-           new GiaoDienChonChuyenBayVe(maSanBayDen, maSanBayDi, ngayVe, soGheNguoiLonVe, soGheTreEmVe).setVisible(true); // looix k mở được chọn chuyến bay về khi truyền thamn số vào
+           new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe, this.soGheNguoiLonVe, this.soGheTreEmVe).setVisible(true); // looix k mở được chọn chuyến bay về khi truyền thamn số vào
           // khuHoi = false;
           
             changeColor(Color.RED);
            this.dispose();
        }
        else {
-            changeColor(Color.RED);
-            this.dispose();
+           changeColor(Color.RED);
+            System.out.println(this.khuHoi);
+            if(true == this.khuHoi){
+                
+                new GiaoDienHoaDonHaiChieu(dsVeDi, dsVeVe).setVisible(true);
+                this.dispose();
+            }
+            else {
+                System.out.println("di mot chieu");
+                new GiaoDienHoaDonMotChieu().setVisible(true);
+                this.dispose();
+            }
+            
+            
        }
     }//GEN-LAST:event_Xac_NhanActionPerformed
 

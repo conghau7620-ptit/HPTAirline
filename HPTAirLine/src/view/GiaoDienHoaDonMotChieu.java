@@ -52,10 +52,13 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
     private String maHoaDon;
     private String maChuyenBayDi;
     private ArrayList<Ve> danhSachVe;
-
-    public GiaoDienHoaDonMotChieu(ArrayList<Ve> danhSachVe) {
+//public GiaoDienHoaDonMotChieu(){
+//    
+//}
+//    public GiaoDienHoaDonMotChieu(ArrayList<Ve> danhSachVeDi) {
+        public GiaoDienHoaDonMotChieu(){
         initComponents();
-        this.danhSachVe = danhSachVe;
+        this.danhSachVe = GiaoDienChonGhe.dsVeDi;
         this.maHoaDon = danhSachVe.get(0).getMaHoaDon();
         this.maChuyenBayDi = danhSachVe.get(0).getMaChuyenBay();
         dtmVe = (DefaultTableModel) jTable_VeDaChon.getModel();
@@ -941,47 +944,48 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ArrayList<Ve> danhSachVe = new ArrayList<>();
-                String maChuyenBayDi = "CB01";
-                String maHoaDon = "HD01";
-
-                Ve v1 = new Ve();
-                v1.setKyGui((short) 20);
-                v1.setMaVe("V01");
-                v1.setCmndNguoiBay("CMNDNgu");
-                v1.setMaChuyenBay("CB01");
-                v1.setMaHoaDon(maHoaDon);
-                v1.setMaGhe("A01-CB01");
-//                v1.setEmailNguoiBay("emai1");
-//                v1.setTrangThaiDoi((byte) 0);
-//                v1.setTrangThaiVe((byte) 0);
-//                v1.setSdtKhachHang("");
-                v1.setGia(0);
-                v1.setTenNguoiBay("ten n");
-//                v1.setSdtNguoiBay("123");
-
-                Ve v2 = new Ve();
-                v2.setKyGui((short) 20);
-                v2.setMaVe("V02");
-                v2.setCmndNguoiBay("CMNDNgu");
-                v2.setMaChuyenBay("CB01");
-                v2.setMaHoaDon(maHoaDon);
-                v2.setMaGhe("A02-CB01");
-//                v2.setEmailNguoiBay("emailNo");
-//                v2.setTrangThaiDoi((byte) 0);
-//                v2.setTrangThaiVe((byte) 0);
-//                v2.setSdtKhachHang("");
-                v2.setGia(0);
-                v2.setTenNguoiBay("ten ngu2");
-//                v2.setSdtNguoiBay("223");
-
-                danhSachVe.add(v1);
-                danhSachVe.add(v2);
-
-                for (Ve v : danhSachVe) {
-                    System.out.println(v.toString());
-                }
-                new GiaoDienHoaDonMotChieu(danhSachVe).setVisible(true);
+//                ArrayList<Ve> danhSachVe = new ArrayList<>();
+//                String maChuyenBayDi = "CB01";
+//                String maHoaDon = "HD01";
+//
+//                Ve v1 = new Ve();
+//                v1.setKyGui((short) 20);
+//                v1.setMaVe("V01");
+//                v1.setCmndNguoiBay("CMNDNgu");
+//                v1.setMaChuyenBay("CB01");
+//                v1.setMaHoaDon(maHoaDon);
+//                v1.setMaGhe("A01-CB01");
+////                v1.setEmailNguoiBay("emai1");
+////                v1.setTrangThaiDoi((byte) 0);
+////                v1.setTrangThaiVe((byte) 0);
+////                v1.setSdtKhachHang("");
+//                v1.setGia(0);
+//                v1.setTenNguoiBay("ten n");
+////                v1.setSdtNguoiBay("123");
+//
+//                Ve v2 = new Ve();
+//                v2.setKyGui((short) 20);
+//                v2.setMaVe("V02");
+//                v2.setCmndNguoiBay("CMNDNgu");
+//                v2.setMaChuyenBay("CB01");
+//                v2.setMaHoaDon(maHoaDon);
+//                v2.setMaGhe("A02-CB01");
+////                v2.setEmailNguoiBay("emailNo");
+////                v2.setTrangThaiDoi((byte) 0);
+////                v2.setTrangThaiVe((byte) 0);
+////                v2.setSdtKhachHang("");
+//                v2.setGia(0);
+//                v2.setTenNguoiBay("ten ngu2");
+////                v2.setSdtNguoiBay("223");
+//
+//                danhSachVe.add(v1);
+//                danhSachVe.add(v2);
+//
+//                for (Ve v : danhSachVe) {
+//                    System.out.println(v.toString());
+//                }
+             //   new GiaoDienHoaDonMotChieu(danhSachVe).setVisible(true);
+               new GiaoDienHoaDonMotChieu().setVisible(true);
             }
         });
     }
