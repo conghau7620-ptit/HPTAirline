@@ -5,8 +5,11 @@
  */
 package view;
 
+import connection.DataConnection;
 import java.awt.Color;
 import java.awt.Component;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,7 +45,8 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
      jPanel7.setVisible(false);
     //
     
-    
+    System.out.println("so tre em" + this.soGheTreEm);
+    System.out.println("so nguoi lon" + this.soGheNguoiLon);
     if(this.soGheNguoiLon != 0 ){ 
       
     }
@@ -489,12 +493,27 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
     private void jButton_XacNhanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_XacNhanMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_XacNhanMouseClicked
-
+private String xuLiMaVe(){
+    String maVe = "V01";
+    for (int k = 0 ; k <= (GiaoDienChonGhe.dsVeDi.size() + GiaoDienChonGhe.dsVeVe.size()); k++){
+         System.out.println(GiaoDienChonGhe.dsVeDi.size());
+         System.out.println(k);
+        if (k <= 9){
+            maVe= "V0"+(k+1);
+        }
+        else maVe= "V" + (k+1);
+    }
+    
+    
+    
+    return maVe;
+}
     private void jButton_XacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanActionPerformed
         // TODO add your handling code here:
               
-                String maVe = "CB";
-                String SDTkhach = "*********";
+                String maVe = xuLiMaVe();
+                
+                String SDTkhach = "*********"; // laays tu sql
 
                 String maChuyenBay = GiaoDienChonGhe.maChuyenBay;
                 String maGhe = this.maGhe;
@@ -509,8 +528,28 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                 // tre em
                 String tenTre = jTextField_TenTreEm.getText();
                 String ngaySinh = jTextField_NgaySinhTreEm.getText();
-                String maHoaDon = "hoadon";
-
+                
+                // lấy mã hóa đươn
+                
+                String sql = "select * from HOADON";
+                connection.DataConnection.createStatement();
+               
+                int soHoaDon =1;
+                try {
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                soHoaDon++; 
+            }
+                    System.out.println(soHoaDon);
+        } catch (Exception e) {
+        }
+                
+                 String maHoaDon = ""; // so sanh roi lay tu sql
+                 if(soHoaDon <= 9) maHoaDon= "HD0"+ soHoaDon;
+                 else maHoaDon = "HD" + soHoaDon;
+                 
                 int gia = 9999;
                short kiGui = 0;
                 model.Ve ve;
@@ -521,20 +560,45 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                      ve = new model.Ve();
                    ve.setMaVe(maVe);
                     ve.setMaChuyenBay(maChuyenBay);
-                    
+                    ve.setMaHoaDon(maHoaDon);
                     ve.setGia(gia);
                     ve.setTenNguoiBay(tenTre);
                     ve.setMaChuyenBay(maChuyenBay);
                     ve.setMaGhe(maGhe);
                     System.out.println("tre em");
+                  
+                    if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di){
+                        GiaoDienChonGhe.soGheTreEmVe--;
+                        
+                    }
+                    else if(GiaoDienChonGhe.di){
+                        GiaoDienChonGhe.soGheTreEmDi--;
+                        
+                    }
                 }
                 else {
                   // ve = new model.Ve(maVe, maChuyenBay, gia, 0, CMND, ten, maHoaDon, maGhe);
                   ve = new model.Ve(maVe, maChuyenBay, gia, kiGui, CMND, ten, maHoaDon, maGhe);
                     System.out.println("nguoi lon");
+                    
+                    if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di){
+                        GiaoDienChonGhe.soGheNguoiLonVe--;
+                       
+                    }
+                    else if (GiaoDienChonGhe.di){
+                        GiaoDienChonGhe.soGheNguoiLonDi--;
+                        
+                    }
                 }
+                
                     
-                    
+
+                                    
+//                    System.out.println("tre ve: " + GiaoDienChonGhe.soGheTreEmVe);
+//                    System.out.println("tre di: "+ GiaoDienChonGhe.soGheTreEmDi);
+//                     System.out.println("lon ve: "+ GiaoDienChonGhe.soGheNguoiLonVe);
+//                     System.out.println("lon di: "+  GiaoDienChonGhe.soGheNguoiLonDi);
+                     
                 if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di) {
                     GiaoDienChonGhe.dsVeVe.add(ve);
                     System.out.println(" them ve vao ds ve ve");

@@ -49,8 +49,8 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
     boolean di, ve ;
     
     public GiaoDienChonChuyenBayDi(String maSanBayDi, String maSanBayDen, 
-         //   Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
-                Date ngayDi, Date ngayVe, boolean di, boolean ve, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
+          // Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
+               Date ngayDi, Date ngayVe, boolean di, boolean ve, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
         initComponents();
          this.maSanBayDi= maSanBayDi;
          this.maSanBayDen = maSanBayDen;
@@ -280,7 +280,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 //                            (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
                     
                     //new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
-                     new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+                     new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
                     this.dispose();
                 }
         }
@@ -293,7 +293,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 //                new GiaoDienChonGhe((String) jTable_KetQuaTimKiem.getValueAt(row, 0), ""
 //                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
                 //new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
-                 new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+                 new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
                 this.dispose();
 
             }       
