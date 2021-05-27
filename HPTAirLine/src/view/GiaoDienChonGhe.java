@@ -181,7 +181,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
             vt.add(dsVeDi.get(i).getMaChuyenBay());
             vt.add(dsVeDi.get(i).getTenNguoiBay());
             vt.add(dsVeDi.get(i).getMaGhe());
-            vt.add(dsVeDi.get(i).getGia());
+            vt.add(dsVeDi.get(i).getMaHoaDon());
 
 
             System.out.println(dsVeDi.get(i));
@@ -2422,7 +2422,7 @@ private void changeColor(Color a){
 
             },
             new String [] {
-                "Mã chuyến bay", "Hành khách", "Ghế ngồi", "Giá tiền"
+                "Mã chuyến bay", "Hành khách", "Ghế ngồi", "Mã hóa Đơn"
             }
         ));
         jScrollPane1.setViewportView(jTable_ThongTinNguoiBay);

@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,7 +35,7 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
     private String maChuyenBay = "";
     int soGheNguoiLon;
     int soGheTreEm;
- 
+    String luaChon = "nguoiLon";
      public GiaoDienNhapThongTinNguoiBayKhiChonGhe(  String maGhe,String maChuyenBay, int soGheNguoiLon, int soGheTreEm ) {
         initComponents(); 
     this.maGhe = maGhe;
@@ -467,6 +468,7 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
     private void jbutton_NguoiLonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutton_NguoiLonActionPerformed
         // TODO add your handling code here:
         jPanel6.setVisible(true);
+        luaChon = "nguoiLon";
         
     }//GEN-LAST:event_jbutton_NguoiLonActionPerformed
 
@@ -474,6 +476,7 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanel7.setVisible(true);
         jPanel6.setVisible(false);
+        luaChon= "treEm";
     }//GEN-LAST:event_jbutton_TreEmActionPerformed
 
     private void jTextField_NgaySinhTreEmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_NgaySinhTreEmActionPerformed
@@ -510,9 +513,9 @@ private String xuLiMaVe(){
 }
     private void jButton_XacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanActionPerformed
         // TODO add your handling code here:
-              
+             
                 String maVe = xuLiMaVe();
-                
+             
                 String SDTkhach = "*********"; // laays tu sql
 
                 String maChuyenBay = GiaoDienChonGhe.maChuyenBay;
@@ -522,12 +525,15 @@ private String xuLiMaVe(){
                 String CMND = jTextField_CMND.getText();
                 String ten = jTextField_TenNguoiBay.getText();
                 System.out.println("+"+ten+"+");
-                String email = jTextField_NgaySinhNguoiLon.getText();
+                String ngaySinhNguoiLon = jTextField_NgaySinhNguoiLon.getText();
                 
                 
                 // tre em
                 String tenTre = jTextField_TenTreEm.getText();
-                String ngaySinh = jTextField_NgaySinhTreEm.getText();
+                String ngaySinhTreEm = jTextField_NgaySinhTreEm.getText();
+                
+                
+               
                 
                 // lấy mã hóa đươn
                 
@@ -550,13 +556,29 @@ private String xuLiMaVe(){
                  if(soHoaDon <= 9) maHoaDon= "HD0"+ soHoaDon;
                  else maHoaDon = "HD" + soHoaDon;
                  
-                int gia = 9999;
+                int gia = 0;
                short kiGui = 0;
-                model.Ve ve;
+                model.Ve ve = null;
+                
+                 String regexCMND = "\\d{9}";
+               //  String regexEmail=  "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";// "\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b";
+                 String regexBirth = "\\d{2}[-|/]\\d{2}[-|/]\\d{4}";
+                
+                if (ten.equals("") && tenTre.equals("")) JOptionPane.showMessageDialog(this, "Họ và tên không được bỏ trống.");
+                else if (!ten.equals("") && CMND.equals("")) JOptionPane.showMessageDialog(this, "CMND/Hộ chiếu không được để trống");
+                else if (!CMND.matches(regexCMND)) JOptionPane.showMessageDialog(this, "vui lòng nhập đúng số CMND/Hộ chiếu");
+                
+                else if(ngaySinhNguoiLon.equals("") && ngaySinhTreEm.equals("")) JOptionPane.showMessageDialog(this, "Ngày sinh không được bỏ trống.");
+                else if (!tenTre.equals("") && ngaySinhTreEm.equals("")) JOptionPane.showMessageDialog(this, "Ngày sinh không đượpc bỏ trống");
+                else if (!tenTre.equals("") && !ngaySinhTreEm.matches(regexBirth)) JOptionPane.showMessageDialog(this, "vui lòng nhập đúng ngày tháng năm sinh");
+                else if (!ten.equals("") && ngaySinhNguoiLon.equals("")) JOptionPane.showMessageDialog(this, "Ngày sinh không đượpc bỏ trống");
+                else if (!ten.equals("") &&  !ngaySinhNguoiLon.matches(regexBirth)) JOptionPane.showMessageDialog(this, "vui lòng nhập đúng ngày tháng năm sinh");
+                else {
                 
                 
-                if(ten.equals("")) {
-                 
+                
+               // if(ten.equals("")) { // chỗ này là khi tên ng lớn rỗng thì lấy thông tin của trẻ em
+                 if (luaChon == "treEm"){
                      ve = new model.Ve();
                    ve.setMaVe(maVe);
                     ve.setMaChuyenBay(maChuyenBay);
@@ -576,7 +598,7 @@ private String xuLiMaVe(){
                         
                     }
                 }
-                else {
+                else if (luaChon == "nguoiLon") { // ngược lại một lúc chỉ lấy thông tin của ng  lớn or trẻ em thôi chứ k lấy hết
                   // ve = new model.Ve(maVe, maChuyenBay, gia, 0, CMND, ten, maHoaDon, maGhe);
                   ve = new model.Ve(maVe, maChuyenBay, gia, kiGui, CMND, ten, maHoaDon, maGhe);
                     System.out.println("nguoi lon");
@@ -593,11 +615,7 @@ private String xuLiMaVe(){
                 
                     
 
-                                    
-//                    System.out.println("tre ve: " + GiaoDienChonGhe.soGheTreEmVe);
-//                    System.out.println("tre di: "+ GiaoDienChonGhe.soGheTreEmDi);
-//                     System.out.println("lon ve: "+ GiaoDienChonGhe.soGheNguoiLonVe);
-//                     System.out.println("lon di: "+  GiaoDienChonGhe.soGheNguoiLonDi);
+                                   
                      
                 if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di) {
                     GiaoDienChonGhe.dsVeVe.add(ve);
@@ -615,7 +633,9 @@ private String xuLiMaVe(){
  //               xacDinhNutDuocBam(jButton_XacNhan);
                 new GiaoDienChonGhe().setVisible(true);
                 this.dispose();
-          
+                
+                
+                }
     }//GEN-LAST:event_jButton_XacNhanActionPerformed
 
     /**
