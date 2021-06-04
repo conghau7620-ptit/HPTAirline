@@ -74,7 +74,7 @@ public class InsertData {
             ps.setByte(4, hoaDon.getTrangThaiThanhToan());
             ps.setInt(5, hoaDon.getTongTien());
             ps.setString(6, hoaDon.getSdtNhanVien());
-
+            
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {

@@ -119,13 +119,30 @@ public class UpdateData {
     }
     
     public static boolean updateHoaDon(String maHoaDon, int tongTien){
-        byte trong = 1;
          String sqlCommand = "update dbo.HOADON set TongTien=?"
                 + " where MaHoaDon=?";
         try {
             DataConnection.createStatement();
             PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
             ps.setInt(1,tongTien);
+            ps.setString(2,maHoaDon);
+            
+            return ps.executeUpdate() > 0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sua ghe that bai");
+        return false;
+    }
+    public static boolean updateHoaDon(String maHoaDon, byte trangThaiThanhToan){
+        
+         String sqlCommand = "update dbo.HOADON set TrangThaiThanhToan=?"
+                + " where MaHoaDon=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setInt(1, trangThaiThanhToan);
             ps.setString(2,maHoaDon);
             
             return ps.executeUpdate() > 0;

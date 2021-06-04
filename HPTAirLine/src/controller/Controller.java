@@ -190,6 +190,7 @@ public class Controller {
     }
     public static void main(String[] args) {
         new LoadData();
+
        // insertListGhe("CB07"); // cái hàm này chạy khi nào thế
         
         String maChuyenBayy ="";

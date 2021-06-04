@@ -379,7 +379,8 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                 String maHoaDon = (String) jTable_HoaDon.getValueAt(rowHoaDon, 0);
                 String sdtKhachHang = (String) jTable_HoaDon.getValueAt(rowHoaDon, 1);
                 String maVe = (String) jTable_VeDaChon.getValueAt(row, 0);
-                String maGhe = (String) jTable_VeDaChon.getValueAt(row, 12);
+                String maGhe = (String) jTable_VeDaChon.getValueAt(row, 7);
+                System.out.println(maGhe+": ");
                 String hangGheCuaVeDaChon = "";
                 int giaCoBan = 0;
                 int soVePhoThong = 0;

@@ -76,6 +76,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton_ThongKe = new javax.swing.JButton();
         jLabel_QuanLy = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jButton_HoaDon = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -255,22 +256,40 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jLabel_QuanLy.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_QuanLy.setText("Quản lý");
 
+        jButton_HoaDon.setBackground(new java.awt.Color(39, 60, 100));
+        jButton_HoaDon.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jButton_HoaDon.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_HoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_bill_52px.png"))); // NOI18N
+        jButton_HoaDon.setText("Hóa Đơn");
+        jButton_HoaDon.setBorderPainted(false);
+        jButton_HoaDon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_HoaDon.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jButton_HoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_HoaDonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(70, 70, 70)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jSeparator1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton_KhachHang)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton_KhachHang)
+                                .addGap(60, 60, 60)
+                                .addComponent(jButton_NhanVien)
+                                .addGap(60, 60, 60)
+                                .addComponent(jButton_ThongKe))
+                            .addComponent(jLabel_QuanLy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(60, 60, 60)
-                        .addComponent(jButton_NhanVien)
-                        .addGap(60, 60, 60)
-                        .addComponent(jButton_ThongKe))
-                    .addComponent(jLabel_QuanLy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton_HoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(70, 70, 70))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton_KhachHang, jButton_NhanVien, jButton_ThongKe});
@@ -284,6 +303,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton_HoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .addComponent(jButton_NhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .addComponent(jButton_KhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton_ThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -340,11 +360,14 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
 
     private void jButton_KhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_KhachHangActionPerformed
         // TODO add your handling code here:
+        dispose();
         new GiaoDienQuanLyKhachHang().setVisible(true);
     }//GEN-LAST:event_jButton_KhachHangActionPerformed
 
     private void jButton_ThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongKeActionPerformed
         // TODO add your handling code here:
+        dispose();
+        new GiaoDienThongKe().setVisible(true);
     }//GEN-LAST:event_jButton_ThongKeActionPerformed
 
     private void jLabel_XemThongTinTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_XemThongTinTaiKhoanMousePressed
@@ -371,6 +394,11 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         dispose();
         new GiaoDienQuanLyNhanVien().setVisible(true);
     }//GEN-LAST:event_jButton_NhanVienActionPerformed
+
+    private void jButton_HoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_HoaDonActionPerformed
+        // TODO add your handling code here:
+        new GiaoDienThanhToanHoaDon().setVisible(true);
+    }//GEN-LAST:event_jButton_HoaDonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -408,6 +436,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_HoaDon;
     private javax.swing.JButton jButton_KhachHang;
     private javax.swing.JButton jButton_NhanVien;
     private javax.swing.JButton jButton_ThongKe;
