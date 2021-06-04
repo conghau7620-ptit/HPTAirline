@@ -24,6 +24,8 @@ import model.NhanVien;
 import model.SanBay;
 import model.TaiKhoan;
 import model.Ve;
+import sun.net.www.content.image.gif;
+import view.GiaoDienChonGhe;
 
 
 /**
@@ -71,17 +73,19 @@ public class Controller {
         }
     }
     
-    public static boolean insertListGhe(String maCB) {
+    public static boolean insertListGhe(String maCB) { // giải thích giúp vói k hiể. t chỉ viết để tạo ghế test thôi mà ý là sao t tạo nó k vào
         String sqlCommand = "insert into dbo.GHE values(?,?,?,?)";
+       
         try {
             for(int i=1;i<=15;i++){
                 DataConnection.createStatement();
             PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
             Ghe gheA;
             if(i<=5){
-                gheA = new Ghe("GA"+i+"-"+maCB,maCB,"ThuongGia",(byte)1);
+                //gheA = new Ghe("GA"+i+"-"+maCB.trim(),maCB.trim(),"ThuongGia",(byte)1);
+                gheA = new Ghe(maCB.trim().trim()+"-Ghe_"+i+"A",maCB.trim(),"ThuongGia",(byte)1);
             }else{
-                gheA = new Ghe("GA"+i+"-"+maCB,maCB,"PhoThong",(byte)1);
+                gheA = new Ghe(maCB.trim()+"-Ghe_"+i+"A",maCB.trim(),"PhoThong",(byte)1);
             }
             
             ps.setString(1, gheA.getMaGhe());
@@ -96,9 +100,9 @@ public class Controller {
             PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
             Ghe gheB;
             if(i<=5){
-                gheB = new Ghe("GB"+i+"-"+maCB,maCB,"ThuongGia",(byte)1);
+                gheB = new Ghe(maCB.trim()+"-Ghe_"+i+"B",maCB.trim(),"ThuongGia",(byte)1);
             }else{
-                gheB = new Ghe("GB"+i+"-"+maCB,maCB,"PhoThong",(byte)1);
+                gheB = new Ghe(maCB.trim()+"-Ghe_"+i+"B",maCB.trim(),"PhoThong",(byte)1);
             }
             
             ps.setString(1, gheB.getMaGhe());
@@ -113,9 +117,9 @@ public class Controller {
             PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
             Ghe gheC;
             if(i<=5){
-                gheC = new Ghe("GC"+i+"-"+maCB,maCB,"ThuongGia",(byte)1);
+                gheC = new Ghe(maCB.trim()+"-Ghe_"+i+"C",maCB.trim(),"ThuongGia",(byte)1);
             }else{
-                gheC = new Ghe("GC"+i+"-"+maCB,maCB,"PhoThong",(byte)1);
+                gheC = new Ghe(maCB.trim()+"-Ghe_"+i+"C",maCB.trim(),"PhoThong",(byte)1);
             }
             
             ps.setString(1, gheC.getMaGhe());
@@ -130,9 +134,9 @@ public class Controller {
             PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
             Ghe gheD;
             if(i<=5){
-                gheD = new Ghe("GD"+i+"-"+maCB,maCB,"ThuongGia",(byte)1);
+                gheD = new Ghe(maCB.trim()+"-Ghe_"+i+"D",maCB.trim(),"ThuongGia",(byte)1);
             }else{
-                gheD = new Ghe("GD"+i+"-"+maCB,maCB,"PhoThong",(byte)1);
+                gheD = new Ghe(maCB.trim()+"-Ghe_"+i+"D",maCB.trim(),"PhoThong",(byte)1);
             }
             
             ps.setString(1, gheD.getMaGhe());
@@ -147,9 +151,9 @@ public class Controller {
             PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
             Ghe gheE;
             if(i<=5){
-                gheE = new Ghe("GE"+i+"-"+maCB,maCB,"ThuongGia",(byte)1);
+                gheE = new Ghe(maCB.trim()+"-Ghe_"+i+"E",maCB.trim(),"ThuongGia",(byte)1);
             }else{
-                gheE = new Ghe("GE"+i+"-"+maCB,maCB,"PhoThong",(byte)1);
+                gheE = new Ghe(maCB.trim()+"-Ghe_"+i+"E",maCB.trim(),"PhoThong",(byte)1);
             }
             
             ps.setString(1, gheE.getMaGhe());
@@ -165,9 +169,9 @@ public class Controller {
             PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
             Ghe gheF;
             if(i<=5){
-                gheF = new Ghe("GF"+i+"-"+maCB,maCB,"ThuongGia",(byte)1);
+                gheF = new Ghe(maCB.trim()+"-Ghe_"+i+"F",maCB.trim(),"ThuongGia",(byte)1);
             }else{
-                gheF = new Ghe("GF"+i+"-"+maCB,maCB,"PhoThong",(byte)1);
+                gheF = new Ghe(maCB.trim()+"-Ghe_"+i+"F",maCB.trim(),"PhoThong",(byte)1);
             }
             
             ps.setString(1, gheF.getMaGhe());
@@ -186,9 +190,29 @@ public class Controller {
     }
     public static void main(String[] args) {
         new LoadData();
-//        insertListGhe("CB07");
-        for(Ve v: arrayListVe){
-            System.err.println(v.getKyGui());
+
+       // insertListGhe("CB07"); // cái hàm này chạy khi nào thế
+        
+        String maChuyenBayy ="";
+        DataConnection.createStatement();
+        String sql = "select * from CHUYENBAY"; 
+        try {
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+             while (rs.next()){
+              maChuyenBayy = rs.getString("MaChuyenBay");  // đến chỗ này là nó lấy ra từng mã chuyến bay ok hong ? ok
+              //   System.out.println(maChuyenBayy+"ádsadas");
+                 
+                 insertListGhe(maChuyenBayy); 
+//             
+            }
+           
+//           ps.close();
+      
         }
+         catch (Exception e) {
+        }
+        
     }
 }

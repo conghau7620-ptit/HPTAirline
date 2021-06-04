@@ -46,9 +46,11 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
     int soGheTreEm;
 //    int soGheEmBe;
     boolean khuHoi;
+    boolean di, ve ;
+    
     public GiaoDienChonChuyenBayDi(String maSanBayDi, String maSanBayDen, 
-            Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
-        
+          // Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
+               Date ngayDi, Date ngayVe, boolean di, boolean ve, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
         initComponents();
          this.maSanBayDi= maSanBayDi;
          this.maSanBayDen = maSanBayDen;
@@ -56,6 +58,8 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
          this.ngayVe = ngayVe;
          this.soGheNguoiLon = soGheNguoiLon;
          this.soGheTreEm = soGheTreEm;
+         this.di= di;
+         this.ve= ve;
 //         this.soGheEmBe = soGheEmBe;
          this.khuHoi = khuHoi;
          
@@ -90,6 +94,10 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 //        } catch (ParseException ex) {
 //            Logger.getLogger(GiaoDienTimChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+    }
+// test
+    private GiaoDienChonChuyenBayDi() {
+       initComponents(); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -258,30 +266,40 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 
     private void jButton_XacNhanChonChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanChonChuyenBayActionPerformed
         // TODO add your handling code here:
-        if(this.khuHoi == true){
+          int row = jTable_KetQuaTimKiem.getSelectedRow();
+        //if(this.khuHoi == true){
+        if(this.ve == true){
 //            this.dispose();
-                int row = jTable_KetQuaTimKiem.getSelectedRow();
+//                int row = jTable_KetQuaTimKiem.getSelectedRow();
                 if(row==-1){
                     JOptionPane.showMessageDialog(rootPane, "Hay chon chuyen bay di.");
                 }
                 else{
-                    new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe
-                            , this.soGheNguoiLon, this.soGheTreEm/*, this.soGheEmBe*/, 
-                            (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+//                    new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe
+//                            , this.soGheNguoiLon, this.soGheTreEm/*, this.soGheEmBe*/, 
+//                            (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+                    
+                    //new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+                     new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+                    this.dispose();
                 }
         }
         else{
-            int row = jTable_KetQuaTimKiem.getSelectedRow();
+         //   int row = jTable_KetQuaTimKiem.getSelectedRow();
             if(row==-1){
                 JOptionPane.showMessageDialog(rootPane, "Hay chon chuyen bay di.");
             }
             else{
-                this.dispose();
 //                new GiaoDienChonGhe((String) jTable_KetQuaTimKiem.getValueAt(row, 0), ""
 //                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
+                //new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+                 new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+                this.dispose();
 
             }       
         }
+     //    new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+          //  new GiaoDienChonGhe().setVisible(true);
     }//GEN-LAST:event_jButton_XacNhanChonChuyenBayActionPerformed
 
     /**
@@ -378,6 +396,39 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 ////       });
 //
 //    }
+        public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(GiaoDienChonGhe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(GiaoDienChonGhe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(GiaoDienChonGhe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(GiaoDienChonGhe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+               new GiaoDienChonChuyenBayDi().setVisible(true);
+               // new GiaoDienChonGhe(xacNhan, ve).setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_ThoatKetQuaTimKiemChuyenBay;

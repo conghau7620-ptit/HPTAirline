@@ -587,11 +587,17 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             String maSanBayDen = jComboBox_SanBayDen.getSelectedItem().toString().substring(0, 3);
             Date ngayDi = jDateChooser_NgayDi.getDate();
             Date ngayVe = null;
-            boolean khuHoi = true;
+            boolean khuHoi = false;
+          boolean di = true;
+          boolean ve = false;
             int soGheNguoiLon = Integer.parseInt(jComboBox_SLNguoiLon.getSelectedItem().toString());
             int soGheTreEm = Integer.parseInt(jComboBox_SLTreEm.getSelectedItem().toString());
 //            int soGheEmBe = Integer.parseInt(jComboBox_SLEmBe.getSelectedItem().toString());
             if (jRadioButton_KhuHoi.isSelected()) {
+              //  khuHoi = true;
+            //  di = true;
+              ve = true;
+              khuHoi = true;
                 ngayVe = jDateChooser_NgayVe.getDate();
             }
             //
@@ -599,7 +605,9 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 //            System.out.println(soGheTreEm);
 //            System.out.println(soGheEmBe);
 //        this.dispose();
-            new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm).setVisible(true);
+     //       new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm).setVisible(true);
+                    new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve,khuHoi,  soGheNguoiLon, soGheTreEm).setVisible(true);
+            this.dispose();
         }
         if (baoLoiInput() == false) {
             JOptionPane.showMessageDialog(rootPane, "Không thể tìm chuyến bay");
