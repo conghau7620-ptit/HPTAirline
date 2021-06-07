@@ -68,6 +68,8 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
         jbutton_TreEm.setEnabled(true);
     }
     else jbutton_TreEm.setEnabled(false);
+    
+   
     }
      
      
@@ -498,15 +500,28 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_XacNhanMouseClicked
 private String xuLiMaVe(){
     String maVe = "V01";
-    for (int k = 0 ; k <= (GiaoDienChonGhe.dsVeDi.size() + GiaoDienChonGhe.dsVeVe.size()); k++){
-         System.out.println(GiaoDienChonGhe.dsVeDi.size());
-         System.out.println(k);
+    
+    // fix loi dem lại ma ve, ma ve luon bat dau tu v01
+    if (GiaoDienChonGhe.ve){
+    for (int k = 0 ; k <= GiaoDienChonGhe.dsVeDi.size(); k++){
+         //System.out.println(GiaoDienChonGhe.dsVeDi.size());
+         //System.out.println(k);
         if (k <= 9){
             maVe= "V0"+(k+1);
         }
         else maVe= "V" + (k+1);
     }
-    
+    }
+    else {
+        for (int k = 0 ; k <= GiaoDienChonGhe.dsVeVe.size(); k++){
+         //System.out.println(GiaoDienChonGhe.dsVeDi.size());
+         //System.out.println(k);
+        if (k <= 9){
+            maVe= "V0"+(k+1);
+        }
+        else maVe= "V" + (k+1);
+    }
+    }
     
     
     return maVe;
@@ -518,11 +533,17 @@ private String xuLiMaVe(){
              
                 String SDTkhach = "*********"; // laays tu sql
 
+<<<<<<< HEAD
 
                 String maChuyenBay = GiaoDienChonGhe.maChuyenBay.trim();
                 String maGhe = this.maGhe.trim();
 
 
+=======
+                String maChuyenBay = GiaoDienChonGhe.maChuyenBay;
+                String maGhe = this.maGhe;
+              
+>>>>>>> ce8654511108a8c54e9202b26cd416fa354c6a36
                 // nguoi lon
                 String CMND = jTextField_CMND.getText();
                 String ten = jTextField_TenNguoiBay.getText();
@@ -562,13 +583,15 @@ private String xuLiMaVe(){
                short kiGui = 0;
                 model.Ve ve = null;
                 
+                
+                
                  String regexCMND = "\\d{9}";
                //  String regexEmail=  "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";// "\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b";
                  String regexBirth = "\\d{2}[-|/]\\d{2}[-|/]\\d{4}";
                 
                 if (ten.equals("") && tenTre.equals("")) JOptionPane.showMessageDialog(this, "Họ và tên không được bỏ trống.");
                 else if (!ten.equals("") && CMND.equals("")) JOptionPane.showMessageDialog(this, "CMND/Hộ chiếu không được để trống");
-                else if (!CMND.matches(regexCMND)) JOptionPane.showMessageDialog(this, "vui lòng nhập đúng số CMND/Hộ chiếu");
+                else if (!ten.equals("") && !CMND.matches(regexCMND)) JOptionPane.showMessageDialog(this, "vui lòng nhập đúng số CMND/Hộ chiếu");
                 
                 else if(ngaySinhNguoiLon.equals("") && ngaySinhTreEm.equals("")) JOptionPane.showMessageDialog(this, "Ngày sinh không được bỏ trống.");
                 else if (!tenTre.equals("") && ngaySinhTreEm.equals("")) JOptionPane.showMessageDialog(this, "Ngày sinh không đượpc bỏ trống");

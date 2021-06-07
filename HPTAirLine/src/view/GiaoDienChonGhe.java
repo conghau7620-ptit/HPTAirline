@@ -176,6 +176,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         dtm.setNumRows(0);
         Vector vt ;
           if (di){
+              
         for(int i = 0; i < dsVeDi.size();i++){
             vt = new Vector();
 
@@ -211,6 +212,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
             System.out.println("alo: "+listSelected.get(k).getName());
         }
         }
+          
         else if (!ve && !di){
             for(int i = 0; i < dsVeVe.size();i++){
             vt = new Vector();
@@ -218,7 +220,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
             vt.add(dsVeVe.get(i).getMaChuyenBay());
             vt.add(dsVeVe.get(i).getTenNguoiBay());
             vt.add(dsVeVe.get(i).getMaGhe());
-            vt.add(dsVeVe.get(i).getGia());
+            vt.add(dsVeVe.get(i).getMaHoaDon());
 
 
             System.out.println(dsVeVe.get(i));
@@ -3366,15 +3368,27 @@ private void changeColor(Color a){
        if(this.ve == true){ 
                 ve = false;
                 di = false;
+                
+                // chặn xác nhận khi không nhập đủ số lượng vé lúc đi
+                if (soGheNguoiLonDi != 0 && soGheTreEmDi !=0){
+                    JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin vào số lượng vé đã chọn trước khi xác nhận!");
+                }else {
            new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe, this.soGheNguoiLonVe, this.soGheTreEmVe).setVisible(true); // looix k mở được chọn chuyến bay về khi truyền thamn số vào
           // khuHoi = false;
           
             changeColor(Color.RED);
            this.dispose();
        }
+       
+       }
        else {
            changeColor(Color.RED);
             System.out.println(this.khuHoi);
+             // chặn xác nhận khi không nhập đủ số lượng vé lúc đi
+            if((soGheTreEmDi!=0 && soGheNguoiLonDi!=0) || (soGheTreEmVe!=0 && soGheNguoiLonVe!=0)){
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin vào số lượng vé đã chọn trước khi xác nhận!");
+            }
+            else {
             if(true == this.khuHoi){
                 
                 new GiaoDienHoaDonHaiChieu(dsVeDi, dsVeVe).setVisible(true);
@@ -3385,7 +3399,7 @@ private void changeColor(Color a){
                 new GiaoDienHoaDonMotChieu().setVisible(true);
                 this.dispose();
             }
-            
+            }
             
        }
     }//GEN-LAST:event_Xac_NhanActionPerformed
