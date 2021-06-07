@@ -279,54 +279,58 @@
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel_SanBayDi" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_SanBayDen" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox_SanBayDi" max="32767" attributes="0"/>
-                                  <Component id="jComboBox_SanBayDen" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel_NgayDi" min="-2" pref="78" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                              <Component id="jLabel_IconNgayDi" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel_SanBayDi" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel_SanBayDen" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jComboBox_SanBayDi" max="32767" attributes="0"/>
+                                      <Component id="jComboBox_SanBayDen" alignment="0" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel_NgayDi" min="-2" pref="78" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_IconNgayDi" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jDateChooser_NgayDi" min="-2" pref="148" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jDateChooser_NgayDi" min="-2" pref="148" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="39" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel_NgayVe" min="-2" pref="82" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                              <Component id="jLabel_IconNgayVe" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace pref="39" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel_NgayVe" min="-2" pref="82" max="-2" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_IconNgayVe" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jDateChooser_NgayVe" min="-2" pref="148" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jDateChooser_NgayVe" min="-2" pref="148" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel_NguoiLon" max="32767" attributes="0"/>
+                                      <Component id="jLabel_TreEm" min="-2" pref="109" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jComboBox_SLTreEm" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jComboBox_SLNguoiLon" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel_NguoiLon" max="32767" attributes="0"/>
-                                  <Component id="jLabel_TreEm" min="-2" pref="109" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jRadioButton_MotChieu" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jRadioButton_KhuHoi" min="-2" pref="90" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jComboBox_SLTreEm" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jComboBox_SLNguoiLon" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel_HuongDanDatCho" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="jLabel_BaoLoi" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jRadioButton_MotChieu" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jRadioButton_KhuHoi" min="-2" pref="90" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel_HuongDanDatCho" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                              <Component id="jLabel_BaoLoi" max="32767" attributes="0"/>
-                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jButton_TimChuyenBay" min="-2" pref="583" max="-2" attributes="0"/>
                   </Group>
@@ -378,11 +382,14 @@
                   <Component id="jButton_TimChuyenBay" min="-2" pref="49" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel_HuongDanDatCho" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_BaoLoi" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel_HuongDanDatCho" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jLabel_BaoLoi" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -640,6 +647,14 @@
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Quay L&#x1ea1;i"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MousePressed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
