@@ -74,7 +74,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
     public GiaoDienHoaDonHaiChieu(ArrayList<Ve> danhSachVeDi, ArrayList<Ve> danhSachVeVe) {
         initComponents();
         this.danhSachVeDi = danhSachVeDi;
-        this.maHoaDonDi = danhSachVeDi.get(0).getMaHoaDon();
+//        this.maHoaDonDi = danhSachVeDi.get(0).getMaHoaDon();
         this.maChuyenBayDi = danhSachVeDi.get(0).getMaChuyenBay();
 
         this.danhSachVeVe = danhSachVeVe;
@@ -118,13 +118,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         //
 
         thongTinTaiKhoan();
-
-        for (Ve ve : this.danhSachVeDi) {
-
-            String maGhe = ve.getMaGhe().substring(0, 1).toUpperCase() + ve.getMaGhe().substring(1);
-            ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
-            System.out.println("ma ghe: " + ve.getMaGhe());
-        }
+        
         //chuẩn hóa từ chọn ghế
          String sql = "select * from HOADON";
                 connection.DataConnection.createStatement();
@@ -140,12 +134,27 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                     System.out.println(soHoaDon);
         } catch (Exception e) {
         }
-                
+                System.out.println("HD"+soHoaDon);
                                  //
+                                 soHoaDon++;
+                 String maHoaDon = "";
+                 if(soHoaDon <= 9) maHoaDon= "HD0"+ (soHoaDon);
+                 else maHoaDon = "HD" + (soHoaDon);
+                                 
                  String maHoaDonVe = "";
                  if(soHoaDon <= 8) maHoaDonVe= "HD0"+ (soHoaDon+1);
                  else maHoaDonVe = "HD" + (soHoaDon+1);
                  //
+                 
+                 
+        for (Ve ve : this.danhSachVeDi) {
+
+            String maGhe = ve.getMaGhe().substring(0, 1).toUpperCase() + ve.getMaGhe().substring(1);
+            ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
+            System.out.println("ma ghe: " + ve.getMaGhe());
+            ve.setMaHoaDon(maHoaDon);
+            
+        }
         for (Ve ve : this.danhSachVeVe) {
 
             String maGhe = ve.getMaGhe().substring(0, 1).toUpperCase() + ve.getMaGhe().substring(1);
@@ -154,7 +163,8 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             ve.setMaHoaDon(maHoaDonVe);
             
         }
-        this.maHoaDonVe = danhSachVeVe.get(0).getMaHoaDon();
+        this.maHoaDonDi = this.danhSachVeDi.get(0).getMaHoaDon();
+        this.maHoaDonVe = this.danhSachVeVe.get(0).getMaHoaDon();
         //
 
         hienThongTin();

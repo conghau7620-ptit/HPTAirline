@@ -7,6 +7,7 @@
  */
 package view;
 
+import connection.DataConnection;
 import connection.InsertData;
 import connection.LoadData;
 import connection.UpdateData;
@@ -15,6 +16,8 @@ import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -59,7 +62,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         public GiaoDienHoaDonMotChieu(){
         initComponents();
         this.danhSachVe = GiaoDienChonGhe.dsVeDi;
-        this.maHoaDon = danhSachVe.get(0).getMaHoaDon();
+        
 
         this.maChuyenBayDi = danhSachVe.get(0).getMaChuyenBay().trim();
 
@@ -102,12 +105,32 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
             }
         });
 
+        String sql = "select * from HOADON";
+                connection.DataConnection.createStatement();
+               
+                int soHoaDon =1;
+                try {
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                soHoaDon++; 
+            }
+                    System.out.println(soHoaDon);
+        } catch (Exception e) {
+        }
+                System.out.println("HD"+soHoaDon);
+                                 //
+                                 soHoaDon++;
+                 String maHoaDon = "";
+                 if(soHoaDon <= 9) maHoaDon= "HD0"+ (soHoaDon);
+                 else maHoaDon = "HD" + (soHoaDon);
         
-        
-        for(Ve ve: danhSachVe){
+        for(Ve ve: this.danhSachVe){
            
             String maGhe = ve.getMaGhe().substring(0,1).toUpperCase() + ve.getMaGhe().substring(1);
             ve.setMaGhe(ve.getMaChuyenBay()+"-"+maGhe);
+            ve.setMaHoaDon(maHoaDon);
             System.out.println("ma ve: "+ve.getMaVe());
             System.out.println("ma hd: "+ve.getMaHoaDon());
             System.out.println("ma ghe: "+ve.getMaGhe());
@@ -115,6 +138,8 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         }
         hienThongTin();
 
+        this.maHoaDon = this.danhSachVe.get(0).getMaHoaDon();
+        
     }
 
     /**
