@@ -60,7 +60,9 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         initComponents();
         this.danhSachVe = GiaoDienChonGhe.dsVeDi;
         this.maHoaDon = danhSachVe.get(0).getMaHoaDon();
+
         this.maChuyenBayDi = danhSachVe.get(0).getMaChuyenBay().trim();
+
         dtmVe = (DefaultTableModel) jTable_VeDaChon.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
             "MaVe", "MaChuyenBay", "Gia", "KyGui",
@@ -82,7 +84,9 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         jDateChooser_NgayXuatHoaDon.setDate(ngayHienTai);
         jDateChooser_NgayXuatHoaDon.setEnabled(false);
         thongTinTaiKhoan();
+
         
+
 
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -97,6 +101,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                 }
             }
         });
+
         
         
         for(Ve ve: danhSachVe){
@@ -109,6 +114,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
             System.out.println("ma cb: "+ve.getMaChuyenBay());
         }
         hienThongTin();
+
     }
 
     /**
@@ -777,18 +783,22 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                             System.out.println("Thêm hóa đơn thành công");
                             if (InsertData.insertVe(danhSachVe) == true) {
                                 System.out.println("Thêm danh sách vé thành công");
+
                                 for(Ve v: this.danhSachVe){
                                     if(UpdateData.updateGhe(v.getMaGhe(), (byte) 0)){
                                         System.out.println("Cap nhat ghe "+v.getMaGhe());
                                     }
                                 }
+
                                 if (UpdateData.updateDiemTichLuyKhachHang(jTextField_SoDienThoaiKhachHang.getText(), diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 10) == true) {
                                     System.out.println("Cập nhật điểm tích lũy thành công");
                                     this.dispose();
                                     new GiaoDienTimChuyenBay().setVisible(true);
                                 }
                             }
+
                             GiaoDienChonGhe.dsVeDi.removeAll(GiaoDienChonGhe.dsVeDi);//remove để khi tạo hóa đơn khác không bị lặp mã hóa đơn
+
                         } else {
                             System.out.println("Thêm hóa đơn thất bại");
                         }
@@ -883,7 +893,9 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         this.soVePhoThong = 0;
         this.soVeThuongGia = 0;
         for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
+
             if (cb.getMaChuyenBay().equals(this.maChuyenBayDi.trim())) {
+
                 dtmChuyenBay.addRow(new Object[]{
                     cb.getMaChuyenBay(), cb.getMaMayBay(), cb.getMaSanBayDi(), cb.getMaSanBayDen(), new SimpleDateFormat("dd/MM/yyyy").format(cb.getNgayBay()),
                     cb.getGioBay(), cb.getGhiChu(), cb.getKhoangCach()

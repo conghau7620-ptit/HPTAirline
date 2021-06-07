@@ -33,10 +33,12 @@ public class LoadData {
                     rs.getString(7),
                     rs.getInt(8));
                 chuyenBay.setArrayListGhe(loadTableGhe(chuyenBay.getMaChuyenBay().trim()));
+
 //                for (Ghe g: chuyenBay.getArrayListGhe()) {
 //                    System.out.print(g.getMaGhe() + " ");
 //                }
 //                System.out.println("");
+
                 Controller.arrayListChuyenBay.add(chuyenBay);
             }
         } catch (SQLException ex) {

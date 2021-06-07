@@ -24,8 +24,10 @@ import model.NhanVien;
 import model.SanBay;
 import model.TaiKhoan;
 import model.Ve;
+
 //import sun.net.www.content.image.gif;
 import view.GiaoDienChonGhe;
+
 
 /**
  *
@@ -41,6 +43,8 @@ public class Controller {
     public static ArrayList<SanBay> arrayListSanBay = new ArrayList<SanBay>();
     public static ArrayList<TaiKhoan> arrayListTaiKhoan = new ArrayList<TaiKhoan>();
     public static ArrayList<Ve> arrayListVe = new ArrayList<Ve>();
+
+
 
     //them list ket qua tim kiem
     public static ArrayList<ChuyenBay> arrayListKetQuaTimKiemChuyenBay = new ArrayList<ChuyenBay>();
@@ -69,6 +73,7 @@ public class Controller {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
 
     public static boolean insertListGhe(String maCB) { // giải thích giúp vói k hiể. t chỉ viết để tạo ghế test thôi mà ý là sao t tạo nó k vào
         String sqlCommand = "insert into dbo.GHE values(?,?,?,?)";
@@ -179,11 +184,13 @@ public class Controller {
                 ps.executeUpdate();
             }
 
+
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
+
 
     public static boolean veCoTheXoaHayKhong(String maHoaDon, String maVe) {
         new LoadData();
@@ -218,6 +225,7 @@ public class Controller {
         new LoadData();
 
 //        insertListGhe("CB07"); // cái hàm này chạy khi nào thế
+
         
         String maChuyenBayy ="";
         DataConnection.createStatement();
@@ -240,6 +248,8 @@ public class Controller {
          catch (Exception e) {
         }
 
+
     }
+
 
 }

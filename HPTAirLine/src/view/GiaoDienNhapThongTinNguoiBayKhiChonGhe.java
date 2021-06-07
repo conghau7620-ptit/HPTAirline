@@ -518,8 +518,10 @@ private String xuLiMaVe(){
              
                 String SDTkhach = "*********"; // laays tu sql
 
+
                 String maChuyenBay = GiaoDienChonGhe.maChuyenBay.trim();
                 String maGhe = this.maGhe.trim();
+
 
                 // nguoi lon
                 String CMND = jTextField_CMND.getText();

@@ -71,6 +71,8 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
     public GiaoDienChonGhe() {
         initComponents();
         
+
+
 //       layGhe();
        luuTextField();
            layGheTuCSDL(this.maChuyenBay);

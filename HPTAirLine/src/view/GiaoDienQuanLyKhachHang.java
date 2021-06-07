@@ -532,7 +532,9 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
         // TODO add your handling code here:
         this.dispose();
+
         new GiaoDienQuanLy().setVisible(true);
+
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     private void jTextField_TimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyReleased

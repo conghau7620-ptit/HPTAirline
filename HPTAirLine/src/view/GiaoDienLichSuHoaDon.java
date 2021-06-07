@@ -196,7 +196,9 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
             }
         });
 
+
         jButton_XoaHoaDon.setBackground(new java.awt.Color(255, 77, 77));
+
         jButton_XoaHoaDon.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_XoaHoaDon.setForeground(new java.awt.Color(255, 255, 255));
         jButton_XoaHoaDon.setText("Xóa hóa đơn");
@@ -273,7 +275,9 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
         jLabel_VeDaChon.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_VeDaChon.setText("Vé đã chọn");
 
+
         jButton_XoaVe.setBackground(new java.awt.Color(225, 112, 85));
+
         jButton_XoaVe.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_XoaVe.setForeground(new java.awt.Color(255, 255, 255));
         jButton_XoaVe.setText("Xóa vé");
@@ -293,12 +297,16 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
+
                     .addComponent(jSeparator2)
+
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_VeDaChon)
                             .addComponent(jButton_XoaVe))
+
                         .addGap(0, 0, Short.MAX_VALUE)))
+
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -380,7 +388,9 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                 String sdtKhachHang = (String) jTable_HoaDon.getValueAt(rowHoaDon, 1);
                 String maVe = (String) jTable_VeDaChon.getValueAt(row, 0);
                 String maGhe = (String) jTable_VeDaChon.getValueAt(row, 7);
+
                 System.out.println(maGhe + ": ");
+
                 String hangGheCuaVeDaChon = "";
                 int giaCoBan = 0;
                 int soVePhoThong = 0;
@@ -402,7 +412,9 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                     //tính giá cơ bản của các vé trong hóa đơn
                     jLabel_BaoLoi.setText("");
                     for (Ve v : controller.Controller.arrayListVe) {
+
                         if (maVe.equals(v.getMaVe()) && v.getMaHoaDon().equals(maHoaDon)) {
+
                             for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
                                 if (v.getMaChuyenBay().equals(cb.getMaChuyenBay())) {
                                     index = controller.Controller.arrayListChuyenBay.indexOf(cb);
@@ -479,6 +491,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                     }
                     int luaChon = JOptionPane.showConfirmDialog(rootPane, "Xóa vé " + maVe + " trong hóa đơn đã chọn?", "Xác nhận", JOptionPane.OK_CANCEL_OPTION);
                     if (luaChon == JOptionPane.OK_OPTION) {
+
                         if (connection.UpdateData.updateGhe(maGhe, (byte) 1)) {// chuyển ghế thành trạng thái còn trống
                             if (controller.Controller.veCoTheXoaHayKhong(maHoaDon, maVe)) {// xem ve co the xoa hay khong
                                 if (connection.UpdateData.deleteVe(maVe, maHoaDon)) {
@@ -529,6 +542,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                             }else{
                                 JOptionPane.showMessageDialog(rootPane, "Không thể xóa vì đây là vé người lớn duy nhất trong hóa đơn có trẻ em.");
                             }
+
 
                         }
                     }
@@ -599,7 +613,9 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
 
                 // tính giá cơ bản
                 for (Ve v : controller.Controller.arrayListVe) {
+
                     if (maVe.equals(v.getMaVe()) && v.getMaHoaDon().equals(maHoaDon)) {
+
                         for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
                             if (v.getMaChuyenBay().equals(cb.getMaChuyenBay())) {
                                 index = controller.Controller.arrayListChuyenBay.indexOf(cb);
@@ -753,6 +769,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                 }
 
                 // tính giá cơ bản
+
                 for (Ve v : controller.Controller.arrayListVe) {
                     if (maVe.equals(v.getMaVe()) && v.getMaHoaDon().equals(maHoaDon)) {
                         for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
@@ -764,6 +781,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                         }
                     }
                 }
+
                 //
                 // tìm số ghế phổ thông, thương gia trong hóa đơn đã chọn
                 for (Ve v : controller.Controller.arrayListVe) {
@@ -812,10 +830,12 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                         if (v.getMaHoaDon().equals(maHoaDon)) {
                             for (Ghe g : controller.Controller.arrayListChuyenBay.get(index).getArrayListGhe()) {
                                 if (v.getMaGhe().equals(g.getMaGhe())) {
+
                                     connection.UpdateData.updateGhe(v.getMaGhe(), (byte) 1); // cập nhật các ghế có trong hóa đơn thành trống
                                 }
                             }
                             connection.UpdateData.deleteVe(v.getMaVe(), maHoaDon); // xóa các vé có trong hóa đơn
+
                         }
 
                     }
