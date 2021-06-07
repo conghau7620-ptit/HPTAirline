@@ -48,7 +48,9 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton_KhachHang.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThongKe.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_NhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
         jButton_HoaDon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
     }
 
     /**

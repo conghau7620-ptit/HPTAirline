@@ -99,9 +99,11 @@ public class UpdateData {
         return false;
     }
     
+
     public static boolean updateGhe(String maGhe, byte trangThaiGhe){
         byte trong = trangThaiGhe;
         String sqlCommand = "update dbo.GHE set Trong=?"
+
                 + " where MaGhe=?";
         try {
             DataConnection.createStatement();

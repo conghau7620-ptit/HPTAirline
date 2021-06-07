@@ -32,6 +32,8 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
     DefaultTableModel dtmHoaDon = null;
     DefaultTableModel dtmVe = null;
 
+
+
     public GiaoDienThanhToanHoaDon() {
         initComponents();
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
@@ -129,7 +131,9 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable_HoaDon);
 
+
         jLabel_HoaDon.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+
         jLabel_HoaDon.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_HoaDon.setText("Hóa đơn");
 
@@ -157,7 +161,9 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
             }
         });
 
+
         jButton_XoaHoaDon.setBackground(new java.awt.Color(255, 77, 77));
+
         jButton_XoaHoaDon.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_XoaHoaDon.setForeground(new java.awt.Color(255, 255, 255));
         jButton_XoaHoaDon.setText("Xóa hóa đơn");
@@ -188,11 +194,13 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         jTable_VeDaChon.setSelectionBackground(new java.awt.Color(255, 77, 77));
         jScrollPane2.setViewportView(jTable_VeDaChon);
 
+
         jLabel_VeDaChon.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel_VeDaChon.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_VeDaChon.setText("Vé đã chọn");
 
         jButton_XoaVe.setBackground(new java.awt.Color(225, 112, 85));
+
         jButton_XoaVe.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_XoaVe.setForeground(new java.awt.Color(255, 255, 255));
         jButton_XoaVe.setText("Xóa vé");
@@ -370,17 +378,21 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+
     private void hienThongTinVaoBangHoaDon() {
         //load laiThongTin
         new LoadData();
         dtmHoaDon.setRowCount(0);
         for (HoaDon hd : controller.Controller.arrayListHoaDon) {
             dtmHoaDon.addRow(new Object[]{
+
                 hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()), hd.getTrangThaiThanhToan(),
                 hd.getTongTien(), hd.getSdtNhanVien()
             });
         }
     }
+
 
 
     private void jButton_XoaVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaVeActionPerformed
@@ -421,7 +433,9 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                     //tính giá cơ bản của các vé trong hóa đơn
                     jLabel_BaoLoi.setText("");
                     for (Ve v : controller.Controller.arrayListVe) {
+
                         if (maVe.equals(v.getMaVe()) && v.getMaHoaDon().equals(maHoaDon)) {
+
                             for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
                                 if (v.getMaChuyenBay().equals(cb.getMaChuyenBay())) {
                                     index = controller.Controller.arrayListChuyenBay.indexOf(cb);
@@ -480,14 +494,18 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
 
                     if (hangGheCuaVeDaChon.equalsIgnoreCase("PhoThong")) {
                         tongTienSauXoa = ((soVePhoThong - 1) * giaCoBan + soVeThuongGia * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia)
+
                                 - ((soVePhoThong - 1) * giaCoBan + soVeThuongGia * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia) * diemTichLuyKhachDaDung / 1000;
+
                         diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang - 5;
                         System.out.println("Tong tiền sau Xóa=" + tongTienSauXoa);
                         System.out.println("điểm tích lũy sau xóa" + diemTichLuySauXoa);
                     }
                     if (hangGheCuaVeDaChon.equalsIgnoreCase("ThuongGia")) {
                         tongTienSauXoa = (soVePhoThong * giaCoBan + (soVeThuongGia - 1) * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia)
+
                                 - (soVePhoThong * giaCoBan + (soVeThuongGia - 1) * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia) * diemTichLuyKhachDaDung / 1000;
+
                         System.out.println("Tong tiền sau Xóa=" + tongTienSauXoa);
                         diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang - 10;
                         System.out.println("điểm tích lũy sau xóa (chưa tính nếu sau khi xóa thì không còn vé nào)" + diemTichLuySauXoa);
@@ -498,6 +516,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                     }
                     int luaChon = JOptionPane.showConfirmDialog(rootPane, "Xóa vé " + maVe + " trong hóa đơn đã chọn?", "Xác nhận", JOptionPane.OK_CANCEL_OPTION);
                     if (luaChon == JOptionPane.OK_OPTION) {
+
                         if (controller.Controller.veCoTheXoaHayKhong(maHoaDon, maVe)) {// xem ve co the xoa hay khong
                             if (connection.UpdateData.updateGhe(maGhe, (byte) 1)) {// chuyển ghế thành trạng thái còn trống
                                 if (connection.UpdateData.deleteVe(maVe, maHoaDon)) {
@@ -542,11 +561,14 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
 
                                                 ////
                                             }
+
                                         }
                                     }
                                 }
                             }
                         }
+
+
 
                     }
                 }
@@ -566,7 +588,9 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
             for (Ve v : controller.Controller.arrayListVe) {
                 if (v.getMaHoaDon().equals(maHoaDon)) {
                     dtmVe.addRow(new Object[]{
+
                         v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+
                         v.getCmndNguoiBay(), v.getTenNguoiBay(),
                         v.getMaHoaDon(), v.getMaGhe()
                     });
@@ -621,7 +645,9 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
 
                 // tính giá cơ bản
                 for (Ve v : controller.Controller.arrayListVe) {
+
                     if (maVe.equals(v.getMaVe()) && v.getMaHoaDon().equals(maHoaDon)) {
+
                         for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
                             if (v.getMaChuyenBay().equals(cb.getMaChuyenBay())) {
                                 index = controller.Controller.arrayListChuyenBay.indexOf(cb);
@@ -687,12 +713,14 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                     "Điểm mới muốn dùng:", jComboBox_DiemMoi
                 };
                 //            jComboBox_DiemMoi.addItemListener(new ItemListener() {
+
                 //                @Override
                 //                public void itemStateChanged(ItemEvent e) {
                 //                     if (Integer.parseInt(jComboBox_DiemMoi.getSelectedItem().toString()) > (diemTichLuyHienTaiCuaKhachHang + diemTichLuyKhachDaDung)) {
                 //                            jLabel_BaoLoi.setText("*Không đủ điểm");
                 //                    }
                 //            });
+
 
                 int luaChon = JOptionPane.showConfirmDialog(rootPane, message, "Nhập điểm tích lũy mới muốn dùng", JOptionPane.OK_CANCEL_OPTION);
 
@@ -705,7 +733,9 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                         int tongTienMoi = 0;
 
                         diemTichLuyConLaiSauThayDoi = diemTichLuyHienTaiCuaKhachHang + diemTichLuyKhachDaDung
+
                                 - Integer.parseInt(jComboBox_DiemMoi.getSelectedItem().toString());
+
                         tongTienMoi = tongTienGoc - tongTienGoc * Integer.parseInt(jComboBox_DiemMoi.getSelectedItem().toString()) / 1000;
                         System.out.println("Điểm tích lũy sau khi thay đổi số điểm dùng: " + diemTichLuyConLaiSauThayDoi);
                         int luaChonCapNhat = JOptionPane.showConfirmDialog(rootPane, "Điểm tích lũy sau thay đổi sẽ là: " + diemTichLuyConLaiSauThayDoi + "tổng tiền mới là: " + tongTienMoi, null, JOptionPane.OK_CANCEL_OPTION);
@@ -776,7 +806,9 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
 
                 // tính giá cơ bản
                 for (Ve v : controller.Controller.arrayListVe) {
+
                     if (maVe.equals(v.getMaVe()) && v.getMaHoaDon().equals(maHoaDon)) {
+
                         for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
                             if (v.getMaChuyenBay().equals(cb.getMaChuyenBay())) {
                                 index = controller.Controller.arrayListChuyenBay.indexOf(cb);
@@ -834,10 +866,12 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                         if (v.getMaHoaDon().equals(maHoaDon)) {
                             for (Ghe g : controller.Controller.arrayListChuyenBay.get(index).getArrayListGhe()) {
                                 if (v.getMaGhe().equals(g.getMaGhe())) {
+
                                     connection.UpdateData.updateGhe(v.getMaGhe(), (byte) 1); // cập nhật các ghế có trong hóa đơn thành trống
                                 }
                             }
                             connection.UpdateData.deleteVe(v.getMaVe(), maHoaDon); // xóa các vé có trong hóa đơn
+
                         }
 
                     }
@@ -845,8 +879,10 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                     //                    connection.UpdateData.deleteHoaDon(maHoaDon); // xóa hóa đơn
                     //
                     //                    connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuySauXoa);// cập nhật lại điểm cho khách
+
                     if (connection.UpdateData.deleteHoaDon(maHoaDon)) {
                         if (connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuySauXoa)) {
+
                             JOptionPane.showMessageDialog(rootPane, "Xóa hóa đơn thành công");
                         }
                     }
@@ -855,7 +891,9 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                     for (Ve v : controller.Controller.arrayListVe) {
                         if (v.getMaHoaDon().equals(maHoaDon)) {
                             dtmVe.addRow(new Object[]{
+
                                 v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+
                                 v.getCmndNguoiBay(), v.getTenNguoiBay(),
                                 v.getMaHoaDon(), v.getMaGhe()
                             });
@@ -874,8 +912,10 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 dtmHoaDon = null;
                 dtmHoaDon.setRowCount(0);
                 dtmHoaDon.addRow(new Object[]{
+
                     hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()), hd.getTrangThaiThanhToan(),
                     hd.getTongTien(), hd.getSdtNhanVien()
+
                 });
                 break;
             }
@@ -892,6 +932,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 break;
             }
         }
+
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             controller.Controller.arrayListHoaDon.get(vtHoaDon).setTrangThaiThanhToan((byte) 1);
             controller.Controller.arrayListHoaDon.get(vtHoaDon).setSdtNhanVien(controller.Controller.tk.getSdt());
@@ -900,6 +941,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         } else {
             controller.Controller.arrayListHoaDon.get(vtHoaDon).setTrangThaiThanhToan((byte) 0);
             connection.UpdateData.updateHoaDon(maHoaDon, (byte) 0);
+
             hienThongTinVaoBangHoaDon();
         }
     }//GEN-LAST:event_jCheckBox_DaThanhToanItemStateChanged

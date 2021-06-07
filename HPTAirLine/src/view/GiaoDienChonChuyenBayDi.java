@@ -262,7 +262,9 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
     private void jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed
         // TODO add your handling code here:
         this.dispose();
+
         new GiaoDienTimChuyenBay().setVisible(true);
+
     }//GEN-LAST:event_jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed
 
     private void jButton_XacNhanChonChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanChonChuyenBayActionPerformed
