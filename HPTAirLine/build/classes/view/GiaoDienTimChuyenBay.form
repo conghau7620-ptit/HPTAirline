@@ -338,10 +338,14 @@
                               </Group>
                           </Group>
 <<<<<<< HEAD
+<<<<<<< HEAD
                           <EmptySpace type="separate" max="-2" attributes="0"/>
 =======
                           <EmptySpace max="-2" attributes="0"/>
 >>>>>>> fa549e5da79c6e034c02b13b23314478014916d6
+=======
+                          <EmptySpace max="-2" attributes="0"/>
+>>>>>>> ce8654511108a8c54e9202b26cd416fa354c6a36
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jButton_TimChuyenBay" min="-2" pref="583" max="-2" attributes="0"/>
@@ -394,6 +398,7 @@
                   <Component id="jButton_TimChuyenBay" min="-2" pref="49" max="-2" attributes="0"/>
 <<<<<<< HEAD
                   <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -422,6 +427,16 @@
                           </Group>
                           <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
                       </Group>
+=======
+                      <Component id="jLabel_BaoLoi" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel_HuongDanDatCho" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
+                      </Group>
+>>>>>>> ce8654511108a8c54e9202b26cd416fa354c6a36
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
 >>>>>>> fa549e5da79c6e034c02b13b23314478014916d6
@@ -693,11 +708,14 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
 =======
 >>>>>>> fa549e5da79c6e034c02b13b23314478014916d6
+=======
+>>>>>>> ce8654511108a8c54e9202b26cd416fa354c6a36
             <Property name="text" type="java.lang.String" value="Quay L&#x1ea1;i"/>
           </Properties>
           <Events>
