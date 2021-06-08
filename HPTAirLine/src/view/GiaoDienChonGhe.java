@@ -65,13 +65,12 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         ArrayList <JTextField> dsTextField = new ArrayList();   // ds tat ca cac ghe
           
         ArrayList <model.Ghe> dsGhe = new ArrayList <model.Ghe>(); // ds ghe lay tu trong csdl
-        ArrayList <model.Ghe> dsGheDau = new ArrayList <model.Ghe>(); //  quen ròi :)))))))))
-        
+       // ArrayList <model.Ghe> dsGheDau = new ArrayList <model.Ghe>(); //  quen ròi :)))))))))
+        private Color bg = new Color(240,240,240);
 
     public GiaoDienChonGhe() {
         initComponents();
         
-
 
 //       layGhe();
        luuTextField();
@@ -176,7 +175,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
 
     private void xuatThongTinVaoBang(){
 
-        System.out.println("dsvedi "+ dsVeDi.size());
+     //   System.out.println("dsvedi "+ dsVeDi.size());
           DefaultTableModel dtm = (DefaultTableModel) jTable_ThongTinNguoiBay.getModel();
         dtm.setNumRows(0);
         Vector vt ;
@@ -446,7 +445,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
      }
  
             else if ((a.getBackground().getRed()) == 0 && (a.getBackground().getGreen() == 255)&&(a.getBackground().getBlue() == 0)) {
-                a.setBackground(Color.white);
+                a.setBackground(bg);
 //                System.err.println("chuyen tu xanh sang trang");
                 
 // viet thu tim ghe moi chon de xoa ra khoi danh sach
@@ -464,13 +463,77 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
                 else {
                     System.err.println("khong bang nhau");}
                      
-            }
+            }   
             
-            }
-
+                if (di)     xoaThongTinKhiClick(a, dsVeDi, soGheNguoiLonDi, soGheTreEmDi);
+                else if (!ve && !di) xoaThongTinKhiClick(a, dsVeVe, soGheNguoiLonVe, soGheTreEmVe);
+            }   
+     
+     
+                    System.out.println("sau khi xoa mot nut cong lai so luong ghe");
+                    System.out.println("tre ve: " + GiaoDienChonGhe.soGheTreEmVe);
+                    System.out.println("tre di: "+ GiaoDienChonGhe.soGheTreEmDi);
+                     System.out.println("lon ve: "+ GiaoDienChonGhe.soGheNguoiLonVe);
+                     System.out.println("lon di: "+  GiaoDienChonGhe.soGheNguoiLonDi);
 
 }   
+private void xoaThongTinKhiClick(JTextField a, ArrayList<model.Ve> dsVe,int soNguoiLon, int soTreEm  ){
+//     for(int i =0;i < listSelected.size();i++){
+//                
+//               
+//                    
+//                    System.err.println("chuan bi xoa");
+//                if(listSelected.get(i) == a){
+//                     System.err.println("bang nhau");
+//                      listSelected.remove(i);
+//                      
+//                    System.err.println("da xoa");                   
+//                }
+//                else {
+//                    System.err.println("khong bang nhau");}
+//                     
+//            }
+            
+            for (int j = 0 ; j < dsVe.size(); j++){
+               
+                System.out.println("maghe " + dsVe.get(j).getMaGhe() );;
+                System.out.println("cmnd " + dsVe.get(j).getCmndNguoiBay() + " 0");;
+                System.out.println("ma jtextfield" + a.getName());
+                
+                
+                if (dsVe.get(j).getMaGhe().trim().equals(a.getName())){
+                    
+                    
+                    if(dsVe.get(j).getCmndNguoiBay().equals("")){
+                        if(di){
+                            soGheTreEmDi++;
+                        }
+                        else if (!ve && !di){
+                            soGheTreEmVe++;
+                        }
+                        //soTreEm++;
+//                        System.out.println("tang so tre em len 1");
+//                        System.out.println("so tre em sau khi taang"+ soTreEm);
+                    }
+                    else {
+                         if(di){
+                            soGheNguoiLonDi++;
+                        }
+                        else if (!ve && !di){
+                            soGheNguoiLonVe++;
+                        }
+//                        soNguoiLon++;
+//                    System.out.println("tang so ng lon len 1");
+//                        System.out.println("so ng lon sau khi tang" + soNguoiLon);
+                    }
+                    
+                    dsVe.remove(j);
+                }
+            }
+                        System.out.println("so luong ve di"+dsVe.size());
+                            this.xuatThongTinVaoBang();
 
+}
 // hàm này để chuyển màu danh sách các ghế đã chọn truyền vào màu tương ứng vỡi xác nhận hoặc hủy
       
 private void changeColor(Color a){
@@ -2536,24 +2599,38 @@ private void changeColor(Color a){
    private void huyChon() {
 
          for(int i =0;i < listSelected.size();i++){
-//   
-              for (int j = 0;j< dsGhe.size();j++){
-                  if(dsGhe.get(i).getMaGhe().substring(5).trim().equalsIgnoreCase(listSelected.get(j).getName().trim())){
-
-                      listSelected.get(i).setBackground(Color.getHSBColor(240, 240, 240));
-                 
-                      if( this.di){
+             Color bg = new Color(240,240,240);
+          listSelected.get(i).setBackground(bg);
+          
+         }
+                    if( this.di){
                           dsVeDi.removeAll(dsVeDi);
                           soGheNguoiLonDi = nguoiLonBanDau;
                           soGheTreEmDi = treEmBanDau;
                       }
                       else if (!di && !ve){
                           dsVeVe.removeAll(dsVe);
-                          soGheNguoiLonVe = nguoiLonBanDau;
-                          soGheTreEmVe = treEmBanDau;
+                          soGheNguoiLonVe = nguoiLonBanDau; // reset số ng lớn  
+                          soGheTreEmVe = treEmBanDau;   // reset số trẻ em
                       }
-                  }}}
-              
+         
+         //   
+//              for (int j = 0;j< dsGhe.size();j++){
+//                  if(dsGhe.get(i).getMaGhe().trim().equalsIgnoreCase(listSelected.get(j).getName().trim())){
+//
+//                      
+//                 
+//                      if( this.di){
+//                          dsVeDi.removeAll(dsVeDi);
+//                          soGheNguoiLonDi = nguoiLonBanDau;
+//                          soGheTreEmDi = treEmBanDau;
+//                      }
+//                      else if (!di && !ve){
+//                          dsVeVe.removeAll(dsVe);
+//                          soGheNguoiLonVe = nguoiLonBanDau;
+//                          soGheTreEmVe = treEmBanDau;
+//                      }
+//                  }}
     }
     private void Huy_ChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Huy_ChonActionPerformed
         // TODO add your handling code here:
@@ -2562,7 +2639,7 @@ private void changeColor(Color a){
         huyChon();
         ((DefaultTableModel) jTable_ThongTinNguoiBay.getModel()).setRowCount(0);
 
-      //  changeColor(Color.WHITE);
+       // changeColor(Color.WHITE);
 
 
         
@@ -3399,33 +3476,42 @@ private void changeColor(Color a){
        
 //        this.khuHoi = true;
        if(this.ve == true){ 
-                ve = false;
-                di = false;
+                
                 
                 // chặn xác nhận khi không nhập đủ số lượng vé lúc đi
-                if (soGheNguoiLonDi != 0 && soGheTreEmDi !=0){
+                if ((soGheNguoiLonDi != 0 ) || (soGheTreEmDi != 0) ){
                     JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin vào số lượng vé đã chọn trước khi xác nhận!");
-                }else {
-           new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe, this.soGheNguoiLonVe, this.soGheTreEmVe).setVisible(true); // looix k mở được chọn chuyến bay về khi truyền thamn số vào
+                }
+                else {
+                    
+                ve = false;
+                di = false;
+          new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe, this.soGheNguoiLonVe, this.soGheTreEmVe).setVisible(true); // looix k mở được chọn chuyến bay về khi truyền thamn số vào
           // khuHoi = false;
           
-            changeColor(Color.RED);
+          
+          //  changeColor(Color.RED);
            this.dispose();
        }
        
        }
        else {
-           changeColor(Color.RED);
-            System.out.println(this.khuHoi);
+//           changeColor(Color.RED);
+//            System.out.println(this.khuHoi);
              // chặn xác nhận khi không nhập đủ số lượng vé lúc đi
-            if((soGheTreEmDi!=0 && soGheNguoiLonDi!=0) || (soGheTreEmVe!=0 && soGheNguoiLonVe!=0)){
+            
+            if(true == this.khuHoi){
+                if((soGheTreEmVe !=0) || (soGheNguoiLonVe !=0) ){//|| (soGheTreEmVe!=0 || soGheNguoiLonVe!=0)
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin vào số lượng vé đã chọn trước khi xác nhận!");
             }
-            else {
-            if(true == this.khuHoi){
-                
+                else {
                 new GiaoDienHoaDonHaiChieu(dsVeDi, dsVeVe).setVisible(true);
                 this.dispose();
+            }
+            }
+            else {
+                if((soGheTreEmDi!=0) || (soGheNguoiLonDi!=0) ){//|| (soGheTreEmVe!=0 || soGheNguoiLonVe!=0)
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin vào số lượng vé đã chọn trước khi xác nhận!");
             }
             else {
                 System.out.println("di mot chieu");
