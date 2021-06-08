@@ -139,8 +139,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         this.maHoaDon = this.danhSachVe.get(0).getMaHoaDon();
         hienThongTin();
 
-
-
+        
     }
 
     /**

@@ -543,8 +543,6 @@ private String xuLiMaVe(){
 
 
 
-
-
                 // nguoi lon
                 String CMND = jTextField_CMND.getText();
                 String ten = jTextField_TenNguoiBay.getText();
