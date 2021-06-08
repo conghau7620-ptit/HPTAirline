@@ -146,11 +146,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                               <Component id="jLabel_XemThongTinTaiKhoan" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
+
                               <EmptySpace pref="8" max="32767" attributes="0"/>
-=======
-                              <EmptySpace max="32767" attributes="0"/>
->>>>>>> fa549e5da79c6e034c02b13b23314478014916d6
+
                               <Component id="jLabel5" min="-2" pref="6" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Component id="jLabel_DangXuat" min="-2" pref="70" max="-2" attributes="0"/>

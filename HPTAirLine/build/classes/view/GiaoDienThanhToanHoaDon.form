@@ -424,11 +424,9 @@
                 <Component class="javax.swing.JButton" name="jButton_XoaVe">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-<<<<<<< HEAD
+
                       <Color blue="55" green="70" red="e1" type="rgb"/>
-=======
-                      <Color blue="33" green="33" red="0" type="rgb"/>
->>>>>>> fa549e5da79c6e034c02b13b23314478014916d6
+
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Roboto" size="16" style="1"/>
