@@ -162,11 +162,9 @@
                                   <Component id="jPanel6" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-<<<<<<< HEAD
+
                           <EmptySpace pref="11" max="32767" attributes="0"/>
-=======
-                          <EmptySpace max="32767" attributes="0"/>
->>>>>>> fa549e5da79c6e034c02b13b23314478014916d6
+
                       </Group>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
@@ -215,11 +213,9 @@
                               <Component id="jbutton_NguoiLon" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                               <Component id="jbutton_TreEm" min="-2" pref="100" max="-2" attributes="0"/>
-<<<<<<< HEAD
+
                               <EmptySpace pref="386" max="32767" attributes="0"/>
-=======
-                              <EmptySpace max="32767" attributes="0"/>
->>>>>>> fa549e5da79c6e034c02b13b23314478014916d6
+
                           </Group>
                       </Group>
                     </DimensionLayout>
