@@ -611,6 +611,7 @@ private String xuLiMaVe(){
                     ve.setTenNguoiBay(tenTre);
                     ve.setMaChuyenBay(maChuyenBay);
                     ve.setMaGhe(maGhe);
+                    ve.setCmndNguoiBay(""); // tre em thi cmnd  = ""
                     System.out.println("tre em");
                   
                     if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di){
