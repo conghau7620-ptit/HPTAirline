@@ -105,7 +105,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
     public static int soGheNguoiLonVe;
     public static int soGheTreEmDi;
     public static int soGheTreEmVe;
-    public static int nguoiLonBanDau, treEmBanDau;
+//    public static int nguoiLonBanDau, treEmBanDau;
 //    int soGheEmBe;
      public static String maChuyenBay;
     public static boolean khuHoi;
@@ -119,19 +119,13 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         this.maSanBayDen = maSanBayDen;
         this.ngayDi = ngayDi;
         this.ngayVe = ngayVe;
-<<<<<<< HEAD
-=======
-        
->>>>>>> 6010df4c71e5aa7fea72cfbfe1594127710774f0
+
         this.nguoiLonBanDau = soGheNguoiLon;
         this.soGheNguoiLonDi = soGheNguoiLon;
         this.soGheNguoiLonVe = soGheNguoiLon;
         
         this.treEmBanDau = soGheTreEm;
-<<<<<<< HEAD
-=======
         this.soGheTreEmDi = soGheTreEm;
->>>>>>> 6010df4c71e5aa7fea72cfbfe1594127710774f0
         this.soGheTreEmVe = soGheTreEm;
         this.maChuyenBay = maChuyenBay;
         this.di = di;
@@ -2537,11 +2531,10 @@ private void changeColor(Color a){
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
-<<<<<<< HEAD
- private void huyChon() {
-=======
-    private void huyChon() {
->>>>>>> 6010df4c71e5aa7fea72cfbfe1594127710774f0
+
+
+   private void huyChon() {
+
          for(int i =0;i < listSelected.size();i++){
 //   
               for (int j = 0;j< dsGhe.size();j++){
@@ -2564,16 +2557,14 @@ private void changeColor(Color a){
     }
     private void Huy_ChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Huy_ChonActionPerformed
         // TODO add your handling code here:
-<<<<<<< HEAD
+
        // changeColor(Color.WHITE);
         huyChon();
         ((DefaultTableModel) jTable_ThongTinNguoiBay.getModel()).setRowCount(0);
-=======
+
       //  changeColor(Color.WHITE);
-      huyChon();
-        ((DefaultTableModel) jTable_ThongTinNguoiBay.getModel()).setRowCount(0);
-        //  dsVe.removeAll(dsVe);
->>>>>>> 6010df4c71e5aa7fea72cfbfe1594127710774f0
+
+
         
     }//GEN-LAST:event_Huy_ChonActionPerformed
 
