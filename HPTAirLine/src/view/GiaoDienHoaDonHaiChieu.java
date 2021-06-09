@@ -7,7 +7,6 @@
  */
 package view;
 
-
 import connection.DataConnection;
 
 import connection.InsertData;
@@ -80,19 +79,18 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         this.danhSachVeVe = danhSachVeVe;
 
 //        this.maHoaDonVe = danhSachVeVe.get(0).getMaHoaDon();
-
         this.maChuyenBayVe = danhSachVeVe.get(0).getMaChuyenBay();
         // vẽ bảng trống
         dtmVeDi = (DefaultTableModel) jTable_VeDiDaChon.getModel();
         dtmVeDi.setColumnIdentifiers(new Object[]{
             "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay","NgaySinh", "MaHoaDon", "MaGhe"
+            "CMNDNguoiBay", "TenNguoiBay", "NgaySinh", "MaHoaDon", "MaGhe"
         });
 
         dtmVeVe = (DefaultTableModel) jTable_VeVeDaChon.getModel();
         dtmVeVe.setColumnIdentifiers(new Object[]{
             "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay","NgaySinh", "MaHoaDon", "MaGhe"
+            "CMNDNguoiBay", "TenNguoiBay", "NgaySinh", "MaHoaDon", "MaGhe"
         });
 
         dtmChuyenBayDi = (DefaultTableModel) jTable_ChuyenBayDiDaChon.getModel();
@@ -118,50 +116,66 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         //
 
         thongTinTaiKhoan();
-//        
-//        //chuẩn hóa từ chọn ghế
-//         String sql = "select * from HOADON";
-//                connection.DataConnection.createStatement();
-//               
-//                int soHoaDon =1;
-//                try {
-//            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
-//            
-//            while(rs.next()){
-//                soHoaDon++; 
-//            }
-//                    System.out.println(soHoaDon);
-//        } catch (Exception e) {
-//        }
-//                System.out.println("HD"+soHoaDon);
-//                                 //
-//                                 soHoaDon++;
-//                 String maHoaDon = "";
-//                 if(soHoaDon <= 9) maHoaDon= "HD0"+ (soHoaDon);
-//                 else maHoaDon = "HD" + (soHoaDon);
-//                                 
-//                 String maHoaDonVe = "";
-//                 if(soHoaDon <= 8) maHoaDonVe= "HD0"+ (soHoaDon+1);
-//                 else maHoaDonVe = "HD" + (soHoaDon+1);
-//                 //
-//                 
-                 
+
+        //chuẩn hóa từ chọn ghế
+        String sql = "select * from HOADON";
+        connection.DataConnection.createStatement();
+
+        int soHoaDon = 1;
+        try {
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                soHoaDon++;
+            }
+            System.out.println(soHoaDon);
+        } catch (Exception e) {
+        }
+        System.out.println("HD" + soHoaDon);
+        //
+        soHoaDon++;
+        String maHoaDon = "";
+        if (soHoaDon <= 9) {
+            maHoaDon = "HD0" + (soHoaDon);
+        } else {
+            maHoaDon = "HD" + (soHoaDon);
+        }
+
+        String maHoaDonVe = "";
+        if (soHoaDon <= 8) {
+            maHoaDonVe = "HD0" + (soHoaDon + 1);
+        } else {
+            maHoaDonVe = "HD" + (soHoaDon + 1);
+        }
+        //
+
+
         for (Ve ve : this.danhSachVeDi) {
 
             String maGhe = ve.getMaGhe().substring(0, 1).toUpperCase() + ve.getMaGhe().substring(1);
             ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
             System.out.println("ma ghe: " + ve.getMaGhe());
-          //  ve.setMaHoaDon(maHoaDon);
+
+            ve.setMaHoaDon(maHoaDon);
             
+
+            ve.setMaHoaDon(maHoaDon);
+
+
         }
         for (Ve ve : this.danhSachVeVe) {
 
             String maGhe = ve.getMaGhe().substring(0, 1).toUpperCase() + ve.getMaGhe().substring(1);
             ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
             System.out.println("ma ghe: " + ve.getMaGhe());
-         //   ve.setMaHoaDon(maHoaDonVe);
+
+           ve.setMaHoaDon(maHoaDonVe);
             
+
+            ve.setMaHoaDon(maHoaDonVe);
+
+
         }
         this.maHoaDonDi = this.danhSachVeDi.get(0).getMaHoaDon();
         this.maHoaDonVe = this.danhSachVeVe.get(0).getMaHoaDon();
@@ -1144,19 +1158,18 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                             System.out.println("Thêm 2 hóa đơn thành công");
                             if (InsertData.insertVe(danhSachVeDi) == true && InsertData.insertVe(danhSachVeVe) == true) {
                                 System.out.println("Thêm 2 danh sách vé thành công");
-                                
-                                for(Ve v: this.danhSachVeDi){
-                                    if(UpdateData.updateGhe(v.getMaGhe(), (byte) 0)){
-                                        System.out.println("Cap nhat ghe "+v.getMaGhe());
+
+                                for (Ve v : this.danhSachVeDi) {
+                                    if (UpdateData.updateGhe(v.getMaGhe(), (byte) 0)) {
+                                        System.out.println("Cap nhat ghe " + v.getMaGhe());
                                     }
                                 }
-                                
-                                for(Ve v: this.danhSachVeVe){
-                                    if(UpdateData.updateGhe(v.getMaGhe(), (byte) 0)){
-                                        System.out.println("Cap nhat ghe "+v.getMaGhe());
+
+                                for (Ve v : this.danhSachVeVe) {
+                                    if (UpdateData.updateGhe(v.getMaGhe(), (byte) 0)) {
+                                        System.out.println("Cap nhat ghe " + v.getMaGhe());
                                     }
                                 }
-                                
 
                                 if (UpdateData.updateDiemTichLuyKhachHang(jTextField_SoDienThoaiKhachHang.getText(),
                                         diemTichLuy - diemTichLuySuDung + this.soVePhoThongDi * 5 + this.soVeThuongGiaDi * 10
@@ -1318,11 +1331,20 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                     }
                 }
             }
-            dtmVeDi.addRow(new Object[]{
-                v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
-                v.getMaHoaDon(), v.getMaGhe()
-            });
+            if (v.getNgaySinh() != null) {
+                dtmVeDi.addRow(new Object[]{
+                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                    v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                    v.getMaHoaDon(), v.getMaGhe()
+                });
+            } else {
+                dtmVeDi.addRow(new Object[]{
+                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                    v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
+                    v.getMaHoaDon(), v.getMaGhe()
+                });
+            }
+
         }
         //Hiện thông tin chuyến bay về đã chọn, vé về đã chọn
         for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
@@ -1349,13 +1371,19 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                     }
                 }
             }
-            dtmVeVe.addRow(new Object[]{
-                v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-
-                v.getCmndNguoiBay(), v.getTenNguoiBay(),
-                new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
-                v.getMaHoaDon(), v.getMaGhe()
-            });
+            if (v.getNgaySinh() != null) {
+                dtmVeVe.addRow(new Object[]{
+                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                    v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                    v.getMaHoaDon(), v.getMaGhe()
+                });
+            } else {
+                dtmVeVe.addRow(new Object[]{
+                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                    v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
+                    v.getMaHoaDon(), v.getMaGhe()
+                });
+            }
         }
 
         jTextField_SLVePhoThongDi.setText("" + soVePhoThongDi);
@@ -1378,7 +1406,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -1491,7 +1518,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_HoanTatHoaDon;

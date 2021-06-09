@@ -519,11 +519,19 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
             dtmVe.setRowCount(0);
             for (Ve v : controller.Controller.arrayListVe) {
                 if (v.getMaHoaDon().equals(maHoaDon)) {
-                    dtmVe.addRow(new Object[]{
-                        v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                        v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
-                        v.getMaHoaDon(), v.getMaGhe()
-                    });
+                    if (v.getNgaySinh() != null) {
+                        dtmVe.addRow(new Object[]{
+                            v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                            v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                            v.getMaHoaDon(), v.getMaGhe()
+                        });
+                    } else {
+                        dtmVe.addRow(new Object[]{
+                            v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                            v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
+                            v.getMaHoaDon(), v.getMaGhe()
+                        });
+                    }
                 }
             }
         }
