@@ -86,13 +86,13 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         dtmVeDi = (DefaultTableModel) jTable_VeDiDaChon.getModel();
         dtmVeDi.setColumnIdentifiers(new Object[]{
             "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay", "MaHoaDon", "MaGhe"
+            "CMNDNguoiBay", "TenNguoiBay","NgaySinh", "MaHoaDon", "MaGhe"
         });
 
         dtmVeVe = (DefaultTableModel) jTable_VeVeDaChon.getModel();
         dtmVeVe.setColumnIdentifiers(new Object[]{
             "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay", "MaHoaDon", "MaGhe"
+            "CMNDNguoiBay", "TenNguoiBay","NgaySinh", "MaHoaDon", "MaGhe"
         });
 
         dtmChuyenBayDi = (DefaultTableModel) jTable_ChuyenBayDiDaChon.getModel();
@@ -1320,7 +1320,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             }
             dtmVeDi.addRow(new Object[]{
                 v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                v.getCmndNguoiBay(), v.getTenNguoiBay(),
+                v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
                 v.getMaHoaDon(), v.getMaGhe()
             });
         }
@@ -1353,7 +1353,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                 v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
 
                 v.getCmndNguoiBay(), v.getTenNguoiBay(),
-
+                new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
                 v.getMaHoaDon(), v.getMaGhe()
             });
         }

@@ -61,7 +61,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
         dtmVe = (DefaultTableModel) jTable_VeDaChon.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
             "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay", "MaHoaDon", "MaGhe"
+            "CMNDNguoiBay", "TenNguoiBay","NgaySinh", "MaHoaDon", "MaGhe"
         });
 
         this.addWindowListener(new WindowAdapter() {
@@ -168,7 +168,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable_HoaDon);
 
-        jLabel_HoaDon.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel_HoaDon.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel_HoaDon.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_HoaDon.setText("Hóa đơn");
 
@@ -196,9 +196,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
             }
         });
 
-
         jButton_XoaHoaDon.setBackground(new java.awt.Color(255, 77, 77));
-
         jButton_XoaHoaDon.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_XoaHoaDon.setForeground(new java.awt.Color(255, 255, 255));
         jButton_XoaHoaDon.setText("Xóa hóa đơn");
@@ -229,7 +227,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                                 .addComponent(jButton_ThoatGiaoDienXemLichSu, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton_SuaDiemTichLuyDaDung)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(jButton_XoaHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -271,13 +269,11 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
         jTable_VeDaChon.setSelectionBackground(new java.awt.Color(255, 77, 77));
         jScrollPane2.setViewportView(jTable_VeDaChon);
 
-        jLabel_VeDaChon.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel_VeDaChon.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         jLabel_VeDaChon.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_VeDaChon.setText("Vé đã chọn");
 
-
         jButton_XoaVe.setBackground(new java.awt.Color(225, 112, 85));
-
         jButton_XoaVe.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_XoaVe.setForeground(new java.awt.Color(255, 255, 255));
         jButton_XoaVe.setText("Xóa vé");
@@ -294,31 +290,27 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
-
-                    .addComponent(jSeparator2)
-
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 738, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_VeDaChon)
-                            .addComponent(jButton_XoaVe))
-
+                            .addComponent(jButton_XoaVe)
+                            .addComponent(jLabel_VeDaChon))
                         .addGap(0, 0, Short.MAX_VALUE)))
-
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(jLabel_VeDaChon)
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jButton_XoaVe, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -327,19 +319,19 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(520, 520, 520)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addGap(102, 102, 102)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -507,7 +499,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                                                     if (v.getMaHoaDon().equals(maHoaDon)) {
                                                         dtmVe.addRow(new Object[]{
                                                             v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                                                            v.getCmndNguoiBay(), v.getTenNguoiBay(),
+                                                            v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
                                                             v.getMaHoaDon(), v.getMaGhe()
                                                         });
                                                     }
@@ -528,7 +520,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                                                     if (v.getMaHoaDon().equals(maHoaDon)) {
                                                         dtmVe.addRow(new Object[]{
                                                             v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                                                            v.getCmndNguoiBay(), v.getTenNguoiBay(),
+                                                            v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
                                                             v.getMaHoaDon(), v.getMaGhe()
                                                         });
                                                     }
@@ -564,7 +556,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                 if (v.getMaHoaDon().equals(maHoaDon)) {
                     dtmVe.addRow(new Object[]{
                         v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                        v.getCmndNguoiBay(), v.getTenNguoiBay(),
+                        v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
                         v.getMaHoaDon(), v.getMaGhe()
                     });
                 }
@@ -712,7 +704,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                                 if (v.getMaHoaDon().equals(maHoaDon)) {
                                     dtmVe.addRow(new Object[]{
                                         v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                                        v.getCmndNguoiBay(), v.getTenNguoiBay(),
+                                        v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
                                         v.getMaHoaDon(), v.getMaGhe()
                                     });
                                 }
@@ -854,7 +846,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                         if (v.getMaHoaDon().equals(maHoaDon)) {
                             dtmVe.addRow(new Object[]{
                                 v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                                v.getCmndNguoiBay(), v.getTenNguoiBay(),
+                                v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
                                 v.getMaHoaDon(), v.getMaGhe()
                             });
                         }
