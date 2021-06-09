@@ -380,16 +380,20 @@
                                           <Component id="jLabel_TongTien" min="-2" pref="72" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jScrollPane2" alignment="0" min="-2" pref="643" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" alignment="0" min="-2" pref="643" max="-2" attributes="0"/>
                                       <Component id="jSeparator3" alignment="0" min="-2" pref="643" max="-2" attributes="0"/>
-                                      <Component id="jLabel_ChuyenBayDaChon" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jButton_ThoatGiaoDienHoaDon" min="-2" pref="281" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                           <Component id="jButton_HoanTatHoaDon" min="-2" pref="321" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="jScrollPane1" alignment="0" min="-2" pref="643" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel_ChuyenBayDaChon" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jLabel_ChuyenBayDaChon1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
@@ -402,7 +406,10 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel_ChuyenBayDaChon" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel_ChuyenBayDaChon" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_ChuyenBayDaChon1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="57" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -867,6 +874,17 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#xe3; thanh to&#xe1;n"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_ChuyenBayDaChon1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Roboto" size="12" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*H&#xf3;a &#x111;&#x1a1;n s&#x1ebd; b&#x1ecb; x&#xf3;a n&#x1ebf;u kh&#xf4;ng thanh to&#xe1;n tr&#x1b0;&#x1edb;c 2 ti&#x1ebf;ng tr&#x1b0;&#x1edb;c gi&#x1edd; bay"/>
           </Properties>
         </Component>
       </SubComponents>
