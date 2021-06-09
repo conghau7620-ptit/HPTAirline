@@ -117,38 +117,38 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
 
         thongTinTaiKhoan();
 
-        //chuẩn hóa từ chọn ghế
-        String sql = "select * from HOADON";
-        connection.DataConnection.createStatement();
-
-        int soHoaDon = 1;
-        try {
-            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                soHoaDon++;
-            }
-            System.out.println(soHoaDon);
-        } catch (Exception e) {
-        }
-        System.out.println("HD" + soHoaDon);
-        //
-        soHoaDon++;
-        String maHoaDon = "";
-        if (soHoaDon <= 9) {
-            maHoaDon = "HD0" + (soHoaDon);
-        } else {
-            maHoaDon = "HD" + (soHoaDon);
-        }
-
-        String maHoaDonVe = "";
-        if (soHoaDon <= 8) {
-            maHoaDonVe = "HD0" + (soHoaDon + 1);
-        } else {
-            maHoaDonVe = "HD" + (soHoaDon + 1);
-        }
-        //
+//        //chuẩn hóa từ chọn ghế
+//        String sql = "select * from HOADON";
+//        connection.DataConnection.createStatement();
+//
+//        int soHoaDon = 1;
+//        try {
+//            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//
+//            while (rs.next()) {
+//                soHoaDon++;
+//            }
+//            System.out.println(soHoaDon);
+//        } catch (Exception e) {
+//        }
+//        System.out.println("HD" + soHoaDon);
+//        //
+//        soHoaDon++;
+//        String maHoaDon = "";
+//        if (soHoaDon <= 9) {
+//            maHoaDon = "HD0" + (soHoaDon);
+//        } else {
+//            maHoaDon = "HD" + (soHoaDon);
+//        }
+//
+//        String maHoaDonVe = "";
+//        if (soHoaDon <= 8) {
+//            maHoaDonVe = "HD0" + (soHoaDon + 1);
+//        } else {
+//            maHoaDonVe = "HD" + (soHoaDon + 1);
+//        }
+//        //
 
 
         for (Ve ve : this.danhSachVeDi) {
@@ -157,10 +157,10 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
             System.out.println("ma ghe: " + ve.getMaGhe());
 
-            ve.setMaHoaDon(maHoaDon);
+     //       ve.setMaHoaDon(maHoaDon);
             
 
-            ve.setMaHoaDon(maHoaDon);
+        //    ve.setMaHoaDon(maHoaDon);
 
 
         }
@@ -170,10 +170,10 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
             System.out.println("ma ghe: " + ve.getMaGhe());
 
-           ve.setMaHoaDon(maHoaDonVe);
+        //   ve.setMaHoaDon(maHoaDonVe);
             
 
-            ve.setMaHoaDon(maHoaDonVe);
+          //  ve.setMaHoaDon(maHoaDonVe);
 
 
         }

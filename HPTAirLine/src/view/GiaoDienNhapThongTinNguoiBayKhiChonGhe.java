@@ -136,7 +136,6 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jTextField_TenTreEm = new javax.swing.JTextField();
         jDateChooser_NgaySinhTreEm = new com.toedter.calendar.JDateChooser();
-        jTextField_NgaySinhTreEm = new javax.swing.JTextField();
         jButton_Huy = new javax.swing.JButton();
         jButton_XacNhan = new javax.swing.JButton();
 
@@ -319,8 +318,6 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
         jDateChooser_NgaySinhTreEm.setDateFormatString("dd/MM/yyyy");
         jDateChooser_NgaySinhTreEm.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
 
-        jTextField_NgaySinhTreEm.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -336,11 +333,8 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                         .addComponent(jTextField_TenTreEm, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                         .addGap(12, 12, 12))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jDateChooser_NgaySinhTreEm, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jTextField_NgaySinhTreEm, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(jDateChooser_NgaySinhTreEm, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -353,9 +347,7 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateChooser_NgaySinhTreEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(jTextField_NgaySinhTreEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(318, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -535,10 +527,12 @@ private String xuLiMaVe(){
              
                 String maVe = xuLiMaVe();
                 String maChuyenBay = GiaoDienChonGhe.maChuyenBay.trim();
+
+                
                 String maGhe = this.maGhe.trim();
                 int gia = 0;
                 short kiGui = 0;
-                String maHoaDon = "";
+                String maHoaDon = ""; 
                 
                 // nguoi lon
                 String ten = jTextField_TenNguoiBay.getText();  
@@ -547,8 +541,18 @@ private String xuLiMaVe(){
 
                 // tre em
                 String tenTre = jTextField_TenTreEm.getText();
+                
+                // fix ngay sinh
                 java.util.Date utilDate = new java.util.Date();
                 utilDate = jDateChooser_NgaySinhTreEm.getDate();
+                 String date = new SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().getTime());
+                    try {
+                            utilDate = new SimpleDateFormat("yyyy/MM/dd").parse(date);
+                    } catch (ParseException ex) {
+                             Logger.getLogger(GiaoDienTimChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                
                 java.sql.Date ngaySinh = new java.sql.Date(utilDate.getTime());
                 
                
@@ -559,7 +563,7 @@ private String xuLiMaVe(){
                 String sql = "select * from HOADON";
                 connection.DataConnection.createStatement();
                
-                int soHoaDon =1;
+                int soHoaDon =2;
                 try {
             PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -724,7 +728,6 @@ private String xuLiMaVe(){
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JTextField jTextField_CMND;
-    private javax.swing.JTextField jTextField_NgaySinhTreEm;
     private javax.swing.JTextField jTextField_TenNguoiBay;
     private javax.swing.JTextField jTextField_TenTreEm;
     private javax.swing.JButton jbutton_NguoiLon;
