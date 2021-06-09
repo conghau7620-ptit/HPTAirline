@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.ChuyenBay;
+import model.DuongBay;
 import model.HoaDon;
 import model.KhachHang;
 import model.NhanVien;
@@ -153,6 +155,56 @@ public class InsertData {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("thêm nhân viên thất bại");
+        return false;
+    }
+    
+    public static boolean insertDuongBay(DuongBay db) {
+        String sqlCommand = "insert into dbo.DUONGBAY values(?,?,?,?)";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, db.getMaDuongBay());
+            ps.setString(2, db.getMaSanBay1());
+            ps.setString(3, db.getMaSanBay2());
+            ps.setInt(4, db.getKhoangCach());
+
+            if(ps.executeUpdate()>0){
+                System.out.println("thêm đường bay thành công");
+                return true;
+            }
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("thêm đường bay thất bại");
+        return false;
+    }
+    
+    public static boolean insertChuyenBay(ChuyenBay cb) {
+        String sqlCommand = "insert into dbo.CHUYENBAY values(?,?,?,?,?,?,?,?)";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, cb.getMaChuyenBay());
+            ps.setString(2, cb.getMaMayBay());
+            ps.setString(3, cb.getMaSanBayDi());
+            ps.setString(4, cb.getMaSanBayDen());
+            ps.setDate(5, cb.getNgayBay());
+            ps.setTime(6, cb.getGioBay());
+            ps.setString(7, cb.getGhiChu());
+            ps.setInt(8, cb.getKhoangCach());
+
+            if(ps.executeUpdate()>0){
+                System.out.println("thêm chuyến bay thành công");
+                return true;
+            }
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("thêm chuyến bay thất bại");
         return false;
     }
 //    

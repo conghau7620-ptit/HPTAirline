@@ -9,7 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Ghe;
+import model.ChuyenBay;
+import model.DuongBay;
 import model.KhachHang;
 import model.NhanVien;
 import model.TaiKhoan;
@@ -40,9 +41,56 @@ public class UpdateData {
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("sua khach hang that bai");
+        System.out.println("sửa khách hàng thất bại");
         return false;
     }
+    
+    public static boolean updateDuongBay(DuongBay duongBay) {
+        String sqlCommand = "update dbo.DUONGBAY set MaSanBay1=?, MaSanBay2=?, KhoangCach=?"
+                + " where MaDuongBay=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            
+            ps.setString(1, duongBay.getMaSanBay1());
+            ps.setString(2, duongBay.getMaSanBay2());
+            ps.setInt(3, duongBay.getKhoangCach());
+            ps.setString(4, duongBay.getMaDuongBay());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa đường bay thất bại");
+        return false;
+    }
+    
+    public static boolean updateChuyenBay(ChuyenBay chuyenBay) {
+        String sqlCommand = "update dbo.CHUYENBAY set MaMayBay=?, MaSanBayDi=?, MaSanBayDen=?, NgayBay=?, GioBay=?, GhiChu=?, KhoangCach=?"
+                + " where MaChuyenBay=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            
+            ps.setString(1, chuyenBay.getMaMayBay());
+            ps.setString(2, chuyenBay.getMaSanBayDi());
+            ps.setString(3, chuyenBay.getMaSanBayDen());
+            ps.setDate(4, chuyenBay.getNgayBay());
+            ps.setTime(5, chuyenBay.getGioBay());
+            ps.setString(6, chuyenBay.getGhiChu());
+            ps.setInt(7, chuyenBay.getKhoangCach());
+            ps.setString(8, chuyenBay.getMaChuyenBay());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa chuyến bay thất bại");
+        return false;
+    }
+    
     public static boolean updateDiemTichLuyKhachHang(String sdtKhachHang, int diemTichLuy) {
         String sqlCommand = "update dbo.KHACHHANG set DiemTichLuy=?"
                 + " where SoDienThoaiKhachHang=?";
@@ -57,7 +105,7 @@ public class UpdateData {
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("sua khach hang that bai");
+        System.out.println("sửa điểm tích lũy khách hàng thất bại");
         return false;
     }
 
@@ -95,7 +143,7 @@ public class UpdateData {
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("sua mk that bai");
+        System.out.println("sửa tài khoản thất bại");
         return false;
     }
     
@@ -116,7 +164,7 @@ public class UpdateData {
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("sua ghe that bai");
+        System.out.println("sửa ghế thất bại");
         return false;
     }
     
@@ -134,7 +182,7 @@ public class UpdateData {
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("sua ghe that bai");
+        System.out.println("sửa hóa đơn thất bại");
         return false;
     }
     public static boolean updateHoaDon(String maHoaDon, byte trangThaiThanhToan){
@@ -152,9 +200,10 @@ public class UpdateData {
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("sua ghe that bai");
+        System.out.println("sửa hóa đơn thất bại");
         return false;
     }
+    
     
     public static boolean deleteVe(String maVe, String maHoaDon){
          String sqlCommand = "delete from dbo.VE where MaVe=? and MaHoaDon=?";
@@ -168,7 +217,37 @@ public class UpdateData {
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("xoa ve that bai");
+        System.out.println("xóa vé thất bại");
+        return false;
+    }
+    
+    public static boolean deleteChuyenBay(String maChuyenBay){
+         String sqlCommand = "delete from dbo.CHUYENBAY where MaChuyenBay=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand); 
+            ps.setString(1, maChuyenBay);
+            return ps.executeUpdate() > 0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("xóa chuyến bay thất bại");
+        return false;
+    }
+    
+    public static boolean deleteDuongBay(String maDuongBay){
+         String sqlCommand = "delete from dbo.DUONGBAY where MaDuongBay=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand); 
+            ps.setString(1, maDuongBay);
+            return ps.executeUpdate() > 0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("xóa đường bay thất bại");
         return false;
     }
     
@@ -183,7 +262,7 @@ public class UpdateData {
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("xoa hóa đơn that bai");
+        System.out.println("xóa hóa đơn thất bại");
         return false;
     }
     

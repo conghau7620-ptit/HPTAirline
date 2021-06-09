@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.ChuyenBay;
+import model.DuongBay;
 import model.Ghe;
 import model.HoaDon;
 import model.KhachHang;
@@ -24,9 +25,6 @@ import model.NhanVien;
 import model.SanBay;
 import model.TaiKhoan;
 import model.Ve;
-
-//import sun.net.www.content.image.gif;
-import view.GiaoDienChonGhe;
 
 
 /**
@@ -43,6 +41,7 @@ public class Controller {
     public static ArrayList<SanBay> arrayListSanBay = new ArrayList<SanBay>();
     public static ArrayList<TaiKhoan> arrayListTaiKhoan = new ArrayList<TaiKhoan>();
     public static ArrayList<Ve> arrayListVe = new ArrayList<Ve>();
+    public static ArrayList<DuongBay> arrayListDuongBay = new ArrayList<DuongBay>();
 
 
 
