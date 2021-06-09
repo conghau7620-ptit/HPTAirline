@@ -42,7 +42,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         dtmVe = (DefaultTableModel) jTable_Ve.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
             "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay", "MaHoaDon", "MaGhe"
+            "CMNDNguoiBay", "TenNguoiBay","NgaySinh", "MaHoaDon", "MaGhe"
         });
 
         dtmKhachHang = (DefaultTableModel) jTable_KhachHang.getModel();
@@ -521,7 +521,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
                 if (v.getMaHoaDon().equals(maHoaDon)) {
                     dtmVe.addRow(new Object[]{
                         v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                        v.getCmndNguoiBay(), v.getTenNguoiBay(),
+                        v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
                         v.getMaHoaDon(), v.getMaGhe()
                     });
                 }

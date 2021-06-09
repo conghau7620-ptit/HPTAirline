@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author conghau
@@ -23,7 +25,7 @@ public class Ve {
 //    private String sdtNguoiBay;
     private String maHoaDon;
     private String maGhe;
-
+    private Date ngaySinh;
     public Ve() {
     }
  // test 
@@ -40,7 +42,7 @@ public class Ve {
         this.maGhe = maGhe;
         
     }
-    public Ve(String maVe, String maChuyenBay, int gia, short kyGui, String cmndNguoiBay, String tenNguoiBay, String maHoaDon, String maGhe) {
+    public Ve(String maVe, String maChuyenBay, int gia, short kyGui, String cmndNguoiBay, String tenNguoiBay, Date ngaySinh, String maHoaDon, String maGhe) {
         this.maVe = maVe;
         this.maChuyenBay = maChuyenBay;
         
@@ -48,8 +50,17 @@ public class Ve {
         this.kyGui = kyGui;
         this.cmndNguoiBay = cmndNguoiBay;
         this.tenNguoiBay = tenNguoiBay;
+        this.ngaySinh = ngaySinh;
         this.maHoaDon = maHoaDon;
         this.maGhe = maGhe;
+    }
+
+    public Date getNgaySinh() {
+        return ngaySinh;
+    }
+
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
    
 

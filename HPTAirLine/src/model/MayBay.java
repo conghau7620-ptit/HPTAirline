@@ -13,18 +13,18 @@ public class MayBay {
     private String maMayBay;
     private String tenMayBay;
     private String hangBay;
-    private int soGhePhoThong;
-    private int soGheThuongGia;
+//    private int soGhePhoThong;
+//    private int soGheThuongGia;
 
     public MayBay() {
     }
 
-    public MayBay(String maMayBay, String tenMayBay, String hangBay, int soGhePhoThong, int soGheThuongGia) {
+    public MayBay(String maMayBay, String tenMayBay, String hangBay/*, int soGhePhoThong, int soGheThuongGia*/) {
         this.maMayBay = maMayBay;
         this.tenMayBay = tenMayBay;
         this.hangBay = hangBay;
-        this.soGhePhoThong = soGhePhoThong;
-        this.soGheThuongGia = soGheThuongGia;
+//        this.soGhePhoThong = soGhePhoThong;
+//        this.soGheThuongGia = soGheThuongGia;
     }
 
     public String getMaMayBay() {
@@ -39,13 +39,13 @@ public class MayBay {
         return hangBay;
     }
 
-    public int getSoGhePhoThong() {
-        return soGhePhoThong;
-    }
-
-    public int getSoGheThuongGia() {
-        return soGheThuongGia;
-    }
+//    public int getSoGhePhoThong() {
+//        return soGhePhoThong;
+//    }
+//
+//    public int getSoGheThuongGia() {
+//        return soGheThuongGia;
+//    }
 
     public void setMaMayBay(String maMayBay) {
         this.maMayBay = maMayBay;
@@ -59,13 +59,13 @@ public class MayBay {
         this.hangBay = hangBay;
     }
 
-    public void setSoGhePhoThong(int soGhePhoThong) {
-        this.soGhePhoThong = soGhePhoThong;
-    }
-
-    public void setSoGheThuongGia(int soGheThuongGia) {
-        this.soGheThuongGia = soGheThuongGia;
-    }
+//    public void setSoGhePhoThong(int soGhePhoThong) {
+//        this.soGhePhoThong = soGhePhoThong;
+//    }
+//
+//    public void setSoGheThuongGia(int soGheThuongGia) {
+//        this.soGheThuongGia = soGheThuongGia;
+//    }
     
     
 }

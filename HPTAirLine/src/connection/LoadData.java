@@ -108,9 +108,9 @@ public class LoadData {
                 MayBay mayBay = new MayBay(
                     rs.getString(1).trim(),
                     rs.getString(2).trim(),
-                    rs.getString(3).trim(),
-                    rs.getInt(4),
-                    rs.getInt(5));
+                    rs.getString(3).trim());
+//                    rs.getInt(4),
+//                    rs.getInt(5));
                 Controller.arrayListMayBay.add(mayBay);
             }
         } catch (SQLException ex) {
@@ -195,8 +195,9 @@ public class LoadData {
 //                    rs.getString(9).trim(),
                     rs.getString(5).trim(),
                     rs.getString(6).trim(),
-                    rs.getString(7).trim(),
-                    rs.getString(8).trim());
+                    rs.getDate(7),
+                    rs.getString(8).trim(),
+                    rs.getString(8).trim()); 
 //                    ve.setKyGui(a);
                 Controller.arrayListVe.add(ve);
             }

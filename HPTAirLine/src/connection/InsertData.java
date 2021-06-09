@@ -85,7 +85,7 @@ public class InsertData {
     }
 
     public static boolean insertVe(ArrayList<Ve> danhSachVe) {
-        String sqlCommand = "insert into dbo.VE values(?,?,?,?,?,?,?,?)";
+        String sqlCommand = "insert into dbo.VE values(?,?,?,?,?,?,?,?,?)";
         try {
 
             for (Ve v : danhSachVe) {
@@ -115,8 +115,9 @@ public class InsertData {
                 ps.setString(6, v.getTenNguoiBay());
 //                ps.setString(10, v.getEmailNguoiBay());
 //                ps.setString(11, v.getSdtNguoiBay());
-                ps.setString(7, v.getMaHoaDon());
-                ps.setString(8, v.getMaGhe());    
+                ps.setDate(7, v.getNgaySinh());
+                ps.setString(8, v.getMaHoaDon());
+                ps.setString(9, v.getMaGhe());    
                 ps.executeUpdate();
 //                if(ps.executeUpdate()<=0){
 //                    System.out.println("Khong the them danh sach ve");
