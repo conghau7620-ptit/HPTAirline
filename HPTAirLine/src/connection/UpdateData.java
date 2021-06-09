@@ -13,6 +13,7 @@ import model.ChuyenBay;
 import model.DuongBay;
 import model.KhachHang;
 import model.NhanVien;
+import model.SanBay;
 import model.TaiKhoan;
 
 /**
@@ -88,6 +89,25 @@ public class UpdateData {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa chuyến bay thất bại");
+        return false;
+    }
+    
+    public static boolean updateSanBay(SanBay sanBay) {
+        String sqlCommand = "update dbo.SANBAY set TenSanBay=?"
+                + " where MaSanBay=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            
+            ps.setString(1, sanBay.getTenSanBay());
+            ps.setString(2, sanBay.getMaSanBay());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa sân bay thất bại");
         return false;
     }
     
