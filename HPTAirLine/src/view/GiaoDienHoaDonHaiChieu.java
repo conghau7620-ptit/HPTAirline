@@ -73,12 +73,12 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
     public GiaoDienHoaDonHaiChieu(ArrayList<Ve> danhSachVeDi, ArrayList<Ve> danhSachVeVe) {
         initComponents();
         this.danhSachVeDi = danhSachVeDi;
-//        this.maHoaDonDi = danhSachVeDi.get(0).getMaHoaDon();
+        this.maHoaDonDi = danhSachVeDi.get(0).getMaHoaDon();
         this.maChuyenBayDi = danhSachVeDi.get(0).getMaChuyenBay();
 
         this.danhSachVeVe = danhSachVeVe;
 
-//        this.maHoaDonVe = danhSachVeVe.get(0).getMaHoaDon();
+        this.maHoaDonVe = danhSachVeVe.get(0).getMaHoaDon();
         this.maChuyenBayVe = danhSachVeVe.get(0).getMaChuyenBay();
         // vẽ bảng trống
         dtmVeDi = (DefaultTableModel) jTable_VeDiDaChon.getModel();
@@ -177,8 +177,8 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
 
 
         }
-        this.maHoaDonDi = this.danhSachVeDi.get(0).getMaHoaDon();
-        this.maHoaDonVe = this.danhSachVeVe.get(0).getMaHoaDon();
+//        this.maHoaDonDi = this.danhSachVeDi.get(0).getMaHoaDon();
+//        this.maHoaDonVe = this.danhSachVeVe.get(0).getMaHoaDon();
         //
 
         hienThongTin();
