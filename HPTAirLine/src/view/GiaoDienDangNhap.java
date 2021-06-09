@@ -37,6 +37,7 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jLabel_IconMayBay = new javax.swing.JLabel();
         jLabel_HPT = new javax.swing.JLabel();
@@ -49,7 +50,6 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         jLabel_DangKy = new javax.swing.JLabel();
         jLabel_DangNhap = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jSeparator2 = new javax.swing.JSeparator();
         jPasswordField_MatKhau = new javax.swing.JPasswordField();
         jLabel_BaoLoi = new javax.swing.JLabel();
 
@@ -138,7 +138,8 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         jLabel_DangNhap.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_DangNhap.setText("Đăng nhập");
 
-        jLabel_BaoLoi.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel_BaoLoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_BaoLoi.setForeground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -152,10 +153,6 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(112, 112, 112)
-                                .addComponent(jLabel_DangKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextField_TenDangNhap)
                                 .addComponent(jButton_DangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -166,7 +163,12 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                                         .addComponent(jLabel_MatKhau)
                                         .addComponent(jLabel_TenDangNhap))
                                     .addGap(174, 174, 174)))
-                            .addComponent(jLabel_BaoLoi))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel_BaoLoi)
+                                .addGap(11, 11, 11))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(128, 128, 128)
+                        .addComponent(jLabel_DangKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -184,34 +186,28 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                 .addComponent(jLabel_MatKhau)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordField_MatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel_BaoLoi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel_DangKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -220,6 +216,55 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MousePressed
+
+    private void jLabel_DangKyMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangKyMousePressed
+        // TODO add your handling code here:
+        new GiaoDienDangKyTaiKhoan().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel_DangKyMousePressed
+
+    private void jButton_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangNhapActionPerformed
+        // TODO add your handling code here:
+        new LoadData();
+        int index = -1;
+        for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
+            if (jTextField_TenDangNhap.getText().equals(tk.getTenDangNhap())) {
+                index = Controller.arrayListTaiKhoan.indexOf(tk);
+            }
+        }
+        if (index != -1) {
+            jTextField_TenDangNhap.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+            TaiKhoan taiKhoanHienTai = Controller.arrayListTaiKhoan.get(index);
+            if (jPasswordField_MatKhau.getText().equals(taiKhoanHienTai.getMatKhau())) {
+                controller.Controller.tk = Controller.arrayListTaiKhoan.get(index);
+                jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+                if (controller.Controller.tk.getLoaiTaiKhoan().equalsIgnoreCase("QuanLy")) {
+                    new GiaoDienQuanLy().setVisible(true);
+                    this.dispose();
+                }
+
+                //                this.testHD1Chieu();
+                //                this.testHD2Chieu();
+                //                new GiaoDienLichSuHoaDon().setVisible(true);    //testLichsu
+
+                else if (taiKhoanHienTai.getLoaiTaiKhoan().equals("KhachHang")) {
+
+                    new GiaoDienTimChuyenBay().setVisible(true);
+                    this.dispose();
+                }
+                else if (taiKhoanHienTai.getLoaiTaiKhoan().equals("NhanVien")) {
+                    new GiaoDienNhanVien().setVisible(true);
+                    this.dispose();
+                }
+            } else {
+                jLabel_BaoLoi.setText("*Sai mật khẩu");
+                jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            }
+        } else {
+            jLabel_BaoLoi.setText("*Tên đăng nhập không tồn tại");
+            jTextField_TenDangNhap.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+        }
+    }//GEN-LAST:event_jButton_DangNhapActionPerformed
     ////////////////////////
     private void testHD1Chieu() {
         // để test hóa đơn 1 chiều
@@ -347,54 +392,6 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
 
         new GiaoDienHoaDonHaiChieu(danhSachVeDi, danhSachVeVe).setVisible(true);
     }
-    private void jButton_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangNhapActionPerformed
-        // TODO add your handling code here:
-        new LoadData();
-        int index = -1;
-        for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
-            if (jTextField_TenDangNhap.getText().equals(tk.getTenDangNhap())) {
-                index = Controller.arrayListTaiKhoan.indexOf(tk);
-            }
-        }
-        if (index != -1) {
-            jTextField_TenDangNhap.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
-            TaiKhoan taiKhoanHienTai = Controller.arrayListTaiKhoan.get(index);
-            if (jPasswordField_MatKhau.getText().equals(taiKhoanHienTai.getMatKhau())) {
-                controller.Controller.tk = Controller.arrayListTaiKhoan.get(index);
-                jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
-                if (controller.Controller.tk.getLoaiTaiKhoan().equalsIgnoreCase("QuanLy")) {
-                    new GiaoDienQuanLy().setVisible(true);
-                    this.dispose();
-                }
-
-//                this.testHD1Chieu();
-//                this.testHD2Chieu();
-//                new GiaoDienLichSuHoaDon().setVisible(true);    //testLichsu
-
-                else if (taiKhoanHienTai.getLoaiTaiKhoan().equals("KhachHang")) {
-
-                    new GiaoDienTimChuyenBay().setVisible(true);
-                    this.dispose();
-                }
-                else if (taiKhoanHienTai.getLoaiTaiKhoan().equals("NhanVien")) {
-                    new GiaoDienNhanVien();
-                    this.dispose();
-                }
-            } else {
-                jLabel_BaoLoi.setText("*Sai mật khẩu");
-                jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-            }
-        } else {
-            jLabel_BaoLoi.setText("*Tên đăng nhập không tồn tại");
-            jTextField_TenDangNhap.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-        }
-    }//GEN-LAST:event_jButton_DangNhapActionPerformed
-
-    private void jLabel_DangKyMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangKyMousePressed
-        // TODO add your handling code here:
-        new GiaoDienDangKyTaiKhoan().setVisible(true);
-    }//GEN-LAST:event_jLabel_DangKyMousePressed
-
     /**
      * @param args the command line arguments
      */

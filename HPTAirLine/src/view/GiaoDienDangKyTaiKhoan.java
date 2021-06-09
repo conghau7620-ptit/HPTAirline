@@ -14,6 +14,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import model.KhachHang;
 import model.TaiKhoan;
 
@@ -29,57 +32,100 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
     /**
      * Creates new form GiaoDienDangKyTaiKhoan
      */
+    
+    boolean checkTaiKhoan = false;
+    boolean checkSDT = false;
+    boolean checkCMND = false;
+    boolean checkXacNhanMatKhau = false;
+    
+    String removeAccent(String s) {
+        String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(temp).replaceAll("");
+    }
+    
+    void thongBao(javax.swing.JLabel lb, String message) {
+        lb.setForeground(Color.yellow);
+        jLabel_ThongBao.setText(message);
+    }
+    
+    void huyThongBao(javax.swing.JLabel lb) {
+        lb.setForeground(Color.white);
+        jLabel_ThongBao.setText("");
+    }
+    
     public GiaoDienDangKyTaiKhoan() {
         initComponents();
         new LoadData();
+        
+        
+        
         jTextField_TaiKhoan.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                jLabel_ThongBao.setText("");
-                jLabel_TaiKhoan.setForeground(Color.white);
+                String taiKhoan = jTextField_TaiKhoan.getText();
+                
+                    
                 for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
-                    if(tk.getTenDangNhap().equals(jTextField_TaiKhoan.getText())) {
-                        jLabel_ThongBao.setText("*Tai khoan da ton tai");
-                        jLabel_TaiKhoan.setForeground(Color.red);
-                        break;
-                    }
+                        if(tk.getTenDangNhap().equals(taiKhoan)) {
+                              thongBao(jLabel_TaiKhoan,"*Tài khoản đã tồn tại");
+                            checkTaiKhoan = false;
+                            return;
+                        }
                 }
+                   
+                huyThongBao(jLabel_TaiKhoan);
+                checkTaiKhoan = true;
             }
         });
                 
         jTextField_CMND.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                 String cmnd = jTextField_CMND.getText().trim();
-                 jLabel_ThongBao.setText("");
-                 jLabel_CMND.setForeground(Color.white);
-                 jTextField_CMND.setForeground(Color.black);
+                 String cmnd = removeAccent(jTextField_CMND.getText().trim());
+                 
                  for (int i=0; i<cmnd.length(); i++) {
-                     if (cmnd.charAt(i)<'0' || cmnd.charAt(i)>'9') {
-                         jLabel_ThongBao.setText("*CMND phải nhập số");
-                         jLabel_CMND.setForeground(Color.red);
-                         jTextField_CMND.setForeground(Color.red);
-                         break;
+                     if (!Character.isDigit(cmnd.charAt(i))) {
+                         thongBao(jLabel_CMND, "*CMND phải nhập số");
+                         checkCMND=false;
+                         return;
                      }
                  }
+                 
+                  huyThongBao(jLabel_CMND);
+                  checkCMND = true;
             }
         });
         
         jTextField_SoDienThoai.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                 String sdt = jTextField_SoDienThoai.getText().trim();
-                 jLabel_ThongBao.setText("");
-                 jLabel_SoDienThoai.setForeground(Color.white);
-                 jTextField_SoDienThoai.setForeground(Color.black);
+                 String sdt = removeAccent(jTextField_SoDienThoai.getText().trim());
+                 
                  for (int i=0; i<sdt.length(); i++) {
-                     if (sdt.charAt(i)<'0' || sdt.charAt(i)>'9') {
-                         jLabel_ThongBao.setText("*Số điện thoại phải nhập số");
-                         jLabel_SoDienThoai.setForeground(Color.red);
-                         jTextField_SoDienThoai.setForeground(Color.red);
-                         break;
+                     if (!Character.isDigit(sdt.charAt(i))) {
+                         thongBao(jLabel_SoDienThoai,"*Số điện thoại phải nhập số");
+                         checkSDT = false;
+                         return;
                      }
                  }
+                 
+                 if (sdt.length()!=10) {
+                     thongBao(jLabel_SoDienThoai,"*Số điện thoại không hợp lệ");
+                     checkSDT = false;
+                     return;
+                 }
+                 
+                 for (KhachHang kh: Controller.arrayListKhachHang) {
+                     if (kh.getSdtKhachHang().equals(sdt)) {
+                         thongBao(jLabel_SoDienThoai,"*Số điện thoại đã được sử dụng");
+                         checkSDT = false;
+                         return;
+                     }
+                 }
+                 
+                 huyThongBao(jLabel_SoDienThoai);
+                 checkSDT = true;
             }
         }); 
         
@@ -87,114 +133,103 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
             @Override
             public void keyReleased(KeyEvent e) {
                 if (!jTextField_MatKhau.getText().equals(jTextField_xacNhanMatKhau.getText())) {
-                    jLabel_ThongBao.setText("*Mật khẩu không trùng khớp");
-                    jLabel_XacNhanMatKhau.setForeground(Color.red);
+                    thongBao(jLabel_XacNhanMatKhau,"*Xác nhận mật khẩu không trùng khớp với mật khẩu");
+                    checkXacNhanMatKhau = false;
+                    return;
                 }
-                else {
-                    jLabel_ThongBao.setText("");
-                    jLabel_XacNhanMatKhau.setForeground(Color.white);
-                }
-            }
-        });
-        
-        jTextField_TaiKhoan.addKeyListener(new KeyAdapter(){
-            @Override
-            public void keyReleased(KeyEvent e) {
-                for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
-                    if (tk.getTenDangNhap().equals(jTextField_TaiKhoan.getText())) {
-                        jLabel_ThongBao.setText("*Tài khoản đã được sử dụng");
-                        jLabel_TaiKhoan.setForeground(Color.red);
-                        break;
-                    }
-                    else {
-                        jLabel_ThongBao.setText("");
-                        jLabel_TaiKhoan.setForeground(Color.WHITE);
-                    }
-                }
-            }
-        });
-        
-        jTextField_SoDienThoai.addKeyListener(new KeyAdapter(){
-            @Override
-            public void keyReleased(KeyEvent e) {
-                for (KhachHang kh: Controller.arrayListKhachHang) {
-                    if (kh.getSdtKhachHang().equals(jTextField_SoDienThoai.getText())) {
-                        jLabel_ThongBao.setText("*Số điện thoại đã được sử dụng");
-                        jLabel_SoDienThoai.setForeground(Color.red);
-                        break;
-                    }
-                    else {
-                        jLabel_ThongBao.setText("");
-                        jLabel_SoDienThoai.setForeground(Color.WHITE);
-                    }
-                }
+                
+                huyThongBao(jLabel_XacNhanMatKhau);
+                checkXacNhanMatKhau = true;
+                
             }
         });
         
         jButton_DangKy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                jLabel_ThongBao.setText("");
                 if (jTextField_TenKhachHang.getText().trim().isEmpty()) {
-                    jLabel_ThongBao.setText("*Tên khách hàng chưa được điền");
-                    jLabel_TenKhachHang.setForeground(Color.red);
+                    thongBao(jLabel_TenKhachHang,"*Tên khách hàng chưa được điền");
+                    return;
                 }
                 else {
-                    jLabel_TenKhachHang.setForeground(Color.WHITE);
+                    huyThongBao(jLabel_TenKhachHang);
                 }
+                
                 if (jTextField_CMND.getText().trim().isEmpty()) {
-                    jLabel_ThongBao.setText("*CMND chưa được điền");
-                    jLabel_CMND.setForeground(Color.red);
-                }
+                    thongBao(jLabel_CMND,"*CMND chưa được điền");
+                    return;
+               }
                 else {
-                    jLabel_CMND.setForeground(Color.WHITE);
+                    huyThongBao(jLabel_CMND);
                 }
+                if (!checkCMND) {
+                    thongBao(jLabel_CMND,"*CMND phải nhập số");
+                    return;
+                }
+                
                 if (jTextField_TaiKhoan.getText().trim().isEmpty()) {
-                    jLabel_ThongBao.setText("*Tài khoản chưa được điền");
-                    jLabel_TaiKhoan.setForeground(Color.red);
+                    thongBao(jLabel_TaiKhoan,"*Tài khoản chưa được điền");
+                    return;
                 }
                 else {
-                    jLabel_TaiKhoan.setForeground(Color.WHITE);
+                    huyThongBao(jLabel_TaiKhoan);
                 }
-                if (jTextField_MatKhau.getText().trim().isEmpty()) {
-                    jLabel_ThongBao.setText("*Mật khẩu chưa được điền");
-                    jLabel_MatKhau.setForeground(Color.red);
+                if (!checkTaiKhoan) {
+                    thongBao(jLabel_TaiKhoan,"*Tài khoản đã tồn tại");
+                    return;
                 }
-                else {
-                    jLabel_MatKhau.setForeground(Color.WHITE);
-                }
+                
                 if (jTextField_SoDienThoai.getText().trim().isEmpty()) {
-                    jLabel_ThongBao.setText("*Số điện thoại chưa được điền");
-                    jLabel_SoDienThoai.setForeground(Color.red);
+                    thongBao(jLabel_SoDienThoai,"*Số điện thoại chưa được điền");
+                    return;
                 }
                 else {
-                    jLabel_SoDienThoai.setForeground(Color.WHITE);
+                    huyThongBao(jLabel_SoDienThoai);
                 }
+                if (!checkSDT) {
+                    String sdt = removeAccent(jTextField_SoDienThoai.getText().trim());
+                 
+                    for (int i=0; i<sdt.length(); i++) {
+                        if (!Character.isDigit(sdt.charAt(i))) {
+                            thongBao(jLabel_SoDienThoai,"*Số điện thoại phải nhập số");
+                            return;
+                        }
+                    }
+                    
+                    if (sdt.length()!=10) {
+                        thongBao(jLabel_SoDienThoai,"*Số điện thoại không hợp lệ");
+                        return;
+                    }
+                 
+                    thongBao(jLabel_SoDienThoai,"*Số điện thoại đã được sử dụng để đăng ký");
+                    return;
+                }
+                
+                if (jTextField_MatKhau.getText().trim().isEmpty()) {
+                    thongBao(jLabel_MatKhau,"*Mật khẩu chưa được điền");
+                    return;
+                }
+                else {
+                    huyThongBao(jLabel_MatKhau);
+                }
+                
                 if (jTextField_xacNhanMatKhau.getText().trim().isEmpty()) {
-                    jLabel_ThongBao.setText("*Xác nhận mật khẩu chưa được điền");
-                    jLabel_XacNhanMatKhau.setForeground(Color.red);
+                    thongBao(jLabel_XacNhanMatKhau,"*Xác nhận mật khẩu chưa được điền");
+                    return;
                 }
                 else {
-                    jLabel_XacNhanMatKhau.setForeground(Color.WHITE);
+                    huyThongBao(jLabel_XacNhanMatKhau);
+                } 
+                if (!checkXacNhanMatKhau) {
+                    thongBao(jLabel_XacNhanMatKhau,"*Xác nhận mật khẩu không trùng khớp với mật khẩu");
+                    return;
                 }
                 
-                String sdt = jTextField_SoDienThoai.getText().trim();
-                 jLabel_SoDienThoai.setForeground(Color.white);
-                 jTextField_SoDienThoai.setForeground(Color.black);
-                 for (int i=0; i<sdt.length(); i++) {
-                     if (sdt.charAt(i)<'0' || sdt.charAt(i)>'9') {
-                         jLabel_ThongBao.setText("*Số điện thoại phải nhập số");
-                         jLabel_SoDienThoai.setForeground(Color.red);
-                         jTextField_SoDienThoai.setForeground(Color.red);
-                         break;
-                     }
-                 }
                 
-                if (jLabel_ThongBao.getText().isEmpty()) {
                     TaiKhoan tk = new TaiKhoan(
                                     jTextField_TaiKhoan.getText(),
                                     jTextField_MatKhau.getText(),
-                                    "Khach hang",
+                                    "KhachHang",
                                     jTextField_SoDienThoai.getText());
                     Controller.arrayListTaiKhoan.add(tk);
                     InsertData.insertTaiKhoan(tk);
@@ -209,10 +244,14 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
                                     0);
                     Controller.arrayListKhachHang.add(kh);
                     InsertData.insertKhachHang(kh);
-          
                     
-                }
+                    JOptionPane.showMessageDialog(rootPane, "Đăng ký thành công");
+                    
+                    dispose();
+                    new GiaoDienDangNhap().setVisible(true);
+                    
             }
+            
         });
     }
     
@@ -340,8 +379,8 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
         jButton_DangKy.setText("ĐĂNG KÝ");
         jButton_DangKy.setBorderPainted(false);
 
-        jLabel_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel_ThongBao.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_ThongBao.setForeground(new java.awt.Color(255, 255, 0));
 
         jButton_QuayLai.setBackground(new java.awt.Color(0, 102, 102));
         jButton_QuayLai.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -359,44 +398,39 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 18, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jlabel_DangKy)
-                                .addGap(215, 215, 215))
+                        .addComponent(jlabel_DangKy)
+                        .addGap(215, 215, 215))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jButton_QuayLai)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_DangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel_TenKhachHang)
+                                .addComponent(jTextField_TenKhachHang)
+                                .addComponent(jLabel_TaiKhoan)
+                                .addComponent(jTextField_TaiKhoan)
+                                .addComponent(jLabel_MatKhau)
+                                .addComponent(jTextField_MatKhau)
+                                .addComponent(jLabel_XacNhanMatKhau)
+                                .addComponent(jTextField_xacNhanMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                            .addGap(90, 90, 90)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jButton_QuayLai)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_DangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel_TenKhachHang)
-                                        .addComponent(jTextField_TenKhachHang)
-                                        .addComponent(jLabel_TaiKhoan)
-                                        .addComponent(jTextField_TaiKhoan)
-                                        .addComponent(jLabel_MatKhau)
-                                        .addComponent(jTextField_MatKhau)
-                                        .addComponent(jLabel_XacNhanMatKhau)
-                                        .addComponent(jTextField_xacNhanMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
-                                    .addGap(90, 90, 90)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel_Email)
-                                        .addComponent(jLabel_DiaChi)
-                                        .addComponent(jLabel_SoDienThoai)
-                                        .addComponent(jTextField_CMND)
-                                        .addComponent(jLabel_CMND)
-                                        .addComponent(jTextField_SoDienThoai)
-                                        .addComponent(jTextField_DiaChi)
-                                        .addComponent(jTextField_Email)))))
-                        .addGap(40, 40, 40))))
+                                .addComponent(jLabel_Email)
+                                .addComponent(jLabel_DiaChi)
+                                .addComponent(jLabel_SoDienThoai)
+                                .addComponent(jTextField_CMND)
+                                .addComponent(jLabel_CMND)
+                                .addComponent(jTextField_SoDienThoai)
+                                .addComponent(jTextField_DiaChi)
+                                .addComponent(jTextField_Email)))
+                        .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jTextField_CMND, jTextField_MatKhau, jTextField_TaiKhoan, jTextField_TenKhachHang, jTextField_xacNhanMatKhau});
@@ -442,13 +476,13 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField_xacNhanMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_DangKy)
-                    .addComponent(jButton_QuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_QuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_DangKy))
+                .addGap(61, 61, 61))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextField_CMND, jTextField_TenKhachHang});
@@ -459,15 +493,18 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 496, Short.MAX_VALUE))
         );
 
         pack();
@@ -476,6 +513,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        new GiaoDienDangNhap().setVisible(true);
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     /**
