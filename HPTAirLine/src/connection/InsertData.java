@@ -15,6 +15,7 @@ import model.DuongBay;
 import model.HoaDon;
 import model.KhachHang;
 import model.NhanVien;
+import model.SanBay;
 import model.TaiKhoan;
 import model.Ve;
 
@@ -205,6 +206,27 @@ public class InsertData {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("thêm chuyến bay thất bại");
+        return false;
+    }
+    
+    public static boolean insertSanBay(SanBay sb) {
+        String sqlCommand = "insert into dbo.SANBAY values(?,?)";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, sb.getMaSanBay());
+            ps.setString(2, sb.getTenSanBay());
+
+            if(ps.executeUpdate()>0){
+                System.out.println("thêm sân bay thành công");
+                return true;
+            }
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("thêm sân bay thất bại");
         return false;
     }
 //    
