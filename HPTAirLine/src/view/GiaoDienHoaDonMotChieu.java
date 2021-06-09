@@ -105,27 +105,27 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
             }
         });
 
-        String sql = "select * from HOADON";
-                connection.DataConnection.createStatement();
-               
-                int soHoaDon =1;
-                try {
-            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            
-            while(rs.next()){
-                soHoaDon++; 
-            }
-                    System.out.println(soHoaDon);
-        } catch (Exception e) {
-        }
-                System.out.println("HD"+soHoaDon);
-                                 //
-                                 soHoaDon++;
-                 String maHoaDon = "";
-                 if(soHoaDon <= 9) maHoaDon= "HD0"+ (soHoaDon);
-                 else maHoaDon = "HD" + (soHoaDon);
-        
+//        String sql = "select * from HOADON";
+//                connection.DataConnection.createStatement();
+//               
+//                int soHoaDon =1;
+//                try {
+//            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            
+//            while(rs.next()){
+//                soHoaDon++; 
+//            }
+//                    System.out.println(soHoaDon);
+//        } catch (Exception e) {
+//        }
+//                System.out.println("HD"+soHoaDon);
+//                                 //
+//                                 soHoaDon++;
+//                 String maHoaDon = "";
+//                 if(soHoaDon <= 9) maHoaDon= "HD0"+ (soHoaDon);
+//                 else maHoaDon = "HD" + (soHoaDon);
+//        
         for(Ve ve: this.danhSachVe){
            
             String maGhe = ve.getMaGhe().substring(0,1).toUpperCase() + ve.getMaGhe().substring(1);

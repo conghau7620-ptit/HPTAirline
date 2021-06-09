@@ -117,45 +117,51 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
 
         thongTinTaiKhoan();
 
-        //chuẩn hóa từ chọn ghế
-        String sql = "select * from HOADON";
-        connection.DataConnection.createStatement();
+//        //chuẩn hóa từ chọn ghế
+//        String sql = "select * from HOADON";
+//        connection.DataConnection.createStatement();
+//
+//        int soHoaDon = 1;
+//        try {
+//            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//
+//            while (rs.next()) {
+//                soHoaDon++;
+//            }
+//            System.out.println(soHoaDon);
+//        } catch (Exception e) {
+//        }
+//        System.out.println("HD" + soHoaDon);
+//        //
+//        soHoaDon++;
+//        String maHoaDon = "";
+//        if (soHoaDon <= 9) {
+//            maHoaDon = "HD0" + (soHoaDon);
+//        } else {
+//            maHoaDon = "HD" + (soHoaDon);
+//        }
+//
+//        String maHoaDonVe = "";
+//        if (soHoaDon <= 8) {
+//            maHoaDonVe = "HD0" + (soHoaDon + 1);
+//        } else {
+//            maHoaDonVe = "HD" + (soHoaDon + 1);
+//        }
+//        //
 
-        int soHoaDon = 1;
-        try {
-            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                soHoaDon++;
-            }
-            System.out.println(soHoaDon);
-        } catch (Exception e) {
-        }
-        System.out.println("HD" + soHoaDon);
-        //
-        soHoaDon++;
-        String maHoaDon = "";
-        if (soHoaDon <= 9) {
-            maHoaDon = "HD0" + (soHoaDon);
-        } else {
-            maHoaDon = "HD" + (soHoaDon);
-        }
-
-        String maHoaDonVe = "";
-        if (soHoaDon <= 8) {
-            maHoaDonVe = "HD0" + (soHoaDon + 1);
-        } else {
-            maHoaDonVe = "HD" + (soHoaDon + 1);
-        }
-        //
 
         for (Ve ve : this.danhSachVeDi) {
 
             String maGhe = ve.getMaGhe().substring(0, 1).toUpperCase() + ve.getMaGhe().substring(1);
             ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
             System.out.println("ma ghe: " + ve.getMaGhe());
-            ve.setMaHoaDon(maHoaDon);
+
+     //       ve.setMaHoaDon(maHoaDon);
+            
+
+        //    ve.setMaHoaDon(maHoaDon);
+
 
         }
         for (Ve ve : this.danhSachVeVe) {
@@ -163,7 +169,12 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             String maGhe = ve.getMaGhe().substring(0, 1).toUpperCase() + ve.getMaGhe().substring(1);
             ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
             System.out.println("ma ghe: " + ve.getMaGhe());
-            ve.setMaHoaDon(maHoaDonVe);
+
+        //   ve.setMaHoaDon(maHoaDonVe);
+            
+
+          //  ve.setMaHoaDon(maHoaDonVe);
+
 
         }
         this.maHoaDonDi = this.danhSachVeDi.get(0).getMaHoaDon();
