@@ -944,11 +944,19 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                     }
                 }
             }
-            dtmVe.addRow(new Object[]{
-                v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
-                v.getMaHoaDon(), v.getMaGhe()
-            });
+            if (v.getNgaySinh() != null) {
+                dtmVe.addRow(new Object[]{
+                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                    v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                    v.getMaHoaDon(), v.getMaGhe()
+                });
+            } else {
+                dtmVe.addRow(new Object[]{
+                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                    v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
+                    v.getMaHoaDon(), v.getMaGhe()
+                });
+            }
         }
 //        //
 //        for(KhachHang kh : controller.Controller.arrayListKhachHang){
