@@ -55,6 +55,8 @@ public class Ve {
         this.maGhe = maGhe;
     }
 
+
+
     public Date getNgaySinh() {
         return ngaySinh;
     }

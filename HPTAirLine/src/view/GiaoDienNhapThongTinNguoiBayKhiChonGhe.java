@@ -10,8 +10,13 @@ import java.awt.Color;
 import java.awt.Component;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -38,6 +43,7 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
     int soGheNguoiLon;
     int soGheTreEm;
     String luaChon = "nguoiLon";
+        public Date ngayHienTai;
      public GiaoDienNhapThongTinNguoiBayKhiChonGhe(  String maGhe,String maChuyenBay, int soGheNguoiLon, int soGheTreEm ) {
         initComponents(); 
     this.maGhe = maGhe;
@@ -61,8 +67,8 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
          jTextField_TenNguoiBay.setBackground(Color.lightGray);
          jTextField_CMND.setEditable(false);
          jTextField_CMND.setBackground(Color.lightGray);
-         jTextField_NgaySinhNguoiLon.setEditable(false);
-         jTextField_NgaySinhNguoiLon.setBackground(Color.lightGray);
+  //       jTextField_NgaySinhNguoiLon.setEditable(false);
+    //     jTextField_NgaySinhNguoiLon.setBackground(Color.lightGray);
        
          
      }
@@ -71,7 +77,14 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
     }
     else jbutton_TreEm.setEnabled(false);
     
-   
+    String date = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+        try {
+            ngayHienTai = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        } catch (ParseException ex) {
+            Logger.getLogger(GiaoDienTimChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        jDateChooser_NgaySinhTreEm.setDate(ngayHienTai);
     }
      
      
@@ -116,15 +129,14 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jTextField_TenNguoiBay = new javax.swing.JTextField();
         jTextField_CMND = new javax.swing.JTextField();
-        jTextField_NgaySinhNguoiLon = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jTextField_TenTreEm = new javax.swing.JTextField();
         jDateChooser_NgaySinhTreEm = new com.toedter.calendar.JDateChooser();
+        jTextField_NgaySinhTreEm = new javax.swing.JTextField();
         jButton_Huy = new javax.swing.JButton();
         jButton_XacNhan = new javax.swing.JButton();
 
@@ -256,15 +268,9 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(240, 240, 240));
         jLabel7.setText("CMND/Hộ chiếu:");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel8.setText("Ngày sinh: ");
-
         jTextField_TenNguoiBay.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         jTextField_CMND.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-
-        jTextField_NgaySinhNguoiLon.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -274,12 +280,10 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel7))
                 .addGap(80, 80, 80)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField_NgaySinhNguoiLon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
-                    .addComponent(jTextField_CMND, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField_CMND, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                     .addComponent(jTextField_TenNguoiBay, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
@@ -294,11 +298,7 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jTextField_CMND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField_NgaySinhNguoiLon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         jPanel7.setBackground(new java.awt.Color(89, 98, 117));
@@ -319,6 +319,8 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
         jDateChooser_NgaySinhTreEm.setDateFormatString("dd/MM/yyyy");
         jDateChooser_NgaySinhTreEm.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
 
+        jTextField_NgaySinhTreEm.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -335,7 +337,10 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                         .addGap(12, 12, 12))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jDateChooser_NgaySinhTreEm, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jTextField_NgaySinhTreEm, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,7 +353,9 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateChooser_NgaySinhTreEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(jTextField_NgaySinhTreEm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -527,36 +534,26 @@ private String xuLiMaVe(){
         // TODO add your handling code here:
              
                 String maVe = xuLiMaVe();
-             
-                String SDTkhach = "*********"; // laays tu sql
-
-
-
                 String maChuyenBay = GiaoDienChonGhe.maChuyenBay.trim();
                 String maGhe = this.maGhe.trim();
-
-
-
-
-
-
-
-
-                // nguoi lon
-                String CMND = jTextField_CMND.getText();
-                String ten = jTextField_TenNguoiBay.getText();
-                System.out.println("+"+ten+"+");
-//                String ngaySinhNguoiLon = jTextField_NgaySinhNguoiLon.getText();
-                Date ngaySinhNguoiLon = null ; //jTextField_NgaySinhNguoiLon.getText();
+                int gia = 0;
+                short kiGui = 0;
+                String maHoaDon = "";
                 
+                // nguoi lon
+                String ten = jTextField_TenNguoiBay.getText();  
+                String CMND = jTextField_CMND.getText();
+                
+
                 // tre em
                 String tenTre = jTextField_TenTreEm.getText();
-               Date ngaySinhTreEm =  jDateChooser_NgaySinhTreEm.getDate();
-          
-                
+                java.util.Date utilDate = new java.util.Date();
+                utilDate = jDateChooser_NgaySinhTreEm.getDate();
+                java.sql.Date ngaySinh = new java.sql.Date(utilDate.getTime());
                 
                
-                
+                model.Ve ve = new model.Ve();
+
                 // lấy mã hóa đươn
                 
                 String sql = "select * from HOADON";
@@ -572,9 +569,13 @@ private String xuLiMaVe(){
             }
                     System.out.println(soHoaDon);
         } catch (Exception e) {
+ 
         }
                 
-                 String maHoaDon = ""; // so sanh roi lay tu sql
+                  // so sanh roi lay tu sql
+//                 if(soHoaDon <= 9) maHoaDon= "HD0"+ soHoaDon;
+//                else maHoaDon = "HD" + soHoaDon;
+//                 
                  if(GiaoDienChonGhe.di){
                      if(soHoaDon <= 9) maHoaDon= "HD0"+ soHoaDon;
                  else maHoaDon = "HD" + soHoaDon;
@@ -586,12 +587,7 @@ private String xuLiMaVe(){
                  else maHoaDon = "HD" + (soHoaDon+1);
                  }
                  
-                 
-                int gia = 0;
-               short kiGui = 0;
-                model.Ve ve = null;
-                
-                
+
                 
                  String regexCMND = "\\d{9}";
                //  String regexEmail=  "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";// "\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b";
@@ -601,26 +597,19 @@ private String xuLiMaVe(){
                 else if (!ten.equals("") && CMND.equals("")) JOptionPane.showMessageDialog(this, "CMND/Hộ chiếu không được để trống");
                 else if (!ten.equals("") && !CMND.matches(regexCMND)) JOptionPane.showMessageDialog(this, "vui lòng nhập đúng số CMND/Hộ chiếu");
                 
-               // else if(ngaySinhNguoiLon.equals("") && ngaySinhTreEm.equals("")) JOptionPane.showMessageDialog(this, "Ngày sinh không được bỏ trống.");
-                else if (!tenTre.equals("") && ngaySinhTreEm.equals("")) JOptionPane.showMessageDialog(this, "Ngày sinh không đượpc bỏ trống");
-                //else if (!tenTre.equals("") && !ngaySinhTreEm.matches(regexBirth)) JOptionPane.showMessageDialog(this, "vui lòng nhập đúng ngày tháng năm sinh");
-                //else if (!ten.equals("") && ngaySinhNguoiLon.equals("")) JOptionPane.showMessageDialog(this, "Ngày sinh không đượpc bỏ trống");
-                //else if (!ten.equals("") &&  !ngaySinhNguoiLon.matches(regexBirth)) JOptionPane.showMessageDialog(this, "vui lòng nhập đúng ngày tháng năm sinh");
                 else {
-                
-                
-                
+                               
                // if(ten.equals("")) { // chỗ này là khi tên ng lớn rỗng thì lấy thông tin của trẻ em
                  if (luaChon == "treEm"){
-                     ve = new model.Ve();
-                   ve.setMaVe(maVe);
+                    ve.setMaVe(maVe);
                     ve.setMaChuyenBay(maChuyenBay);
                     ve.setMaHoaDon(maHoaDon);
-                    ve.setGia(gia);
+                    //ve.setGia(gia);
                     ve.setTenNguoiBay(tenTre);
                     ve.setMaChuyenBay(maChuyenBay);
                     ve.setMaGhe(maGhe);
                     ve.setCmndNguoiBay(""); // tre em thi cmnd  = ""
+                    ve.setNgaySinh(ngaySinh);
                     System.out.println("tre em");
                   
                     if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di){
@@ -633,10 +622,17 @@ private String xuLiMaVe(){
                     }
                 }
                 else if (luaChon == "nguoiLon") { // ngược lại một lúc chỉ lấy thông tin của ng  lớn or trẻ em thôi chứ k lấy hết
-                  // ve = new model.Ve(maVe, maChuyenBay, gia, 0, CMND, ten, maHoaDon, maGhe);
-                 // ve = new model.Ve(maVe, maChuyenBay, gia, kiGui, CMND, ten, maHoaDon, maGhe);
-                    ve= new model.Ve(maVe, maChuyenBay, gia, kiGui, CMND, ten, ngaySinhNguoiLon, maHoaDon, maGhe);
+                    ve = new model.Ve();
+                    ve.setMaVe(maVe);
+                    ve.setMaHoaDon(maHoaDon);
+                   // ve.setGia(gia);
+                    ve.setTenNguoiBay(ten);
+                    ve.setMaChuyenBay(maChuyenBay);
+                    ve.setMaGhe(maGhe);
+                    ve.setCmndNguoiBay(CMND); // tre em thi cmnd  = ""
+                    //ve.setNgaySinh(ngaySinhTreEm);
                     System.out.println("nguoi lon");
+                    
                     
                     if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di){
                         GiaoDienChonGhe.soGheNguoiLonVe--;
@@ -648,25 +644,23 @@ private String xuLiMaVe(){
                     }
                 }
                 
-                    
-
-                                   
+                
                      
                 if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di) {
                     GiaoDienChonGhe.dsVeVe.add(ve);
-                    System.out.println(" them ve vao ds ve ve");
+                    System.out.println(" them ve vao ds ve ve" + ve);
                                    
                 }
                 else if (GiaoDienChonGhe.di){
                     GiaoDienChonGhe.dsVeDi.add(ve);
-                    System.out.println(" them ve vao ds ve di");
+                    System.out.println(" them ve vao ds ve di"+ ve);
                     
                 }
                 else {
                     System.out.println("khong nhan duoc ds ve");
                 }
  //               xacDinhNutDuocBam(jButton_XacNhan);
-                new GiaoDienChonGhe().setVisible(true);
+               new GiaoDienChonGhe().setVisible(true);
                 this.dispose();
                 
                 
@@ -721,7 +715,6 @@ private String xuLiMaVe(){
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -731,7 +724,7 @@ private String xuLiMaVe(){
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JTextField jTextField_CMND;
-    private javax.swing.JTextField jTextField_NgaySinhNguoiLon;
+    private javax.swing.JTextField jTextField_NgaySinhTreEm;
     private javax.swing.JTextField jTextField_TenNguoiBay;
     private javax.swing.JTextField jTextField_TenTreEm;
     private javax.swing.JButton jbutton_NguoiLon;
