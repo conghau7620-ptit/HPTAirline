@@ -26,7 +26,6 @@ import model.TaiKhoan;
 import model.Ve;
 
 //import sun.net.www.content.image.gif;
-import view.GiaoDienChonGhe;
 
 
 /**
@@ -221,12 +220,8 @@ public class Controller {
         return true;
     }
 
-    public static void main(String[] args) {
+    public static void taoGheChoTatCaChuyenBay(){
         new LoadData();
-
-//        insertListGhe("CB07"); // cái hàm này chạy khi nào thế
-
-        
         String maChuyenBayy ="";
         DataConnection.createStatement();
         String sql = "select * from CHUYENBAY"; 
@@ -235,20 +230,21 @@ public class Controller {
             ResultSet rs = ps.executeQuery();
             
              while (rs.next()){
-              maChuyenBayy = rs.getString("MaChuyenBay");  // đến chỗ này là nó lấy ra từng mã chuyến bay ok hong ? ok
-              //   System.out.println(maChuyenBayy+"ádsadas");
-                 
+              maChuyenBayy = rs.getString("MaChuyenBay");  // đến chỗ này là nó lấy ra từng mã chuyến bay ok hong ?      
                  insertListGhe(maChuyenBayy); 
-//             
-            }
            
-//           ps.close();
-      
+            }
+
         }
          catch (Exception e) {
         }
-
-
+    } 
+        
+    public static void main(String[] args) {
+//        checkDenThoiGianXoaHayChua("CB09");
+//        System.out.println(" ");
+//        xoaCacHoaDonChuaThanhToanCuaChuyenBay();
+//        new LoadData();
     }
 
 

@@ -177,9 +177,9 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButton_QuayLai" linkSize="2" min="-2" pref="171" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                  <Component id="jButton_ThemNhanVien" linkSize="2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jButton_QuayLai" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                  <Component id="jButton_ThemNhanVien" min="-2" pref="191" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel_BaoLoi" alignment="1" min="-2" pref="249" max="-2" attributes="0"/>
                           </Group>
@@ -187,25 +187,25 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPane3" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jCheckBox_HoaDonDaThanhToan" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jButton_XoaNhanVien" linkSize="2" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                          <Component id="jButton_SuaNhanVien" min="-2" max="-2" attributes="0"/>
-                                      </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
                                           <Component id="jSeparator3" min="-2" pref="414" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jSeparator4" alignment="0" min="-2" pref="414" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jButton_XoaNhanVien" min="-2" pref="191" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                          <Component id="jButton_SuaNhanVien" min="-2" pref="191" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jCheckBox_HoaDonDaThanhToan" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -289,8 +289,10 @@
                           <Component id="jButton_QuayLai" linkSize="3" alignment="1" pref="44" max="32767" attributes="0"/>
                           <Component id="jButton_ThemNhanVien" linkSize="3" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jButton_XoaNhanVien" linkSize="3" max="32767" attributes="0"/>
-                      <Component id="jButton_SuaNhanVien" min="-2" pref="44" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton_XoaNhanVien" linkSize="3" alignment="3" max="32767" attributes="0"/>
+                          <Component id="jButton_SuaNhanVien" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
               </Group>
@@ -588,7 +590,7 @@
         <Component class="javax.swing.JButton" name="jButton_SuaNhanVien">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="0" type="rgb"/>
+              <Color blue="99" green="3c" red="3c" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="16" style="1"/>
