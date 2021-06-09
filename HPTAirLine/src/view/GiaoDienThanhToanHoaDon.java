@@ -32,8 +32,6 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
     DefaultTableModel dtmHoaDon = null;
     DefaultTableModel dtmVe = null;
 
-
-
     public GiaoDienThanhToanHoaDon() {
         initComponents();
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
@@ -45,7 +43,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         dtmVe = (DefaultTableModel) jTable_VeDaChon.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
             "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay","NgaySinh", "MaHoaDon", "MaGhe"
+            "CMNDNguoiBay", "TenNguoiBay", "NgaySinh", "MaHoaDon", "MaGhe"
         });
 
         this.addWindowListener(new WindowAdapter() {
@@ -366,21 +364,17 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-
     private void hienThongTinVaoBangHoaDon() {
         //load laiThongTin
         new LoadData();
         dtmHoaDon.setRowCount(0);
         for (HoaDon hd : controller.Controller.arrayListHoaDon) {
             dtmHoaDon.addRow(new Object[]{
-
                 hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()), hd.getTrangThaiThanhToan(),
                 hd.getTongTien(), hd.getSdtNhanVien()
             });
         }
     }
-
 
 
     private void jButton_XoaVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaVeActionPerformed
@@ -482,7 +476,6 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
 
                     if (hangGheCuaVeDaChon.equalsIgnoreCase("PhoThong")) {
                         tongTienSauXoa = ((soVePhoThong - 1) * giaCoBan + soVeThuongGia * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia)
-
                                 - ((soVePhoThong - 1) * giaCoBan + soVeThuongGia * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia) * diemTichLuyKhachDaDung / 1000;
 
                         diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang - 5;
@@ -491,7 +484,6 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                     }
                     if (hangGheCuaVeDaChon.equalsIgnoreCase("ThuongGia")) {
                         tongTienSauXoa = (soVePhoThong * giaCoBan + (soVeThuongGia - 1) * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia)
-
                                 - (soVePhoThong * giaCoBan + (soVeThuongGia - 1) * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia) * diemTichLuyKhachDaDung / 1000;
 
                         System.out.println("Tong tiền sau Xóa=" + tongTienSauXoa);
@@ -518,11 +510,19 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                                                 dtmVe.setRowCount(0);
                                                 for (Ve v : controller.Controller.arrayListVe) {
                                                     if (v.getMaHoaDon().equals(maHoaDon)) {
-                                                        dtmVe.addRow(new Object[]{
-                                                            v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                                                            v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
-                                                            v.getMaHoaDon(), v.getMaGhe()
-                                                        });
+                                                        if (v.getNgaySinh() != null) {
+                                                            dtmVe.addRow(new Object[]{
+                                                                v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                                                                v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                                                                v.getMaHoaDon(), v.getMaGhe()
+                                                            });
+                                                        } else {
+                                                            dtmVe.addRow(new Object[]{
+                                                                v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                                                                v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
+                                                                v.getMaHoaDon(), v.getMaGhe()
+                                                            });
+                                                        }
                                                     }
                                                 }
 
@@ -539,11 +539,19 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                                                 dtmVe.setRowCount(0);
                                                 for (Ve v : controller.Controller.arrayListVe) {
                                                     if (v.getMaHoaDon().equals(maHoaDon)) {
-                                                        dtmVe.addRow(new Object[]{
-                                                            v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                                                            v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
-                                                            v.getMaHoaDon(), v.getMaGhe()
-                                                        });
+                                                        if (v.getNgaySinh() != null) {
+                                                            dtmVe.addRow(new Object[]{
+                                                                v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                                                                v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                                                                v.getMaHoaDon(), v.getMaGhe()
+                                                            });
+                                                        } else {
+                                                            dtmVe.addRow(new Object[]{
+                                                                v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                                                                v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
+                                                                v.getMaHoaDon(), v.getMaGhe()
+                                                            });
+                                                        }
                                                     }
                                                 }
 
@@ -555,8 +563,6 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                                 }
                             }
                         }
-
-
 
                     }
                 }
@@ -575,13 +581,27 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
             dtmVe.setRowCount(0);
             for (Ve v : controller.Controller.arrayListVe) {
                 if (v.getMaHoaDon().equals(maHoaDon)) {
-                    dtmVe.addRow(new Object[]{
-
-                        v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-
-                        v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
-                        v.getMaHoaDon(), v.getMaGhe()
-                    });
+                    if (v.getNgaySinh() != null) {
+                        dtmVe.addRow(new Object[]{
+                            v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                            v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                            v.getMaHoaDon(), v.getMaGhe()
+                        });
+                    } else {
+                        if (v.getNgaySinh() != null) {
+                            dtmVe.addRow(new Object[]{
+                                v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                                v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                                v.getMaHoaDon(), v.getMaGhe()
+                            });
+                        } else {
+                            dtmVe.addRow(new Object[]{
+                                v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                                v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
+                                v.getMaHoaDon(), v.getMaGhe()
+                            });
+                        }
+                    }
                 }
             }
         }
@@ -708,8 +728,6 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 //                            jLabel_BaoLoi.setText("*Không đủ điểm");
                 //                    }
                 //            });
-
-
                 int luaChon = JOptionPane.showConfirmDialog(rootPane, message, "Nhập điểm tích lũy mới muốn dùng", JOptionPane.OK_CANCEL_OPTION);
 
                 if (luaChon == JOptionPane.OK_OPTION) {
@@ -721,7 +739,6 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                         int tongTienMoi = 0;
 
                         diemTichLuyConLaiSauThayDoi = diemTichLuyHienTaiCuaKhachHang + diemTichLuyKhachDaDung
-
                                 - Integer.parseInt(jComboBox_DiemMoi.getSelectedItem().toString());
 
                         tongTienMoi = tongTienGoc - tongTienGoc * Integer.parseInt(jComboBox_DiemMoi.getSelectedItem().toString()) / 1000;
@@ -734,11 +751,19 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                             dtmVe.setRowCount(0);
                             for (Ve v : controller.Controller.arrayListVe) {
                                 if (v.getMaHoaDon().equals(maHoaDon)) {
-                                    dtmVe.addRow(new Object[]{
-                                        v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                                        v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
-                                        v.getMaHoaDon(), v.getMaGhe()
-                                    });
+                                    if (v.getNgaySinh() != null) {
+                dtmVe.addRow(new Object[]{
+                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                    v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                    v.getMaHoaDon(), v.getMaGhe()
+                });
+            } else {
+                dtmVe.addRow(new Object[]{
+                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                    v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
+                    v.getMaHoaDon(), v.getMaGhe()
+                });
+            }
                                 }
                             }
                         }
@@ -867,7 +892,6 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                     //                    connection.UpdateData.deleteHoaDon(maHoaDon); // xóa hóa đơn
                     //
                     //                    connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuySauXoa);// cập nhật lại điểm cho khách
-
                     if (connection.UpdateData.deleteHoaDon(maHoaDon)) {
                         if (connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuySauXoa)) {
 
@@ -878,13 +902,19 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                     dtmVe.setRowCount(0);
                     for (Ve v : controller.Controller.arrayListVe) {
                         if (v.getMaHoaDon().equals(maHoaDon)) {
-                            dtmVe.addRow(new Object[]{
-
-                                v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-
-                                v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
-                                v.getMaHoaDon(), v.getMaGhe()
-                            });
+                           if (v.getNgaySinh() != null) {
+                dtmVe.addRow(new Object[]{
+                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                    v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                    v.getMaHoaDon(), v.getMaGhe()
+                });
+            } else {
+                dtmVe.addRow(new Object[]{
+                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                    v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
+                    v.getMaHoaDon(), v.getMaGhe()
+                });
+            }
                         }
                     }
                     ////
@@ -900,7 +930,6 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 dtmHoaDon = null;
                 dtmHoaDon.setRowCount(0);
                 dtmHoaDon.addRow(new Object[]{
-
                     hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()), hd.getTrangThaiThanhToan(),
                     hd.getTongTien(), hd.getSdtNhanVien()
 
