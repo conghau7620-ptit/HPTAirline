@@ -67,7 +67,7 @@ public class UpdateData {
     }
     
     public static boolean updateChuyenBay(ChuyenBay chuyenBay) {
-        String sqlCommand = "update dbo.DUONGBAY set MaMayBay=?, MaSanBayDi=?, MaSanBayDen=?, NgayBay=?, GioBay=?, GhiChu=?, KhoangCach=?"
+        String sqlCommand = "update dbo.CHUYENBAY set MaMayBay=?, MaSanBayDi=?, MaSanBayDen=?, NgayBay=?, GioBay=?, GhiChu=?, KhoangCach=?"
                 + " where MaChuyenBay=?";
         try {
             DataConnection.createStatement();

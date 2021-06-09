@@ -7,6 +7,11 @@ package view;
 
 import connection.LoadData;
 import controller.Controller;
+import java.awt.Color;
+import java.sql.Date;
+import java.sql.Time;
+import model.ChuyenBay;
+import model.DuongBay;
 import model.MayBay;
 import model.SanBay;
 
@@ -53,7 +58,6 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
         jComboBox_GiayDi = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jComboBox_PhutDi = new javax.swing.JComboBox<>();
-        jLabel_KhoangCach = new javax.swing.JLabel();
         jLabel_MayBay = new javax.swing.JLabel();
         jComboBox_MayBay = new javax.swing.JComboBox<>();
         jLabel_ThemChuyenBay = new javax.swing.JLabel();
@@ -110,6 +114,16 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
         jPanel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         jComboBox_SanBayDi.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jComboBox_SanBayDi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox_SanBayDiItemStateChanged(evt);
+            }
+        });
+        jComboBox_SanBayDi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_SanBayDiActionPerformed(evt);
+            }
+        });
 
         jComboBox_SanBayDen.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
 
@@ -149,10 +163,11 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
         jLabel2.setText(":");
 
         jComboBox_PhutDi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "00", "10", "20", "30", "40", "50", " " }));
-
-        jLabel_KhoangCach.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel_KhoangCach.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_KhoangCach.setText("Khoảng cách: ");
+        jComboBox_PhutDi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_PhutDiActionPerformed(evt);
+            }
+        });
 
         jLabel_MayBay.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel_MayBay.setForeground(new java.awt.Color(255, 255, 255));
@@ -221,7 +236,6 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
                                     .addComponent(jComboBox_SanBayDi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jComboBox_MayBay, javax.swing.GroupLayout.Alignment.LEADING, 0, 321, Short.MAX_VALUE)
                                     .addComponent(jLabel_MayBay, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel_KhoangCach, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jComboBox_SanBayDen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addComponent(jLabel_SanBayDen)
@@ -271,9 +285,9 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
                 .addComponent(jLabel_ThemChuyenBay)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
                         .addComponent(jLabel_MayBay)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBox_MayBay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -286,11 +300,8 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBox_SanBayDen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel_KhoangCach)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_IconNgayDi, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel5Layout.createSequentialGroup()
@@ -310,12 +321,12 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel_GhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_QuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton_Them, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_QuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jPanel5Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox_GiayDi, jComboBox_GioDi, jComboBox_PhutDi});
@@ -345,9 +356,12 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
         }
         
         for (SanBay sb: Controller.arrayListSanBay) {
-            jComboBox_SanBayDi.addItem(sb.getMaSanBay() + " - " + sb.getTenSanBay());
-            jComboBox_SanBayDen.addItem(sb.getMaSanBay() + " - " + sb.getTenSanBay());
+            jComboBox_SanBayDi.addItem(sb.getMaSanBay());
+            jComboBox_SanBayDen.addItem(sb.getMaSanBay());
         }
+        jComboBox_SanBayDen.setSelectedItem(Controller.arrayListSanBay.get(1).getMaSanBay());
+        java.util.Date date = new java.util.Date();
+        jDateChooser_NgayDi.setDate(date);
     }
     
     
@@ -361,13 +375,76 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
-        if (jComboBox_SanBayDi.getSelectedItem().toString().equals(
-                jComboBox_SanBayDen.getSelectedItem().toString())) {
-            jLabel_ThongBao.setText("Sân bay đi bị trùng vs sân bay đến");
+        String maSB1= jComboBox_SanBayDi.getSelectedItem().toString().trim();
+        String maSB2= jComboBox_SanBayDen.getSelectedItem().toString().trim();
+        
+        if (maSB1.equals(maSB2)) {
+            jLabel_ThongBao.setText("*Sân bay đi bị trùng vs sân bay đến");
+            jLabel_SanBayDi.setForeground(Color.yellow);
+            jLabel_SanBayDen.setForeground(Color.yellow);
             return;
         }
+        else {
+            jLabel_ThongBao.setText("");
+            jLabel_SanBayDi.setForeground(Color.white);
+            jLabel_SanBayDen.setForeground(Color.white);
+        }
+        
+        if (!maSB1.equals(maSB2)){
+            for (DuongBay db: Controller.arrayListDuongBay) {
+                if ((db.getMaSanBay1().equals(maSB1) && db.getMaSanBay2().equals(maSB2))
+                        || (db.getMaSanBay1().equals(maSB2) && db.getMaSanBay2().equals(maSB1))) {
+                    int tmp = Integer.parseInt(Controller.arrayListChuyenBay.get(
+                        Controller.arrayListChuyenBay.size()-1).getMaChuyenBay().substring(2)) + 1;
+                    String maCB = "CB";
+               
+                    if (tmp<=9) {
+                        maCB = maCB + "0" + tmp;
+                    }
+                    else {
+                        maCB += tmp;
+                    }
+                    Time time = new Time(
+                        Integer.parseInt(jComboBox_GioDi.getSelectedItem().toString()),
+                        Integer.parseInt(jComboBox_PhutDi.getSelectedItem().toString()),
+                        Integer.parseInt(jComboBox_GiayDi.getSelectedItem().toString()));
+                    Date date = new java.sql.Date(jDateChooser_NgayDi.getDate().getTime());
+                    ChuyenBay cb = new ChuyenBay(
+                        maCB,
+                        jComboBox_MayBay.getSelectedItem().toString(),
+                        jComboBox_SanBayDi.getSelectedItem().toString(),
+                        jComboBox_SanBayDen.getSelectedItem().toString(),
+                        date,
+                        time,
+                        jTextArea_GhiChu.getText(),
+                        db.getKhoangCach());
+                    Controller.arrayListChuyenBay.add(cb);
+                    connection.InsertData.insertChuyenBay(cb);
+                    jLabel_ThongBao.setText("Thêm chuyến bay thành công");
+                    return;
+                }
+                else {
+                    System.out.println(maSB1 + " - " + maSB2);
+                    System.out.println(db.getMaSanBay1() + " - " + db.getMaSanBay2());
+                }   
+            }
+            jLabel_ThongBao.setText("Chưa có đường bay giữa 2 sân bay trên");
+        }
+        
         
     }//GEN-LAST:event_jButton_ThemActionPerformed
+
+    private void jComboBox_PhutDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_PhutDiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_PhutDiActionPerformed
+
+    private void jComboBox_SanBayDiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_SanBayDiActionPerformed
+        
+    }//GEN-LAST:event_jComboBox_SanBayDiActionPerformed
+
+    private void jComboBox_SanBayDiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_SanBayDiItemStateChanged
+        
+    }//GEN-LAST:event_jComboBox_SanBayDiItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -421,7 +498,6 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_HPT;
     private javax.swing.JLabel jLabel_IconMayBay;
     private javax.swing.JLabel jLabel_IconNgayDi;
-    private javax.swing.JLabel jLabel_KhoangCach;
     private javax.swing.JLabel jLabel_MayBay;
     private javax.swing.JLabel jLabel_NgayDi;
     private javax.swing.JLabel jLabel_NgayVe;
