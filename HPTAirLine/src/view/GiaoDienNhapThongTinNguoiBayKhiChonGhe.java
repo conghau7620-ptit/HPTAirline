@@ -522,6 +522,23 @@ private String xuLiMaVe(){
     
     return maVe;
 }
+
+private String danhMaHoaDon (int soHoaDon) {
+    String maHoaDon = "";
+    if(GiaoDienChonGhe.di){
+                     if(soHoaDon <= 9) maHoaDon= "HD0"+ soHoaDon;
+                 else maHoaDon = "HD" + soHoaDon;
+                 }
+                 
+                 else if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di)
+                 {
+                      if(soHoaDon <= 8) maHoaDon= "HD0"+ (soHoaDon+1);
+                 else maHoaDon = "HD" + (soHoaDon+1);
+ 
+                 }
+    
+    return maHoaDon;
+}
     private void jButton_XacNhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanActionPerformed
         // TODO add your handling code here:
              
@@ -532,7 +549,6 @@ private String xuLiMaVe(){
                 String maGhe = this.maGhe.trim();
                 int gia = 0;
                 short kiGui = 0;
-                String maHoaDon = ""; 
                 
                 // nguoi lon
                 String ten = jTextField_TenNguoiBay.getText();  
@@ -559,7 +575,7 @@ private String xuLiMaVe(){
                 model.Ve ve = new model.Ve();
 
                 // lấy mã hóa đươn
-                
+                ArrayList <String> dsHoaDon = new ArrayList();
                 String sql = "select * from HOADON";
                 connection.DataConnection.createStatement();
                
@@ -570,6 +586,8 @@ private String xuLiMaVe(){
             
             while(rs.next()){
                 soHoaDon++; 
+                String maHoaDonSQL = rs.getString(1);
+                dsHoaDon.add(maHoaDonSQL);
             }
                     System.out.println(soHoaDon);
         } catch (Exception e) {
@@ -580,16 +598,16 @@ private String xuLiMaVe(){
 //                 if(soHoaDon <= 9) maHoaDon= "HD0"+ soHoaDon;
 //                else maHoaDon = "HD" + soHoaDon;
 //                 
-                 if(GiaoDienChonGhe.di){
-                     if(soHoaDon <= 9) maHoaDon= "HD0"+ soHoaDon;
-                 else maHoaDon = "HD" + soHoaDon;
-                 }
-                 
-                 else if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di)
-                 {
-                      if(soHoaDon <= 8) maHoaDon= "HD0"+ (soHoaDon+1);
-                 else maHoaDon = "HD" + (soHoaDon+1);
-                 }
+                  String maHoaDon = danhMaHoaDon(soHoaDon); 
+                  
+                  for (int i = 0; i < dsHoaDon.size();i++){
+                      if (maHoaDon.equals(dsHoaDon.get(i).trim())){
+                          System.out.println("ma hoa don bi trung");
+                          soHoaDon++;
+                          maHoaDon = danhMaHoaDon(soHoaDon);
+                      }
+                  }
+
                  
 
                 
