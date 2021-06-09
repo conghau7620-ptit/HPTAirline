@@ -45,7 +45,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         dtmVe = (DefaultTableModel) jTable_Ve.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
             "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay","NgaySinh", "MaHoaDon", "MaGhe"
+            "CMNDNguoiBay", "TenNguoiBay", "NgaySinh", "MaHoaDon", "MaGhe"
         });
 
         dtmNhanVien = (DefaultTableModel) jTable_NhanVien.getModel();
@@ -313,7 +313,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
 
         jTextField_TenDangNhap.setEnabled(false);
 
-        jButton_SuaNhanVien.setBackground(new java.awt.Color(0, 0, 153));
+        jButton_SuaNhanVien.setBackground(new java.awt.Color(60, 60, 153));
         jButton_SuaNhanVien.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_SuaNhanVien.setForeground(new java.awt.Color(255, 255, 255));
         jButton_SuaNhanVien.setText("Sửa Nhân Viên");
@@ -634,11 +634,19 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
             dtmVe.setRowCount(0);
             for (Ve v : controller.Controller.arrayListVe) {
                 if (v.getMaHoaDon().equals(maHoaDon)) {
-                    dtmVe.addRow(new Object[]{
-                        v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                        v.getCmndNguoiBay(), v.getTenNguoiBay(),new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
-                        v.getMaHoaDon(), v.getMaGhe()
-                    });
+                    if (v.getNgaySinh() != null) {
+                        dtmVe.addRow(new Object[]{
+                            v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                            v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                            v.getMaHoaDon(), v.getMaGhe()
+                        });
+                    } else {
+                        dtmVe.addRow(new Object[]{
+                            v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                            v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
+                            v.getMaHoaDon(), v.getMaGhe()
+                        });
+                    }
                 }
             }
         }
