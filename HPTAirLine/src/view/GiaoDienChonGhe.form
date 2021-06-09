@@ -1819,6 +1819,8 @@
                   <Component id="jPanel5" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="Huy_Chon1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                       <Component id="Huy_Chon" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                       <Component id="Xac_Nhan" min="-2" max="-2" attributes="0"/>
@@ -1844,6 +1846,7 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="Huy_Chon" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="Xac_Nhan" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Huy_Chon1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -2150,6 +2153,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Xac_NhanActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="Huy_Chon1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Quay l&#x1ea1;i"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Huy_Chon1ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

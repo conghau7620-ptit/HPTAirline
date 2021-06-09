@@ -730,6 +730,14 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
 
     private void jButton_ThoatGiaoDienHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatGiaoDienHoaDonActionPerformed
         // TODO add your handling code here:
+
+          for (int i = 0 ; i < GiaoDienChonGhe.dsVeDi.size(); i++){
+              String maGhe = GiaoDienChonGhe.dsVeDi.get(i).getMaGhe().substring(5);
+              maGhe = maGhe.substring(0,1).toLowerCase() + maGhe.substring(1);
+              GiaoDienChonGhe.dsVeDi.get(i).setMaGhe(maGhe);
+          }
+          
+        new GiaoDienChonGhe().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_ThoatGiaoDienHoaDonActionPerformed
     private boolean baoLoi() {

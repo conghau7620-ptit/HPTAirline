@@ -724,6 +724,7 @@ private void changeColor(Color a){
         jTable_ThongTinNguoiBay = new javax.swing.JTable();
         Huy_Chon = new javax.swing.JButton();
         Xac_Nhan = new javax.swing.JButton();
+        Huy_Chon1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -2517,6 +2518,13 @@ private void changeColor(Color a){
             }
         });
 
+        Huy_Chon1.setText("Quay lại");
+        Huy_Chon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Huy_Chon1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -2536,6 +2544,8 @@ private void changeColor(Color a){
             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(Huy_Chon1)
+                .addGap(62, 62, 62)
                 .addComponent(Huy_Chon)
                 .addGap(62, 62, 62)
                 .addComponent(Xac_Nhan)
@@ -2558,7 +2568,8 @@ private void changeColor(Color a){
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Huy_Chon)
-                    .addComponent(Xac_Nhan))
+                    .addComponent(Xac_Nhan)
+                    .addComponent(Huy_Chon1))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -3530,6 +3541,23 @@ private void changeColor(Color a){
         } 
     }//GEN-LAST:event_Xac_NhanActionPerformed
 
+    private void Huy_Chon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Huy_Chon1ActionPerformed
+                // TODO add your handling code here:
+                
+             if (di){
+                 dsVeDi.removeAll(dsVeDi);
+                 new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, nguoiLonBanDau, treEmBanDau).setVisible(true);
+                 this.dispose();
+             }   
+             else if (!ve && !di) {
+                 dsVeVe.removeAll(dsVeVe);
+                  new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe, this.nguoiLonBanDau, this.treEmBanDau).setVisible(true);
+                 this.dispose();
+                 
+             }
+                
+    }//GEN-LAST:event_Huy_Chon1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -3659,6 +3687,7 @@ private void changeColor(Color a){
     private javax.swing.JTextField Ghe_9E;
     private javax.swing.JTextField Ghe_9F;
     private javax.swing.JButton Huy_Chon;
+    private javax.swing.JButton Huy_Chon1;
     private javax.swing.JButton Xac_Nhan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
