@@ -40,7 +40,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa khách hàng thất bại");
         return false;
@@ -61,7 +61,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa đường bay thất bại");
         return false;
@@ -86,7 +86,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa chuyến bay thất bại");
         return false;
@@ -105,7 +105,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa sân bay thất bại");
         return false;
@@ -123,7 +123,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa điểm tích lũy khách hàng thất bại");
         return false;
@@ -143,7 +143,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Sửa nhân viên thất bại");
         return false;
@@ -161,7 +161,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
             
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa tài khoản thất bại");
         return false;
@@ -182,7 +182,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
             
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa ghế thất bại");
         return false;
@@ -200,7 +200,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
             
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa hóa đơn thất bại");
         return false;
@@ -218,7 +218,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
             
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa hóa đơn thất bại");
         return false;
@@ -235,7 +235,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
             
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("xóa vé thất bại");
         return false;
@@ -250,7 +250,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
             
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("xóa chuyến bay thất bại");
         return false;
@@ -265,7 +265,7 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
             
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("xóa đường bay thất bại");
         return false;
@@ -280,13 +280,13 @@ public class UpdateData {
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("xóa hóa đơn thất bại");
         return false;
     }
     
-        public static boolean deleteNhanVien(String sdtNhanVien) {
+    public static boolean deleteNhanVien(String sdtNhanVien) {
         String sqlCommand = "delete from dbo.NHANVIEN where SoDienThoaiNhanVien=?";
         try {
             DataConnection.createStatement();
@@ -298,9 +298,46 @@ public class UpdateData {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("xóa nhân viên thất bại");
+        return false;
+    }
+    
+    public static boolean deleteSanBay(String maSanBay){
+        String sqlCommand = "delete from dbo.SANBAY where MaSanBay=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, maSanBay);
+            if(ps.executeUpdate() > 0){
+                System.out.println("Xóa sân bay thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("xóa sân bay thất bại");
+        return false;
+    }
+    public static boolean updateSanBay(String maSanBayCanSua, SanBay sanBay){
+        
+         String sqlCommand = "update dbo.SANBAY set MaSanBay=?, TenSanBay=?"
+                + " where MaSanBay=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, sanBay.getMaSanBay());
+            ps.setString(2,sanBay.getTenSanBay());
+            ps.setString(3,maSanBayCanSua);
+            
+            return ps.executeUpdate() > 0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa sân bay thất bại");
         return false;
     }
 }
