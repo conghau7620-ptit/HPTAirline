@@ -46,6 +46,23 @@ public class LoadData {
         }
     }
     
+    public static void loadTableDuongBay(){
+        ResultSet rs = DataConnection.retrieveData("select * from dbo.DUONGBAY");
+        try {
+            while (rs.next()) {
+                DuongBay duongBay = new DuongBay(
+                    rs.getString(1).trim(),
+                    rs.getString(2).trim(),
+                    rs.getString(3).trim(),
+                    rs.getInt(4));
+
+                Controller.arrayListDuongBay.add(duongBay);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public static ArrayList<Ghe> loadTableGhe(String maChuyenBay){ 
         ArrayList<Ghe> arrayListGhe = new ArrayList<Ghe>();
         ResultSet rs = DataConnection.retrieveData("select * from dbo.GHE where MaChuyenBay like '%"+ maChuyenBay +" %'");
@@ -215,6 +232,7 @@ public class LoadData {
         controller.Controller.arrayListSanBay.removeAll(controller.Controller.arrayListSanBay);
         controller.Controller.arrayListTaiKhoan.removeAll(controller.Controller.arrayListTaiKhoan);
         controller.Controller.arrayListVe.removeAll(controller.Controller.arrayListVe);
+        controller.Controller.arrayListDuongBay.removeAll(controller.Controller.arrayListDuongBay);
         loadTableChuyenBay();
         loadTableHoaDon();
         loadTableKhachHang();
@@ -223,6 +241,7 @@ public class LoadData {
         loadTableSanBay();
         loadTableTaiKhoan();
         loadTableVe();
+        loadTableDuongBay();
     }
     
     
