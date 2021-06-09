@@ -528,13 +528,21 @@ private String danhMaHoaDon (int soHoaDon) {
     if(GiaoDienChonGhe.di){
                      if(soHoaDon <= 9) maHoaDon= "HD0"+ soHoaDon;
                  else maHoaDon = "HD" + soHoaDon;
+                     
+                     System.out.println("ma hoa don di" + maHoaDon);
                  }
                  
                  else if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di)
                  {
+                     
                       if(soHoaDon <= 8) maHoaDon= "HD0"+ (soHoaDon+1);
                  else maHoaDon = "HD" + (soHoaDon+1);
- 
+                      System.out.println("ma hoa don ve" + maHoaDon);
+                      if(maHoaDon.equals(GiaoDienChonGhe.dsVeDi.get(0).getMaHoaDon().trim())){
+                          soHoaDon++;
+                           if(soHoaDon <= 8) maHoaDon= "HD0"+ (soHoaDon+1);
+                                 else maHoaDon = "HD" + (soHoaDon+1);
+                      }
                  }
     
     return maHoaDon;
@@ -598,16 +606,26 @@ private String danhMaHoaDon (int soHoaDon) {
 //                 if(soHoaDon <= 9) maHoaDon= "HD0"+ soHoaDon;
 //                else maHoaDon = "HD" + soHoaDon;
 //                 
+                    System.out.println("so hoa don khong trung " + soHoaDon);
                   String maHoaDon = danhMaHoaDon(soHoaDon); 
                   
                   for (int i = 0; i < dsHoaDon.size();i++){
                       if (maHoaDon.equals(dsHoaDon.get(i).trim())){
                           System.out.println("ma hoa don bi trung");
                           soHoaDon++;
-                          maHoaDon = danhMaHoaDon(soHoaDon);
+                          
+                          System.out.println("so hoa don neu trung " + soHoaDon );
+                          
                       }
                   }
-
+                  
+                  maHoaDon = danhMaHoaDon(soHoaDon); 
+//                  if (maHoaDon.equals(GiaoDienChonGhe.dsVeDi.get(0).getMaHoaDon().trim())) {
+//                      soHoaDon++;
+//                      maHoaDon= danhMaHoaDon(soHoaDon);
+//                  }
+//                  else  maHoaDon = danhMaHoaDon(soHoaDon);
+//                         
                  
 
                 
@@ -643,7 +661,7 @@ private String danhMaHoaDon (int soHoaDon) {
                         
                     }
                 }
-                else if (luaChon == "nguoiLon") { // ngược lại một lúc chỉ lấy thông tin của ng  lớn or trẻ em thôi chứ k lấy hết
+                else if ("nguoiLon".equals(luaChon)) { // ngược lại một lúc chỉ lấy thông tin của ng  lớn or trẻ em thôi chứ k lấy hết
                     ve = new model.Ve();
                     ve.setMaVe(maVe);
                     ve.setMaHoaDon(maHoaDon);
