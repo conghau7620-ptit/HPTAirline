@@ -372,6 +372,7 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        new GiaoDienQuanLyChuyenBay().setVisible(true);
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     private void jButton_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemActionPerformed
@@ -420,6 +421,7 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
                         db.getKhoangCach());
                     Controller.arrayListChuyenBay.add(cb);
                     connection.InsertData.insertChuyenBay(cb);
+                    Controller.insertListGhe(cb.getMaChuyenBay());
                     jLabel_ThongBao.setText("Thêm chuyến bay thành công");
                     return;
                 }

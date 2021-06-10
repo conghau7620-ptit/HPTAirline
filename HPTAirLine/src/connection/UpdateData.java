@@ -321,6 +321,24 @@ public class UpdateData {
         System.out.println("xóa sân bay thất bại");
         return false;
     }
+    
+    public static boolean deleteGhe(String maChuyenBay){
+        String sqlCommand = "delete from dbo.GHE where MaChuyenBay=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, maChuyenBay);
+            if(ps.executeUpdate() > 0){
+                System.out.println("Xóa ghế thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("xóa ghế thất bại");
+        return false;
+    }
     public static boolean updateSanBay(String maSanBayCanSua, SanBay sanBay){
         
          String sqlCommand = "update dbo.SANBAY set MaSanBay=?, TenSanBay=?"
