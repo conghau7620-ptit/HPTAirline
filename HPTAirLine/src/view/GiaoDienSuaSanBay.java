@@ -132,7 +132,7 @@ public class GiaoDienSuaSanBay extends javax.swing.JFrame {
         jLabel_TenSanBay.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_TenSanBay.setText("Tên Sân Bay");
 
-        jLabel_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_ThongBao.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jLabel_ThongBao.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -247,11 +247,14 @@ public class GiaoDienSuaSanBay extends javax.swing.JFrame {
         jLabel_ThongBao.setText("");
         jLabel_MaSanBay.setForeground(Color.white);
         for (SanBay sb: controller.Controller.arrayListSanBay) {
-            if (sb.getMaSanBay().equals(jTextField_MaSanBay.getText())) {
+            if(jTextField_MaSanBay.getText().equals(this.maSanBay)){           
+            }else{
+               if (sb.getMaSanBay().equals(jTextField_MaSanBay.getText())) {
                 jLabel_ThongBao.setText("Mã sân bay đã tồn tại trong danh sách");
                 jLabel_MaSanBay.setForeground(Color.yellow);
                 return;
-            }
+            } 
+            }          
         }
         jLabel_ThongBao.setText("");
         jLabel_MaSanBay.setForeground(Color.white);

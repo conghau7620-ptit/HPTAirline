@@ -833,13 +833,14 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
 
                                 if (UpdateData.updateDiemTichLuyKhachHang(jTextField_SoDienThoaiKhachHang.getText(), diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 10) == true) {
                                     System.out.println("Cập nhật điểm tích lũy thành công");
+                                    GiaoDienChonGhe.dsVeDi.removeAll(GiaoDienChonGhe.dsVeDi);//remove để khi tạo hóa đơn khác không bị lặp mã hóa đơn
+                                    this.danhSachVe.removeAll(danhSachVe);
                                     this.dispose();
                                     new GiaoDienTimChuyenBay().setVisible(true);
                                 }
                             }
 
-                            GiaoDienChonGhe.dsVeDi.removeAll(GiaoDienChonGhe.dsVeDi);//remove để khi tạo hóa đơn khác không bị lặp mã hóa đơn
-
+                            
                         } else {
                             System.out.println("Thêm hóa đơn thất bại");
                         }

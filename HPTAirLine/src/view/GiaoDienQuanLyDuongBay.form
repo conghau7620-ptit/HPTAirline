@@ -23,8 +23,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
-          <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+          <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -147,13 +150,13 @@
                       </Group>
                       <Component id="jSeparator2" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jButton_QuayLai2" min="-2" pref="171" max="-2" attributes="0"/>
+                          <Component id="jButton_QuayLai" min="-2" pref="171" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButton_ThemDuongBay" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButton_SuaDuongBay" min="-2" pref="176" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton_XoaDuongBay" pref="174" max="32767" attributes="0"/>
+                          <Component id="jButton_XoaDuongBay" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -177,7 +180,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton_ThemDuongBay" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="jButton_XoaDuongBay" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
-                      <Component id="jButton_QuayLai2" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="jButton_QuayLai" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="jButton_SuaDuongBay" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -265,7 +268,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="| T&#xec;m ki&#x1ebf;m"/>
+            <Property name="text" type="java.lang.String" value="| T&#xec;m ki&#x1ebf;m theo m&#xe3; s&#xe2;n bay"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton_XoaDuongBay">
@@ -286,7 +289,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_XoaDuongBayActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_QuayLai2">
+        <Component class="javax.swing.JButton" name="jButton_QuayLai">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="0" type="rgb"/>
@@ -301,7 +304,7 @@
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_QuayLai2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_QuayLaiActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton_SuaDuongBay">

@@ -23,20 +23,23 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
      */
     DefaultTableModel dtmSanBay;
     private String maSanBay;
+
     public GiaoDienQuanLySanBay() {
         initComponents();
         dtmSanBay = (DefaultTableModel) jTable_SanBay.getModel();
         dtmSanBay.setColumnIdentifiers(new Object[]{"MaSanBay", "TenSanBay"});
-        
+
         hienThongTin();
     }
-    public void hienThongTin(){
+
+    public void hienThongTin() {
         new LoadData();
         dtmSanBay.setRowCount(0);
-        for(SanBay sb: controller.Controller.arrayListSanBay){
+        for (SanBay sb : controller.Controller.arrayListSanBay) {
             dtmSanBay.addRow(new Object[]{sb.getMaSanBay(), sb.getTenSanBay()});
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -164,7 +167,7 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("| Tìm kiếm");
+        jLabel10.setText("| Tìm kiếm theo mã sân bay");
 
         jButton_XoaSanBay.setBackground(new java.awt.Color(255, 77, 77));
         jButton_XoaSanBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
@@ -286,6 +289,24 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
 
     private void jTextField_TimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyReleased
         // TODO add your handling code here:
+        if (jTextField_TimKiem.getText().length() >= 4) {
+//            evt.consume();
+            jTextField_TimKiem.setText(jTextField_TimKiem.getText().substring(0, jTextField_TimKiem.getText().length() - 1));
+        } else {
+            dtmSanBay.setRowCount(0);
+            new LoadData();
+            int length = jTextField_TimKiem.getText().length();
+            for (SanBay sb : controller.Controller.arrayListSanBay) {
+                if ((jTextField_TimKiem.getText()).equalsIgnoreCase(sb.getMaSanBay().substring(0, length))) {
+                    dtmSanBay.addRow(new Object[]{
+                        sb.getMaSanBay(), sb.getTenSanBay()
+                    });
+                }
+            }
+            if (jTextField_TimKiem.getText().isEmpty()) {
+                hienThongTin();
+            }
+        }
     }//GEN-LAST:event_jTextField_TimKiemKeyReleased
 
     private void jTextField_TimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyTyped
@@ -294,14 +315,20 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
 
     private void jButton_XoaSanBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaSanBayActionPerformed
         // TODO add your handling code here:
-        if(kiemTraSuaXoaSanBay()){
-            if(connection.UpdateData.deleteSanBay(this.maSanBay)){
-                JOptionPane.showMessageDialog(rootPane, "Xóa sân bay có mã "+this.maSanBay+" thành công");
-                hienThongTin();
-            }else{
-                JOptionPane.showMessageDialog(rootPane, "Xóa sân bay có mã "+this.maSanBay+" thất bại");
+        int row = jTable_SanBay.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn sân bay muốn xóa");
+        } else {
+            if (kiemTraSuaXoaSanBay()) {
+                if (connection.UpdateData.deleteSanBay(this.maSanBay)) {
+                    JOptionPane.showMessageDialog(rootPane, "Xóa sân bay có mã " + this.maSanBay + " thành công");
+                    hienThongTin();
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Xóa sân bay có mã " + this.maSanBay + " thất bại");
+                }
             }
         }
+
     }//GEN-LAST:event_jButton_XoaSanBayActionPerformed
 
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
@@ -312,33 +339,40 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
 
     private void jButton_SuaSanBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaSanBayActionPerformed
         // TODO add your handling code here:
-        if(kiemTraSuaXoaSanBay()){
-            this.dispose();
-            new GiaoDienSuaSanBay(this.maSanBay).setVisible(true);
+        int row = jTable_SanBay.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn sân bay muốn sửa");
+        } else {
+            if (kiemTraSuaXoaSanBay()) {
+                this.dispose();
+                new GiaoDienSuaSanBay(this.maSanBay).setVisible(true);
+            }
         }
+
     }//GEN-LAST:event_jButton_SuaSanBayActionPerformed
 
     private void jPanel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel4MousePressed
-    public boolean kiemTraSuaXoaSanBay(){
+    public boolean kiemTraSuaXoaSanBay() {
         new LoadData();
-        for(ChuyenBay cb : controller.Controller.arrayListChuyenBay){
-            if(cb.getMaSanBayDi().equalsIgnoreCase(maSanBay)
-                    ||cb.getMaSanBayDen().equalsIgnoreCase(maSanBay)){
+        for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
+            if (cb.getMaSanBayDi().equalsIgnoreCase(maSanBay)
+                    || cb.getMaSanBayDen().equalsIgnoreCase(maSanBay)) {
                 JOptionPane.showMessageDialog(rootPane, "Sân bay đã được sử dụng trong chuyến bay.");
                 return false;
             }
         }
-        for(DuongBay db : controller.Controller.arrayListDuongBay){
-            if(db.getMaSanBay1().equalsIgnoreCase(maSanBay)
-                    ||db.getMaSanBay2().equalsIgnoreCase(maSanBay)){
+        for (DuongBay db : controller.Controller.arrayListDuongBay) {
+            if (db.getMaSanBay1().equalsIgnoreCase(maSanBay)
+                    || db.getMaSanBay2().equalsIgnoreCase(maSanBay)) {
                 JOptionPane.showMessageDialog(rootPane, "Sân bay đã được sử dụng trong đường bay.");
                 return false;
             }
         }
         return true;
     }
+
     /**
      * @param args the command line arguments
      */
