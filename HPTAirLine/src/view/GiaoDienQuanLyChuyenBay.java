@@ -313,8 +313,28 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_TimKiemFocusLost
 
     private void jTextField_TimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyReleased
-        // TODO add your handling code here:
-
+        while (dtmChuyenBay.getRowCount()!=0) {
+            dtmChuyenBay.removeRow(0);
+        }
+        if (jTextField_TimKiem.getText().isEmpty()) {
+            input();
+        }
+        String st = jTextField_TimKiem.getText().toUpperCase();
+        jTextField_TimKiem.setText(st);
+        for (ChuyenBay cb : Controller.arrayListChuyenBay) {
+            if (cb.getMaSanBayDi().contains(st) || cb.getMaSanBayDen().contains(st)) {
+                dtmChuyenBay.addRow(new Object[] {
+                    cb.getMaChuyenBay(),
+                    cb.getMaMayBay(),
+                    cb.getMaSanBayDi(),
+                    cb.getMaSanBayDen(),
+                    cb.getNgayBay(),
+                    cb.getGioBay(),
+                    cb.getGhiChu(),
+                    cb.getKhoangCach()
+                });
+            }
+        }
     }//GEN-LAST:event_jTextField_TimKiemKeyReleased
 
     private void jTextField_TimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyTyped
