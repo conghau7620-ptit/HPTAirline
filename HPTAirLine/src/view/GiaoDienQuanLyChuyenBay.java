@@ -322,6 +322,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
         }
         if (jTextField_TimKiem.getText().isEmpty()) {
             input();
+            return;
         }
         String st = jTextField_TimKiem.getText().toUpperCase();
         jTextField_TimKiem.setText(st);
@@ -374,7 +375,8 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_XoaChuyenBayActionPerformed
 
     private void jButton_QuayLai2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLai2ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new GiaoDienQuanLy().setVisible(true);
     }//GEN-LAST:event_jButton_QuayLai2ActionPerformed
 
     private void jButton_SuaChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaChuyenBayActionPerformed
