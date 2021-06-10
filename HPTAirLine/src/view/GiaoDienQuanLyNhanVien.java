@@ -113,7 +113,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         jButton_XoaNhanVien = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel_CMND = new javax.swing.JLabel();
         jTextField_DiaChi = new javax.swing.JTextField();
         jTextField_TenDangNhap = new javax.swing.JTextField();
         jTextField_CMND = new javax.swing.JTextField();
@@ -307,11 +307,17 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Tên đăng nhập");
 
-        jLabel8.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("CMND");
+        jLabel_CMND.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jLabel_CMND.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_CMND.setText("CMND");
 
         jTextField_TenDangNhap.setEnabled(false);
+
+        jTextField_CMND.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField_CMNDKeyReleased(evt);
+            }
+        });
 
         jButton_SuaNhanVien.setBackground(new java.awt.Color(60, 60, 153));
         jButton_SuaNhanVien.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
@@ -372,7 +378,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
                                         .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel7)
-                                    .addComponent(jLabel8))
+                                    .addComponent(jLabel_CMND))
                                 .addGap(134, 134, 134)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField_TenNhanVien)
@@ -452,7 +458,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
                             .addComponent(jTextField_TenDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
+                            .addComponent(jLabel_CMND)
                             .addComponent(jTextField_CMND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -728,6 +734,27 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBox_HoaDonDaThanhToanItemStateChanged
 
+    private void jTextField_CMNDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_CMNDKeyReleased
+        // TODO add your handling code here:
+        String cmnd = jTextField_CMND.getText();
+                jLabel_BaoLoi.setText("");
+                jLabel_CMND.setForeground(Color.white);
+                jTextField_CMND.setForeground(Color.black);
+                if (cmnd.length() != 9) {
+                    jLabel_BaoLoi.setText("*CMND 9 số");
+                    jLabel_CMND.setForeground(Color.red);
+                    jTextField_CMND.setForeground(Color.red);
+                }
+                for (int i = 0; i < cmnd.length(); i++) {
+                    if (cmnd.charAt(i) < '0' || cmnd.charAt(i) > '9') {
+                        jLabel_BaoLoi.setText("*CMND phải nhập số");
+                        jLabel_CMND.setForeground(Color.red);
+                        jTextField_CMND.setForeground(Color.red);
+                        break;
+                    }
+                }
+    }//GEN-LAST:event_jTextField_CMNDKeyReleased
+
     private void loadBangNhanVien() {
         dtmNhanVien.setRowCount(0);
         new LoadData();
@@ -799,10 +826,10 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_AirLines;
     private javax.swing.JLabel jLabel_BaoLoi;
+    private javax.swing.JLabel jLabel_CMND;
     private javax.swing.JLabel jLabel_HPT;
     private javax.swing.JLabel jLabel_IconMayBay;
     private javax.swing.JPanel jPanel1;
