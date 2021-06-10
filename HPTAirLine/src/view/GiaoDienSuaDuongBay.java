@@ -29,15 +29,21 @@ public class GiaoDienSuaDuongBay extends javax.swing.JFrame {
     private void hienThongTin() {
         new LoadData();
         for (SanBay sb: controller.Controller.arrayListSanBay) {
-            jComboBox_SanBay1.addItem(sb.getMaSanBay().toString());
-            jComboBox_SanBay2.addItem(sb.getMaSanBay().toString());
+            jComboBox_SanBay1.addItem(sb.getMaSanBay().toString()+"-"+sb.getTenSanBay());
+            jComboBox_SanBay2.addItem(sb.getMaSanBay().toString()+"-"+sb.getTenSanBay());   
         }
         for(DuongBay db: controller.Controller.arrayListDuongBay){
             if(db.getMaDuongBay().equalsIgnoreCase(maDuongBay)){
-                jComboBox_SanBay1.setSelectedItem(db.getMaSanBay1().toString());
-                jComboBox_SanBay2.setSelectedItem(db.getMaSanBay2().toString());
-                break;
+                for (SanBay sb: controller.Controller.arrayListSanBay) {
+                    if(sb.getMaSanBay().equalsIgnoreCase(db.getMaSanBay1())){
+                        jComboBox_SanBay1.setSelectedItem(db.getMaSanBay1().toString()+"-"+sb.getTenSanBay());
+                    }
+                    if(sb.getMaSanBay().equalsIgnoreCase(db.getMaSanBay2())){
+                         jComboBox_SanBay2.setSelectedItem(db.getMaSanBay2().toString()+"-"+sb.getTenSanBay());
+                    }
+                }
             }
+            jTextField_KhoangCach.setText(db.getKhoangCach()+"");
         }
     }
     /**
@@ -255,18 +261,11 @@ public class GiaoDienSuaDuongBay extends javax.swing.JFrame {
             jLabel_ThongBao.setText("Khoảng cách chưa được điền");
             return;
         }
-        for (DuongBay db: controller.Controller.arrayListDuongBay) {
-            if ((db.getMaSanBay1().equals(maSB1) && db.getMaSanBay2().equals(maSB2))
-                    || (db.getMaSanBay1().equals(maSB2) && db.getMaSanBay2().equals(maSB1))) {
-                jLabel_ThongBao.setText("Đường bay đã tồn tại trong danh sách");
-                return;
-            }
-        }
         
         DuongBay duongBay = new DuongBay(
             this.maDuongBay,
-            maSB1,
-            maSB2,
+            maSB1.substring(0, 3),
+            maSB2.substring(0, 3),
             Integer.parseInt(jTextField_KhoangCach.getText()));
         if(connection.UpdateData.updateDuongBay(duongBay)){
             JOptionPane.showMessageDialog(rootPane, "Sửa đường bay thành công");

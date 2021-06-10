@@ -56,6 +56,11 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
                 jLabel_ThongBao.setText("");
                 jLabel_CMND.setForeground(Color.white);
                 jTextField_CMND.setForeground(Color.black);
+                if (cmnd.length() != 9) {
+                    jLabel_ThongBao.setText("*CMND 9 số");
+                    jLabel_CMND.setForeground(Color.red);
+                    jTextField_CMND.setForeground(Color.red);
+                }
                 for (int i = 0; i < cmnd.length(); i++) {
                     if (cmnd.charAt(i) < '0' || cmnd.charAt(i) > '9') {
                         jLabel_ThongBao.setText("*CMND phải nhập số");
@@ -74,34 +79,27 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
                 jLabel_ThongBao.setText("");
                 jLabel_SoDienThoai.setForeground(Color.white);
                 jTextField_SoDienThoai.setForeground(Color.black);
+
+                if (sdt.length() != 10) {
+                    jLabel_ThongBao.setText("*Số điện thoại 10 số");
+                    jLabel_SoDienThoai.setForeground(Color.red);
+                    jTextField_SoDienThoai.setForeground(Color.red);
+                }
                 for (int i = 0; i < sdt.length(); i++) {
                     if (sdt.charAt(i) < '0' || sdt.charAt(i) > '9') {
                         jLabel_ThongBao.setText("*Số điện thoại phải nhập số");
                         jLabel_SoDienThoai.setForeground(Color.red);
                         jTextField_SoDienThoai.setForeground(Color.red);
-//                        break;
-                    }else{
-                        if (sdt.length() != 10) {
-                        jLabel_ThongBao.setText("*Số điện thoại 10 số");
-                        jLabel_SoDienThoai.setForeground(Color.red);
-                        jTextField_SoDienThoai.setForeground(Color.red);    
-                        }
+                        break;
                     }
-                    
                 }
                 for (NhanVien nv : Controller.arrayListNhanVien) {
                     if (nv.getSdtNhanVien().equals(jTextField_SoDienThoai.getText())) {
                         jLabel_ThongBao.setText("*Số điện thoại đã được sử dụng");
                         jLabel_SoDienThoai.setForeground(Color.red);
                         break;
-                    } else {
-                        jLabel_ThongBao.setText("");
-                        jLabel_SoDienThoai.setForeground(Color.WHITE);
                     }
                 }
-
-                    
-                
             }
         });
 
@@ -141,30 +139,6 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
             }
         });
 
-//        jButton_ThemNhanVien.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                if (jLabel_ThongBao.getText().isEmpty()) {
-//                    TaiKhoan tk = new TaiKhoan(
-//                            jTextField_TaiKhoan.getText(),
-//                            jTextField_MatKhau.getText(),
-//                            "NhanVien",
-//                            jTextField_SoDienThoai.getText());
-//                    Controller.arrayListTaiKhoan.add(tk);
-//                    InsertData.insertTaiKhoan(tk);
-//
-//                    NhanVien nv = new NhanVien(
-//                            jTextField_SoDienThoai.getText(),
-//                            jTextField_TenNhanVien.getText(),
-//                            jTextField_DiaChi.getText(),
-//                            jTextField_TaiKhoan.getText(),
-//                            jTextField_CMND.getText()
-//                    );
-//                    Controller.arrayListNhanVien.add(nv);
-//                    InsertData.insertNhanVien(nv);
-//                }
-//            }
-//        });
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -498,8 +472,9 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
             InsertData.insertTaiKhoan(tk);
             if (InsertData.insertNhanVien(nv)) {
                 JOptionPane.showMessageDialog(rootPane, "Thêm nhân viên thành công");
-            }
-            this.dispose();
+                this.dispose();
+                new GiaoDienQuanLyNhanVien().setVisible(true);
+            }      
         }
     }//GEN-LAST:event_jButton_ThemNhanVienActionPerformed
 

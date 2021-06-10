@@ -225,10 +225,10 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     private void input() {
         for (SanBay sb: Controller.arrayListSanBay) {
-            jComboBox_SanBay1.addItem(sb.getMaSanBay().toString());
-            jComboBox_SanBay2.addItem(sb.getMaSanBay().toString());
+            jComboBox_SanBay1.addItem(sb.getMaSanBay().toString()+"-"+sb.getTenSanBay());
+            jComboBox_SanBay2.addItem(sb.getMaSanBay().toString()+"-"+sb.getTenSanBay());
         }
-        jComboBox_SanBay2.setSelectedItem(Controller.arrayListSanBay.get(1).getMaSanBay().toString());
+        jComboBox_SanBay2.setSelectedItem(Controller.arrayListSanBay.get(1).getMaSanBay().toString()+"-"+Controller.arrayListSanBay.get(1).getTenSanBay().toString());
     }
     
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
@@ -249,8 +249,8 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
             return;
         }
         for (DuongBay db: Controller.arrayListDuongBay) {
-            if ((db.getMaSanBay1().equals(maSB1) && db.getMaSanBay2().equals(maSB2))
-                    || (db.getMaSanBay1().equals(maSB2) && db.getMaSanBay2().equals(maSB1))) {
+            if ((db.getMaSanBay1().equals(maSB1.substring(0, 3)) && db.getMaSanBay2().equals(maSB2.substring(0, 3)))
+                    || (db.getMaSanBay1().equals(maSB2.substring(0, 3)) && db.getMaSanBay2().equals(maSB1.substring(0, 3)))) {
                 jLabel_ThongBao.setText("Đường bay đã tồn tại trong danh sách");
                 return;
             }
@@ -267,8 +267,8 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
         
         DuongBay duongBay = new DuongBay(
             maDuongBay,
-            maSB1,
-            maSB2,
+            maSB1.substring(0, 3),
+            maSB2.substring(0, 3),
             Integer.parseInt(jTextField_KhoangCach.getText()));
         Controller.arrayListDuongBay.add(duongBay);
         InsertData.insertDuongBay(duongBay);
