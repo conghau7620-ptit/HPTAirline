@@ -1218,10 +1218,13 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                                     System.out.println("Cập nhật điểm tích lũy thành công");
                                     this.dispose();
                                     new GiaoDienTimChuyenBay().setVisible(true);
+                                    GiaoDienChonGhe.dsVeDi.removeAll(GiaoDienChonGhe.dsVeDi);
+                                    GiaoDienChonGhe.dsVeVe.removeAll(GiaoDienChonGhe.dsVeVe);
+                                    this.danhSachVeDi.removeAll(danhSachVeDi);
+                                    this.danhSachVeVe.removeAll(danhSachVeVe);
                                 }
 
-                                GiaoDienChonGhe.dsVeDi.removeAll(GiaoDienChonGhe.dsVeDi);
-                                GiaoDienChonGhe.dsVeVe.removeAll(GiaoDienChonGhe.dsVeVe);
+                                
 
                             }
                         } else {

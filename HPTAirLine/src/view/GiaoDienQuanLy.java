@@ -21,7 +21,7 @@ import model.NhanVien;
 
 /**
  *
- * @author t0168
+ * @author tuanbuiquoc
  */
 public class GiaoDienQuanLy extends javax.swing.JFrame {
 
@@ -51,6 +51,9 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
 
         jButton_HoaDon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
+        jButton_ChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_DuongBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_SanBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -279,8 +282,11 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton_ChuyenBay.setBackground(new java.awt.Color(0, 102, 102));
         jButton_ChuyenBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_ChuyenBay.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_ChuyenBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_airplane_take_off_52px.png"))); // NOI18N
         jButton_ChuyenBay.setText("Chuyến Bay");
         jButton_ChuyenBay.setBorderPainted(false);
+        jButton_ChuyenBay.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_ChuyenBay.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jButton_ChuyenBay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_ChuyenBayActionPerformed(evt);
@@ -290,8 +296,11 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton_SanBay.setBackground(new java.awt.Color(60, 60, 153));
         jButton_SanBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_SanBay.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_SanBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_road_48px.png"))); // NOI18N
         jButton_SanBay.setText("Sân Bay");
         jButton_SanBay.setBorderPainted(false);
+        jButton_SanBay.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_SanBay.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jButton_SanBay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_SanBayActionPerformed(evt);
@@ -301,8 +310,11 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton_DuongBay.setBackground(new java.awt.Color(20, 0, 65));
         jButton_DuongBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_DuongBay.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_DuongBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_airplane_mode_on_52px.png"))); // NOI18N
         jButton_DuongBay.setText("Đường Bay");
         jButton_DuongBay.setBorderPainted(false);
+        jButton_DuongBay.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_DuongBay.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         jButton_DuongBay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_DuongBayActionPerformed(evt);
@@ -330,11 +342,9 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
                                 .addGap(68, 68, 68)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton_ThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton_SanBay, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel_QuanLy, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)))
+                                    .addComponent(jButton_SanBay, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel_QuanLy, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                         .addComponent(jButton_HoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
@@ -352,26 +362,26 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
                     .addComponent(jButton_ThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton_KhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_ChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton_SanBay, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_DuongBay, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(jButton_ChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_DuongBay, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

@@ -505,7 +505,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
         clearTextFieldThongTinNhanVien();
 
-        if (jTextField_TimKiem.getText().length() >= 4) {
+        if (jTextField_TimKiem.getText().length() >= 11) {
 //            evt.consume();
             jTextField_TimKiem.setText(jTextField_TimKiem.getText().substring(0, jTextField_TimKiem.getText().length() - 1));
         } else {
