@@ -80,10 +80,10 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
 
         layMauGhe();
 
-        System.out.println("tre ve: " + GiaoDienChonGhe.soGheTreEmVe);
-                    System.out.println("tre di: "+ GiaoDienChonGhe.soGheTreEmDi);
-                     System.out.println("lon ve: "+ GiaoDienChonGhe.soGheNguoiLonVe);
-                     System.out.println("lon di: "+  GiaoDienChonGhe.soGheNguoiLonDi);
+//        System.out.println("tre ve: " + GiaoDienChonGhe.soGheTreEmVe);
+//                    System.out.println("tre di: "+ GiaoDienChonGhe.soGheTreEmDi);
+//                     System.out.println("lon ve: "+ GiaoDienChonGhe.soGheNguoiLonVe);
+//                     System.out.println("lon di: "+  GiaoDienChonGhe.soGheNguoiLonDi);
 //layGheTuCSDL("CB01");
 //           
 //           layMauGhe();
@@ -95,6 +95,22 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
             
        
     }
+    
+    // phu vu cho nut back
+    
+        public GiaoDienChonGhe(String maChuyenBay) {
+        initComponents();
+        
+        luuTextField();
+        layGheTuCSDL(maChuyenBay);
+
+        layMauGhe();
+        xuatThongTinVaoBang();
+
+    }
+        
+        // ket thuc phuc vu cho nut back
+        
     public static String maSanBayDi;
     public static String maSanBayDen;
 
@@ -3504,7 +3520,7 @@ private void changeColor(Color a){
                     
                 ve = false;
                 di = false;
-          new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe, this.soGheNguoiLonVe, this.soGheTreEmVe).setVisible(true); // looix k mở được chọn chuyến bay về khi truyền thamn số vào
+          new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe, this.nguoiLonBanDau, this.treEmBanDau).setVisible(true); // looix k mở được chọn chuyến bay về khi truyền thamn số vào
           // khuHoi = false;
           
           
@@ -3547,11 +3563,13 @@ private void changeColor(Color a){
              if (di){
                  dsVeDi.removeAll(dsVeDi);
                  new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, nguoiLonBanDau, treEmBanDau).setVisible(true);
+                 System.out.println("so nguoi lon va tre em ban dau" + nguoiLonBanDau + "-" +treEmBanDau);
                  this.dispose();
              }   
              else if (!ve && !di) {
                  dsVeVe.removeAll(dsVeVe);
-                  new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe, this.nguoiLonBanDau, this.treEmBanDau).setVisible(true);
+                  new GiaoDienChonChuyenBayVe(maSanBayDen, maSanBayDi, ngayVe, nguoiLonBanDau, treEmBanDau).setVisible(true);
+                  System.out.println("so nguoi lon va tre em ban dau" + nguoiLonBanDau + "-" +treEmBanDau);
                  this.dispose();
                  
              }

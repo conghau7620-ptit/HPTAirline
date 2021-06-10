@@ -35,9 +35,9 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
     public GiaoDienQuanLyKhachHang() {
         initComponents();
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
-        dtmHoaDon.setColumnIdentifiers(new Object[]{
-            "MaHoaDon", "SDTKhachHang", "NgayXuatHoaDon", "TrangThaiThanhToan", "TongTien", "SDTNhanVien"
-        });
+            dtmHoaDon.setColumnIdentifiers(new Object[]{
+                "MaHoaDon", "SDTKhachHang", "NgayXuatHoaDon", "TrangThaiThanhToan", "TongTien", "SDTNhanVien"
+            });
 
         dtmVe = (DefaultTableModel) jTable_Ve.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{

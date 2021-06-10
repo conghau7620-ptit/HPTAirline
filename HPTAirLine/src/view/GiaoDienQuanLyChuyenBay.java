@@ -6,8 +6,12 @@
 package view;
 
 import connection.LoadData;
-import java.awt.Color;
-import model.KhachHang;
+import connection.UpdateData;
+import controller.Controller;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.ChuyenBay;
+import model.Ve;
 
 /**
  *
@@ -18,8 +22,14 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     /**
      * Creates new form GiaoDienQuanLyChuyenBay
      */
+    DefaultTableModel dtmChuyenBay = null;
+    String maChuyenBayDuocChon = null;
+    
     public GiaoDienQuanLyChuyenBay() {
         initComponents();
+        new LoadData();
+        input();
+        
     }
 
     /**
@@ -74,7 +84,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
                 .addComponent(jLabel_HPT)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_AirLines, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(448, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,19 +207,24 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addComponent(jTextField_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton_QuayLai2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(jButton_QuayLai2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(94, 94, 94)
                         .addComponent(jButton_ThemChuyenBay)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                         .addComponent(jButton_SuaChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton_XoaChuyenBay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+
+                        .addGap(52, 52, 52)
+                        .addComponent(jButton_XoaChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
+
                 .addContainerGap())
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton_QuayLai2, jButton_SuaChuyenBay, jButton_ThemChuyenBay, jButton_XoaChuyenBay});
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -221,7 +236,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
                 .addGap(3, 3, 3)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_ThemChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,32 +250,60 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(698, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(80, 80, 80)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void input() {
+        dtmChuyenBay = (DefaultTableModel) jTable_ChuyenBay.getModel();
+        dtmChuyenBay.setColumnIdentifiers(new Object[]{
+            "Mã Chuyến Bay","Mã máy bay", "Mã Sân bay đi", "Mã sân bay đến", 
+            "Ngày bay", "Giờ bay", "Ghi chú", "Khoảng cách"
+        });
+        for (ChuyenBay cb : Controller.arrayListChuyenBay) {
+            dtmChuyenBay.addRow(new Object[] {
+                cb.getMaChuyenBay(),
+                cb.getMaMayBay(),
+                cb.getMaSanBayDi(),
+                cb.getMaSanBayDen(),
+                cb.getNgayBay(),
+                cb.getGioBay(),
+                cb.getGhiChu(),
+                cb.getKhoangCach()
+            });
+        }
+    }
+    private boolean duocSua(String maChuyenBay) {
+        for (Ve ve : Controller.arrayListVe) {
+            if (ve.getMaChuyenBay().equals(maChuyenBay)) {
+                return false;
+            }
+        }
+        return true;
+    }
     private void jTable_ChuyenBayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ChuyenBayMouseClicked
-        // TODO add your handling code here:
-
+        int row = jTable_ChuyenBay.getSelectedRow();
+        if (row == -1) return;
+        maChuyenBayDuocChon = jTable_ChuyenBay.getValueAt(row, 0).toString();
+        System.out.println(maChuyenBayDuocChon);
     }//GEN-LAST:event_jTable_ChuyenBayMouseClicked
 
     private void jButton_ThemChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemChuyenBayActionPerformed
-        // TODO add your handling code here:
         this.dispose();
-
-        new GiaoDienQuanLy().setVisible(true);
+        new GiaoDienThemChuyenBay().setVisible(true);
     }//GEN-LAST:event_jButton_ThemChuyenBayActionPerformed
 
     private void jTextField_TimKiemFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_TimKiemFocusGained
@@ -274,8 +317,28 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_TimKiemFocusLost
 
     private void jTextField_TimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyReleased
-        // TODO add your handling code here:
-
+        while (dtmChuyenBay.getRowCount()!=0) {
+            dtmChuyenBay.removeRow(0);
+        }
+        if (jTextField_TimKiem.getText().isEmpty()) {
+            input();
+        }
+        String st = jTextField_TimKiem.getText().toUpperCase();
+        jTextField_TimKiem.setText(st);
+        for (ChuyenBay cb : Controller.arrayListChuyenBay) {
+            if (cb.getMaSanBayDi().contains(st) || cb.getMaSanBayDen().contains(st)) {
+                dtmChuyenBay.addRow(new Object[] {
+                    cb.getMaChuyenBay(),
+                    cb.getMaMayBay(),
+                    cb.getMaSanBayDi(),
+                    cb.getMaSanBayDen(),
+                    cb.getNgayBay(),
+                    cb.getGioBay(),
+                    cb.getGhiChu(),
+                    cb.getKhoangCach()
+                });
+            }
+        }
     }//GEN-LAST:event_jTextField_TimKiemKeyReleased
 
     private void jTextField_TimKiemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyTyped
@@ -287,7 +350,27 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void jButton_XoaChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaChuyenBayActionPerformed
-        // TODO add your handling code here:
+        if (jTable_ChuyenBay.getSelectedRow()==-1) {
+            JOptionPane.showMessageDialog(null, "Bạn vui lòng chọn chuyến bay cần xóa");
+            return;
+        }
+        if (!duocSua(maChuyenBayDuocChon)){
+            JOptionPane.showMessageDialog(null, "Chuyến bay đã được đặt vé, không thể xóa");
+            return;
+        }
+        ChuyenBay chuyenBayXoa = null;
+        for (ChuyenBay cb: Controller.arrayListChuyenBay) {
+            if (cb.getMaChuyenBay().equals(maChuyenBayDuocChon)) {
+                chuyenBayXoa = cb;
+                break;
+            }
+        }
+        
+        Controller.arrayListChuyenBay.remove(chuyenBayXoa);
+        UpdateData.deleteGhe(maChuyenBayDuocChon);
+        UpdateData.deleteChuyenBay(maChuyenBayDuocChon);
+        dtmChuyenBay.removeRow(jTable_ChuyenBay.getSelectedRow());
+        JOptionPane.showMessageDialog(null, "Xóa chuyến bay thành công");
     }//GEN-LAST:event_jButton_XoaChuyenBayActionPerformed
 
     private void jButton_QuayLai2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLai2ActionPerformed
@@ -295,7 +378,16 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_QuayLai2ActionPerformed
 
     private void jButton_SuaChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaChuyenBayActionPerformed
-        // TODO add your handling code here:
+        if (jTable_ChuyenBay.getSelectedRow()==-1) {
+            JOptionPane.showMessageDialog(null, "Bạn vui lòng chọn chuyến bay cần sửa thông tin");
+            return;
+        }
+        if (!duocSua(maChuyenBayDuocChon)) {
+            JOptionPane.showMessageDialog(null, "Chuyến bay đã được đặt vé, không thể chỉnh sửa thông tin");
+            return;
+        }
+        this.dispose();
+        new GiaoDienSuaChuyenBay(maChuyenBayDuocChon).setVisible(true);
     }//GEN-LAST:event_jButton_SuaChuyenBayActionPerformed
 
     /**
