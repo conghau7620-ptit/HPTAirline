@@ -246,15 +246,18 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
 
     private void jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed
         // TODO add your handling code here:
-//                  for (int i = 0 ; i < GiaoDienChonGhe.dsVeDi.size(); i++){
-//              String maGhe = GiaoDienChonGhe.dsVeDi.get(i).getMaGhe().substring(5);
-//              maGhe = maGhe.substring(0,1).toLowerCase() + maGhe.substring(1);
-//              GiaoDienChonGhe.dsVeDi.get(i).setMaGhe(maGhe);
-//          }
+        
+        if (GiaoDienChonGhe.dsVeDi.get(0).getMaGhe().length() > 7) {
+                  for (int i = 0 ; i < GiaoDienChonGhe.dsVeDi.size(); i++){
+              String maGhe = GiaoDienChonGhe.dsVeDi.get(i).getMaGhe().substring(5);
+              maGhe = maGhe.substring(0,1).toLowerCase() + maGhe.substring(1);
+              GiaoDienChonGhe.dsVeDi.get(i).setMaGhe(maGhe);
+          }
+        }
             GiaoDienChonGhe.di = true;
             GiaoDienChonGhe.ve = true;
           System.out.println("ds ve di "+ GiaoDienChonGhe.dsVeDi.get(0).getMaGhe() );
-        new GiaoDienChonGhe().setVisible(true);
+        new GiaoDienChonGhe(GiaoDienChonChuyenBayDi.maChuyenBayDi).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed
 

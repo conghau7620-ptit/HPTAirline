@@ -538,11 +538,11 @@ private String danhMaHoaDon (int soHoaDon) {
                       if(soHoaDon <= 8) maHoaDon= "HD0"+ (soHoaDon+1);
                  else maHoaDon = "HD" + (soHoaDon+1);
                       System.out.println("ma hoa don ve" + maHoaDon);
-                      if(maHoaDon.equals(GiaoDienChonGhe.dsVeDi.get(0).getMaHoaDon().trim())){
-                          soHoaDon++;
-                           if(soHoaDon <= 8) maHoaDon= "HD0"+ (soHoaDon+1);
-                                 else maHoaDon = "HD" + (soHoaDon+1);
-                      }
+//                      if(maHoaDon.equals(GiaoDienChonGhe.dsVeDi.get(0).getMaHoaDon().trim())){
+//                          soHoaDon++;
+//                           if(soHoaDon <= 8) maHoaDon= "HD0"+ (soHoaDon+1);
+//                                 else maHoaDon = "HD" + (soHoaDon+1);
+//                      }
                  }
     
     return maHoaDon;
@@ -606,20 +606,24 @@ private String danhMaHoaDon (int soHoaDon) {
 //                 if(soHoaDon <= 9) maHoaDon= "HD0"+ soHoaDon;
 //                else maHoaDon = "HD" + soHoaDon;
 //                 
-                    System.out.println("so hoa don khong trung " + soHoaDon);
-                  String maHoaDon = danhMaHoaDon(soHoaDon); 
+//                    System.out.println("so hoa don khong trung " + soHoaDon);
+//                  String maHoaDon = danhMaHoaDon(soHoaDon); 
+//                  
+//                  for (int i = 0; i < dsHoaDon.size();i++){
+//                      if (maHoaDon.equals(dsHoaDon.get(i).trim())){
+//                          System.out.println("ma hoa don bi trung");
+//                          soHoaDon++;
+//                          maHoaDon = danhMaHoaDon(soHoaDon); 
+//                          System.out.println("so hoa don neu trung " + soHoaDon );
+//                          
+//                      }
+//                  }
+                  String maHoaDonCuoi = dsHoaDon.get(dsHoaDon.size() -1).trim().substring(2);
+                  System.out.println("maHoaDOnCuoi " + maHoaDonCuoi );
+                  int soHoaDonTest = Integer.parseInt(maHoaDonCuoi)+1;
+                 String maHoaDon = danhMaHoaDon(soHoaDonTest);
                   
-                  for (int i = 0; i < dsHoaDon.size();i++){
-                      if (maHoaDon.equals(dsHoaDon.get(i).trim())){
-                          System.out.println("ma hoa don bi trung");
-                          soHoaDon++;
-                          
-                          System.out.println("so hoa don neu trung " + soHoaDon );
-                          
-                      }
-                  }
-                  
-                  maHoaDon = danhMaHoaDon(soHoaDon); 
+                  //maHoaDon = danhMaHoaDon(soHoaDon); 
 //                  if (maHoaDon.equals(GiaoDienChonGhe.dsVeDi.get(0).getMaHoaDon().trim())) {
 //                      soHoaDon++;
 //                      maHoaDon= danhMaHoaDon(soHoaDon);
