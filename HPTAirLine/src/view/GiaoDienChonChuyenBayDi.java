@@ -35,7 +35,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
      */
     
     //SoGhe trong trong chuyen bay deu = 0; chưa sửa
-    
+    public static String maChuyenBayDi;
     ArrayList <ChuyenBay> list;
     DefaultTableModel dtm;
     String maSanBayDi;
@@ -284,9 +284,10 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 //                            , this.soGheNguoiLon, this.soGheTreEm/*, this.soGheEmBe*/, 
 //                            (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
                     
-                    //new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+
                      new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
-                    this.dispose();
+                   maChuyenBayDi = (String) jTable_KetQuaTimKiem.getValueAt(row, 0);
+                     this.dispose();
                 }
         }
         else{
