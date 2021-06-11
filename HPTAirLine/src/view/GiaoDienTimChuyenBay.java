@@ -658,12 +658,15 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
     private void jLabel_XemThongTinTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_XemThongTinTaiKhoanMousePressed
         // TODO add your handling code here:
         if (jLabel_PhanQuyen.getText().equals("nhân viên")) {
+            this.dispose();
             new GiaoDienThongTinNhanVien().setVisible(true);
         }
         if (jLabel_PhanQuyen.getText().equals("quản lý")) {
+            this.dispose();
             new GiaoDienThongTinNhanVien().setVisible(true);
         }
         if (jLabel_PhanQuyen.getText().equals("khách hàng")) {
+            this.dispose();
             new GiaoDienThongTinKhachHang().setVisible(true);
         }
     }//GEN-LAST:event_jLabel_XemThongTinTaiKhoanMousePressed
