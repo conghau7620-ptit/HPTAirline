@@ -49,7 +49,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         inputMacDinh();
         
         if(controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")){
-            jLabel1.setVisible(false);
+            jLabel_QuayLai.setVisible(false);
         }
         
         jLabel_HuongDanDatCho.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -137,7 +137,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         jDateChooser_NgayDi = new com.toedter.calendar.JDateChooser();
         jDateChooser_NgayVe = new com.toedter.calendar.JDateChooser();
         jLabel_BaoLoi = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel_QuayLai = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -369,11 +369,11 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         jLabel_BaoLoi.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         jLabel_BaoLoi.setForeground(new java.awt.Color(255, 0, 0));
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Quay Lại");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel_QuayLai.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_QuayLai.setText("Quay Lại");
+        jLabel_QuayLai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel1MousePressed(evt);
+                jLabel_QuayLaiMousePressed(evt);
             }
         });
 
@@ -423,7 +423,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                                 .addGap(80, 80, 80)
                                 .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel_QuayLai))
                     .addComponent(jButton_TimChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -473,7 +473,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jLabel1)
+                        .addComponent(jLabel_QuayLai)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -521,7 +521,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         boolean ktra = true;
 
         if (Integer.parseInt(jComboBox_SLNguoiLon.getSelectedItem().toString()) == 0) {
-            jComboBox_SLNguoiLon.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            jComboBox_SLNguoiLon.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
             jLabel_BaoLoi.setText("Trẻ em cần có người lớn đi cùng.");
             ktra = false;
             return ktra;
@@ -532,8 +532,8 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         }
 
         if (jComboBox_SanBayDi.getSelectedItem().toString().equalsIgnoreCase(jComboBox_SanBayDen.getSelectedItem().toString())) {
-            jComboBox_SanBayDen.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-            jComboBox_SanBayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            jComboBox_SanBayDen.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
+            jComboBox_SanBayDi.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
             jLabel_BaoLoi.setText("Sân bay đi và sân bay đến không thể trùng nhau.");
             ktra = false;
             return ktra;
@@ -547,7 +547,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         Date ngayVe = jDateChooser_NgayVe.getDate();
         //neu ngay trong 2 jDateChooser trc ngay hien tai thi khong the tim chuyen bay
         if ((ngayHienTai.after(ngayDi))) {
-            jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
             ktra = false;
             jLabel_BaoLoi.setText("Ngày đi không hợp lệ.");
             return ktra;
@@ -558,16 +558,16 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
         if (jRadioButton_KhuHoi.isSelected()) {
             if ((ngayHienTai.after(ngayVe))) {
-                jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+                jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
                 ktra = false;
                 return ktra;
             } else {
                 jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
             }
             if (ngayDi.after(ngayVe)) {
-                jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+                jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
                 jLabel_BaoLoi.setText("Ngày đi phải trước ngày về.");
-                jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+                jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
                 ktra = false;
                 return ktra;
             } else {
@@ -635,8 +635,8 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
     private void jComboBox_SanBayDenItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_SanBayDenItemStateChanged
         if (jComboBox_SanBayDi.getSelectedItem().toString().equalsIgnoreCase(jComboBox_SanBayDen.getSelectedItem().toString())) {
-            jComboBox_SanBayDen.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-            jComboBox_SanBayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            jComboBox_SanBayDen.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
+            jComboBox_SanBayDi.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
             jLabel_BaoLoi.setText("Sân bay đi và sân bay đến không thể trùng nhau.");
         } else {
             jComboBox_SanBayDi.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
@@ -677,13 +677,17 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         new GiaoDienDangNhap().setVisible(true);
     }//GEN-LAST:event_jLabel_DangXuatMousePressed
 
-    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+    private void jLabel_QuayLaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_QuayLaiMousePressed
         // TODO add your handling code here:
         if (Controller.tk.getLoaiTaiKhoan().equals("NhanVien")) {
             dispose();
             new GiaoDienNhanVien().setVisible(true);
         }
-    }//GEN-LAST:event_jLabel1MousePressed
+        if (Controller.tk.getLoaiTaiKhoan().equals("QuanLy")) {
+            dispose();
+            new GiaoDienQuanLy().setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel_QuayLaiMousePressed
 
     /**
      * @param args the command line arguments
@@ -732,7 +736,6 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox_SanBayDi;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayDi;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayVe;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_AirLines;
     private javax.swing.JLabel jLabel_BaoLoi;
@@ -746,6 +749,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_NgayVe;
     private javax.swing.JLabel jLabel_NguoiLon;
     private javax.swing.JLabel jLabel_PhanQuyen;
+    private javax.swing.JLabel jLabel_QuayLai;
     private javax.swing.JLabel jLabel_SanBayDen;
     private javax.swing.JLabel jLabel_SanBayDi;
     private javax.swing.JLabel jLabel_TenNguoiDung;

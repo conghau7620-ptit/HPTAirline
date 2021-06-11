@@ -721,7 +721,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 JComboBox jComboBox_DiemMoi = new JComboBox(new Object[]{"0", "100", "200", "300", "400", "500", "600", "700", "800", "900", "1000"});
                 //
                 //            JLabel jLabel_BaoLoi = new JLabel();
-                //            jLabel_BaoLoi.setForeground(Color.red);
+                //            jLabel_BaoLoi.setForeground(Color.yellow);
                 //            JTextField jTextField_DiemMoi = new JTextField();
                 Object[] message = {
                     "Điểm cũ đã dùng:", jTextField_DiemCuDaDung,

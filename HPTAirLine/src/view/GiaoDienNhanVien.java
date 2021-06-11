@@ -30,7 +30,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new GiaoDienTimChuyenBay();
+                new GiaoDienTimChuyenBay().setVisible(true);
             }
         });
         
@@ -38,7 +38,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                new GiaoDienThanhToanHoaDon();
+                new GiaoDienThanhToanHoaDon().setVisible(true);
             }
         });
         
@@ -128,6 +128,11 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         jButton_BanVe.setForeground(new java.awt.Color(255, 255, 255));
         jButton_BanVe.setText("Bán Vé Trực Tiếp");
         jButton_BanVe.setBorderPainted(false);
+        jButton_BanVe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_BanVeActionPerformed(evt);
+            }
+        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_paid_bill_96px_2.png"))); // NOI18N
 
@@ -308,6 +313,10 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         new GiaoDienDangNhap().setVisible(true);
     }//GEN-LAST:event_jLabel_DangXuatMousePressed
 
+    private void jButton_BanVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_BanVeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_BanVeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -319,7 +328,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

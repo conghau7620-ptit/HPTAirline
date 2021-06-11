@@ -1058,8 +1058,8 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         String sdt = jTextField_SoDienThoaiKhachHang.getText();
         for (int i = 0; i < sdt.length(); i++) {
             if (sdt.charAt(i) < '0' || sdt.charAt(i) > '9') {
-                jLabel_BaoLoi2.setForeground(Color.red);
-                jTextField_SoDienThoaiKhachHang.setForeground(Color.red);
+                jLabel_BaoLoi2.setForeground(Color.yellow);
+                jTextField_SoDienThoaiKhachHang.setForeground(Color.yellow);
                 jLabel_BaoLoi2.setText("*Vui lòng nhập số");
                 return false;
             } else {
@@ -1248,8 +1248,8 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         String sdt = jTextField_SoDienThoaiKhachHang.getText();
         for (int i = 0; i < sdt.length(); i++) {
             if (sdt.charAt(i) < '0' || sdt.charAt(i) > '9') {
-                jLabel_BaoLoi2.setForeground(Color.red);
-                jTextField_SoDienThoaiKhachHang.setForeground(Color.red);
+                jLabel_BaoLoi2.setForeground(Color.yellow);
+                jTextField_SoDienThoaiKhachHang.setForeground(Color.yellow);
                 jLabel_BaoLoi2.setText("*Vui lòng nhập số");
             } else {
                 jLabel_BaoLoi2.setForeground(Color.black);
@@ -1303,9 +1303,9 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         int diemTichLuySuDung = diemTichLuyDiSuDung + diemTichLuyVeSuDung;
         boolean ktra = true;
         if (diemTichLuy < diemTichLuySuDung) {
-            jLabel_BaoLoi.setForeground(Color.red);
-            jComboBox_SuDungDiemTichLuyDi.setForeground(Color.red);
-            jComboBox_SuDungDiemTichLuyVe.setForeground(Color.red);
+            jLabel_BaoLoi.setForeground(Color.yellow);
+            jComboBox_SuDungDiemTichLuyDi.setForeground(Color.yellow);
+            jComboBox_SuDungDiemTichLuyVe.setForeground(Color.yellow);
             jLabel_BaoLoi.setText("Không đủ điểm tích lũy");
             ktra = false;
         } else {
