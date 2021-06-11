@@ -393,7 +393,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel_ChuyenBayDaChon" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel_ChuyenBayDaChon1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel_TB" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -408,7 +408,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel_ChuyenBayDaChon" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel_ChuyenBayDaChon1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_TB" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="57" max="-2" attributes="0"/>
@@ -876,7 +876,7 @@
             <Property name="text" type="java.lang.String" value="&#x110;&#xe3; thanh to&#xe1;n"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel_ChuyenBayDaChon1">
+        <Component class="javax.swing.JLabel" name="jLabel_TB">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="12" style="0"/>
