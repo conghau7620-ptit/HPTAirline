@@ -225,10 +225,10 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     private void input() {
         for (SanBay sb: Controller.arrayListSanBay) {
-            jComboBox_SanBay1.addItem(sb.getMaSanBay().toString());
-            jComboBox_SanBay2.addItem(sb.getMaSanBay().toString());
+            jComboBox_SanBay1.addItem(sb.getMaSanBay().toString()+"-"+sb.getTenSanBay());
+            jComboBox_SanBay2.addItem(sb.getMaSanBay().toString()+"-"+sb.getTenSanBay());
         }
-        jComboBox_SanBay2.setSelectedItem(Controller.arrayListSanBay.get(1).getMaSanBay().toString());
+        jComboBox_SanBay2.setSelectedItem(Controller.arrayListSanBay.get(1).getMaSanBay().toString()+"-"+Controller.arrayListSanBay.get(1).getTenSanBay().toString());
     }
     
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
@@ -240,6 +240,10 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
     private void jButton_ThemDuongBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemDuongBayActionPerformed
         String maSB1 = jComboBox_SanBay1.getSelectedItem().toString();
         String maSB2 = jComboBox_SanBay2.getSelectedItem().toString();
+        if (Controller.arrayListSanBay.isEmpty()) {
+            jLabel_ThongBao.setText("Chưa có sân bay nào được tạo");
+            return;
+        }
         if (maSB1.equals(maSB2)) {
             jLabel_ThongBao.setText("2 mã sân bay bị trùng nhau");
             return;
@@ -249,14 +253,20 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
             return;
         }
         for (DuongBay db: Controller.arrayListDuongBay) {
-            if ((db.getMaSanBay1().equals(maSB1) && db.getMaSanBay2().equals(maSB2))
-                    || (db.getMaSanBay1().equals(maSB2) && db.getMaSanBay2().equals(maSB1))) {
+            if ((db.getMaSanBay1().equals(maSB1.substring(0, 3)) && db.getMaSanBay2().equals(maSB2.substring(0, 3)))
+                    || (db.getMaSanBay1().equals(maSB2.substring(0, 3)) && db.getMaSanBay2().equals(maSB1.substring(0, 3)))) {
                 jLabel_ThongBao.setText("Đường bay đã tồn tại trong danh sách");
                 return;
             }
         }
-        int tmp = Integer.parseInt(Controller.arrayListDuongBay.get(
-            Controller.arrayListDuongBay.size()-1).getMaDuongBay().substring(2))+1;
+        int tmp;
+        if (Controller.arrayListDuongBay.isEmpty()) {
+            tmp = 1;
+        }
+        else {
+            tmp = Integer.parseInt(Controller.arrayListDuongBay.get(
+                Controller.arrayListDuongBay.size()-1).getMaDuongBay().substring(2))+1;
+        }
         String maDuongBay = "DB";
         if (tmp<=9) {
             maDuongBay = maDuongBay + "0" + tmp;
@@ -267,8 +277,8 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
         
         DuongBay duongBay = new DuongBay(
             maDuongBay,
-            maSB1,
-            maSB2,
+            maSB1.substring(0, 3),
+            maSB2.substring(0, 3),
             Integer.parseInt(jTextField_KhoangCach.getText()));
         Controller.arrayListDuongBay.add(duongBay);
         InsertData.insertDuongBay(duongBay);

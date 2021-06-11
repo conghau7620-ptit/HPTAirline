@@ -244,7 +244,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         jLabel_BaoLoi = new javax.swing.JLabel();
         jComboBox_SuDungDiemTichLuyVe = new javax.swing.JComboBox<>();
         jCheckBox_TrangThaiThanhToanHoaDonVe = new javax.swing.JCheckBox();
-        jLabel_ChuyenBayDaChon4 = new javax.swing.JLabel();
+        jLabel_TB2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel_SoDienThoaiKhachHang = new javax.swing.JLabel();
         jTextField_SoDienThoaiKhachHang = new javax.swing.JTextField();
@@ -281,8 +281,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         jLabel_BaoLoi2 = new javax.swing.JLabel();
         jCheckBox_TrangThaiThanhToanHoaDonDi = new javax.swing.JCheckBox();
         jLabel_ChuyenBayDaChon1 = new javax.swing.JLabel();
-        jLabel_ChuyenBayDaChon2 = new javax.swing.JLabel();
-        jLabel_ChuyenBayDaChon3 = new javax.swing.JLabel();
+        jLabel_tb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -422,10 +421,8 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             }
         ));
         jTable_ChuyenBayVeDaChon.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable_ChuyenBayVeDaChon.setIntercellSpacing(new java.awt.Dimension(0, 0));
         jTable_ChuyenBayVeDaChon.setRowHeight(30);
         jTable_ChuyenBayVeDaChon.setSelectionBackground(new java.awt.Color(255, 77, 77));
-        jTable_ChuyenBayVeDaChon.setShowVerticalLines(false);
         jTable_ChuyenBayVeDaChon.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable_ChuyenBayVeDaChon);
         jTable_ChuyenBayVeDaChon.getAccessibleContext().setAccessibleName("");
@@ -485,10 +482,8 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             }
         ));
         jTable_VeVeDaChon.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable_VeVeDaChon.setIntercellSpacing(new java.awt.Dimension(0, 0));
         jTable_VeVeDaChon.setRowHeight(30);
         jTable_VeVeDaChon.setSelectionBackground(new java.awt.Color(255, 77, 77));
-        jTable_VeVeDaChon.setShowVerticalLines(false);
         jTable_VeVeDaChon.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable_VeVeDaChon);
 
@@ -531,9 +526,9 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         jCheckBox_TrangThaiThanhToanHoaDonVe.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox_TrangThaiThanhToanHoaDonVe.setText("Đã thanh toán");
 
-        jLabel_ChuyenBayDaChon4.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel_ChuyenBayDaChon4.setForeground(new java.awt.Color(0, 204, 204));
-        jLabel_ChuyenBayDaChon4.setText("*Hóa đơn sẽ bị xóa nếu không thanh toán trước 2 tiếng trước giờ bay");
+        jLabel_TB2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel_TB2.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel_TB2.setText("*Hóa đơn sẽ bị xóa nếu không thanh toán trước 2 tiếng trước giờ bay");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -600,7 +595,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel_ChuyenBayVeDaChon)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel_ChuyenBayDaChon4))
+                                    .addComponent(jLabel_TB2))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -616,7 +611,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_ChuyenBayVeDaChon)
-                    .addComponent(jLabel_ChuyenBayDaChon4))
+                    .addComponent(jLabel_TB2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -658,7 +653,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_TongTienVe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_TongTien))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jCheckBox_TrangThaiThanhToanHoaDonVe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -695,10 +690,8 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             }
         ));
         jTable_ChuyenBayDiDaChon.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable_ChuyenBayDiDaChon.setIntercellSpacing(new java.awt.Dimension(0, 0));
         jTable_ChuyenBayDiDaChon.setRowHeight(30);
         jTable_ChuyenBayDiDaChon.setSelectionBackground(new java.awt.Color(255, 77, 77));
-        jTable_ChuyenBayDiDaChon.setShowVerticalLines(false);
         jTable_ChuyenBayDiDaChon.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(jTable_ChuyenBayDiDaChon);
 
@@ -763,10 +756,8 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             }
         ));
         jTable_VeDiDaChon.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable_VeDiDaChon.setIntercellSpacing(new java.awt.Dimension(0, 0));
         jTable_VeDiDaChon.setRowHeight(30);
         jTable_VeDiDaChon.setSelectionBackground(new java.awt.Color(255, 77, 77));
-        jTable_VeDiDaChon.setShowVerticalLines(false);
         jTable_VeDiDaChon.getTableHeader().setReorderingAllowed(false);
         jScrollPane4.setViewportView(jTable_VeDiDaChon);
 
@@ -829,13 +820,9 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         jLabel_ChuyenBayDaChon1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_ChuyenBayDaChon1.setText("*Hóa đơn sẽ bị xóa nếu không thanh toán trước 2 tiếng trước giờ bay");
 
-        jLabel_ChuyenBayDaChon2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel_ChuyenBayDaChon2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_ChuyenBayDaChon2.setText("*Hóa đơn sẽ bị xóa nếu không thanh toán trước 2 tiếng trước giờ bay");
-
-        jLabel_ChuyenBayDaChon3.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel_ChuyenBayDaChon3.setForeground(new java.awt.Color(0, 204, 204));
-        jLabel_ChuyenBayDaChon3.setText("*Hóa đơn sẽ bị xóa nếu không thanh toán trước 2 tiếng trước giờ bay");
+        jLabel_tb.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel_tb.setForeground(new java.awt.Color(0, 204, 204));
+        jLabel_tb.setText("*Hóa đơn sẽ bị xóa nếu không thanh toán trước 2 tiếng trước giờ bay");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -845,7 +832,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 4, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel_VeDiDaChon)
@@ -873,7 +860,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel_ChuyenBayDiDaChon)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel_ChuyenBayDaChon3))
+                                .addComponent(jLabel_tb))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addGap(78, 78, 78)
                                 .addComponent(jLabel_BaoLoi2, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -933,11 +920,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                     .addGap(153, 153, 153)
                     .addComponent(jLabel_ChuyenBayDaChon1)
                     .addContainerGap(154, Short.MAX_VALUE)))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                    .addContainerGap(163, Short.MAX_VALUE)
-                    .addComponent(jLabel_ChuyenBayDaChon2)
-                    .addGap(144, 144, 144)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -945,7 +927,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_ChuyenBayDiDaChon)
-                    .addComponent(jLabel_ChuyenBayDaChon3))
+                    .addComponent(jLabel_tb))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -1002,7 +984,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                     .addComponent(jTextField_SoDienThoaiNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_SoDienThoaiNhanVien))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel_BaoLoi2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel_BaoLoi2, javax.swing.GroupLayout.DEFAULT_SIZE, 9, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox_TrangThaiThanhToanHoaDonDi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1013,11 +995,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                     .addGap(280, 280, 280)
                     .addComponent(jLabel_ChuyenBayDaChon1)
                     .addContainerGap(281, Short.MAX_VALUE)))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                    .addContainerGap(290, Short.MAX_VALUE)
-                    .addComponent(jLabel_ChuyenBayDaChon2)
-                    .addGap(271, 271, 271)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1025,21 +1002,18 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(680, 680, 680)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(680, 680, 680)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pack();
@@ -1593,9 +1567,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_BaoLoi;
     private javax.swing.JLabel jLabel_BaoLoi2;
     private javax.swing.JLabel jLabel_ChuyenBayDaChon1;
-    private javax.swing.JLabel jLabel_ChuyenBayDaChon2;
-    private javax.swing.JLabel jLabel_ChuyenBayDaChon3;
-    private javax.swing.JLabel jLabel_ChuyenBayDaChon4;
     private javax.swing.JLabel jLabel_ChuyenBayDiDaChon;
     private javax.swing.JLabel jLabel_ChuyenBayVeDaChon;
     private javax.swing.JLabel jLabel_DangXuat;
@@ -1611,6 +1582,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_PhoThongDi;
     private javax.swing.JLabel jLabel_SoDienThoaiKhachHang;
     private javax.swing.JLabel jLabel_SoDienThoaiNhanVien;
+    private javax.swing.JLabel jLabel_TB2;
     private javax.swing.JLabel jLabel_TenNguoiDung;
     private javax.swing.JLabel jLabel_ThuongGia;
     private javax.swing.JLabel jLabel_ThuongGia1;
@@ -1621,6 +1593,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_VeVeDaChon;
     private javax.swing.JLabel jLabel_XemThongTinTaiKhoan;
     private javax.swing.JLabel jLabel_XinChao;
+    private javax.swing.JLabel jLabel_tb;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

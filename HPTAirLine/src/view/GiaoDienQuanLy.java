@@ -6,16 +6,11 @@
 package view;
 
 import connection.LoadData;
-import controller.Controller;
 import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
-import javax.swing.table.DefaultTableModel;
-import model.ChuyenBay;
 import model.KhachHang;
 import model.NhanVien;
 
@@ -432,12 +427,15 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
     private void jLabel_XemThongTinTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_XemThongTinTaiKhoanMousePressed
         // TODO add your handling code here:
         if (jLabel_PhanQuyen.getText().equals("nhân viên")) {
+            this.dispose();
             new GiaoDienThongTinNhanVien().setVisible(true);
         }
         if (jLabel_PhanQuyen.getText().equals("quản lý")) {
+            this.dispose();
             new GiaoDienThongTinNhanVien().setVisible(true);
         }
         if (jLabel_PhanQuyen.getText().equals("khách hàng")) {
+            this.dispose();
             new GiaoDienThongTinKhachHang().setVisible(true);
         }
     }//GEN-LAST:event_jLabel_XemThongTinTaiKhoanMousePressed

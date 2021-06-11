@@ -170,7 +170,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         });
 
         jLabel_BaoLoi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel_BaoLoi.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel_BaoLoi.setForeground(new java.awt.Color(255, 255, 0));
 
         jPanel3.setBackground(new java.awt.Color(89, 98, 117));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -221,14 +221,14 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 730, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_VeDaChon)
-                            .addComponent(jButton_XoaVe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jCheckBox_DaThanhToan, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jCheckBox_DaThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_XoaVe))
+                        .addGap(0, 36, Short.MAX_VALUE))
+                    .addComponent(jSeparator2))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -273,9 +273,6 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel_HoaDon)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton_ThoatGiaoDienXemLichSu, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -283,12 +280,15 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addComponent(jButton_XoaHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField_TimHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(jButton_TimHoaDon)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_HoaDon)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField_TimHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(1, 1, 1)
+                                .addComponent(jButton_TimHoaDon)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -335,7 +335,9 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_AirLines, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,7 +395,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 String maHoaDon = (String) jTable_HoaDon.getValueAt(rowHoaDon, 0);
                 String sdtKhachHang = (String) jTable_HoaDon.getValueAt(rowHoaDon, 1);
                 String maVe = (String) jTable_VeDaChon.getValueAt(row, 0);
-                String maGhe = (String) jTable_VeDaChon.getValueAt(row, 7);
+                String maGhe = (String) jTable_VeDaChon.getValueAt(row, 8);
                 String hangGheCuaVeDaChon = "";
                 int giaCoBan = 0;
                 int soVePhoThong = 0;
@@ -610,6 +612,12 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
     private void jButton_ThoatGiaoDienXemLichSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatGiaoDienXemLichSuActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        if (controller.Controller.tk.getLoaiTaiKhoan().equals("NhanVien")) {
+            new GiaoDienNhanVien().setVisible(true);
+        }
+        else {
+            new GiaoDienQuanLy().setVisible(true);
+        }
     }//GEN-LAST:event_jButton_ThoatGiaoDienXemLichSuActionPerformed
 
     private void jButton_SuaDiemTichLuyDaDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaDiemTichLuyDaDungActionPerformed
