@@ -390,13 +390,25 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
             jLabel_SanBayDi.setForeground(Color.white);
             jLabel_SanBayDen.setForeground(Color.white);
         }
-        
+        if (Controller.arrayListDuongBay.isEmpty()) {
+            jLabel_ThongBao.setText("Chưa có đường bay nào được tạo");
+            return;
+        }
+        else {
+            jLabel_ThongBao.setText("");
+        }
         if (!maSB1.equals(maSB2)){
             for (DuongBay db: Controller.arrayListDuongBay) {
                 if ((db.getMaSanBay1().equals(maSB1) && db.getMaSanBay2().equals(maSB2))
                         || (db.getMaSanBay1().equals(maSB2) && db.getMaSanBay2().equals(maSB1))) {
-                    int tmp = Integer.parseInt(Controller.arrayListChuyenBay.get(
-                        Controller.arrayListChuyenBay.size()-1).getMaChuyenBay().substring(2)) + 1;
+                    int tmp;
+                    if (Controller.arrayListChuyenBay.isEmpty()) {
+                        tmp = 1;
+                    }
+                    else {
+                        tmp = Integer.parseInt(Controller.arrayListChuyenBay.get(
+                            Controller.arrayListChuyenBay.size()-1).getMaChuyenBay().substring(2)) +1;
+                    }
                     String maCB = "CB";
                
                     if (tmp<=9) {
