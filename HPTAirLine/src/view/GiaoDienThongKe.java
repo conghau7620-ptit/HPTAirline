@@ -1033,35 +1033,42 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        new GiaoDienQuanLy().setVisible(true);
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     private void jButton_ThongTinChiTietHomNayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietHomNayActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         new GiaoDienChiTietThongKe(this.sHomNay).setVisible(true);
     }//GEN-LAST:event_jButton_ThongTinChiTietHomNayActionPerformed
 
     private void jButton_ThongTinChiTietHomQuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietHomQuaActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         new GiaoDienChiTietThongKe(this.sHomQua).setVisible(true);
     }//GEN-LAST:event_jButton_ThongTinChiTietHomQuaActionPerformed
 
     private void jButton_ThongTinChiTietThangNayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietThangNayActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         new GiaoDienChiTietThongKe(this.sHomNay.substring(0,7)).setVisible(true);
     }//GEN-LAST:event_jButton_ThongTinChiTietThangNayActionPerformed
 
     private void jButton_ThongTinChiTietThangTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietThangTruocActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         new GiaoDienChiTietThongKe(this.sThangTruoc).setVisible(true);
     }//GEN-LAST:event_jButton_ThongTinChiTietThangTruocActionPerformed
 
     private void jButton_ThongTinChiTietNamNayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietNamNayActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         new GiaoDienChiTietThongKe(this.sHomNay.substring(0,4)).setVisible(true);
     }//GEN-LAST:event_jButton_ThongTinChiTietNamNayActionPerformed
 
     private void jButton_ThongTinChiTietNamTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietNamTruocActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         new GiaoDienChiTietThongKe(this.sNamTruoc).setVisible(true);
     }//GEN-LAST:event_jButton_ThongTinChiTietNamTruocActionPerformed
 
