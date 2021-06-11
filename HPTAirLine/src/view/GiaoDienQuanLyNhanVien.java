@@ -661,7 +661,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
     private void jButton_ThemNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemNhanVienActionPerformed
         // TODO add your handling code here:
         new GiaoDienThemNhanVien().setVisible(true);
-//        this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jButton_ThemNhanVienActionPerformed
 
     private void jButton_SuaNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaNhanVienActionPerformed
