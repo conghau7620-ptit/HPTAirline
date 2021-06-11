@@ -209,7 +209,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
         });
 
         jLabel_BaoLoi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel_BaoLoi.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel_BaoLoi.setForeground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -361,6 +361,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
     private void jButton_ThoatGiaoDienXemLichSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatGiaoDienXemLichSuActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        new GiaoDienThongTinKhachHang().setVisible(true);
     }//GEN-LAST:event_jButton_ThoatGiaoDienXemLichSuActionPerformed
 
     private void jButton_XoaVeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaVeActionPerformed

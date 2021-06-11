@@ -6,7 +6,6 @@
 package view;
 
 import connection.LoadData;
-import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
@@ -257,6 +256,7 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
     private void jButton_ThoatGiaoDienXemLichSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatGiaoDienXemLichSuActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        new GiaoDienThongKe().setVisible(true);
     }//GEN-LAST:event_jButton_ThoatGiaoDienXemLichSuActionPerformed
 
     private void jCheckBox_TimHoaDonDaThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox_TimHoaDonDaThanhToanItemStateChanged
