@@ -17,7 +17,7 @@ import model.SanBay;
 
 /**
  *
- * @author t0168
+ * @author conghau
  */
 public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
 

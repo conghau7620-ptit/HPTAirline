@@ -42,7 +42,7 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
                 for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
                     if (tk.getTenDangNhap().equals(jTextField_TaiKhoan.getText())) {
                         jLabel_ThongBao.setText("*Tai khoan da ton tai");
-                        jLabel_TaiKhoan.setForeground(Color.red);
+                        jLabel_TaiKhoan.setForeground(Color.yellow);
                         break;
                     }
                 }
@@ -56,16 +56,11 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
                 jLabel_ThongBao.setText("");
                 jLabel_CMND.setForeground(Color.white);
                 jTextField_CMND.setForeground(Color.black);
-                if (cmnd.length() != 9) {
-                    jLabel_ThongBao.setText("*CMND 9 số");
-                    jLabel_CMND.setForeground(Color.red);
-                    jTextField_CMND.setForeground(Color.red);
-                }
                 for (int i = 0; i < cmnd.length(); i++) {
                     if (cmnd.charAt(i) < '0' || cmnd.charAt(i) > '9') {
                         jLabel_ThongBao.setText("*CMND phải nhập số");
-                        jLabel_CMND.setForeground(Color.red);
-                        jTextField_CMND.setForeground(Color.red);
+                        jLabel_CMND.setForeground(Color.yellow);
+                        jTextField_CMND.setForeground(Color.yellow);
                         break;
                     }
                 }
@@ -82,21 +77,21 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
 
                 if (sdt.length() != 10) {
                     jLabel_ThongBao.setText("*Số điện thoại 10 số");
-                    jLabel_SoDienThoai.setForeground(Color.red);
-                    jTextField_SoDienThoai.setForeground(Color.red);
+                    jLabel_SoDienThoai.setForeground(Color.yellow);
+                    jTextField_SoDienThoai.setForeground(Color.yellow);
                 }
                 for (int i = 0; i < sdt.length(); i++) {
                     if (sdt.charAt(i) < '0' || sdt.charAt(i) > '9') {
                         jLabel_ThongBao.setText("*Số điện thoại phải nhập số");
-                        jLabel_SoDienThoai.setForeground(Color.red);
-                        jTextField_SoDienThoai.setForeground(Color.red);
+                        jLabel_SoDienThoai.setForeground(Color.yellow);
+                        jTextField_SoDienThoai.setForeground(Color.yellow);
                         break;
                     }
                 }
                 for (NhanVien nv : Controller.arrayListNhanVien) {
                     if (nv.getSdtNhanVien().equals(jTextField_SoDienThoai.getText())) {
                         jLabel_ThongBao.setText("*Số điện thoại đã được sử dụng");
-                        jLabel_SoDienThoai.setForeground(Color.red);
+                        jLabel_SoDienThoai.setForeground(Color.yellow);
                         break;
                     }
                 }
@@ -108,7 +103,7 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
             public void keyReleased(KeyEvent e) {
                 if (!jTextField_MatKhau.getText().equals(jTextField_xacNhanMatKhau.getText())) {
                     jLabel_ThongBao.setText("*Mật khẩu không trùng khớp");
-                    jLabel_XacNhanMatKhau.setForeground(Color.red);
+                    jLabel_XacNhanMatKhau.setForeground(Color.yellow);
                 } else {
                     jLabel_ThongBao.setText("");
                     jLabel_XacNhanMatKhau.setForeground(Color.white);
@@ -122,7 +117,7 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
                 for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
                     if (tk.getTenDangNhap().equals(jTextField_TaiKhoan.getText())) {
                         jLabel_ThongBao.setText("*Tài khoản đã được sử dụng");
-                        jLabel_TaiKhoan.setForeground(Color.red);
+                        jLabel_TaiKhoan.setForeground(Color.yellow);
                         break;
                     } else {
                         jLabel_ThongBao.setText("");
@@ -301,7 +296,7 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
         });
 
         jLabel_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel_ThongBao.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel_ThongBao.setForeground(java.awt.Color.yellow);
 
         jButton_QuayLai.setBackground(new java.awt.Color(0, 102, 102));
         jButton_QuayLai.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
@@ -442,6 +437,7 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        new GiaoDienQuanLyNhanVien().setVisible(true);
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     private void jButton_ThemNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemNhanVienActionPerformed

@@ -7,6 +7,9 @@ package view;
 
 import connection.LoadData;
 import connection.UpdateData;
+import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -19,13 +22,12 @@ import model.TaiKhoan;
  *
  * @author tuanbuiquoc
  */
-
 //Tạm hoàn thành giao diện thông tin nhân viên, và xử lý sửa thông tin, đổi mật khẩu, chưa kiểm tra  input
-
 public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
 
     String tenNhanVien;
     String phanQuyen;
+
     public GiaoDienThongTinNhanVien() {
         initComponents();
         //// Phần thông tin cơ bản , đăng xuất
@@ -41,10 +43,27 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
                 jTextField_DiaChi.setText(nv.getDiaChi());
             }
         }
-                this.addWindowListener(new WindowAdapter() {
+        jTextField_CMND.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                String cmnd = jTextField_CMND.getText();
+                jLabel_ThongBao.setText("");
+                jLabel_CMND.setForeground(Color.white);
+                jTextField_CMND.setForeground(Color.black);
+                for (int i = 0; i < cmnd.length(); i++) {
+                    if (cmnd.charAt(i) < '0' || cmnd.charAt(i) > '9') {
+                        jLabel_ThongBao.setText("*CMND phải nhập số");
+                        jLabel_CMND.setForeground(Color.yellow);
+                        jTextField_CMND.setForeground(Color.yellow);
+                        break;
+                    }
+                }
+            }
+        });
+        this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
-                        "Bạn có chắc muốn thoát chương trình không?","Xác nhận",
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
                         JOptionPane.YES_NO_OPTION);
 
                 if (confirmed == JOptionPane.YES_OPTION) {
@@ -80,6 +99,7 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jButton_DoiMatKhau = new javax.swing.JButton();
         jLabel_MatKhau = new javax.swing.JLabel();
+        jLabel_ThongBao = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel_IconMayBay = new javax.swing.JLabel();
         jLabel_HPT = new javax.swing.JLabel();
@@ -176,13 +196,17 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_TenNhanVien)
                             .addComponent(jTextField_TenNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52)
+                        .addGap(41, 41, 41)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_DoiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel_MatKhau)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jButton_DoiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jSeparator1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel_ThongTinNhanVien)
+                        .addGap(249, 249, 249))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_TenDangNhap)
@@ -193,36 +217,30 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
                                 .addComponent(jTextField_SoDienThoai, javax.swing.GroupLayout.Alignment.LEADING)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel_DiaChi)
-                            .addComponent(jLabel_CMND)
-                            .addComponent(jTextField_DiaChi, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
-                            .addComponent(jTextField_CMND)
-                            .addComponent(jButton_XacNhanSuaThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 229, Short.MAX_VALUE)
-                        .addComponent(jLabel_ThongTinNhanVien)
-                        .addGap(249, 249, 249)))
+                            .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel_DiaChi)
+                                .addComponent(jLabel_CMND)
+                                .addComponent(jTextField_DiaChi)
+                                .addComponent(jTextField_CMND)
+                                .addComponent(jButton_XacNhanSuaThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)))))
                 .addGap(29, 29, 29))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel_ThongTinNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                .addGap(5, 5, 5)
+                .addComponent(jLabel_ThongTinNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel_TenNhanVien)
-                            .addComponent(jLabel_MatKhau))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField_TenNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jButton_DoiMatKhau)))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_TenNhanVien)
+                    .addComponent(jLabel_MatKhau))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField_TenNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_DoiMatKhau))
+                .addGap(22, 22, 22)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel_CMND)
@@ -240,7 +258,9 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField_SoDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_DiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_ThoatGiaoDienThongTinNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_XacNhanSuaThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -272,7 +292,7 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
                 .addComponent(jLabel_HPT)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_AirLines, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(360, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,15 +310,17 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(80, 80, 80)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -306,20 +328,21 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
 
     private void jButton_XacNhanSuaThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanSuaThongTinActionPerformed
         // TODO add your handling code here:
-        int luaChon = JOptionPane.showConfirmDialog(this, "Xác nhân sửa thông tin cho nhân viên " + this.tenNhanVien, "Xác nhận sửa", JOptionPane.YES_NO_OPTION);
+        if (jLabel_ThongBao.getText().isEmpty()) {
+            int luaChon = JOptionPane.showConfirmDialog(this, "Xác nhân sửa thông tin cho nhân viên " + this.tenNhanVien, "Xác nhận sửa", JOptionPane.YES_NO_OPTION);
 
-        if (luaChon == JOptionPane.YES_OPTION) {
-            //gọi hàm sửa thông tin
-            NhanVien nhanVien = new NhanVien(jTextField_SoDienThoai.getText(), jTextField_TenNhanVien.getText()
-                , jTextField_DiaChi.getText(), jTextField_TenDangNhap.getText(), jTextField_CMND.getText());
+            if (luaChon == JOptionPane.YES_OPTION) {
+                //gọi hàm sửa thông tin
+                NhanVien nhanVien = new NhanVien(jTextField_SoDienThoai.getText(), jTextField_TenNhanVien.getText(),
+                         jTextField_DiaChi.getText(), jTextField_TenDangNhap.getText(), jTextField_CMND.getText());
 
-            if (connection.UpdateData.updateNhanVien(nhanVien) == true) {
-                JOptionPane.showMessageDialog(this, "Sửa thành công");
+                if (connection.UpdateData.updateNhanVien(nhanVien) == true) {
+                    JOptionPane.showMessageDialog(this, "Sửa thành công");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Sửa không thành công");
+                }
+
             }
-            else{
-                JOptionPane.showMessageDialog(this, "Sửa không thành công");
-            }
-
         }
     }//GEN-LAST:event_jButton_XacNhanSuaThongTinActionPerformed
 
@@ -331,21 +354,6 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
 
     private void jButton_DoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DoiMatKhauActionPerformed
         // TODO add your handling code here:
-//        String matKhauCu = JOptionPane.showInputDialog(rootPane, "Nhập mật khẩu cũ");
-//        if(matKhauCu.equals(controller.Controller.tk.getMatKhau())){
-//            String matKhaiMoi = JOptionPane.showInputDialog(rootPane, "Nhập mật khẩu mới");
-//            TaiKhoan taiKhoan = new TaiKhoan(controller.Controller.tk.getTenDangNhap(), matKhaiMoi
-//                , controller.Controller.tk.getLoaiTaiKhoan(), controller.Controller.tk.getSdt());
-//            if(UpdateData.updateTaiKhoan(taiKhoan)==true){
-//                JOptionPane.showMessageDialog(rootPane, "Đổi mật khẩu thành công");
-//            }
-//            else{
-//                JOptionPane.showMessageDialog(rootPane, "Đổi mật khẩu thất bại");
-//            }
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(rootPane, "Mật khẩu cũ không khớp");
-//        }
         JTextField matKhauMoi = new JTextField();
         JTextField matKhauCu = new JPasswordField();
         Object[] message = {
@@ -364,7 +372,7 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Đổi mật khẩu thất bại");
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Mật khẩu cũ không khớp");
             }
         }
@@ -419,6 +427,7 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_SoDienThoai;
     private javax.swing.JLabel jLabel_TenDangNhap;
     private javax.swing.JLabel jLabel_TenNhanVien;
+    private javax.swing.JLabel jLabel_ThongBao;
     private javax.swing.JLabel jLabel_ThongTinNhanVien;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
