@@ -185,6 +185,7 @@
                     <Column editable="true" title="Title 4" type="java.lang.Object"/>
                   </Table>
                 </Property>
+                <Property name="fillsViewportHeight" type="boolean" value="true"/>
                 <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
@@ -196,6 +197,9 @@
                   <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;//    private static final long serialVersionUID = 1L;&#xa;        public boolean isCellEditable(int row, int column){&#xa;return false;&#xa;}&#xa;}"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

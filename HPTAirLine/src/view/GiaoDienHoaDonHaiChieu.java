@@ -83,25 +83,25 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         // vẽ bảng trống
         dtmVeDi = (DefaultTableModel) jTable_VeDiDaChon.getModel();
         dtmVeDi.setColumnIdentifiers(new Object[]{
-            "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay", "NgaySinh", "MaHoaDon", "MaGhe"
+            "Mã Vé", "Mã CB", "Giá", "Ký Gửi",
+            "CMND Người Bay", "Tên Người Bay", "Ngày Sinh", "Mã HĐ", "Mã Ghế"
         });
 
         dtmVeVe = (DefaultTableModel) jTable_VeVeDaChon.getModel();
         dtmVeVe.setColumnIdentifiers(new Object[]{
-            "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay", "NgaySinh", "MaHoaDon", "MaGhe"
+            "Mã Vé", "Mã CB", "Giá", "Ký Gửi",
+            "CMND Người Bay", "Tên Người Bay", "Ngày Sinh", "Mã HĐ", "Mã Ghế"
         });
 
         dtmChuyenBayDi = (DefaultTableModel) jTable_ChuyenBayDiDaChon.getModel();
         dtmChuyenBayDi.setColumnIdentifiers(new Object[]{
-            "MaChuyenBay", "MaMayBay", "MaSanBayDi", "MaSanBayDen", "NgayBay", "GioBay", "GhiChu",
-            "KhoangCach"
+            "Mã CB", "Mã MB", "Mã SB Đi", "Mã SB Đến", "Ngày Bay", "Giờ Bay", "Ghi Chú",
+            "Khoảng Cách"
         });
         dtmChuyenBayVe = (DefaultTableModel) jTable_ChuyenBayVeDaChon.getModel();
         dtmChuyenBayVe.setColumnIdentifiers(new Object[]{
-            "MaChuyenBay", "MaMayBay", "MaSanBayDi", "MaSanBayDen", "NgayBay", "GioBay", "GhiChu",
-            "KhoangCach"
+            "Mã CB", "Mã MB", "Mã SB Đi", "Mã SB Đến", "Ngày Bay", "Giờ Bay", "Ghi Chú",
+            "Khoảng Cách"
         });
         //
         //lấy ngày hiện tại cho vào ngày xuất hóa đơn
@@ -219,7 +219,11 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         jLabel_DangXuat = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_ChuyenBayVeDaChon = new javax.swing.JTable();
+        jTable_ChuyenBayVeDaChon = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jLabel_ChuyenBayVeDaChon = new javax.swing.JLabel();
         jLabel_PhoThong = new javax.swing.JLabel();
         jTextField_SLVePhoThongVe = new javax.swing.JTextField();
@@ -236,7 +240,11 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         jLabel_TongTien = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_VeVeDaChon = new javax.swing.JTable();
+        jTable_VeVeDaChon = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jLabel_VeVeDaChon = new javax.swing.JLabel();
         jButton_HoanTatHoaDon = new javax.swing.JButton();
         jLabel_ThuongGia1 = new javax.swing.JLabel();
@@ -249,7 +257,11 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         jLabel_SoDienThoaiKhachHang = new javax.swing.JLabel();
         jTextField_SoDienThoaiKhachHang = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable_ChuyenBayDiDaChon = new javax.swing.JTable();
+        jTable_ChuyenBayDiDaChon = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jLabel_ChuyenBayDiDaChon = new javax.swing.JLabel();
         jLabel_PhoThongDi = new javax.swing.JLabel();
         jTextField_SLVePhoThongDi = new javax.swing.JTextField();
@@ -268,7 +280,11 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         jLabel_TongTienDi = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable_VeDiDaChon = new javax.swing.JTable();
+        jTable_VeDiDaChon = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jLabel_VeDiDaChon = new javax.swing.JLabel();
         jButton_ThoatGiaoDienHoaDon = new javax.swing.JButton();
         jLabel_SoDienThoaiNhanVien = new javax.swing.JLabel();

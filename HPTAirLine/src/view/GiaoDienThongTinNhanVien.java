@@ -185,6 +185,8 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
         jLabel_MatKhau.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_MatKhau.setText("Mật khẩu");
 
+        jLabel_ThongBao.setForeground(java.awt.Color.yellow);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -218,12 +220,11 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel_DiaChi)
-                                .addComponent(jLabel_CMND)
-                                .addComponent(jTextField_DiaChi)
-                                .addComponent(jTextField_CMND)
-                                .addComponent(jButton_XacNhanSuaThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)))))
+                            .addComponent(jLabel_DiaChi)
+                            .addComponent(jLabel_CMND)
+                            .addComponent(jTextField_DiaChi)
+                            .addComponent(jTextField_CMND)
+                            .addComponent(jButton_XacNhanSuaThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE))))
                 .addGap(29, 29, 29))
         );
         jPanel2Layout.setVerticalGroup(

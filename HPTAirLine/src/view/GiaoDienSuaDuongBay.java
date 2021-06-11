@@ -159,7 +159,7 @@ public class GiaoDienSuaDuongBay extends javax.swing.JFrame {
         });
 
         jLabel_ThongBao.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel_ThongBao.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel_ThongBao.setForeground(java.awt.Color.yellow);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);

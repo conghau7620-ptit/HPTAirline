@@ -47,7 +47,11 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
         jLabel_AirLines = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_ChuyenBay = new javax.swing.JTable();
+        jTable_ChuyenBay = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jLabel1 = new javax.swing.JLabel();
         jButton_ThemChuyenBay = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
@@ -212,14 +216,12 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton_QuayLai2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(94, 94, 94)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addComponent(jButton_ThemChuyenBay)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                        .addGap(46, 46, 46)
                         .addComponent(jButton_SuaChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-
                         .addGap(52, 52, 52)
                         .addComponent(jButton_XoaChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)))
-
                 .addContainerGap())
         );
 
@@ -250,16 +252,14 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(698, Short.MAX_VALUE))
+                .addContainerGap(569, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -270,8 +270,8 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     private void input() {
         dtmChuyenBay = (DefaultTableModel) jTable_ChuyenBay.getModel();
         dtmChuyenBay.setColumnIdentifiers(new Object[]{
-            "Mã Chuyến Bay","Mã máy bay", "Mã Sân bay đi", "Mã sân bay đến", 
-            "Ngày bay", "Giờ bay", "Ghi chú", "Khoảng cách"
+            "Mã CB", "Mã MB", "Mã SB Đi", "Mã SB Đến", "Ngày Bay", "Giờ Bay", "Ghi Chú",
+            "Khoảng Cách"
         });
         for (ChuyenBay cb : Controller.arrayListChuyenBay) {
             dtmChuyenBay.addRow(new Object[] {
@@ -403,7 +403,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

@@ -92,13 +92,11 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel_ThongBao" pref="289" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel_DiaChi" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_CMND" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_DiaChi" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField_CMND" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jButton_XacNhanSuaThongTin" alignment="0" pref="289" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jLabel_DiaChi" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_CMND" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_DiaChi" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextField_CMND" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jButton_XacNhanSuaThongTin" alignment="0" pref="289" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -331,6 +329,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel_ThongBao">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="ff" id="yellow" palette="1" red="ff" type="palette"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

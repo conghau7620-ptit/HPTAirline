@@ -26,11 +26,12 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
      */
     
     ChuyenBay chuyenBay = null;
-    
+    String maCB = null;
     public GiaoDienSuaChuyenBay(String maChuyenBay) {
         initComponents();
         new LoadData();
         loadChuyenBayDuocChon(maChuyenBay);
+        maCB = maChuyenBay;
     }
 
     /**
@@ -400,6 +401,12 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
                         time,
                         jTextArea_GhiChu.getText(),
                         db.getKhoangCach());
+                    for (ChuyenBay cb1 : Controller.arrayListChuyenBay) {
+                        if (cb1.getMaChuyenBay().equals(maCB)) {
+                            chuyenBay = cb1;
+                             break;
+                        }
+                    }
                     Controller.arrayListChuyenBay.set(
                             Controller.arrayListChuyenBay.indexOf(chuyenBay), cb);
                     connection.UpdateData.updateChuyenBay(cb);

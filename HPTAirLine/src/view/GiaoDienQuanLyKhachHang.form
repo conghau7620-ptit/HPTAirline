@@ -304,6 +304,9 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable_HoaDonMouseClicked"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;            public boolean isCellEditable(int row, int column){&#xa;        return false;&#xa;    }&#xa;        }"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -336,6 +339,9 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable_KhachHangMouseClicked"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;            public boolean isCellEditable(int row, int column){&#xa;        return false;&#xa;    }&#xa;        }"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -365,6 +371,9 @@
                   <Color blue="4d" green="4d" red="ff" type="rgb"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;    public boolean isCellEditable(int row, int column){&#xa;        return false;&#xa;    }&#xa;}"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

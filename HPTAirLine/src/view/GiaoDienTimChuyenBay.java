@@ -20,6 +20,8 @@ import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import model.ChuyenBay;
+import model.Ghe;
 import model.KhachHang;
 import model.NhanVien;
 
@@ -47,11 +49,11 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         //
         thongTinTaiKhoan();
         inputMacDinh();
-        
-        if(controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")){
+
+        if (controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")) {
             jLabel_QuayLai.setVisible(false);
         }
-        
+
         jLabel_HuongDanDatCho.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         this.addWindowListener(new WindowAdapter() {
@@ -367,7 +369,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         jDateChooser_NgayVe.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
 
         jLabel_BaoLoi.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        jLabel_BaoLoi.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel_BaoLoi.setForeground(java.awt.Color.yellow);
 
         jLabel_QuayLai.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_QuayLai.setText("Quay Lại");
@@ -593,25 +595,44 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             Date ngayDi = jDateChooser_NgayDi.getDate();
             Date ngayVe = null;
             boolean khuHoi = false;
-          boolean di = true;
-          boolean ve = false;
+            boolean di = true;
+            boolean ve = false;
             int soGheNguoiLon = Integer.parseInt(jComboBox_SLNguoiLon.getSelectedItem().toString());
             int soGheTreEm = Integer.parseInt(jComboBox_SLTreEm.getSelectedItem().toString());
 //            int soGheEmBe = Integer.parseInt(jComboBox_SLEmBe.getSelectedItem().toString());
             if (jRadioButton_KhuHoi.isSelected()) {
-              //  khuHoi = true;
-            //  di = true;
-              ve = true;
-              khuHoi = true;
+                //  khuHoi = true;
+                //  di = true;
+                ve = true;
+                khuHoi = true;
                 ngayVe = jDateChooser_NgayVe.getDate();
+
+                Controller.loadKetQuaTheoNgay(jComboBox_SanBayDen.getSelectedItem().toString().substring(0, 3),
+                        jComboBox_SanBayDi.getSelectedItem().toString().substring(0, 3), new SimpleDateFormat("yyyy-MM-dd").format(ngayVe).toString());
+                new LoadData();
+                if (controller.Controller.arrayListKetQuaTimKiemChuyenBay.size() != 0) {
+                    for (ChuyenBay cb : controller.Controller.arrayListKetQuaTimKiemChuyenBay) {
+                        int soGheTrong = 0;
+                        for (Ghe g : cb.getArrayListGhe()) {
+                            if (g.getTrong() == 1) {
+                                soGheTrong++;
+                            }
+                        }
+                        if (soGheTrong >= (soGheNguoiLon + soGheTreEm /*+ this.soGheEmBe*/)) {
+                            break;
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane, "Không có chuyến về đủ ghế");
+                            return;
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Không có chuyến về");
+                    return;
+                }
             }
-            //
-//            System.out.println(soGheNguoiLon);
-//            System.out.println(soGheTreEm);
-//            System.out.println(soGheEmBe);
-//        this.dispose();
-     //       new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm).setVisible(true);
-                    new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve,khuHoi,  soGheNguoiLon, soGheTreEm).setVisible(true);
+
+            
+            new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm).setVisible(true);
             this.dispose();
         }
         if (baoLoiInput() == false) {

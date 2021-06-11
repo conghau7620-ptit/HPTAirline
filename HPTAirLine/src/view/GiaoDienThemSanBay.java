@@ -111,7 +111,7 @@ public class GiaoDienThemSanBay extends javax.swing.JFrame {
         });
 
         jLabel_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel_ThongBao.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel_ThongBao.setForeground(java.awt.Color.yellow);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
