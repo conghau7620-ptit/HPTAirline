@@ -240,6 +240,10 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
     private void jButton_ThemDuongBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemDuongBayActionPerformed
         String maSB1 = jComboBox_SanBay1.getSelectedItem().toString();
         String maSB2 = jComboBox_SanBay2.getSelectedItem().toString();
+        if (Controller.arrayListSanBay.isEmpty()) {
+            jLabel_ThongBao.setText("Chưa có sân bay nào được tạo");
+            return;
+        }
         if (maSB1.equals(maSB2)) {
             jLabel_ThongBao.setText("2 mã sân bay bị trùng nhau");
             return;
@@ -255,8 +259,14 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
                 return;
             }
         }
-        int tmp = Integer.parseInt(Controller.arrayListDuongBay.get(
-            Controller.arrayListDuongBay.size()-1).getMaDuongBay().substring(2))+1;
+        int tmp;
+        if (Controller.arrayListDuongBay.isEmpty()) {
+            tmp = 1;
+        }
+        else {
+            tmp = Integer.parseInt(Controller.arrayListDuongBay.get(
+                Controller.arrayListDuongBay.size()-1).getMaDuongBay().substring(2))+1;
+        }
         String maDuongBay = "DB";
         if (tmp<=9) {
             maDuongBay = maDuongBay + "0" + tmp;
