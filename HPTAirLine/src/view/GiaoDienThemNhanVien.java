@@ -41,7 +41,7 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
                 jLabel_TaiKhoan.setForeground(Color.white);
                 for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
                     if (tk.getTenDangNhap().equals(jTextField_TaiKhoan.getText())) {
-                        jLabel_ThongBao.setText("*Tai khoan da ton tai");
+                        jLabel_ThongBao.setText("*Tài khoản đã tồn tại");
                         jLabel_TaiKhoan.setForeground(Color.yellow);
                         break;
                     }

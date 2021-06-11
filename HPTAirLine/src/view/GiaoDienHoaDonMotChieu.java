@@ -68,14 +68,14 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         this.maHoaDon = this.danhSachVe.get(0).getMaHoaDon();
         dtmVe = (DefaultTableModel) jTable_VeDaChon.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
-            "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay","NgaySinh", "MaHoaDon", "MaGhe"
+            "Mã Vé", "Mã CB", "Giá", "Ký Gửi",
+            "CMND Người Bay", "Tên Người Bay", "Ngày Sinh", "Mã HĐ", "Mã Ghế"
         });
 
         dtmChuyenBay = (DefaultTableModel) jTable_ChuyenBayDaChon.getModel();
         dtmChuyenBay.setColumnIdentifiers(new Object[]{
-            "MaChuyenBay", "MaMayBay", "MaSanBayDi", "MaSanBayDen", "NgayBay", "GioBay", "GhiChu",
-            "KhoangCach"
+            "Mã CB", "Mã MB", "Mã SB Đi", "Mã SB Đến", "Ngày Bay", "Giờ Bay", "Ghi Chú",
+            "Khoảng Cách"
         });
 
         String date = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
@@ -167,7 +167,11 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         jLabel_SoDienThoaiKhachHang = new javax.swing.JLabel();
         jTextField_SoDienThoaiKhachHang = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_ChuyenBayDaChon = new javax.swing.JTable();
+        jTable_ChuyenBayDaChon = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jLabel_ChuyenBayDaChon = new javax.swing.JLabel();
         jLabel_PhoThong = new javax.swing.JLabel();
         jTextField_SLVePhoThong = new javax.swing.JTextField();
@@ -186,7 +190,11 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         jLabel_TongTien = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_VeDaChon = new javax.swing.JTable();
+        jTable_VeDaChon = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jLabel_VeDaChon = new javax.swing.JLabel();
         jButton_HoanTatHoaDon = new javax.swing.JButton();
         jButton_ThoatGiaoDienHoaDon = new javax.swing.JButton();

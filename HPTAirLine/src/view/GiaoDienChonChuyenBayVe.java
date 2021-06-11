@@ -51,8 +51,8 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
        //  this.maChuyenBayDi = maChuyenBayDi;
         dtm = (DefaultTableModel) jTable_KetQuaTimKiem.getModel();
         dtm.setColumnIdentifiers(new Object[]{
-            "MaChuyenBay", "MaMayBay", "MaSanBayDi", "MaSanBayDen", "NgayBay", "GioBay", "GhiChu",
-             "KhoangCach"
+            "Mã CB", "Mã MB", "Mã SB Đi", "Mã SB Đến", "Ngày Bay", "Giờ Bay", "Ghi Chú",
+            "Khoảng Cách"
         });
         System.out.println("soGheNguoiLonaa: "+this.soGheNguoiLon);
         System.out.println("soGheTreEm: "+this.soGheTreEm);
@@ -98,7 +98,11 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
         jLabel_AirLines = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_KetQuaTimKiem = new javax.swing.JTable();
+        jTable_KetQuaTimKiem = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jButton_XacNhanChonChuyenBay = new javax.swing.JButton();
         jLabel_ThongTinCanTimKiem = new javax.swing.JLabel();
         jButton_ThoatKetQuaTimKiemChuyenBay = new javax.swing.JButton();
@@ -262,7 +266,7 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
         // TODO add your handling code here:
         int row = jTable_KetQuaTimKiem.getSelectedRow();
             if(row==-1){
-                JOptionPane.showMessageDialog(rootPane, "Hay chon chuyen bay ve.");
+                JOptionPane.showMessageDialog(rootPane, "Hãy chọn chuyến bay về.");
             }
             else{
                 new GiaoDienChonGhe(/*this.maChuyenBayDi,*/ (String) jTable_KetQuaTimKiem.getValueAt(row, 0)

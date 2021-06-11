@@ -36,7 +36,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
 
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
         dtmHoaDon.setColumnIdentifiers(new Object[]{
-            "MaHoaDon", "SDTKhachHang", "NgayXuatHoaDon", "TrangThaiThanhToan", "TongTien", "SDTNhanVien"
+            "Mã HĐ", "SĐT KH", "Ngày Xuất", "Thanh Toán", "Tổng", "SĐT NV"
         });
         hienThongTinVaoBangHoaDon();
 //        dtmHoaDon.setRowCount(0);
@@ -60,8 +60,8 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
 
         dtmVe = (DefaultTableModel) jTable_VeDaChon.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
-            "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay", "NgaySinh", "MaHoaDon", "MaGhe"
+            "Mã Vé", "Mã CB", "Giá", "Ký Gửi",
+            "CMND Người Bay", "Tên Người Bay", "Ngày Sinh", "Mã HĐ", "Mã Ghế"
         });
 
         this.addWindowListener(new WindowAdapter() {

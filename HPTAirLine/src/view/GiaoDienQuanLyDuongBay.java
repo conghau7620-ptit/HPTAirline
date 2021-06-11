@@ -27,7 +27,7 @@ public class GiaoDienQuanLyDuongBay extends javax.swing.JFrame {
     public GiaoDienQuanLyDuongBay() {
         initComponents();
         this.dtmDuongBay = (DefaultTableModel) jTable_DuongBay.getModel();
-        dtmDuongBay.setColumnIdentifiers(new Object[]{"MaDuongBay", "SanBay1", "SanBay2", "KhoangCach"});
+        dtmDuongBay.setColumnIdentifiers(new Object[]{"Mã ĐB", "Mã SB 1", "Mã SB 2", "Khoảng Cách"});
         hienThongTin();
     }
 
@@ -46,7 +46,11 @@ public class GiaoDienQuanLyDuongBay extends javax.swing.JFrame {
         jLabel_AirLines = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_DuongBay = new javax.swing.JTable();
+        jTable_DuongBay = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jLabel1 = new javax.swing.JLabel();
         jButton_ThemDuongBay = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();

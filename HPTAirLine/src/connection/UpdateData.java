@@ -255,6 +255,26 @@ public class UpdateData {
         return false;
     }
     
+    public static boolean updateHoaDon(String maHoaDon, byte trangThaiThanhToan, String sdtNhanVien){
+        
+         String sqlCommand = "update dbo.HOADON set TrangThaiThanhToan=?, SoDienThoaiNhanVien = ?"
+                + " where MaHoaDon=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setInt(1, trangThaiThanhToan);
+            ps.setString(2, sdtNhanVien);
+            ps.setString(3,maHoaDon);
+            
+            
+            return ps.executeUpdate() > 0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa hóa đơn thất bại");
+        return false;
+    }
     
     public static boolean deleteVe(String maVe, String maHoaDon){
          String sqlCommand = "delete from dbo.VE where MaVe=? and MaHoaDon=?";

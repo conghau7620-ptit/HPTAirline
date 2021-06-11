@@ -144,18 +144,16 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jTextField_TimKiem" min="-2" pref="144" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jSeparator5" alignment="0" min="-2" pref="414" max="-2" attributes="0"/>
-                                  <Component id="jSeparator2" alignment="0" min="-2" pref="414" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jTextField_TimKiem" min="-2" pref="144" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="jSeparator5" alignment="0" min="-2" pref="414" max="-2" attributes="0"/>
+                              <Component id="jSeparator2" alignment="0" min="-2" pref="414" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jButton_QuayLai" min="-2" pref="191" max="-2" attributes="0"/>
@@ -264,19 +262,19 @@
                               <Component id="jTextField_SDTNhanVien" linkSize="5" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField_TenNhanVien" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField_DiaChi" linkSize="4" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_TenDangNhap" linkSize="4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_TenDangNhap" linkSize="4" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -337,6 +335,9 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable_HoaDonMouseClicked"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;            public boolean isCellEditable(int row, int column){&#xa;        return false;&#xa;    }}"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -369,6 +370,9 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable_NhanVienMouseClicked"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;            public boolean isCellEditable(int row, int column){&#xa;        return false;&#xa;    }&#xa;        }"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -398,6 +402,9 @@
                   <Color blue="4d" green="4d" red="ff" type="rgb"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;    public boolean isCellEditable(int row, int column){&#xa;        return false;&#xa;    }&#xa;}"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
