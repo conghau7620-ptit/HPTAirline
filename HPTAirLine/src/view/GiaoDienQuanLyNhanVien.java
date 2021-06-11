@@ -761,7 +761,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         for (NhanVien nv : controller.Controller.arrayListNhanVien) {
             for (TaiKhoan tk : controller.Controller.arrayListTaiKhoan) {
                 if (nv.getSdtNhanVien().equals(tk.getSdt())) {
-                    if (tk.getLoaiTaiKhoan().equalsIgnoreCase("NhanVien")) {
+                    if (tk.getLoaiTaiKhoan().equalsIgnoreCase("NhanVien")||tk.getLoaiTaiKhoan().equalsIgnoreCase("QuanLy")) {
                         dtmNhanVien.addRow(new Object[]{
                             nv.getSdtNhanVien(), nv.getTenNhanVien(), nv.getDiaChi(), nv.getTenDangNhap(),
                             nv.getCmnd()
