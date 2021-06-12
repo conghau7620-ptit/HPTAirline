@@ -343,6 +343,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
         }
         String st = jTextField_TimKiem.getText().toUpperCase();
         jTextField_TimKiem.setText(st);
+        jTextField_TimKiem.setCaretPosition(jTextField_TimKiem.getText().length());
         for (ChuyenBay cb : Controller.arrayListChuyenBay) {
             if (cb.getMaSanBayDi().contains(st) || cb.getMaSanBayDen().contains(st)) {
                 dtmChuyenBay.addRow(new Object[] {

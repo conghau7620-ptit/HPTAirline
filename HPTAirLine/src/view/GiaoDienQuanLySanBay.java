@@ -311,6 +311,9 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
 
     private void jTextField_TimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyReleased
         // TODO add your handling code here:
+        String st = jTextField_TimKiem.getText().toUpperCase();
+        jTextField_TimKiem.setText(st);
+        jTextField_TimKiem.setCaretPosition(jTextField_TimKiem.getText().length());
         if (jTextField_TimKiem.getText().length() >= 4) {
 //            evt.consume();
             jTextField_TimKiem.setText(jTextField_TimKiem.getText().substring(0, jTextField_TimKiem.getText().length() - 1));
