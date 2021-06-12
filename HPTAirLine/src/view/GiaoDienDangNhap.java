@@ -24,6 +24,8 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         initComponents();
         jLabel_DangKy.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_DangNhap.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -104,7 +104,9 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                 }
             }
         });
-
+        
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
 //        String sql = "select * from HOADON";
 //                connection.DataConnection.createStatement();
 //               

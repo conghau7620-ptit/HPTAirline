@@ -39,6 +39,9 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
                 }
             }
         });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        
         thongTinTaiKhoan();
         jButton_KhachHang.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThongKe.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
