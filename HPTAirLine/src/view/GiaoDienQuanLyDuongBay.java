@@ -315,8 +315,7 @@ public class GiaoDienQuanLyDuongBay extends javax.swing.JFrame {
             new LoadData();
             int length = jTextField_TimKiem.getText().length();
             for (DuongBay db : controller.Controller.arrayListDuongBay) {
-                if (jTextField_TimKiem.getText().equalsIgnoreCase(db.getMaSanBay1().substring(0, length))
-                        ||jTextField_TimKiem.getText().equalsIgnoreCase(db.getMaSanBay2().substring(0, length))) {
+                if (db.getMaSanBay1().contains(st) || db.getMaSanBay2().contains(st)) {
                     dtmDuongBay.addRow(new Object[]{
                         db.getMaDuongBay(), db.getMaSanBay1(), db.getMaSanBay2(), db.getKhoangCach()
                     });
