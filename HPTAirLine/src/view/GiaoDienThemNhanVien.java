@@ -55,12 +55,10 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
                 String cmnd = jTextField_CMND.getText();
                 jLabel_ThongBao.setText("");
                 jLabel_CMND.setForeground(Color.white);
-                jTextField_CMND.setForeground(Color.black);
                 for (int i = 0; i < cmnd.length(); i++) {
                     if (cmnd.charAt(i) < '0' || cmnd.charAt(i) > '9') {
                         jLabel_ThongBao.setText("*CMND phải nhập số");
                         jLabel_CMND.setForeground(Color.yellow);
-                        jTextField_CMND.setForeground(Color.yellow);
                         break;
                     }
                 }
@@ -73,18 +71,15 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
                 String sdt = jTextField_SoDienThoai.getText();
                 jLabel_ThongBao.setText("");
                 jLabel_SoDienThoai.setForeground(Color.white);
-                jTextField_SoDienThoai.setForeground(Color.black);
 
                 if (sdt.length() != 10) {
                     jLabel_ThongBao.setText("*Số điện thoại 10 số");
                     jLabel_SoDienThoai.setForeground(Color.yellow);
-                    jTextField_SoDienThoai.setForeground(Color.yellow);
                 }
                 for (int i = 0; i < sdt.length(); i++) {
                     if (sdt.charAt(i) < '0' || sdt.charAt(i) > '9') {
                         jLabel_ThongBao.setText("*Số điện thoại phải nhập số");
                         jLabel_SoDienThoai.setForeground(Color.yellow);
-                        jTextField_SoDienThoai.setForeground(Color.yellow);
                         break;
                     }
                 }

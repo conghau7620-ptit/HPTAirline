@@ -575,7 +575,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
         int row = jTable_NhanVien.getSelectedRow();
         if (row == -1) {
-
+            JOptionPane.showMessageDialog(null, "Bạn vui lòng chọn nhân viên cần sửa");
         } else {
             NhanVien nv = new NhanVien(jTextField_SDTNhanVien.getText(), jTextField_TenNhanVien.getText(), jTextField_DiaChi.getText(),
                 jTextField_TenDangNhap.getText(), jTextField_CMND.getText());
@@ -624,7 +624,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
         int row = jTable_NhanVien.getSelectedRow();
         if (row == -1) {
-
+            JOptionPane.showMessageDialog(null, "Bạn vui lòng chọn nhân viên cần xóa");
         } else {
             this.sdtNhanVien = (String) jTable_NhanVien.getValueAt(row, 0);
             int luaChon = JOptionPane.showConfirmDialog(rootPane, "", "Xác nhận xóa nhân viên", JOptionPane.OK_CANCEL_OPTION);
