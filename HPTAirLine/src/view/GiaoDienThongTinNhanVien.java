@@ -24,10 +24,10 @@ import model.TaiKhoan;
  */
 //Tạm hoàn thành giao diện thông tin nhân viên, và xử lý sửa thông tin, đổi mật khẩu, chưa kiểm tra  input
 public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
-    
+
     String tenNhanVien;
     String phanQuyen;
-    
+
     public GiaoDienThongTinNhanVien() {
         initComponents();
         //// Phần thông tin cơ bản , đăng xuất
@@ -65,7 +65,7 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
                 int confirmed = JOptionPane.showConfirmDialog(null,
                         "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
                         JOptionPane.YES_NO_OPTION);
-                
+
                 if (confirmed == JOptionPane.YES_OPTION) {
                     dispose();
                 } else {
@@ -110,6 +110,7 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
         jLabel_AirLines = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Thông tin nhân viên");
 
         jPanel2.setBackground(new java.awt.Color(89, 98, 117));
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -333,20 +334,32 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
 
     private void jButton_XacNhanSuaThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanSuaThongTinActionPerformed
         // TODO add your handling code here:
+        if (jTextField_CMND.getText().isEmpty()) {
+            jLabel_ThongBao.setText("*CMND chưa được điền");
+            return;
+        }else{
+            jLabel_ThongBao.setText("");
+        }
+        if (jTextField_TenNhanVien.getText().isEmpty()) {
+            jLabel_ThongBao.setText("*Tên nhân viên chưa được điền");
+            return;
+        }else{
+            jLabel_ThongBao.setText("");
+        }
         if (jLabel_ThongBao.getText().isEmpty()) {
             int luaChon = JOptionPane.showConfirmDialog(this, "Xác nhân sửa thông tin cho nhân viên " + this.tenNhanVien, "Xác nhận sửa", JOptionPane.YES_NO_OPTION);
-            
+
             if (luaChon == JOptionPane.YES_OPTION) {
                 //gọi hàm sửa thông tin
                 NhanVien nhanVien = new NhanVien(jTextField_SoDienThoai.getText(), jTextField_TenNhanVien.getText(),
                         jTextField_DiaChi.getText(), jTextField_TenDangNhap.getText(), jTextField_CMND.getText());
-                
+
                 if (connection.UpdateData.updateNhanVien(nhanVien) == true) {
                     JOptionPane.showMessageDialog(this, "Sửa thành công");
                 } else {
                     JOptionPane.showMessageDialog(this, "Sửa không thành công");
                 }
-                
+
             }
         }
     }//GEN-LAST:event_jButton_XacNhanSuaThongTinActionPerformed
@@ -370,15 +383,20 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
             "Mật khẩu cũ:", matKhauCu,
             "Mật khẩu mới:", matKhauMoi
         };
-        
+
         int luaChon = JOptionPane.showConfirmDialog(null, message, "Thay đổi mật khẩu", JOptionPane.OK_CANCEL_OPTION);
         if (luaChon == JOptionPane.OK_OPTION) {
             if (matKhauCu.getText().equals(controller.Controller.tk.getMatKhau())) {
+                if (matKhauMoi.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(rootPane, "Không để trống mật khẩu mới");
+                    return;
+                }
                 String matKhauMoi_String = matKhauMoi.getText();
                 TaiKhoan taiKhoan = new TaiKhoan(controller.Controller.tk.getTenDangNhap(), matKhauMoi_String,
                         controller.Controller.tk.getLoaiTaiKhoan(), controller.Controller.tk.getSdt());
                 if (UpdateData.updateTaiKhoan(taiKhoan) == true) {
                     JOptionPane.showMessageDialog(rootPane, "Đổi mật khẩu thành công");
+                    controller.Controller.tk.setMatKhau(matKhauMoi_String);
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Đổi mật khẩu thất bại");
                 }

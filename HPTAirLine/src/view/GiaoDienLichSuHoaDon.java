@@ -109,6 +109,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
         jButton_XoaVe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Lịch sử hóa đơn");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));

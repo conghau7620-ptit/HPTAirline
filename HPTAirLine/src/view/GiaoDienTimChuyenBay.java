@@ -152,6 +152,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         jLabel_QuayLai = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tìm chuyến bay");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
@@ -572,8 +573,10 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             if ((ngayHienTai.after(ngayVe))) {
                 jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
                 ktra = false;
+                jLabel_BaoLoi.setText("Ngày về phải trước ngày hiện tại.");
                 return ktra;
             } else {
+                jLabel_BaoLoi.setText("");
                 jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
             }
             if (ngayDi.after(ngayVe)) {
@@ -618,9 +621,8 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                 ngayVe = jDateChooser_NgayVe.getDate();
 
                 Controller.loadKetQuaTheoNgay(jComboBox_SanBayDen.getSelectedItem().toString().substring(0, 3),
-                        jComboBox_SanBayDi.getSelectedItem().toString().substring(0, 3), new SimpleDateFormat("yyyy-MM-dd").format(ngayVe).toString());
-                new LoadData();
-                if (controller.Controller.arrayListKetQuaTimKiemChuyenBay.size() != 0) {
+                        jComboBox_SanBayDi.getSelectedItem().toString().substring(0, 3), new SimpleDateFormat("yyyy-MM-dd").format(ngayVe));
+                if (!controller.Controller.arrayListKetQuaTimKiemChuyenBay.isEmpty()) {
                     for (ChuyenBay cb : controller.Controller.arrayListKetQuaTimKiemChuyenBay) {
                         int soGheTrong = 0;
                         for (Ghe g : cb.getArrayListGhe()) {

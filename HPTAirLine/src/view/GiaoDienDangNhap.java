@@ -138,7 +138,7 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         jLabel_DangNhap.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_DangNhap.setText("Đăng nhập");
 
-        jLabel_BaoLoi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_BaoLoi.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel_BaoLoi.setForeground(new java.awt.Color(255, 255, 0));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -154,20 +154,21 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jTextField_TenDangNhap, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPasswordField_MatKhau, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton_DangNhap, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
-                            .addComponent(jLabel_MatKhau)
-                            .addComponent(jLabel_TenDangNhap)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel_BaoLoi)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_MatKhau)
+                                    .addComponent(jLabel_TenDangNhap))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel_DangKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(137, 137, 137))
+                .addGap(144, 144, 144))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,8 +190,7 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel_DangKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_BaoLoi)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -256,11 +256,11 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                 }
             } else {
                 jLabel_BaoLoi.setText("*Sai mật khẩu");
-                jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+                jPasswordField_MatKhau.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
             }
         } else {
             jLabel_BaoLoi.setText("*Tên đăng nhập không tồn tại");
-            jTextField_TenDangNhap.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            jTextField_TenDangNhap.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
         }
     }//GEN-LAST:event_jButton_DangNhapActionPerformed
     
