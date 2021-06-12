@@ -8,6 +8,7 @@ package view;
 import connection.LoadData;
 import controller.Controller;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -47,6 +48,14 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             Logger.getLogger(GiaoDienTimChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
         }
         //
+        if(!controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")){
+            for(Component c:jPanel_TaiKhoan.getComponents()){
+                c.setForeground(new Color(48,57,82));
+            }
+        }else{
+                    jLabel_XemThongTinTaiKhoan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    jLabel_DangXuat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
         thongTinTaiKhoan();
         inputMacDinh();
 
@@ -79,8 +88,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
      */
     private void thongTinTaiKhoan() {
         //// Phần thông tin cơ bản , đăng xuất
-        jLabel_XemThongTinTaiKhoan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        jLabel_DangXuat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
         new LoadData();
         for (NhanVien nv : controller.Controller.arrayListNhanVien) {
             if (nv.getSdtNhanVien().equals(controller.Controller.tk.getSdt())
@@ -680,6 +688,9 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
     private void jLabel_XemThongTinTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_XemThongTinTaiKhoanMousePressed
         // TODO add your handling code here:
+        if(!controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")){
+            return;
+        }
         if (jLabel_PhanQuyen.getText().equals("nhân viên")) {
             this.dispose();
             new GiaoDienThongTinNhanVien().setVisible(true);
@@ -696,6 +707,9 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
     private void jLabel_DangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangXuatMousePressed
         // TODO add your handling code here:
+        if(!controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")){
+            return;
+        }
         dispose();
         new GiaoDienDangNhap().setVisible(true);
     }//GEN-LAST:event_jLabel_DangXuatMousePressed

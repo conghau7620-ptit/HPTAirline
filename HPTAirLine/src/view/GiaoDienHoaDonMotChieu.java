@@ -88,7 +88,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         jDateChooser_NgayXuatHoaDon.setEnabled(false);
         thongTinTaiKhoan();
 
-        
+
 
 
         this.addWindowListener(new WindowAdapter() {
@@ -158,13 +158,6 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         jLabel_IconMayBay = new javax.swing.JLabel();
         jLabel_HPT = new javax.swing.JLabel();
         jLabel_AirLines = new javax.swing.JLabel();
-        jPanel_TaiKhoan = new javax.swing.JPanel();
-        jLabel_XinChao = new javax.swing.JLabel();
-        jLabel_PhanQuyen = new javax.swing.JLabel();
-        jLabel_TenNguoiDung = new javax.swing.JLabel();
-        jLabel_XemThongTinTaiKhoan = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel_DangXuat = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel_SoDienThoaiKhachHang = new javax.swing.JLabel();
         jTextField_SoDienThoaiKhachHang = new javax.swing.JTextField();
@@ -228,81 +221,6 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         jLabel_AirLines.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_AirLines.setText("AIRLINES™");
 
-        jPanel_TaiKhoan.setBackground(new java.awt.Color(48, 57, 82));
-
-        jLabel_XinChao.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel_XinChao.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_XinChao.setText("Xin chào,");
-
-        jLabel_PhanQuyen.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel_PhanQuyen.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_PhanQuyen.setText("Đối tượng");
-
-        jLabel_TenNguoiDung.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel_TenNguoiDung.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_TenNguoiDung.setText("Tên đối tượng");
-
-        jLabel_XemThongTinTaiKhoan.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel_XemThongTinTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_XemThongTinTaiKhoan.setText("<HTML><u>Xem thông tin tài khoản</u></HTML>");
-        jLabel_XemThongTinTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel_XemThongTinTaiKhoanMousePressed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("|");
-
-        jLabel_DangXuat.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel_DangXuat.setForeground(new java.awt.Color(255, 77, 77));
-        jLabel_DangXuat.setText("<HTML><u>Đăng xuất</u></HTML>");
-        jLabel_DangXuat.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel_DangXuatMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel_TaiKhoanLayout = new javax.swing.GroupLayout(jPanel_TaiKhoan);
-        jPanel_TaiKhoan.setLayout(jPanel_TaiKhoanLayout);
-        jPanel_TaiKhoanLayout.setHorizontalGroup(
-            jPanel_TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_TaiKhoanLayout.createSequentialGroup()
-                .addGroup(jPanel_TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_TaiKhoanLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel_XemThongTinTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel_DangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_TaiKhoanLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel_XinChao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_PhanQuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel_TenNguoiDung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel_TaiKhoanLayout.setVerticalGroup(
-            jPanel_TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_TaiKhoanLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel_TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel_TenNguoiDung, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel_TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel_XinChao)
-                        .addComponent(jLabel_PhanQuyen)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel_TaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_XemThongTinTaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel_DangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -314,22 +232,18 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                 .addComponent(jLabel_HPT)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_AirLines, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel_TaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel_TaiKhoan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel_HPT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel_AirLines, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel_IconMayBay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel_HPT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel_AirLines, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel_IconMayBay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(89, 98, 117));
@@ -484,6 +398,8 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         jLabel_DauChamHoi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_DauChamHoi.setText("?");
         jLabel_DauChamHoi.setToolTipText("Mỗi 100 điểm tương ứng với 10%");
+
+        jLabel_BaoLoi.setForeground(java.awt.Color.yellow);
 
         jComboBox_SuDungDiemTichLuy.setMaximumRowCount(6);
         jComboBox_SuDungDiemTichLuy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "100", "200", "300", "400", "500", "600", "700", "800", "900", "1000" }));
@@ -704,27 +620,21 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     private void thongTinTaiKhoan() {
         //// Phần thông tin cơ bản
-        jLabel_XemThongTinTaiKhoan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        jLabel_DangXuat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         new LoadData();
         for (NhanVien nv : controller.Controller.arrayListNhanVien) {
             if (nv.getSdtNhanVien().equals(controller.Controller.tk.getSdt())
                     && (controller.Controller.tk.getLoaiTaiKhoan().equals("NhanVien"))) {
-                jLabel_PhanQuyen.setText("nhân viên");
-                jLabel_TenNguoiDung.setText(nv.getTenNhanVien());
                 jTextField_SoDienThoaiNhanVien.setText(nv.getSdtNhanVien());
                 jTextField_SoDienThoaiNhanVien.setEnabled(false);
             }
             if (nv.getSdtNhanVien().equals(controller.Controller.tk.getSdt())
                     && (controller.Controller.tk.getLoaiTaiKhoan().equals("QuanLy"))) {
-                jLabel_PhanQuyen.setText("quản lý");
-                jLabel_TenNguoiDung.setText(nv.getTenNhanVien());
+                jTextField_SoDienThoaiNhanVien.setText(nv.getSdtNhanVien());
+                jTextField_SoDienThoaiNhanVien.setEnabled(false);
             }
         }
         for (KhachHang kh : controller.Controller.arrayListKhachHang) {
             if (kh.getSdtKhachHang().equals(controller.Controller.tk.getSdt())) {
-                jLabel_PhanQuyen.setText("khách hàng");
-                jLabel_TenNguoiDung.setText(kh.getTenKhachHang());
                 jTextField_SoDienThoaiKhachHang.setText(kh.getSdtKhachHang());
                 jTextField_SoDienThoaiKhachHang.setEnabled(false);
                 jTextField_SoDienThoaiNhanVien.setVisible(false);
@@ -735,8 +645,6 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
             }
         }
     }
-
-
     private void jButton_ThoatGiaoDienHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatGiaoDienHoaDonActionPerformed
         // TODO add your handling code here:
 
@@ -860,25 +768,6 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton_HoanTatHoaDonActionPerformed
-
-    private void jLabel_XemThongTinTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_XemThongTinTaiKhoanMousePressed
-        // TODO add your handling code here:
-        if (jLabel_PhanQuyen.getText().equals("nhân viên")) {
-            new GiaoDienThongTinNhanVien().setVisible(true);
-        }
-        if (jLabel_PhanQuyen.getText().equals("quản lý")) {
-            new GiaoDienThongTinNhanVien().setVisible(true);
-        }
-        if (jLabel_PhanQuyen.getText().equals("khách hàng")) {
-            new GiaoDienThongTinKhachHang().setVisible(true);
-        }
-    }//GEN-LAST:event_jLabel_XemThongTinTaiKhoanMousePressed
-
-    private void jLabel_DangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangXuatMousePressed
-        // TODO add your handling code here:
-        dispose();
-        new GiaoDienDangNhap().setVisible(true);
-    }//GEN-LAST:event_jLabel_DangXuatMousePressed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
         // TODO add your handling code here:
@@ -1089,32 +978,25 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_AirLines;
     private javax.swing.JLabel jLabel_BaoLoi;
     private javax.swing.JLabel jLabel_BaoLoi2;
     private javax.swing.JLabel jLabel_ChuyenBayDaChon;
-    private javax.swing.JLabel jLabel_DangXuat;
     private javax.swing.JLabel jLabel_DauChamHoi;
     private javax.swing.JLabel jLabel_DiemTichLuy;
     private javax.swing.JLabel jLabel_HPT;
     private javax.swing.JLabel jLabel_IconMayBay;
     private javax.swing.JLabel jLabel_NgayXuatHoaDon;
-    private javax.swing.JLabel jLabel_PhanQuyen;
     private javax.swing.JLabel jLabel_PhoThong;
     private javax.swing.JLabel jLabel_SoDienThoaiKhachHang;
     private javax.swing.JLabel jLabel_SoDienThoaiNhanVien;
     private javax.swing.JLabel jLabel_TB;
-    private javax.swing.JLabel jLabel_TenNguoiDung;
     private javax.swing.JLabel jLabel_ThuongGia;
     private javax.swing.JLabel jLabel_ThuongGia1;
     private javax.swing.JLabel jLabel_TongTien;
     private javax.swing.JLabel jLabel_VeDaChon;
-    private javax.swing.JLabel jLabel_XemThongTinTaiKhoan;
-    private javax.swing.JLabel jLabel_XinChao;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel_TaiKhoan;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;

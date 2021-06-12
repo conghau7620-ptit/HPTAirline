@@ -218,7 +218,7 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
     private void jLabel_DangKyMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangKyMousePressed
         // TODO add your handling code here:
         new GiaoDienDangKyTaiKhoan().setVisible(true);
-        dispose();
+//        dispose();
     }//GEN-LAST:event_jLabel_DangKyMousePressed
 
     private void jButton_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangNhapActionPerformed

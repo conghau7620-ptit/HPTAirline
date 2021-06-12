@@ -250,7 +250,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
                     JOptionPane.showMessageDialog(rootPane, "Đăng ký thành công");
                     
                     dispose();
-                    new GiaoDienDangNhap().setVisible(true);
+//                    new GiaoDienDangNhap().setVisible(true);
                     
             }
             
@@ -525,7 +525,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new GiaoDienDangNhap().setVisible(true);
+//        new GiaoDienDangNhap().setVisible(true);
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     /**

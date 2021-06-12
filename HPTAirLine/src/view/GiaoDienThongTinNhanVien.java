@@ -24,10 +24,10 @@ import model.TaiKhoan;
  */
 //Tạm hoàn thành giao diện thông tin nhân viên, và xử lý sửa thông tin, đổi mật khẩu, chưa kiểm tra  input
 public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
-
+    
     String tenNhanVien;
     String phanQuyen;
-
+    
     public GiaoDienThongTinNhanVien() {
         initComponents();
         //// Phần thông tin cơ bản , đăng xuất
@@ -65,7 +65,7 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
                 int confirmed = JOptionPane.showConfirmDialog(null,
                         "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
                         JOptionPane.YES_NO_OPTION);
-
+                
                 if (confirmed == JOptionPane.YES_OPTION) {
                     dispose();
                 } else {
@@ -202,15 +202,15 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel_TenNhanVien)
                             .addComponent(jTextField_TenNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
+                        .addGap(51, 51, 51)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_DoiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(jButton_DoiMatKhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel_MatKhau)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jSeparator1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 240, Short.MAX_VALUE)
                         .addComponent(jLabel_ThongTinNhanVien)
                         .addGap(249, 249, 249))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -335,18 +335,18 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jLabel_ThongBao.getText().isEmpty()) {
             int luaChon = JOptionPane.showConfirmDialog(this, "Xác nhân sửa thông tin cho nhân viên " + this.tenNhanVien, "Xác nhận sửa", JOptionPane.YES_NO_OPTION);
-
+            
             if (luaChon == JOptionPane.YES_OPTION) {
                 //gọi hàm sửa thông tin
                 NhanVien nhanVien = new NhanVien(jTextField_SoDienThoai.getText(), jTextField_TenNhanVien.getText(),
-                         jTextField_DiaChi.getText(), jTextField_TenDangNhap.getText(), jTextField_CMND.getText());
-
+                        jTextField_DiaChi.getText(), jTextField_TenDangNhap.getText(), jTextField_CMND.getText());
+                
                 if (connection.UpdateData.updateNhanVien(nhanVien) == true) {
                     JOptionPane.showMessageDialog(this, "Sửa thành công");
                 } else {
                     JOptionPane.showMessageDialog(this, "Sửa không thành công");
                 }
-
+                
             }
         }
     }//GEN-LAST:event_jButton_XacNhanSuaThongTinActionPerformed
@@ -354,7 +354,12 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
     private void jButton_ThoatGiaoDienThongTinNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatGiaoDienThongTinNhanVienActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new GiaoDienNhanVien().setVisible(true);
+        if (controller.Controller.tk.getLoaiTaiKhoan().equals("QuanLy")) {
+            new GiaoDienQuanLy().setVisible(true);
+        }
+        if (controller.Controller.tk.getLoaiTaiKhoan().equals("NhanVien")) {
+            new GiaoDienNhanVien().setVisible(true);
+        }
     }//GEN-LAST:event_jButton_ThoatGiaoDienThongTinNhanVienActionPerformed
 
     private void jButton_DoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DoiMatKhauActionPerformed
@@ -365,7 +370,7 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
             "Mật khẩu cũ:", matKhauCu,
             "Mật khẩu mới:", matKhauMoi
         };
-
+        
         int luaChon = JOptionPane.showConfirmDialog(null, message, "Thay đổi mật khẩu", JOptionPane.OK_CANCEL_OPTION);
         if (luaChon == JOptionPane.OK_OPTION) {
             if (matKhauCu.getText().equals(controller.Controller.tk.getMatKhau())) {
