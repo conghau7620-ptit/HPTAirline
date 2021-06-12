@@ -6,6 +6,8 @@
 package view;
 
 import connection.LoadData;
+import connection.UpdateData;
+import controller.Controller;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
@@ -136,6 +138,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
             jLabel10 = new javax.swing.JLabel();
             jLabel_PhanQuyen = new javax.swing.JLabel();
             jComboBox_PhanQuyen = new javax.swing.JComboBox<>();
+            jButton_KhoiPhucMK = new javax.swing.JButton();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -367,6 +370,17 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
 
             jComboBox_PhanQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NhanVien", "QuanLy" }));
 
+            jButton_KhoiPhucMK.setBackground(java.awt.Color.red);
+            jButton_KhoiPhucMK.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+            jButton_KhoiPhucMK.setForeground(java.awt.Color.white);
+            jButton_KhoiPhucMK.setText("Khôi phục MK");
+            jButton_KhoiPhucMK.setBorderPainted(false);
+            jButton_KhoiPhucMK.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    jButton_KhoiPhucMKActionPerformed(evt);
+                }
+            });
+
             javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
             jPanel2.setLayout(jPanel2Layout);
             jPanel2Layout.setHorizontalGroup(
@@ -384,7 +398,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGap(1, 1, 1)
                                     .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                                     .addComponent(jLabel10)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jTextField_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -393,8 +407,8 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
                                 .addComponent(jLabel9)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jButton_QuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(36, 36, 36)
-                                    .addComponent(jButton_ThemNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton_KhoiPhucMK))
                                 .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,12 +442,17 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
                                         .addComponent(jLabel4)
                                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(jButton_ThemNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(42, 42, 42)
                                             .addComponent(jButton_XoaNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(37, 37, 37)
+                                            .addGap(39, 39, 39)
                                             .addComponent(jButton_SuaNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGap(0, 0, Short.MAX_VALUE)))))
                     .addContainerGap())
             );
+
+            jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton_KhoiPhucMK, jButton_SuaNhanVien});
+
             jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -462,7 +481,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                             .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -497,13 +516,13 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
                             .addGap(0, 0, Short.MAX_VALUE)))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_QuayLai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                            .addComponent(jButton_ThemNhanVien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton_QuayLai, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton_XoaNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_SuaNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(8, 8, 8))
+                            .addComponent(jButton_SuaNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_ThemNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_KhoiPhucMK)))
+                    .addGap(48, 48, 48))
             );
 
             jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton_QuayLai, jButton_ThemNhanVien, jButton_XoaNhanVien});
@@ -511,6 +530,8 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
             jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextField_CMND, jTextField_DiaChi, jTextField_TenDangNhap, jTextField_TenNhanVien});
 
             jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jTextField_SDTNhanVien, jTextField_TimKiem});
+
+            jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton_KhoiPhucMK, jButton_SuaNhanVien});
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
@@ -534,12 +555,104 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MousePressed
 
+    private void jCheckBox_HoaDonDaThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox_HoaDonDaThanhToanItemStateChanged
+        // TODO add your handling code here:
+        int row = jTable_NhanVien.getSelectedRow();
+        if (row == -1) {
+            dtmHoaDon.setRowCount(0);
+            dtmVe.setRowCount(0);
+        } else {
+            this.sdtNhanVien = (String) jTable_NhanVien.getValueAt(row, 0);
+            if (jCheckBox_HoaDonDaThanhToan.isSelected()) {
+                loadBangHoaDonDaThanhToanTheoSDTNhanVien();
+            } else {
+                loadBangHoaDonTheoSDTNhanVien();
+            }
+        }
+    }//GEN-LAST:event_jCheckBox_HoaDonDaThanhToanItemStateChanged
+
+    private void jButton_SuaNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaNhanVienActionPerformed
+        // TODO add your handling code here:
+        int row = jTable_NhanVien.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Bạn vui lòng chọn nhân viên cần sửa");
+        } else {
+            NhanVien nv = new NhanVien(jTextField_SDTNhanVien.getText(), jTextField_TenNhanVien.getText(), jTextField_DiaChi.getText(),
+                jTextField_TenDangNhap.getText(), jTextField_CMND.getText());
+            if (nv.getCmnd().isEmpty() || nv.getTenNhanVien().isEmpty() || nv.getDiaChi().isEmpty()) {
+                jLabel_BaoLoi.setText("*Không bỏ trống thông tin");
+            } else {
+                jLabel_BaoLoi.setText("");
+                int luaChon = JOptionPane.showConfirmDialog(rootPane, "", "Xác nhận sửa nhân viên", JOptionPane.OK_CANCEL_OPTION);
+                if (luaChon == JOptionPane.OK_OPTION) {
+                    if (connection.UpdateData.updateNhanVien(nv)) {
+                        connection.UpdateData.updateTaiKhoan(sdtNhanVien, jComboBox_PhanQuyen.getSelectedItem().toString());
+                        JOptionPane.showMessageDialog(rootPane, "Sửa nhân viên " + nv.getSdtNhanVien() + " thành công");
+                        loadBangNhanVien();
+                        clearTextFieldThongTinNhanVien();
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Sửa nhân viên " + nv.getSdtNhanVien() + " thất bại");
+                    }
+                }
+
+            }
+        }
+    }//GEN-LAST:event_jButton_SuaNhanVienActionPerformed
+
+    private void jTextField_CMNDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_CMNDKeyReleased
+        // TODO add your handling code here:
+        String cmnd = jTextField_CMND.getText();
+        jLabel_BaoLoi.setText("");
+        jLabel_CMND.setForeground(Color.white);
+        jTextField_CMND.setForeground(Color.black);
+        //                if (cmnd.length() != 9) {
+            //                    jLabel_BaoLoi.setText("*CMND 9 số");
+            //                    jLabel_CMND.setForeground(Color.yellow);
+            //                    jTextField_CMND.setForeground(Color.yellow);
+            //                }
+        for (int i = 0; i < cmnd.length(); i++) {
+            if (cmnd.charAt(i) < '0' || cmnd.charAt(i) > '9') {
+                jLabel_BaoLoi.setText("*CMND phải nhập số");
+                jLabel_CMND.setForeground(Color.yellow);
+                jTextField_CMND.setForeground(Color.yellow);
+                break;
+            }
+        }
+    }//GEN-LAST:event_jTextField_CMNDKeyReleased
+
+    private void jButton_XoaNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaNhanVienActionPerformed
+        // TODO add your handling code here:
+        int row = jTable_NhanVien.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Bạn vui lòng chọn nhân viên cần xóa");
+        } else {
+            this.sdtNhanVien = (String) jTable_NhanVien.getValueAt(row, 0);
+            int luaChon = JOptionPane.showConfirmDialog(rootPane, "", "Xác nhận xóa nhân viên", JOptionPane.OK_CANCEL_OPTION);
+            if (luaChon == JOptionPane.OK_OPTION) {
+                if (connection.UpdateData.deleteNhanVien(this.sdtNhanVien)) {
+                    connection.UpdateData.deleteTaiKhoan(this.sdtNhanVien);
+                    JOptionPane.showMessageDialog(rootPane, "Xóa nhân viên " + this.sdtNhanVien + " thành công");
+                    loadBangNhanVien();
+                    clearTextFieldThongTinNhanVien();
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Xóa nhân viên " + this.sdtNhanVien + " thất bại");
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton_XoaNhanVienActionPerformed
+
+    private void jButton_ThemNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemNhanVienActionPerformed
+        // TODO add your handling code here:
+        new GiaoDienThemNhanVien().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton_ThemNhanVienActionPerformed
+
     private void jTextField_TimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyReleased
         // TODO add your handling code here:
         clearTextFieldThongTinNhanVien();
 
         if (jTextField_TimKiem.getText().length() >= 11) {
-//            evt.consume();
+            //            evt.consume();
             jTextField_TimKiem.setText(jTextField_TimKiem.getText().substring(0, jTextField_TimKiem.getText().length() - 1));
         } else {
             dtmNhanVien.setRowCount(0);
@@ -579,8 +692,75 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         this.dispose();
 
         new GiaoDienQuanLy().setVisible(true);
-
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
+
+    private void jTable_NhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_NhanVienMouseClicked
+        // TODO add your handling code here:
+        int row = jTable_NhanVien.getSelectedRow();
+        if (row == -1) {
+
+        } else {
+            this.sdtNhanVien = (String) jTable_NhanVien.getValueAt(row, 0);
+            System.out.println("SDT của nhân viên đã chọn: " + this.sdtNhanVien);
+            if (jCheckBox_HoaDonDaThanhToan.isSelected()) {
+                loadBangHoaDonDaThanhToanTheoSDTNhanVien();
+            } else {
+                loadBangHoaDonTheoSDTNhanVien();
+            }
+        }
+    }//GEN-LAST:event_jTable_NhanVienMouseClicked
+
+    private void jTable_HoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_HoaDonMouseClicked
+        // TODO add your handling code here:
+        int row = jTable_HoaDon.getSelectedRow();
+        if (row == -1) {
+        } else {
+            String maHoaDon = (String) jTable_HoaDon.getValueAt(row, 0);
+            new LoadData();
+            dtmVe.setRowCount(0);
+            for (Ve v : controller.Controller.arrayListVe) {
+                if (v.getMaHoaDon().equals(maHoaDon)) {
+                    if (v.getNgaySinh() != null) {
+                        dtmVe.addRow(new Object[]{
+                            v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                            v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                            v.getMaHoaDon(), v.getMaGhe()
+                        });
+                    } else {
+                        dtmVe.addRow(new Object[]{
+                            v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                            v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
+                            v.getMaHoaDon(), v.getMaGhe()
+                        });
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jTable_HoaDonMouseClicked
+
+    private void jButton_KhoiPhucMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_KhoiPhucMKActionPerformed
+        if (jTable_NhanVien.getSelectedRow()==-1) {
+            JOptionPane.showMessageDialog(null, "Bạn vui chọn nhân viên cần khôi phục mật khẩu");
+            return;
+        }
+        int confirm = JOptionPane.showConfirmDialog(null,
+                "Mật khẩu sẽ được khôi phục thành 123. Bạn có chắc chắn muốn khôi phục?");
+        if (confirm == JOptionPane.YES_OPTION) {
+            TaiKhoan taiKhoan = null;
+            int vt = 0;
+            for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
+                if (tk.getSdt().equals(sdtNhanVien)) {
+                    taiKhoan = tk;
+                    break;
+                }
+                vt++;
+            }
+            taiKhoan.setMatKhau("123");
+            Controller.arrayListTaiKhoan.set(vt, taiKhoan);
+            UpdateData.updateTaiKhoan(taiKhoan);
+            JOptionPane.showMessageDialog(null, "Mật khẩu đã được khôi phục");
+        }
+    }//GEN-LAST:event_jButton_KhoiPhucMKActionPerformed
 
     private void loadBangHoaDonDaThanhToanTheoSDTNhanVien() {
         new LoadData();
@@ -652,106 +832,6 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         }
     }
 
-    private void jTable_NhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_NhanVienMouseClicked
-        // TODO add your handling code here:
-        int row = jTable_NhanVien.getSelectedRow();
-        if (row == -1) {
-
-        } else {
-            this.sdtNhanVien = (String) jTable_NhanVien.getValueAt(row, 0);
-            System.out.println("SDT của nhân viên đã chọn: " + this.sdtNhanVien);
-            if (jCheckBox_HoaDonDaThanhToan.isSelected()) {
-                loadBangHoaDonDaThanhToanTheoSDTNhanVien();
-            } else {
-                loadBangHoaDonTheoSDTNhanVien();
-            }
-        }
-    }//GEN-LAST:event_jTable_NhanVienMouseClicked
-
-    private void jTable_HoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_HoaDonMouseClicked
-        // TODO add your handling code here:
-        int row = jTable_HoaDon.getSelectedRow();
-        if (row == -1) {
-        } else {
-            String maHoaDon = (String) jTable_HoaDon.getValueAt(row, 0);
-            new LoadData();
-            dtmVe.setRowCount(0);
-            for (Ve v : controller.Controller.arrayListVe) {
-                if (v.getMaHoaDon().equals(maHoaDon)) {
-                    if (v.getNgaySinh() != null) {
-                        dtmVe.addRow(new Object[]{
-                            v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                            v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
-                            v.getMaHoaDon(), v.getMaGhe()
-                        });
-                    } else {
-                        dtmVe.addRow(new Object[]{
-                            v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                            v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
-                            v.getMaHoaDon(), v.getMaGhe()
-                        });
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_jTable_HoaDonMouseClicked
-
-    private void jButton_ThemNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemNhanVienActionPerformed
-        // TODO add your handling code here:
-        new GiaoDienThemNhanVien().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton_ThemNhanVienActionPerformed
-
-    private void jButton_SuaNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaNhanVienActionPerformed
-        // TODO add your handling code here:
-        int row = jTable_NhanVien.getSelectedRow();
-        if (row == -1) {
-
-        } else {
-            NhanVien nv = new NhanVien(jTextField_SDTNhanVien.getText(), jTextField_TenNhanVien.getText(), jTextField_DiaChi.getText(),
-                    jTextField_TenDangNhap.getText(), jTextField_CMND.getText());
-            if (nv.getCmnd().isEmpty() || nv.getTenNhanVien().isEmpty() || nv.getDiaChi().isEmpty()) {
-                jLabel_BaoLoi.setText("*Không bỏ trống thông tin");
-            } else {
-                jLabel_BaoLoi.setText("");
-                int luaChon = JOptionPane.showConfirmDialog(rootPane, "", "Xác nhận sửa nhân viên", JOptionPane.OK_CANCEL_OPTION);
-                if (luaChon == JOptionPane.OK_OPTION) {
-                    if (connection.UpdateData.updateNhanVien(nv)) {
-                        connection.UpdateData.updateTaiKhoan(sdtNhanVien, jComboBox_PhanQuyen.getSelectedItem().toString());
-                        JOptionPane.showMessageDialog(rootPane, "Sửa nhân viên " + nv.getSdtNhanVien() + " thành công");
-                        loadBangNhanVien();
-                        clearTextFieldThongTinNhanVien();
-                    } else {
-                        JOptionPane.showMessageDialog(rootPane, "Sửa nhân viên " + nv.getSdtNhanVien() + " thất bại");
-                    }
-                }
-
-            }
-        }
-
-    }//GEN-LAST:event_jButton_SuaNhanVienActionPerformed
-
-    private void jButton_XoaNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaNhanVienActionPerformed
-        // TODO add your handling code here:
-        int row = jTable_NhanVien.getSelectedRow();
-        if (row == -1) {
-            
-        } else {
-            this.sdtNhanVien = (String) jTable_NhanVien.getValueAt(row, 0);
-            int luaChon = JOptionPane.showConfirmDialog(rootPane, "", "Xác nhận xóa nhân viên", JOptionPane.OK_CANCEL_OPTION);
-            if (luaChon == JOptionPane.OK_OPTION) {
-                if (connection.UpdateData.deleteNhanVien(this.sdtNhanVien)) {
-                    connection.UpdateData.deleteTaiKhoan(this.sdtNhanVien);
-                    JOptionPane.showMessageDialog(rootPane, "Xóa nhân viên " + this.sdtNhanVien + " thành công");
-                    loadBangNhanVien();
-                    clearTextFieldThongTinNhanVien();
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "Xóa nhân viên " + this.sdtNhanVien + " thất bại");
-                }
-            }
-        }
-    }//GEN-LAST:event_jButton_XoaNhanVienActionPerformed
-
     private void clearTextFieldThongTinNhanVien() {
         jTextField_CMND.setText("");
         jTextField_SDTNhanVien.setText("");
@@ -759,43 +839,6 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         jTextField_DiaChi.setText("");
         jTextField_TenDangNhap.setText("");
     }
-
-    private void jCheckBox_HoaDonDaThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox_HoaDonDaThanhToanItemStateChanged
-        // TODO add your handling code here:
-        int row = jTable_NhanVien.getSelectedRow();
-        if (row == -1) {
-            dtmHoaDon.setRowCount(0);
-            dtmVe.setRowCount(0);
-        } else {
-            this.sdtNhanVien = (String) jTable_NhanVien.getValueAt(row, 0);
-            if (jCheckBox_HoaDonDaThanhToan.isSelected()) {
-                loadBangHoaDonDaThanhToanTheoSDTNhanVien();
-            } else {
-                loadBangHoaDonTheoSDTNhanVien();
-            }
-        }
-    }//GEN-LAST:event_jCheckBox_HoaDonDaThanhToanItemStateChanged
-
-    private void jTextField_CMNDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_CMNDKeyReleased
-        // TODO add your handling code here:
-        String cmnd = jTextField_CMND.getText();
-        jLabel_BaoLoi.setText("");
-        jLabel_CMND.setForeground(Color.white);
-        jTextField_CMND.setForeground(Color.black);
-//                if (cmnd.length() != 9) {
-//                    jLabel_BaoLoi.setText("*CMND 9 số");
-//                    jLabel_CMND.setForeground(Color.yellow);
-//                    jTextField_CMND.setForeground(Color.yellow);
-//                }
-        for (int i = 0; i < cmnd.length(); i++) {
-            if (cmnd.charAt(i) < '0' || cmnd.charAt(i) > '9') {
-                jLabel_BaoLoi.setText("*CMND phải nhập số");
-                jLabel_CMND.setForeground(Color.yellow);
-                jTextField_CMND.setForeground(Color.yellow);
-                break;
-            }
-        }
-    }//GEN-LAST:event_jTextField_CMNDKeyReleased
 
     private void loadBangNhanVien() {
         dtmNhanVien.setRowCount(0);
@@ -854,6 +897,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_KhoiPhucMK;
     private javax.swing.JButton jButton_QuayLai;
     private javax.swing.JButton jButton_SuaNhanVien;
     private javax.swing.JButton jButton_ThemNhanVien;

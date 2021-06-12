@@ -6,6 +6,7 @@
 package view;
 
 import connection.LoadData;
+import controller.Controller;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -68,24 +69,11 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         jLabel_XemThongTinTaiKhoan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jLabel_DangXuat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         new LoadData();
-        for (NhanVien nv : controller.Controller.arrayListNhanVien) {
-            if (nv.getSdtNhanVien().equals(controller.Controller.tk.getSdt())
-                    && (controller.Controller.tk.getLoaiTaiKhoan().equals("NhanVien"))) {
-                jLabel_PhanQuyen.setText("nhân viên");
-
+        jLabel_PhanQuyen.setText("nhân viên");
+        for (NhanVien nv: Controller.arrayListNhanVien) {
+            if (nv.getSdtNhanVien().equals(Controller.tk.getSdt())) {
                 jLabel_TenNguoiDung.setText(nv.getTenNhanVien());
-            }
-            if (nv.getSdtNhanVien().equals(controller.Controller.tk.getSdt())
-                    && (controller.Controller.tk.getLoaiTaiKhoan().equals("QuanLy"))) {
-                jLabel_PhanQuyen.setText("quản lý");
-
-                jLabel_TenNguoiDung.setText(nv.getTenNhanVien());
-            }
-        }
-        for (KhachHang kh : controller.Controller.arrayListKhachHang) {
-            if (kh.getSdtKhachHang().equals(controller.Controller.tk.getSdt())) {
-                jLabel_PhanQuyen.setText("khách hàng");
-                jLabel_TenNguoiDung.setText(kh.getTenKhachHang());
+                break;
             }
         }
         ////
