@@ -6,6 +6,8 @@
 package view;
 
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import model.SanBay;
 
@@ -28,6 +30,22 @@ public class GiaoDienSuaSanBay extends javax.swing.JFrame {
                 jTextField_TenSanBay.setText(sb.getTenSanBay());
             }
         }
+        
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -124,6 +142,12 @@ public class GiaoDienSuaSanBay extends javax.swing.JFrame {
             }
         });
 
+        jTextField_MaSanBay.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField_MaSanBayKeyReleased(evt);
+            }
+        });
+
         jLabel_MaSanBay.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel_MaSanBay.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_MaSanBay.setText("Mã Sân Bay");
@@ -133,7 +157,7 @@ public class GiaoDienSuaSanBay extends javax.swing.JFrame {
         jLabel_TenSanBay.setText("Tên Sân Bay");
 
         jLabel_ThongBao.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel_ThongBao.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel_ThongBao.setForeground(java.awt.Color.yellow);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -280,6 +304,11 @@ public class GiaoDienSuaSanBay extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Sửa sân bay thất bại");
         }
     }//GEN-LAST:event_jButton_SuaSanBayActionPerformed
+
+    private void jTextField_MaSanBayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_MaSanBayKeyReleased
+        // TODO add your handling code here:
+        jTextField_MaSanBay.setText(jTextField_MaSanBay.getText().toUpperCase());
+    }//GEN-LAST:event_jTextField_MaSanBayKeyReleased
 
     /**
      * @param args the command line arguments

@@ -14,6 +14,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.Normalizer;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -248,11 +250,26 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
                     JOptionPane.showMessageDialog(rootPane, "Đăng ký thành công");
                     
                     dispose();
-                    new GiaoDienDangNhap().setVisible(true);
+//                    new GiaoDienDangNhap().setVisible(true);
                     
             }
             
         });
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
     
     /**
@@ -508,7 +525,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new GiaoDienDangNhap().setVisible(true);
+//        new GiaoDienDangNhap().setVisible(true);
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     /**
@@ -522,7 +539,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

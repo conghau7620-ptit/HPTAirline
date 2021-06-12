@@ -36,18 +36,18 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         initComponents();
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
             dtmHoaDon.setColumnIdentifiers(new Object[]{
-                "MaHoaDon", "SDTKhachHang", "NgayXuatHoaDon", "TrangThaiThanhToan", "TongTien", "SDTNhanVien"
+                "Mã HĐ", "SĐT KH", "Ngày Xuất", "Thanh Toán", "Tổng", "SĐT NV"
             });
 
         dtmVe = (DefaultTableModel) jTable_Ve.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
-            "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay","NgaySinh", "MaHoaDon", "MaGhe"
+            "Mã Vé", "Mã CB", "Giá", "Ký Gửi",
+            "CMND Người Bay", "Tên Người Bay", "Ngày Sinh", "Mã HĐ", "Mã Ghế"
         });
 
         dtmKhachHang = (DefaultTableModel) jTable_KhachHang.getModel();
         dtmKhachHang.setColumnIdentifiers(new Object[]{
-            "SDTKhachHang", "TenKhachHang", "Email", "DiaChi", "TenDangNhap", "CMND", "DiemTichLuy"
+            "SĐT KH", "Tên KH", "Điểm Tích Lũy"
         });
         loadBangKhachHang();
 
@@ -64,6 +64,9 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
                 }
             }
         });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        
         jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
@@ -82,11 +85,23 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         jLabel_AirLines = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_HoaDon = new javax.swing.JTable();
+        jTable_HoaDon = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_KhachHang = new javax.swing.JTable();
+        jTable_KhachHang = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable_Ve = new javax.swing.JTable();
+        jTable_Ve = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -441,8 +456,8 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         new LoadData();
         for (KhachHang kh : controller.Controller.arrayListKhachHang) {
             dtmKhachHang.addRow(new Object[]{
-                kh.getSdtKhachHang(), kh.getTenKhachHang(), kh.getEmail(), kh.getDiaChi(), kh.getTenDangNhap(),
-                kh.getCmnd(), kh.getDiemTichLuy()
+                kh.getSdtKhachHang(), kh.getTenKhachHang(),
+                kh.getDiemTichLuy()
             });
         }
     }
@@ -558,8 +573,8 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
             for (KhachHang kh : controller.Controller.arrayListKhachHang) {
                 if ((jTextField_TimKiem.getText()).equalsIgnoreCase(kh.getSdtKhachHang().substring(0, length))) {
                     dtmKhachHang.addRow(new Object[]{
-                        kh.getSdtKhachHang(), kh.getTenKhachHang(), kh.getEmail(), kh.getDiaChi(), kh.getTenDangNhap(),
-                        kh.getCmnd(), kh.getDiemTichLuy()
+                        kh.getSdtKhachHang(), kh.getTenKhachHang()
+                        ,kh.getDiemTichLuy()
                     });
                 }
             }

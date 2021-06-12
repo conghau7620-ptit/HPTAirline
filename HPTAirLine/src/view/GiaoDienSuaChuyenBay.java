@@ -8,8 +8,11 @@ package view;
 import connection.LoadData;
 import controller.Controller;
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Date;
 import java.sql.Time;
+import javax.swing.JOptionPane;
 import model.ChuyenBay;
 import model.DuongBay;
 import model.MayBay;
@@ -17,7 +20,7 @@ import model.SanBay;
 
 /**
  *
- * @author tuanbuiquoc
+ * @author conghau
  */
 public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
 
@@ -26,11 +29,28 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
      */
     
     ChuyenBay chuyenBay = null;
-    
+    String maCB = null;
     public GiaoDienSuaChuyenBay(String maChuyenBay) {
         initComponents();
         new LoadData();
         loadChuyenBayDuocChon(maChuyenBay);
+        maCB = maChuyenBay;
+        
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -400,6 +420,12 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
                         time,
                         jTextArea_GhiChu.getText(),
                         db.getKhoangCach());
+                    for (ChuyenBay cb1 : Controller.arrayListChuyenBay) {
+                        if (cb1.getMaChuyenBay().equals(maCB)) {
+                            chuyenBay = cb1;
+                             break;
+                        }
+                    }
                     Controller.arrayListChuyenBay.set(
                             Controller.arrayListChuyenBay.indexOf(chuyenBay), cb);
                     connection.UpdateData.updateChuyenBay(cb);
@@ -426,7 +452,7 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

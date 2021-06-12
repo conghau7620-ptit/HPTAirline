@@ -39,6 +39,9 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
                 }
             }
         });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        
         thongTinTaiKhoan();
         jButton_KhachHang.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThongKe.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -49,6 +52,8 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton_ChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_DuongBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_SanBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        
+        jButton_TimChuyen.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -81,6 +86,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton_ChuyenBay = new javax.swing.JButton();
         jButton_SanBay = new javax.swing.JButton();
         jButton_DuongBay = new javax.swing.JButton();
+        jButton_TimChuyen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -316,6 +322,20 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
             }
         });
 
+        jButton_TimChuyen.setBackground(new java.awt.Color(204, 204, 0));
+        jButton_TimChuyen.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jButton_TimChuyen.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_TimChuyen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_airplane_52px.png"))); // NOI18N
+        jButton_TimChuyen.setText("Tìm Chuyến");
+        jButton_TimChuyen.setBorderPainted(false);
+        jButton_TimChuyen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_TimChuyen.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jButton_TimChuyen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_TimChuyenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -340,27 +360,32 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
                                     .addComponent(jButton_SanBay, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel_QuanLy, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                        .addComponent(jButton_HoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton_HoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(jButton_TimChuyen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel_QuanLy)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton_HoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_NhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_ThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton_KhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton_SanBay, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_ChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_DuongBay, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_TimChuyen, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel_QuanLy)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton_HoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_NhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_ThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_KhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton_SanBay, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_ChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_DuongBay, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
@@ -476,6 +501,12 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         new GiaoDienQuanLyDuongBay().setVisible(true);
     }//GEN-LAST:event_jButton_DuongBayActionPerformed
 
+    private void jButton_TimChuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TimChuyenActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        new GiaoDienTimChuyenBay().setVisible(true);
+    }//GEN-LAST:event_jButton_TimChuyenActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -519,6 +550,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
     private javax.swing.JButton jButton_NhanVien;
     private javax.swing.JButton jButton_SanBay;
     private javax.swing.JButton jButton_ThongKe;
+    private javax.swing.JButton jButton_TimChuyen;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_AirLines;
     private javax.swing.JLabel jLabel_DangXuat;

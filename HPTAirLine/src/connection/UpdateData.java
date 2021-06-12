@@ -166,7 +166,38 @@ public class UpdateData {
         System.out.println("sửa tài khoản thất bại");
         return false;
     }
-    
+    //đổi loại tk (nhanvien, quanly)
+    public static boolean updateTaiKhoan (String soDienThoai, String phanQuyen) {// theo sdt
+        String sqlCommand = "update dbo.TAIKHOAN set LoaiTaiKhoan=?"
+                + " where SoDienThoai=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1,phanQuyen);
+            ps.setString(2,soDienThoai);
+            
+            return ps.executeUpdate() > 0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa tài khoản thất bại");
+        return false;
+    }
+    public static boolean deleteTaiKhoan(String soDienThoai){//xoa theo sdt
+         String sqlCommand = "delete from dbo.TAIKHOAN where SoDienThoai=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand); 
+            ps.setString(1, soDienThoai);
+            return ps.executeUpdate() > 0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("xóa tài khoản thất bại");
+        return false;
+    }
 
     public static boolean updateGhe(String maGhe, byte trangThaiGhe){
         byte trong = trangThaiGhe;
@@ -224,6 +255,26 @@ public class UpdateData {
         return false;
     }
     
+    public static boolean updateHoaDon(String maHoaDon, byte trangThaiThanhToan, String sdtNhanVien){
+        
+         String sqlCommand = "update dbo.HOADON set TrangThaiThanhToan=?, SoDienThoaiNhanVien = ?"
+                + " where MaHoaDon=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setInt(1, trangThaiThanhToan);
+            ps.setString(2, sdtNhanVien);
+            ps.setString(3,maHoaDon);
+            
+            
+            return ps.executeUpdate() > 0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa hóa đơn thất bại");
+        return false;
+    }
     
     public static boolean deleteVe(String maVe, String maHoaDon){
          String sqlCommand = "delete from dbo.VE where MaVe=? and MaHoaDon=?";

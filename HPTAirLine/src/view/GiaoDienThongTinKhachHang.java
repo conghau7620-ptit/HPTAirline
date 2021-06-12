@@ -7,6 +7,9 @@ package view;
 
 import connection.LoadData;
 import connection.UpdateData;
+import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -20,10 +23,10 @@ import model.TaiKhoan;
  * @author tuanbuiquoc
  */
 //Tạm hoàn thành giao diện thông tin khách hàng, và xử lý sửa thông tin, đổi mật khẩu, chưa kiểm tra  input
-
 public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
 
     String tenKhachHang;
+
     public GiaoDienThongTinKhachHang() {
         initComponents();
         //// Phần thông tin cơ bản , đăng xuất
@@ -41,6 +44,24 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
                 jTextField_DiemTichLuy.setText(kh.getDiemTichLuy() + "");
             }
         }
+
+        jTextField_CMND.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                String cmnd = jTextField_CMND.getText();
+                jLabel_ThongBao.setText("");
+                jLabel_CMND.setForeground(Color.white);
+                jTextField_CMND.setForeground(Color.black);
+                for (int i = 0; i < cmnd.length(); i++) {
+                    if (cmnd.charAt(i) < '0' || cmnd.charAt(i) > '9') {
+                        jLabel_ThongBao.setText("*CMND phải nhập số");
+                        jLabel_CMND.setForeground(Color.yellow);
+                        jTextField_CMND.setForeground(Color.yellow);
+                        break;
+                    }
+                }
+            }
+        });
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -49,21 +70,13 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
 
                 if (confirmed == JOptionPane.YES_OPTION) {
                     dispose();
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }
             }
         });
-        
-        this.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                int confirmed = JOptionPane.showConfirmDialog(null,
-                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
-                        JOptionPane.YES_NO_OPTION);
-
-                if (confirmed == JOptionPane.YES_OPTION) {
-                    dispose();
-                }
-            }
-        });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -101,6 +114,7 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
         jButton_DoiMatKhau = new javax.swing.JButton();
         jLabel_MatKhau = new javax.swing.JLabel();
         jButton_XemLichSu = new javax.swing.JButton();
+        jLabel_ThongBao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -245,6 +259,8 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
             }
         });
 
+        jLabel_ThongBao.setForeground(java.awt.Color.yellow);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -254,17 +270,17 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel_TenDangNhap)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField_TenDangNhap, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton_ThoatGiaoDienThongTinKhachHang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel_SoDienThoai, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel_Email, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField_SoDienThoai, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField_Email, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jTextField_TenDangNhap)
+                            .addComponent(jButton_ThoatGiaoDienThongTinKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel_SoDienThoai)
+                            .addComponent(jLabel_Email)
+                            .addComponent(jTextField_SoDienThoai)
+                            .addComponent(jTextField_Email)
                             .addComponent(jLabel_TenKhachHang)
-                            .addComponent(jTextField_TenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField_TenKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                            .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(57, 57, 57)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton_XacNhanSuaThongTin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -332,7 +348,9 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTextField_Email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton_XemLichSu)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_XemLichSu)
+                    .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_XacNhanSuaThongTin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -366,40 +384,28 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
 
     private void jButton_XacNhanSuaThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanSuaThongTinActionPerformed
         // TODO add your handling code here:
-        int luaChon = JOptionPane.showConfirmDialog(this, "Xác nhân sửa thông tin cho khách hàng " + this.tenKhachHang, "Xác nhận sửa", JOptionPane.YES_NO_OPTION);
+        if (jLabel_ThongBao.getText().isEmpty()) {
+            int luaChon = JOptionPane.showConfirmDialog(this, "Xác nhân sửa thông tin cho khách hàng " + this.tenKhachHang, "Xác nhận sửa", JOptionPane.YES_NO_OPTION);
 
-        if (luaChon == JOptionPane.YES_OPTION) {
-            //gọi hàm sửa thông tin
-            KhachHang khachHang = new KhachHang(jTextField_SoDienThoai.getText(), jTextField_TenKhachHang.getText(),
-                    jTextField_Email.getText(), jTextField_DiaChi.getText(), jTextField_TenDangNhap.getText(),
-                    jTextField_CMND.getText(), Integer.parseInt(jTextField_DiemTichLuy.getText()));
+            if (luaChon == JOptionPane.YES_OPTION) {
+                //gọi hàm sửa thông tin
+                KhachHang khachHang = new KhachHang(jTextField_SoDienThoai.getText(), jTextField_TenKhachHang.getText(),
+                        jTextField_Email.getText(), jTextField_DiaChi.getText(), jTextField_TenDangNhap.getText(),
+                        jTextField_CMND.getText(), Integer.parseInt(jTextField_DiemTichLuy.getText()));
 
-            if (connection.UpdateData.updateKhachHang(khachHang) == true) {
-                JOptionPane.showMessageDialog(this, "Sửa thành công");
-            } else {
-                JOptionPane.showMessageDialog(this, "Sửa không thành công");
+                if (connection.UpdateData.updateKhachHang(khachHang) == true) {
+                    JOptionPane.showMessageDialog(this, "Sửa thành công");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Sửa không thành công");
+                }
+
             }
-
         }
+
     }//GEN-LAST:event_jButton_XacNhanSuaThongTinActionPerformed
 
     private void jButton_DoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DoiMatKhauActionPerformed
         // TODO add your handling code here:
-//        String matKhauCu = JOptionPane.showInputDialog(rootPane, "Nhập mật khẩu cũ");
-//        if(matKhauCu.equals(controller.Controller.tk.getMatKhau())){
-//            String matKhaiMoi = JOptionPane.showInputDialog(rootPane, "Nhập mật khẩu mới");
-//            TaiKhoan taiKhoan = new TaiKhoan(controller.Controller.tk.getTenDangNhap(), matKhaiMoi
-//                    , controller.Controller.tk.getLoaiTaiKhoan(), controller.Controller.tk.getSdt());
-//            if(UpdateData.updateTaiKhoan(taiKhoan)==true){
-//                JOptionPane.showMessageDialog(rootPane, "Đổi mật khẩu thành công");
-//            }
-//            else{
-//                JOptionPane.showMessageDialog(rootPane, "Đổi mật khẩu thất bại");
-//            }
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(rootPane, "Mật khẩu cũ không khớp");
-//        }
         JTextField matKhauMoi = new JTextField();
         JTextField matKhauCu = new JPasswordField();
         Object[] message = {
@@ -418,7 +424,7 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Đổi mật khẩu thất bại");
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(rootPane, "Mật khẩu cũ không khớp");
             }
         }
@@ -482,6 +488,7 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_SoDienThoai;
     private javax.swing.JLabel jLabel_TenDangNhap;
     private javax.swing.JLabel jLabel_TenKhachHang;
+    private javax.swing.JLabel jLabel_ThongBao;
     private javax.swing.JLabel jLabel_ThongTinKhachHang;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

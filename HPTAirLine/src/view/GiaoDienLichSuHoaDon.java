@@ -36,7 +36,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
 
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
         dtmHoaDon.setColumnIdentifiers(new Object[]{
-            "MaHoaDon", "SDTKhachHang", "NgayXuatHoaDon", "TrangThaiThanhToan", "TongTien", "SDTNhanVien"
+            "Mã HĐ", "SĐT KH", "Ngày Xuất", "Thanh Toán", "Tổng", "SĐT NV"
         });
         hienThongTinVaoBangHoaDon();
 //        dtmHoaDon.setRowCount(0);
@@ -60,8 +60,8 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
 
         dtmVe = (DefaultTableModel) jTable_VeDaChon.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
-            "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay", "NgaySinh", "MaHoaDon", "MaGhe"
+            "Mã Vé", "Mã CB", "Giá", "Ký Gửi",
+            "CMND Người Bay", "Tên Người Bay", "Ngày Sinh", "Mã HĐ", "Mã Ghế"
         });
 
         this.addWindowListener(new WindowAdapter() {
@@ -75,6 +75,8 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                 }
             }
         });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -231,7 +233,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                         .addComponent(jButton_XoaHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -689,7 +691,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                 JComboBox jComboBox_DiemMoi = new JComboBox(new Object[]{"0", "100", "200", "300", "400", "500", "600", "700", "800", "900", "1000"});
                 //        
 //            JLabel jLabel_BaoLoi = new JLabel();
-//            jLabel_BaoLoi.setForeground(Color.red);
+//            jLabel_BaoLoi.setForeground(Color.yellow);
 //            JTextField jTextField_DiemMoi = new JTextField();
                 Object[] message = {
                     "Điểm cũ đã dùng:", jTextField_DiemCuDaDung,

@@ -36,14 +36,14 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         initComponents();
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
         dtmHoaDon.setColumnIdentifiers(new Object[]{
-            "MaHoaDon", "SDTKhachHang", "NgayXuatHoaDon", "TrangThaiThanhToan", "TongTien", "SDTNhanVien"
+            "Mã HĐ", "SĐT KH", "Ngày Xuất", "Thanh Toán", "Tổng", "SĐT NV"
         });
         setVisible(true);
         hienThongTinVaoBangHoaDon();
         dtmVe = (DefaultTableModel) jTable_VeDaChon.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
-            "MaVe", "MaChuyenBay", "Gia", "KyGui",
-            "CMNDNguoiBay", "TenNguoiBay", "NgaySinh", "MaHoaDon", "MaGhe"
+            "Mã Vé", "Mã CB", "Giá", "Ký Gửi",
+            "CMND Người Bay", "Tên Người Bay", "Ngày Sinh", "Mã HĐ", "Mã Ghế"
         });
 
         this.addWindowListener(new WindowAdapter() {
@@ -54,9 +54,13 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
 
                 if (confirmed == JOptionPane.YES_OPTION) {
                     dispose();
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }
             }
         });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -74,7 +78,11 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         jLabel_AirLines = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_HoaDon = new javax.swing.JTable();
+        jTable_HoaDon = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jLabel_HoaDon = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jButton_ThoatGiaoDienXemLichSu = new javax.swing.JButton();
@@ -83,7 +91,11 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         jLabel_BaoLoi = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable_VeDaChon = new javax.swing.JTable();
+        jTable_VeDaChon = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jLabel_VeDaChon = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jButton_XoaVe = new javax.swing.JButton();
@@ -581,6 +593,16 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
             String maHoaDon = (String) jTable_HoaDon.getValueAt(row, 0);
             new LoadData();
             dtmVe.setRowCount(0);
+            for(HoaDon hd: controller.Controller.arrayListHoaDon){
+                if(hd.getMaHoaDon().equals(maHoaDon)){
+                    if(hd.getTrangThaiThanhToan()==1){
+                        jCheckBox_DaThanhToan.setSelected(true);
+                    }else{
+                        jCheckBox_DaThanhToan.setSelected(false);
+                    }
+                    break;
+                }
+            }
             for (Ve v : controller.Controller.arrayListVe) {
                 if (v.getMaHoaDon().equals(maHoaDon)) {
                     if (v.getNgaySinh() != null) {
@@ -721,7 +743,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 JComboBox jComboBox_DiemMoi = new JComboBox(new Object[]{"0", "100", "200", "300", "400", "500", "600", "700", "800", "900", "1000"});
                 //
                 //            JLabel jLabel_BaoLoi = new JLabel();
-                //            jLabel_BaoLoi.setForeground(Color.red);
+                //            jLabel_BaoLoi.setForeground(Color.yellow);
                 //            JTextField jTextField_DiemMoi = new JTextField();
                 Object[] message = {
                     "Điểm cũ đã dùng:", jTextField_DiemCuDaDung,
@@ -949,6 +971,10 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
 
     private void jCheckBox_DaThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox_DaThanhToanItemStateChanged
         int rowHoaDon = jTable_HoaDon.getSelectedRow();
+        if(rowHoaDon==-1){
+            JOptionPane.showMessageDialog(rootPane, "Chưa chọn hóa đơn");
+            return;
+        }
         String maHoaDon = (String) jTable_HoaDon.getValueAt(rowHoaDon, 0);
         int vtHoaDon = -1;
         for (HoaDon hd : controller.Controller.arrayListHoaDon) {
@@ -961,11 +987,11 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             controller.Controller.arrayListHoaDon.get(vtHoaDon).setTrangThaiThanhToan((byte) 1);
             controller.Controller.arrayListHoaDon.get(vtHoaDon).setSdtNhanVien(controller.Controller.tk.getSdt());
-            connection.UpdateData.updateHoaDon(maHoaDon, (byte) 1);
+            connection.UpdateData.updateHoaDon(maHoaDon, (byte) 1, controller.Controller.tk.getSdt());
             hienThongTinVaoBangHoaDon();
         } else {
             controller.Controller.arrayListHoaDon.get(vtHoaDon).setTrangThaiThanhToan((byte) 0);
-            connection.UpdateData.updateHoaDon(maHoaDon, (byte) 0);
+            connection.UpdateData.updateHoaDon(maHoaDon, (byte) 0,controller.Controller.tk.getSdt());
 
             hienThongTinVaoBangHoaDon();
         }

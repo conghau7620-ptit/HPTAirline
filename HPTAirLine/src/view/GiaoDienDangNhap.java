@@ -24,6 +24,8 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         initComponents();
         jLabel_DangKy.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_DangNhap.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -216,7 +218,7 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
     private void jLabel_DangKyMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangKyMousePressed
         // TODO add your handling code here:
         new GiaoDienDangKyTaiKhoan().setVisible(true);
-        dispose();
+//        dispose();
     }//GEN-LAST:event_jLabel_DangKyMousePressed
 
     private void jButton_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangNhapActionPerformed

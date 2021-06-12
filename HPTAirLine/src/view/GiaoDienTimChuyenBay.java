@@ -8,6 +8,7 @@ package view;
 import connection.LoadData;
 import controller.Controller;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -20,6 +21,8 @@ import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import model.ChuyenBay;
+import model.Ghe;
 import model.KhachHang;
 import model.NhanVien;
 
@@ -45,13 +48,21 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             Logger.getLogger(GiaoDienTimChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
         }
         //
+        if(!controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")){
+            for(Component c:jPanel_TaiKhoan.getComponents()){
+                c.setForeground(new Color(48,57,82));
+            }
+        }else{
+                    jLabel_XemThongTinTaiKhoan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+                    jLabel_DangXuat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        }
         thongTinTaiKhoan();
         inputMacDinh();
-        
-        if(controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")){
-            jLabel1.setVisible(false);
+
+        if (controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")) {
+            jLabel_QuayLai.setVisible(false);
         }
-        
+
         jLabel_HuongDanDatCho.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         this.addWindowListener(new WindowAdapter() {
@@ -66,6 +77,8 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                 }
             }
         });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -75,8 +88,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
      */
     private void thongTinTaiKhoan() {
         //// Phần thông tin cơ bản , đăng xuất
-        jLabel_XemThongTinTaiKhoan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        jLabel_DangXuat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
         new LoadData();
         for (NhanVien nv : controller.Controller.arrayListNhanVien) {
             if (nv.getSdtNhanVien().equals(controller.Controller.tk.getSdt())
@@ -137,7 +149,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         jDateChooser_NgayDi = new com.toedter.calendar.JDateChooser();
         jDateChooser_NgayVe = new com.toedter.calendar.JDateChooser();
         jLabel_BaoLoi = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel_QuayLai = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -367,13 +379,13 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         jDateChooser_NgayVe.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
 
         jLabel_BaoLoi.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        jLabel_BaoLoi.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel_BaoLoi.setForeground(java.awt.Color.yellow);
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Quay Lại");
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel_QuayLai.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_QuayLai.setText("Quay Lại");
+        jLabel_QuayLai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel1MousePressed(evt);
+                jLabel_QuayLaiMousePressed(evt);
             }
         });
 
@@ -423,7 +435,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                                 .addGap(80, 80, 80)
                                 .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel_QuayLai))
                     .addComponent(jButton_TimChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -473,7 +485,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
-                        .addComponent(jLabel1)
+                        .addComponent(jLabel_QuayLai)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -521,7 +533,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         boolean ktra = true;
 
         if (Integer.parseInt(jComboBox_SLNguoiLon.getSelectedItem().toString()) == 0) {
-            jComboBox_SLNguoiLon.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            jComboBox_SLNguoiLon.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
             jLabel_BaoLoi.setText("Trẻ em cần có người lớn đi cùng.");
             ktra = false;
             return ktra;
@@ -532,8 +544,8 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         }
 
         if (jComboBox_SanBayDi.getSelectedItem().toString().equalsIgnoreCase(jComboBox_SanBayDen.getSelectedItem().toString())) {
-            jComboBox_SanBayDen.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-            jComboBox_SanBayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            jComboBox_SanBayDen.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
+            jComboBox_SanBayDi.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
             jLabel_BaoLoi.setText("Sân bay đi và sân bay đến không thể trùng nhau.");
             ktra = false;
             return ktra;
@@ -547,7 +559,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         Date ngayVe = jDateChooser_NgayVe.getDate();
         //neu ngay trong 2 jDateChooser trc ngay hien tai thi khong the tim chuyen bay
         if ((ngayHienTai.after(ngayDi))) {
-            jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
             ktra = false;
             jLabel_BaoLoi.setText("Ngày đi không hợp lệ.");
             return ktra;
@@ -558,16 +570,16 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
         if (jRadioButton_KhuHoi.isSelected()) {
             if ((ngayHienTai.after(ngayVe))) {
-                jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+                jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
                 ktra = false;
                 return ktra;
             } else {
                 jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
             }
             if (ngayDi.after(ngayVe)) {
-                jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+                jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
                 jLabel_BaoLoi.setText("Ngày đi phải trước ngày về.");
-                jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+                jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
                 ktra = false;
                 return ktra;
             } else {
@@ -593,25 +605,44 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             Date ngayDi = jDateChooser_NgayDi.getDate();
             Date ngayVe = null;
             boolean khuHoi = false;
-          boolean di = true;
-          boolean ve = false;
+            boolean di = true;
+            boolean ve = false;
             int soGheNguoiLon = Integer.parseInt(jComboBox_SLNguoiLon.getSelectedItem().toString());
             int soGheTreEm = Integer.parseInt(jComboBox_SLTreEm.getSelectedItem().toString());
 //            int soGheEmBe = Integer.parseInt(jComboBox_SLEmBe.getSelectedItem().toString());
             if (jRadioButton_KhuHoi.isSelected()) {
-              //  khuHoi = true;
-            //  di = true;
-              ve = true;
-              khuHoi = true;
+                //  khuHoi = true;
+                //  di = true;
+                ve = true;
+                khuHoi = true;
                 ngayVe = jDateChooser_NgayVe.getDate();
+
+                Controller.loadKetQuaTheoNgay(jComboBox_SanBayDen.getSelectedItem().toString().substring(0, 3),
+                        jComboBox_SanBayDi.getSelectedItem().toString().substring(0, 3), new SimpleDateFormat("yyyy-MM-dd").format(ngayVe).toString());
+                new LoadData();
+                if (controller.Controller.arrayListKetQuaTimKiemChuyenBay.size() != 0) {
+                    for (ChuyenBay cb : controller.Controller.arrayListKetQuaTimKiemChuyenBay) {
+                        int soGheTrong = 0;
+                        for (Ghe g : cb.getArrayListGhe()) {
+                            if (g.getTrong() == 1) {
+                                soGheTrong++;
+                            }
+                        }
+                        if (soGheTrong >= (soGheNguoiLon + soGheTreEm /*+ this.soGheEmBe*/)) {
+                            break;
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane, "Không có chuyến về đủ ghế");
+                            return;
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Không có chuyến về");
+                    return;
+                }
             }
-            //
-//            System.out.println(soGheNguoiLon);
-//            System.out.println(soGheTreEm);
-//            System.out.println(soGheEmBe);
-//        this.dispose();
-     //       new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm).setVisible(true);
-                    new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve,khuHoi,  soGheNguoiLon, soGheTreEm).setVisible(true);
+
+            
+            new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm).setVisible(true);
             this.dispose();
         }
         if (baoLoiInput() == false) {
@@ -635,8 +666,8 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
     private void jComboBox_SanBayDenItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_SanBayDenItemStateChanged
         if (jComboBox_SanBayDi.getSelectedItem().toString().equalsIgnoreCase(jComboBox_SanBayDen.getSelectedItem().toString())) {
-            jComboBox_SanBayDen.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-            jComboBox_SanBayDi.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            jComboBox_SanBayDen.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
+            jComboBox_SanBayDi.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
             jLabel_BaoLoi.setText("Sân bay đi và sân bay đến không thể trùng nhau.");
         } else {
             jComboBox_SanBayDi.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
@@ -657,6 +688,9 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
     private void jLabel_XemThongTinTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_XemThongTinTaiKhoanMousePressed
         // TODO add your handling code here:
+        if(!controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")){
+            return;
+        }
         if (jLabel_PhanQuyen.getText().equals("nhân viên")) {
             this.dispose();
             new GiaoDienThongTinNhanVien().setVisible(true);
@@ -673,17 +707,24 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
     private void jLabel_DangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangXuatMousePressed
         // TODO add your handling code here:
+        if(!controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")){
+            return;
+        }
         dispose();
         new GiaoDienDangNhap().setVisible(true);
     }//GEN-LAST:event_jLabel_DangXuatMousePressed
 
-    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
+    private void jLabel_QuayLaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_QuayLaiMousePressed
         // TODO add your handling code here:
         if (Controller.tk.getLoaiTaiKhoan().equals("NhanVien")) {
             dispose();
             new GiaoDienNhanVien().setVisible(true);
         }
-    }//GEN-LAST:event_jLabel1MousePressed
+        if (Controller.tk.getLoaiTaiKhoan().equals("QuanLy")) {
+            dispose();
+            new GiaoDienQuanLy().setVisible(true);
+        }
+    }//GEN-LAST:event_jLabel_QuayLaiMousePressed
 
     /**
      * @param args the command line arguments
@@ -732,7 +773,6 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox_SanBayDi;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayDi;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayVe;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_AirLines;
     private javax.swing.JLabel jLabel_BaoLoi;
@@ -746,6 +786,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_NgayVe;
     private javax.swing.JLabel jLabel_NguoiLon;
     private javax.swing.JLabel jLabel_PhanQuyen;
+    private javax.swing.JLabel jLabel_QuayLai;
     private javax.swing.JLabel jLabel_SanBayDen;
     private javax.swing.JLabel jLabel_SanBayDi;
     private javax.swing.JLabel jLabel_TenNguoiDung;

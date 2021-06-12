@@ -6,6 +6,8 @@
 package view;
 
 import connection.LoadData;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
@@ -27,9 +29,25 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
     public GiaoDienQuanLySanBay() {
         initComponents();
         dtmSanBay = (DefaultTableModel) jTable_SanBay.getModel();
-        dtmSanBay.setColumnIdentifiers(new Object[]{"MaSanBay", "TenSanBay"});
+        dtmSanBay.setColumnIdentifiers(new Object[]{"Mã SB", "Tên SB"});
 
         hienThongTin();
+        
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     public void hienThongTin() {
@@ -55,7 +73,11 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
         jLabel_AirLines = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable_SanBay = new javax.swing.JTable();
+        jTable_SanBay = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jLabel1 = new javax.swing.JLabel();
         jButton_ThemSanBay = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();

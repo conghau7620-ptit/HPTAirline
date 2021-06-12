@@ -9,6 +9,7 @@ import connection.DataConnection;
 import connection.LoadData;
 import controller.Controller;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.ParseException;
@@ -23,6 +24,8 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
 import model.Ghe;
+import model.KhachHang;
+import model.NhanVien;
 
 /**
  *
@@ -33,10 +36,9 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
     /**
      * Creates new form FlightSearchResultFrame
      */
-    
     //SoGhe trong trong chuyen bay deu = 0; chưa sửa
     public static String maChuyenBayDi;
-    ArrayList <ChuyenBay> list;
+    ArrayList<ChuyenBay> list;
     DefaultTableModel dtm;
     String maSanBayDi;
     String maSanBayDen;
@@ -46,29 +48,29 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
     int soGheTreEm;
 //    int soGheEmBe;
     boolean khuHoi;
-    boolean di, ve ;
-    
-    public GiaoDienChonChuyenBayDi(String maSanBayDi, String maSanBayDen, 
-          // Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
-               Date ngayDi, Date ngayVe, boolean di, boolean ve, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
+    boolean di, ve;
+
+    public GiaoDienChonChuyenBayDi(String maSanBayDi, String maSanBayDen,
+            // Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
+            Date ngayDi, Date ngayVe, boolean di, boolean ve, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
         initComponents();
-         this.maSanBayDi= maSanBayDi;
-         this.maSanBayDen = maSanBayDen;
-         this.ngayDi = ngayDi;
-         this.ngayVe = ngayVe;
-         this.soGheNguoiLon = soGheNguoiLon;
-         this.soGheTreEm = soGheTreEm;
-         this.di= di;
-         this.ve= ve;
+        this.maSanBayDi = maSanBayDi;
+        this.maSanBayDen = maSanBayDen;
+        this.ngayDi = ngayDi;
+        this.ngayVe = ngayVe;
+        this.soGheNguoiLon = soGheNguoiLon;
+        this.soGheTreEm = soGheTreEm;
+        this.di = di;
+        this.ve = ve;
 //         this.soGheEmBe = soGheEmBe;
-         this.khuHoi = khuHoi;
-         
+        this.khuHoi = khuHoi;
+
         dtm = (DefaultTableModel) jTable_KetQuaTimKiem.getModel();
         dtm.setColumnIdentifiers(new Object[]{
-            "MaChuyenBay", "MaMayBay", "MaSanBayDi", "MaSanBayDen", "NgayBay", "GioBay", "GhiChu",
-             "KhoangCach"
+            "Mã CB", "Mã MB", "Mã SB Đi", "Mã SB Đến", "Ngày Bay", "Giờ Bay", "Ghi Chú",
+            "Khoảng Cách"
         });
-        
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -82,12 +84,12 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
                 }
             }
         });
-        
-        hienKetQua();
-        
-     //   
 
-        
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        hienKetQua();
+
+        //   
 //        String date = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
 //        try {
 //            ngayHienTai = new SimpleDateFormat("dd/MM/yyyy").parse(date);
@@ -96,8 +98,9 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 //        }
     }
 // test
+
     private GiaoDienChonChuyenBayDi() {
-       initComponents(); //To change body of generated methods, choose Tools | Templates.
+        initComponents(); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -115,7 +118,12 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
         jLabel_AirLines = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_KetQuaTimKiem = new javax.swing.JTable();
+        jTable_KetQuaTimKiem = new javax.swing.JTable(){
+            //    private static final long serialVersionUID = 1L;
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         jButton_XacNhanChonChuyenBay = new javax.swing.JButton();
         jLabel_ThongTinCanTimKiem = new javax.swing.JLabel();
         jButton_ThoatKetQuaTimKiemChuyenBay = new javax.swing.JButton();
@@ -147,12 +155,12 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
                 .addComponent(jLabel_HPT)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_AirLines, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(431, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel_HPT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -176,6 +184,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_KetQuaTimKiem.setFillsViewportHeight(true);
         jTable_KetQuaTimKiem.setGridColor(new java.awt.Color(0, 0, 0));
         jTable_KetQuaTimKiem.setRowHeight(30);
         jTable_KetQuaTimKiem.setSelectionBackground(new java.awt.Color(255, 77, 77));
@@ -261,54 +270,48 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
     private void jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed
         // TODO add your handling code here:
         this.dispose();
-
         new GiaoDienTimChuyenBay().setVisible(true);
 
     }//GEN-LAST:event_jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed
 
     private void jButton_XacNhanChonChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanChonChuyenBayActionPerformed
         // TODO add your handling code here:
-          int row = jTable_KetQuaTimKiem.getSelectedRow();
+        int row = jTable_KetQuaTimKiem.getSelectedRow();
         //if(this.khuHoi == true){
-        if(this.ve == true){
+        if (this.ve == true) {
 //            this.dispose();
 //                int row = jTable_KetQuaTimKiem.getSelectedRow();
-                if(row==-1){
-                    JOptionPane.showMessageDialog(rootPane, "Hay chon chuyen bay di.");
-                }
-                else{
+            if (row == -1) {
+                JOptionPane.showMessageDialog(rootPane, "Hãy chọn chuyến bay đi.");
+            } else {
 //                    new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe
 //                            , this.soGheNguoiLon, this.soGheTreEm/*, this.soGheEmBe*/, 
 //                            (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
-                    
 
-                     new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
-                   maChuyenBayDi = (String) jTable_KetQuaTimKiem.getValueAt(row, 0);
-                     this.dispose();
-                }
-        }
-        else{
-         //   int row = jTable_KetQuaTimKiem.getSelectedRow();
-            if(row==-1){
-                JOptionPane.showMessageDialog(rootPane, "Hay chon chuyen bay di.");
+                new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+                maChuyenBayDi = (String) jTable_KetQuaTimKiem.getValueAt(row, 0);
+                this.dispose();
             }
-            else{
+        } else {
+            //   int row = jTable_KetQuaTimKiem.getSelectedRow();
+            if (row == -1) {
+                JOptionPane.showMessageDialog(rootPane, "Hãy chọn chuyến bay đi.");
+            } else {
 //                new GiaoDienChonGhe((String) jTable_KetQuaTimKiem.getValueAt(row, 0), ""
 //                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
                 //new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
-                 new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+                new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
                 this.dispose();
 
-            }       
+            }
         }
-     //    new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
-          //  new GiaoDienChonGhe().setVisible(true);
+        //    new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
+        //  new GiaoDienChonGhe().setVisible(true);
     }//GEN-LAST:event_jButton_XacNhanChonChuyenBayActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
     private void hienKetQua() {
         dtm.setRowCount(0);
 //        LoadData.loadKetQuaTimKiemChuyenBay("VII", "SGN", "2", "3");
@@ -322,12 +325,12 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 //        System.out.println(stringNgayDi);
 //        System.out.println(this.maSanBayDi);
 //        System.out.println(this.maSanBayDen);
-        
+
         Controller.arrayListKetQuaTimKiemChuyenBay.removeAll(Controller.arrayListKetQuaTimKiemChuyenBay);
-        
+
         Controller.loadKetQuaTheoNgay(this.maSanBayDi, this.maSanBayDen, stringNgayDi);
         LoadData.loadTableChuyenBay();
-        
+
         list = Controller.arrayListKetQuaTimKiemChuyenBay;
 //        ArrayList<ChuyenBay> list2 = Controller.arrayListChuyenBay;
 //        for(ChuyenBay x: list2){
@@ -341,12 +344,12 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 
         for (ChuyenBay cb : list) {
             int soGheTrong = 0;
-            for(Ghe g : cb.getArrayListGhe()){
-                if(g.getTrong()==1){
-                    soGheTrong ++;
+            for (Ghe g : cb.getArrayListGhe()) {
+                if (g.getTrong() == 1) {
+                    soGheTrong++;
                 }
             }
-            if(soGheTrong >= (this.soGheNguoiLon + this.soGheTreEm /*+ this.soGheEmBe*/)){
+            if (soGheTrong >= (this.soGheNguoiLon + this.soGheTreEm /*+ this.soGheEmBe*/)) {
                 dtm.addRow(new Object[]{
                     cb.getMaChuyenBay(), cb.getMaMayBay(), cb.getMaSanBayDi(), cb.getMaSanBayDen(), new SimpleDateFormat("dd/MM/yyyy").format(cb.getNgayBay()),
                     cb.getGioBay(), cb.getGhiChu(), cb.getKhoangCach()
@@ -358,7 +361,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
             //
         }
     }
-    
+
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -399,7 +402,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 ////       });
 //
 //    }
-        public static void main(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -407,7 +410,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -427,8 +430,8 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               new GiaoDienChonChuyenBayDi().setVisible(true);
-               // new GiaoDienChonGhe(xacNhan, ve).setVisible(true);
+                new GiaoDienChonChuyenBayDi().setVisible(true);
+                // new GiaoDienChonGhe(xacNhan, ve).setVisible(true);
             }
         });
     }

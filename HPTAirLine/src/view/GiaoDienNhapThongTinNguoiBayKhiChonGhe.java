@@ -7,7 +7,8 @@ package view;
 
 import connection.DataConnection;
 import java.awt.Color;
-import java.awt.Component;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.ParseException;
@@ -18,7 +19,6 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
@@ -36,6 +36,22 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
         
         initComponents();
         jPanel7.setVisible(false);
+        
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
     
     private String maGhe = "";
@@ -535,7 +551,7 @@ private String danhMaHoaDon (int soHoaDon) {
                  else if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di)
                  {
                      
-                      if(soHoaDon <= 8) maHoaDon= "HD0"+ (soHoaDon+1);
+                 if(soHoaDon <= 8) maHoaDon= "HD0"+ (soHoaDon+1);
                  else maHoaDon = "HD" + (soHoaDon+1);
                       System.out.println("ma hoa don ve" + maHoaDon);
 //                      if(maHoaDon.equals(GiaoDienChonGhe.dsVeDi.get(0).getMaHoaDon().trim())){
@@ -618,7 +634,13 @@ private String danhMaHoaDon (int soHoaDon) {
 //                          
 //                      }
 //                  }
-                  String maHoaDonCuoi = dsHoaDon.get(dsHoaDon.size() -1).trim().substring(2);
+                String maHoaDonCuoi="";
+                if(dsHoaDon.size()==0){
+                    maHoaDonCuoi = "00";
+                }else{
+                    maHoaDonCuoi = dsHoaDon.get(dsHoaDon.size() -1).trim().substring(2);
+                }
+                  
                   System.out.println("maHoaDOnCuoi " + maHoaDonCuoi );
                   int soHoaDonTest = Integer.parseInt(maHoaDonCuoi)+1;
                  String maHoaDon = danhMaHoaDon(soHoaDonTest);
@@ -633,16 +655,21 @@ private String danhMaHoaDon (int soHoaDon) {
                  
 
                 
-                 String regexCMND = "\\d{9}";
+
+                 
                //  String regexEmail=  "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";// "\\b[A-Z0-9._%-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b";
                  String regexBirth = "\\d{2}[-|/]\\d{2}[-|/]\\d{4}";
                 
                 if (ten.equals("") && tenTre.equals("")) JOptionPane.showMessageDialog(this, "Họ và tên không được bỏ trống.");
-                else if (!ten.equals("") && CMND.equals("")) JOptionPane.showMessageDialog(this, "CMND/Hộ chiếu không được để trống");
-                else if (!ten.equals("") && !CMND.matches(regexCMND)) JOptionPane.showMessageDialog(this, "vui lòng nhập đúng số CMND/Hộ chiếu");
+                else if (!ten.equals("") && CMND.equals("")) JOptionPane.showMessageDialog(this, "CMND/Hộ chiếu không được để trống");              
                 
                 else {
-                               
+                    for (int i = 0; i < CMND.length(); i++) {
+                        if (CMND.charAt(i) < '0' || CMND.charAt(i) > '9') {
+                            JOptionPane.showMessageDialog(null, "CMND phải là số từ 0-9");
+                            return;
+                        }   
+                    }
                // if(ten.equals("")) { // chỗ này là khi tên ng lớn rỗng thì lấy thông tin của trẻ em
                  if (luaChon == "treEm"){
                     ve.setMaVe(maVe);
@@ -722,7 +749,7 @@ private String danhMaHoaDon (int soHoaDon) {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

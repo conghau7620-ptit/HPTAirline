@@ -6,7 +6,8 @@
 package view;
 
 import connection.LoadData;
-import controller.Controller;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import model.DuongBay;
 import model.SanBay;
@@ -25,6 +26,21 @@ public class GiaoDienSuaDuongBay extends javax.swing.JFrame {
         initComponents();
         this.maDuongBay = maDuongBay;
         hienThongTin();
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
     private void hienThongTin() {
         new LoadData();
@@ -159,7 +175,7 @@ public class GiaoDienSuaDuongBay extends javax.swing.JFrame {
         });
 
         jLabel_ThongBao.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        jLabel_ThongBao.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel_ThongBao.setForeground(java.awt.Color.yellow);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
