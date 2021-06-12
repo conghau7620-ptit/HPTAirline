@@ -446,8 +446,8 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
         for (HoaDon hd : controller.Controller.arrayListHoaDon) {
             String ngayXuatHoaDon = new SimpleDateFormat("yyyy-MM-dd").format(hd.getNgayXuatHoaDon());
             if (ngayXuatHoaDon.substring(0, length).equals(this.ngayCanXem) && hd.getTrangThaiThanhToan() == 1
-                    && hd.getSdtKhachHang().substring(0, this.sdtKhachHang.length()).equals(this.sdtKhachHang)
-                    && hd.getSdtNhanVien().substring(0, this.sdtNhanVien.length()).equals(this.sdtNhanVien)) {
+                    && hd.getSdtKhachHang().contains(sdtKhachHang)
+                    && hd.getSdtNhanVien().contains(sdtNhanVien)) {
                 dtmHoaDon.addRow(new Object[]{
                     hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()), hd.getTrangThaiThanhToan(),
                     hd.getTongTien(), hd.getSdtNhanVien()
@@ -463,8 +463,8 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
         for (HoaDon hd : controller.Controller.arrayListHoaDon) {
             String ngayXuatHoaDon = new SimpleDateFormat("yyyy-MM-dd").format(hd.getNgayXuatHoaDon());
             if (ngayXuatHoaDon.substring(0, length).equals(this.ngayCanXem)
-                    && hd.getSdtKhachHang().substring(0, this.sdtKhachHang.length()).equals(this.sdtKhachHang)
-                    && hd.getSdtNhanVien().substring(0, this.sdtNhanVien.length()).equals(this.sdtNhanVien)) {
+                    && hd.getSdtKhachHang().contains(sdtKhachHang)
+                    && hd.getSdtNhanVien().contains(sdtNhanVien)) {
                 dtmHoaDon.addRow(new Object[]{
                     hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()), hd.getTrangThaiThanhToan(),
                     hd.getTongTien(), hd.getSdtNhanVien()
