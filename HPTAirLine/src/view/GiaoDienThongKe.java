@@ -83,6 +83,7 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         
+        jButton_XemTatCa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThongTinChiTietHomNay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThongTinChiTietHomQua.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

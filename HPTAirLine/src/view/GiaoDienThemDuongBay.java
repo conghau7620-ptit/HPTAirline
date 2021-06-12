@@ -8,6 +8,7 @@ package view;
 import connection.InsertData;
 import connection.LoadData;
 import controller.Controller;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -25,6 +26,8 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
      */
     public GiaoDienThemDuongBay() {
         initComponents();
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThemDuongBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         new LoadData();
         input();
         

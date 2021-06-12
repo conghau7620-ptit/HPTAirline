@@ -37,6 +37,8 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
 
     public GiaoDienQuanLyKhachHang() {
         initComponents();
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_KhoiPhucMK.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
             dtmHoaDon.setColumnIdentifiers(new Object[]{
                 "Mã HĐ", "SĐT KH", "Ngày Xuất", "Thanh Toán", "Tổng", "SĐT NV"
@@ -69,8 +71,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         });
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        
-        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
     }
 
     /**

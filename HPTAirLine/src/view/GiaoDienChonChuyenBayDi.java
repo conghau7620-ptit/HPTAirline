@@ -5,27 +5,19 @@
  */
 package view;
 
-import connection.DataConnection;
 import connection.LoadData;
 import controller.Controller;
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
 import model.ChuyenBay;
 import model.Ghe;
-import model.KhachHang;
-import model.NhanVien;
 
 /**
  *
@@ -54,6 +46,8 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
             // Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
             Date ngayDi, Date ngayVe, boolean di, boolean ve, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
         initComponents();
+        jButton_XacNhanChonChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThoatKetQuaTimKiemChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.maSanBayDi = maSanBayDi;
         this.maSanBayDen = maSanBayDen;
         this.ngayDi = ngayDi;

@@ -236,6 +236,24 @@ public class UpdateData {
         System.out.println("sửa hóa đơn thất bại");
         return false;
     }
+    public static boolean updateHoaDon(String maHoaDon, int tongTien, String sdtNhanVien){
+         String sqlCommand = "update dbo.HOADON set TongTien=?, SoDienThoaiNhanVien=?"
+                + " where MaHoaDon=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setInt(1,tongTien);
+            ps.setString(2,sdtNhanVien);
+            ps.setString(3, maHoaDon);
+            
+            return ps.executeUpdate() > 0;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa hóa đơn thất bại");
+        return false;
+    }
     public static boolean updateHoaDon(String maHoaDon, byte trangThaiThanhToan){
         
          String sqlCommand = "update dbo.HOADON set TrangThaiThanhToan=?"

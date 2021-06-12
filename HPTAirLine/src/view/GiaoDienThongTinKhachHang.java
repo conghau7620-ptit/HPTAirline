@@ -8,6 +8,7 @@ package view;
 import connection.LoadData;
 import connection.UpdateData;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -29,6 +30,10 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
 
     public GiaoDienThongTinKhachHang() {
         initComponents();
+        jButton_XemLichSu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_XacNhanSuaThongTin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_DoiMatKhau.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThoatGiaoDienThongTinKhachHang.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         //// Phần thông tin cơ bản , đăng xuất
         new LoadData();
         for (KhachHang kh : controller.Controller.arrayListKhachHang) {

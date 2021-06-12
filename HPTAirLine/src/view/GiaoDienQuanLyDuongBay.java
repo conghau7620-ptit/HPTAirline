@@ -6,6 +6,7 @@
 package view;
 
 import connection.LoadData;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -28,6 +29,10 @@ public class GiaoDienQuanLyDuongBay extends javax.swing.JFrame {
     String maSanBay2="";
     public GiaoDienQuanLyDuongBay() {
         initComponents();
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_SuaDuongBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThemDuongBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_XoaDuongBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.dtmDuongBay = (DefaultTableModel) jTable_DuongBay.getModel();
         dtmDuongBay.setColumnIdentifiers(new Object[]{"Mã ĐB", "Mã SB 1", "Mã SB 2", "Khoảng Cách"});
         hienThongTin();
