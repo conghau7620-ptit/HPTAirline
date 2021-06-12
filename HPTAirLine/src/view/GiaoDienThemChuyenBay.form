@@ -152,7 +152,7 @@
                                           <EmptySpace min="-2" pref="251" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jComboBox_SanBayDi" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jComboBox_MayBay" alignment="0" pref="321" max="32767" attributes="0"/>
+                                      <Component id="jComboBox_MayBay" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jLabel_MayBay" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jComboBox_SanBayDen" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
@@ -185,22 +185,23 @@
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="jLabel_NgayVe" min="-2" pref="82" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="jComboBox_GioDi" min="-2" max="-2" attributes="0"/>
+                                                      <Group type="102" attributes="0">
+                                                          <Component id="jComboBox_GioDi" min="-2" pref="45" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jComboBox_PhutDi" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="jComboBox_PhutDi" min="-2" pref="44" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                                          <Component id="jComboBox_GiayDi" min="-2" pref="42" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jComboBox_GiayDi" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
                                           </Group>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jButton_QuayLai" min="-2" pref="319" max="-2" attributes="0"/>

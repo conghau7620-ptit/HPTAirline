@@ -583,6 +583,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
 
     private void jTextField_TimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyReleased
         // TODO add your handling code here:
+        
         clearTextFieldThongTinKhachHang();
         if (jTextField_TimKiem.getText().length() >= 11) {
 //            evt.consume();
@@ -592,7 +593,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
             new LoadData();
             int length = jTextField_TimKiem.getText().length();
             for (KhachHang kh : controller.Controller.arrayListKhachHang) {
-                if ((jTextField_TimKiem.getText()).equalsIgnoreCase(kh.getSdtKhachHang().substring(0, length))) {
+                if (kh.getSdtKhachHang().contains(jTextField_TimKiem.getText().trim())) {
                     dtmKhachHang.addRow(new Object[]{
                         kh.getSdtKhachHang(), kh.getTenKhachHang()
                         ,kh.getDiemTichLuy()
