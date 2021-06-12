@@ -156,7 +156,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             String maGhe = ve.getMaGhe().substring(0, 1).toUpperCase() + ve.getMaGhe().substring(1);
             ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
             System.out.println("ma ghe: " + ve.getMaGhe());
-
+            ve.setKyGui((short)15);
      //       ve.setMaHoaDon(maHoaDon);
             
 
@@ -169,7 +169,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             String maGhe = ve.getMaGhe().substring(0, 1).toUpperCase() + ve.getMaGhe().substring(1);
             ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
             System.out.println("ma ghe: " + ve.getMaGhe());
-
+            ve.setKyGui((short)15);
         //   ve.setMaHoaDon(maHoaDonVe);
             
 
@@ -295,6 +295,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         jLabel_tb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Hóa đơn 2 chiều");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -920,13 +921,10 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                     .addComponent(jLabel_TongTienDi)
                     .addComponent(jTextField_SoDienThoaiNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_SoDienThoaiNhanVien))
-                .addGap(18, 29, Short.MAX_VALUE)
+                .addGap(18, 31, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel_BaoLoi2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(0, 0, 0))
+                    .addComponent(jLabel_BaoLoi2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jCheckBox_TrangThaiThanhToanHoaDonDi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_ThoatGiaoDienHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

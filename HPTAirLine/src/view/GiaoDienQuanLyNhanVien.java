@@ -141,6 +141,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
             jButton_KhoiPhucMK = new javax.swing.JButton();
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+            setTitle("Quản lý nhân viên");
 
             jPanel1.setBackground(new java.awt.Color(48, 57, 82));
             jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -306,7 +307,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
                 }
             });
 
-            jButton_XoaNhanVien.setBackground(new java.awt.Color(255, 77, 77));
+            jButton_XoaNhanVien.setBackground(java.awt.Color.red);
             jButton_XoaNhanVien.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
             jButton_XoaNhanVien.setForeground(new java.awt.Color(255, 255, 255));
             jButton_XoaNhanVien.setText("Xóa Nhân Viên");
@@ -370,8 +371,8 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
 
             jComboBox_PhanQuyen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NhanVien", "QuanLy" }));
 
-            jButton_KhoiPhucMK.setBackground(java.awt.Color.red);
-            jButton_KhoiPhucMK.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+            jButton_KhoiPhucMK.setBackground(new java.awt.Color(255, 77, 77));
+            jButton_KhoiPhucMK.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
             jButton_KhoiPhucMK.setForeground(java.awt.Color.white);
             jButton_KhoiPhucMK.setText("Khôi phục MK");
             jButton_KhoiPhucMK.setBorderPainted(false);
@@ -398,7 +399,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGap(1, 1, 1)
                                     .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel10)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jTextField_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))

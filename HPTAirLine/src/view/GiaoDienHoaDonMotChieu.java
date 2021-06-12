@@ -132,7 +132,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
            
             String maGhe = ve.getMaGhe().substring(0,1).toUpperCase() + ve.getMaGhe().substring(1);
             ve.setMaGhe(ve.getMaChuyenBay()+"-"+maGhe);
-          //  ve.setMaHoaDon(maHoaDon);
+            ve.setKyGui((short)15);
             System.out.println("ma ve: "+ve.getMaVe());
             System.out.println("ma hd: "+ve.getMaHoaDon());
             System.out.println("ma ghe: "+ve.getMaGhe());
@@ -206,6 +206,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         jLabel_TB = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Hóa đơn 1 chiều");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));

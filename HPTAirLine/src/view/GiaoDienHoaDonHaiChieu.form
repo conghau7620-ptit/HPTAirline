@@ -3,6 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="H&#xf3;a &#x111;&#x1a1;n 2 chi&#x1ec1;u"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -846,15 +847,11 @@
                       <Component id="jTextField_SoDienThoaiNhanVien" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel_SoDienThoaiNhanVien" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" pref="29" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" pref="31" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jLabel_BaoLoi2" max="32767" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel_BaoLoi2" max="32767" attributes="0"/>
                       <Component id="jCheckBox_TrangThaiThanhToanHoaDonDi" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jButton_ThoatGiaoDienHoaDon" min="-2" pref="41" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
