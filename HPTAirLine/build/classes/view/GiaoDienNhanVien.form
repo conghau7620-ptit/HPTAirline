@@ -199,6 +199,9 @@
                 <Property name="text" type="java.lang.String" value="B&#xe1;n V&#xe9; Tr&#x1ef1;c Ti&#x1ebf;p"/>
                 <Property name="borderPainted" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_BanVeActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>

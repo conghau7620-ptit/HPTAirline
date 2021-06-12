@@ -135,18 +135,17 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel_TenDangNhap" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jTextField_TenDangNhap" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jButton_ThoatGiaoDienThongTinKhachHang" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel_SoDienThoai" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel_Email" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField_SoDienThoai" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jTextField_Email" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jTextField_TenDangNhap" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jButton_ThoatGiaoDienThongTinKhachHang" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jLabel_SoDienThoai" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel_Email" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField_SoDienThoai" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextField_Email" linkSize="1" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabel_TenKhachHang" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField_TenKhachHang" linkSize="1" min="-2" pref="289" max="-2" attributes="0"/>
+                              <Component id="jTextField_TenKhachHang" linkSize="1" pref="289" max="32767" attributes="0"/>
+                              <Component id="jLabel_ThongBao" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -227,7 +226,10 @@
                       </Group>
                   </Group>
                   <EmptySpace pref="26" max="32767" attributes="0"/>
-                  <Component id="jButton_XemLichSu" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jButton_XemLichSu" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel_ThongBao" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton_XacNhanSuaThongTin" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
@@ -465,6 +467,13 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_XemLichSuActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel_ThongBao">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="ff" id="yellow" palette="1" red="ff" type="palette"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
