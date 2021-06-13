@@ -6,7 +6,18 @@
 
 package view;
 
+import connection.LoadData;
+import connection.UpdateData;
+import controller.Controller;
+import java.awt.Cursor;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
+import model.ChuyenBay;
+import model.MayBay;
 
 /**
  *
@@ -14,11 +25,32 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GiaoDienQuanLyMayBay extends javax.swing.JFrame {
     DefaultTableModel dtmMayBay;
+    int row = -1;
+    String maMayBay;
     /** Creates new form GiaoDienQuanLyMayBay */
     public GiaoDienQuanLyMayBay() {
         initComponents();
-        dtmMayBay = (DefaultTableModel) jTable_MayBay.getModel();
-        dtmMayBay.setColumnIdentifiers(new Object[]{"Mã MB", "Tên MB", "Hãng Bay"});
+        new LoadData();
+        input();
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_SuaMayBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThemMayBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_XoaMayBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /** This method is called from within the constructor to
@@ -152,7 +184,7 @@ public class GiaoDienQuanLyMayBay extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("| Tìm kiếm theo mã máy bay");
+        jLabel10.setText("| Tìm kiếm theo tên máy bay");
 
         jButton_XoaMayBay.setBackground(new java.awt.Color(255, 77, 77));
         jButton_XoaMayBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
@@ -251,16 +283,27 @@ public class GiaoDienQuanLyMayBay extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void input() {
+        dtmMayBay = (DefaultTableModel) jTable_MayBay.getModel();
+        dtmMayBay.setColumnIdentifiers(new Object[]{"Mã MB", "Tên MB", "Hãng Bay"});
+        dtmMayBay.setRowCount(0);
+        for (MayBay mb: Controller.arrayListMayBay) {
+            dtmMayBay.addRow( new Object[] {
+                mb.getMaMayBay(),
+                mb.getTenMayBay(),
+                mb.getHangBay()});
+        }
+    }
     private void jTable_MayBayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_MayBayMouseClicked
         // TODO add your handling code here:
-        int row = jTable_MayBay.getSelectedRow();
-
+        row = jTable_MayBay.getSelectedRow();
+        if (row==-1) return;
+        maMayBay = jTable_MayBay.getValueAt(row, 0).toString();
     }//GEN-LAST:event_jTable_MayBayMouseClicked
 
     private void jButton_ThemMayBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThemMayBayActionPerformed
         // TODO add your handling code here:
-        new GiaoDienThemDuongBay().setVisible(true);
+        new GiaoDienThemMayBay().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_ThemMayBayActionPerformed
 
@@ -273,7 +316,16 @@ public class GiaoDienQuanLyMayBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_TimKiemFocusLost
 
     private void jTextField_TimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyReleased
-        // TODO add your handling code here:
+        dtmMayBay.setRowCount(0);
+        for (MayBay mb: Controller.arrayListMayBay) {
+            if (mb.getTenMayBay().contains(jTextField_TimKiem.getText())) {
+                dtmMayBay.addRow(new Object[] {
+                   mb.getMaMayBay(),
+                   mb.getTenMayBay(),
+                   mb.getHangBay()
+                });
+            }
+        }
 
     }//GEN-LAST:event_jTextField_TimKiemKeyReleased
 
@@ -282,9 +334,27 @@ public class GiaoDienQuanLyMayBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_TimKiemKeyTyped
 
     private void jButton_XoaMayBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaMayBayActionPerformed
-        // TODO add your handling code here:
-        int row = jTable_MayBay.getSelectedRow();
-
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Bạn vui lòng chọn máy bay cần xóa");
+            return;
+        }
+        for (ChuyenBay cb: Controller.arrayListChuyenBay) {
+            if (cb.getMaMayBay().equals(maMayBay)) {
+                JOptionPane.showMessageDialog(null, "Máy bay đang được sử dụng, không được xóa");
+                return;
+            }
+        }
+        MayBay mayBay = null;
+        for (MayBay mb: Controller.arrayListMayBay) {
+            if (mb.getMaMayBay().equals(maMayBay)) {
+                mayBay = mb;
+                break;
+            }
+        }
+        Controller.arrayListMayBay.remove(mayBay);
+        UpdateData.deleteMayBay(maMayBay);
+        JOptionPane.showMessageDialog(null, "Xóa máy bay thành công");
+        input();
     }//GEN-LAST:event_jButton_XoaMayBayActionPerformed
 
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
@@ -294,8 +364,18 @@ public class GiaoDienQuanLyMayBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     private void jButton_SuaMayBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaMayBayActionPerformed
-        // TODO add your handling code here:
-        int row = jTable_MayBay.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Bạn vui lòng chọn máy bay cần sửa");
+            return;
+        }
+        for (ChuyenBay cb: Controller.arrayListChuyenBay) {
+            if (cb.getMaMayBay().equals(maMayBay)) {
+                JOptionPane.showMessageDialog(null, "Máy bay đang được sử dụng, không được chỉnh sửa");
+                return;
+            }
+        }
+        this.dispose();
+        new GiaoDienSuaMayBay(maMayBay).setVisible(true);
     }//GEN-LAST:event_jButton_SuaMayBayActionPerformed
 
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed

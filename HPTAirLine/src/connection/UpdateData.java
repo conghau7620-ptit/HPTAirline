@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import model.ChuyenBay;
 import model.DuongBay;
 import model.KhachHang;
+import model.MayBay;
 import model.NhanVien;
 import model.SanBay;
 import model.TaiKhoan;
@@ -108,6 +109,26 @@ public class UpdateData {
             Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("sửa sân bay thất bại");
+        return false;
+    }
+    
+    public static boolean updateMayBay(MayBay mayBay) {
+        String sqlCommand = "update dbo.MAYBAY set TenMayBay=?, HangBay=?"
+                + " where MaMayBay=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            
+            ps.setString(1, mayBay.getTenMayBay());
+            ps.setString(2, mayBay.getHangBay());
+            ps.setString(3, mayBay.getMaMayBay());
+
+            return ps.executeUpdate() > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("sửa máy bay thất bại");
         return false;
     }
     
@@ -381,6 +402,24 @@ public class UpdateData {
             ps.setString(1, maSanBay);
             if(ps.executeUpdate() > 0){
                 System.out.println("Xóa sân bay thành công");
+                return true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UpdateData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("xóa sân bay thất bại");
+        return false;
+    }
+    
+    public static boolean deleteMayBay(String maMayBay){
+        String sqlCommand = "delete from dbo.MAYBAY where MaMayBay=?";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, maMayBay);
+            if(ps.executeUpdate() > 0){
+                System.out.println("Xóa may bay thành công");
                 return true;
             }
 
