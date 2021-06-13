@@ -13,6 +13,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Date;
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import model.ChuyenBay;
 import model.DuongBay;
@@ -412,6 +414,16 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
         }
         else {
             jLabel_ThongBao.setText("");
+        }
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        for (ChuyenBay cb: Controller.arrayListChuyenBay) {
+            if (cb.getMaMayBay().equals(jComboBox_MayBay.getSelectedItem().toString())
+                    && cb.getMaSanBayDi().equals(maSB1) && cb.getMaSanBayDen().equals(maSB2) 
+                    && formatter.format(cb.getNgayBay()).equals(formatter.format(jDateChooser_NgayDi.getDate()))
+                    && cb.getGioBay().getHours()==Integer.parseInt(jComboBox_GioDi.getSelectedItem().toString())) {
+                jLabel_ThongBao.setText("Đã có chuyến bay tương tự cùng thời gian trên");
+                return;
+            }
         }
         if (!maSB1.equals(maSB2)){
             for (DuongBay db: Controller.arrayListDuongBay) {
