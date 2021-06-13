@@ -276,34 +276,42 @@
                       <Component id="jSeparator1" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jButton_ChuyenBay" min="-2" pref="119" max="-2" attributes="0"/>
-                                      <Component id="jButton_KhachHang" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel_QuanLy" min="-2" pref="485" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jButton_KhachHang" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jButton_ChuyenBay" linkSize="1" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jButton_NhanVien" min="-2" pref="119" max="-2" attributes="0"/>
-                                      <Component id="jButton_DuongBay" min="-2" pref="119" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jButton_ThongKe" min="-2" pref="119" max="-2" attributes="0"/>
-                                      <Component id="jButton_SanBay" min="-2" pref="119" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="jButton_DuongBay" linkSize="1" min="-2" pref="145" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Component id="jButton_SanBay" linkSize="1" min="-2" pref="146" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jButton_NhanVien" linkSize="1" min="-2" pref="119" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Component id="jButton_ThongKe" linkSize="1" min="-2" pref="119" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <Component id="jLabel_QuanLy" alignment="0" min="-2" pref="485" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jButton_HoaDon" min="-2" pref="117" max="-2" attributes="0"/>
-                              <Component id="jButton_TimChuyen" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jButton_MayBay" linkSize="1" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jButton_HoaDon" linkSize="1" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="jButton_TimChuyen" linkSize="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                          <Component id="jButton_MayBay" pref="119" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -311,31 +319,34 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jLabel_QuanLy" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jButton_TimChuyen" min="-2" pref="195" max="-2" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel_QuanLy" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton_MayBay" alignment="1" min="-2" pref="195" max="-2" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jButton_HoaDon" max="32767" attributes="0"/>
-                                  <Component id="jButton_NhanVien" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jButton_ThongKe" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jButton_KhachHang" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jButton_SanBay" min="-2" pref="195" max="-2" attributes="0"/>
-                              <Component id="jButton_ChuyenBay" min="-2" pref="195" max="-2" attributes="0"/>
-                              <Component id="jButton_DuongBay" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
-                          </Group>
+                      <Component id="jButton_TimChuyen" linkSize="2" min="-2" pref="195" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jButton_HoaDon" linkSize="2" max="32767" attributes="0"/>
+                          <Component id="jButton_NhanVien" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButton_ThongKe" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jButton_KhachHang" linkSize="2" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="52" max="32767" attributes="0"/>
+                  <EmptySpace pref="57" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jButton_ChuyenBay" linkSize="2" min="-2" pref="195" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jButton_DuongBay" linkSize="2" min="-2" pref="195" max="-2" attributes="0"/>
+                              <Component id="jButton_SanBay" linkSize="2" min="-2" pref="195" max="-2" attributes="0"/>
+                              <Component id="jButton_MayBay" linkSize="2" min="-2" pref="195" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>

@@ -5,6 +5,18 @@
  */
 package view;
 
+import connection.LoadData;
+import connection.UpdateData;
+import controller.Controller;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import model.MayBay;
+
 /**
  *
  * @author conghau
@@ -14,8 +26,30 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
     /**
      * Creates new form GiaoDienSuaMayBay
      */
-    public GiaoDienSuaMayBay() {
+    String maMayBay;
+    
+    public GiaoDienSuaMayBay(String maMayBay) {
         initComponents();
+        new LoadData();
+        this.maMayBay = maMayBay;
+        input();
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                int confirmed = JOptionPane.showConfirmDialog(null,
+                        "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
+                        JOptionPane.YES_NO_OPTION);
+
+                if (confirmed == JOptionPane.YES_OPTION) {
+                    dispose();
+                } else {
+                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }
+            }
+        });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_SuaMayBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -35,13 +69,11 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
         jLabel_ThemSanBay = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jButton_SuaMayBay = new javax.swing.JButton();
-        jTextField_MaMayBay = new javax.swing.JTextField();
-        jLabel_MaSanBay = new javax.swing.JLabel();
         jLabel_TenSanBay = new javax.swing.JLabel();
         jTextField_TenMayBay = new javax.swing.JTextField();
         jButton_QuayLai = new javax.swing.JButton();
         jLabel_ThongBao = new javax.swing.JLabel();
-        jLabel_TenSanBay1 = new javax.swing.JLabel();
+        jLabel_HangBay = new javax.swing.JLabel();
         jTextField_HangBay = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,16 +110,6 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
             }
         });
 
-        jTextField_MaMayBay.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField_MaMayBayKeyReleased(evt);
-            }
-        });
-
-        jLabel_MaSanBay.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jLabel_MaSanBay.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_MaSanBay.setText("Mã Máy Bay");
-
         jLabel_TenSanBay.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         jLabel_TenSanBay.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_TenSanBay.setText("Tên Máy Bay");
@@ -108,9 +130,9 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
         jLabel_ThongBao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_ThongBao.setForeground(java.awt.Color.yellow);
 
-        jLabel_TenSanBay1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
-        jLabel_TenSanBay1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_TenSanBay1.setText("Hãng Bay");
+        jLabel_HangBay.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        jLabel_HangBay.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_HangBay.setText("Hãng Bay");
 
         jTextField_HangBay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -130,24 +152,20 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel_MaSanBay)
-                        .addGap(569, 569, 569))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jLabel_TenSanBay1)
+                        .addComponent(jLabel_HangBay)
                         .addContainerGap(174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jTextField_HangBay, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_MaMayBay)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(jButton_QuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton_SuaMayBay, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jTextField_TenMayBay, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
                             .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 20, Short.MAX_VALUE))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,25 +174,21 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
                 .addComponent(jLabel_ThemSanBay)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel_MaSanBay)
-                .addGap(9, 9, 9)
-                .addComponent(jTextField_MaMayBay, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel_TenSanBay)
-                .addGap(9, 9, 9)
-                .addComponent(jTextField_TenMayBay, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel_TenSanBay1)
-                .addGap(9, 9, 9)
-                .addComponent(jTextField_HangBay, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel_TenSanBay)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField_TenMayBay, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel_HangBay)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField_HangBay, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_QuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_SuaMayBay, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -191,19 +205,20 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel_HPT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel_AirLines, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel_IconMayBay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -214,25 +229,69 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private void input() {
+        MayBay mayBay=null;
+        for (MayBay mb: Controller.arrayListMayBay) {
+            if(mb.getMaMayBay().equals(maMayBay)) {
+                mayBay = mb;
+                break;
+            }
+        }
+        jTextField_TenMayBay.setText(mayBay.getTenMayBay());
+        jTextField_HangBay.setText(mayBay.getHangBay());
+    }
     private void jButton_SuaMayBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaMayBayActionPerformed
-
-
+        if (jTextField_TenMayBay.getText().isEmpty()) {
+            jLabel_ThongBao.setText("Tên máy bay chưa được điền");
+            jLabel_TenSanBay.setForeground(Color.yellow);
+            return;
+        }
+        else {
+            jLabel_ThongBao.setText("");
+            jLabel_TenSanBay.setForeground(Color.white);
+        }
+        if (jTextField_HangBay.getText().isEmpty()) {
+            jLabel_ThongBao.setText("Hãng bay chưa được điền");
+            jLabel_HangBay.setForeground(Color.yellow);
+            return;
+        }
+        else {
+            jLabel_ThongBao.setText("");
+            jLabel_HangBay.setForeground(Color.white);
+        }
+        for (MayBay mb : Controller.arrayListMayBay) {
+            if (mb.getTenMayBay().equals(jTextField_TenMayBay.getText())
+                    && mb.getHangBay().equals(jTextField_HangBay.getText())) {
+                jLabel_ThongBao.setText("Máy bay trên đã tồn tại trong danh sách");
+                return;
+            }
+        }
+        jLabel_ThongBao.setText("");
+        MayBay mb = new MayBay(
+             maMayBay,
+            jTextField_TenMayBay.getText(),
+            jTextField_HangBay.getText());
+        int vt=0;
+        for (MayBay mb1:Controller.arrayListMayBay) {
+            if (mb1.getMaMayBay().equals(maMayBay)) {
+                break;
+            }
+            vt++;
+        }
+        Controller.arrayListMayBay.set(vt,mb);
+        UpdateData.updateMayBay(mb);
+        jLabel_ThongBao.setText("Sửa máy bay thành công");
     }//GEN-LAST:event_jButton_SuaMayBayActionPerformed
-
-    private void jTextField_MaMayBayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_MaMayBayKeyReleased
-        jTextField_MaMayBay.setText(jTextField_MaMayBay.getText().toUpperCase());
-    }//GEN-LAST:event_jTextField_MaMayBayKeyReleased
 
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new GiaoDienQuanLySanBay().setVisible(true);
+        new GiaoDienQuanLyMayBay().setVisible(true);
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     /**
@@ -265,7 +324,6 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GiaoDienSuaMayBay().setVisible(true);
             }
         });
     }
@@ -275,17 +333,15 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
     private javax.swing.JButton jButton_SuaMayBay;
     private javax.swing.JLabel jLabel_AirLines;
     private javax.swing.JLabel jLabel_HPT;
+    private javax.swing.JLabel jLabel_HangBay;
     private javax.swing.JLabel jLabel_IconMayBay;
-    private javax.swing.JLabel jLabel_MaSanBay;
     private javax.swing.JLabel jLabel_TenSanBay;
-    private javax.swing.JLabel jLabel_TenSanBay1;
     private javax.swing.JLabel jLabel_ThemSanBay;
     private javax.swing.JLabel jLabel_ThongBao;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField_HangBay;
-    private javax.swing.JTextField jTextField_MaMayBay;
     private javax.swing.JTextField jTextField_TenMayBay;
     // End of variables declaration//GEN-END:variables
 }

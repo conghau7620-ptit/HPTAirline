@@ -451,14 +451,14 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
                         time,
                         jTextArea_GhiChu.getText(),
                         db.getKhoangCach());
+                    int vt=0;
                     for (ChuyenBay cb1 : Controller.arrayListChuyenBay) {
                         if (cb1.getMaChuyenBay().equals(maCB)) {
-                            chuyenBay = cb1;
                              break;
                         }
+                        vt++;
                     }
-                    Controller.arrayListChuyenBay.set(
-                            Controller.arrayListChuyenBay.indexOf(chuyenBay), cb);
+                    Controller.arrayListChuyenBay.set(vt, cb);
                     connection.UpdateData.updateChuyenBay(cb);
                     jLabel_ThongBao.setText("Sửa chuyến bay thành công");
                     return;
