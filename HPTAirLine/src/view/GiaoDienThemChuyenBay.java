@@ -417,6 +417,13 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
             for (DuongBay db: Controller.arrayListDuongBay) {
                 if ((db.getMaSanBay1().equals(maSB1) && db.getMaSanBay2().equals(maSB2))
                         || (db.getMaSanBay1().equals(maSB2) && db.getMaSanBay2().equals(maSB1))) {
+                    
+                    java.util.Date today = new java.util.Date();
+                    if (jDateChooser_NgayDi.getDate().before(today)) {
+                        jLabel_ThongBao.setText("Ngày đi không hợp lệ");
+                        return;
+                    }
+                    
                     int tmp;
                     if (Controller.arrayListChuyenBay.isEmpty()) {
                         tmp = 1;

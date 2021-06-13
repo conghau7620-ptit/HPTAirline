@@ -408,6 +408,12 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
                 if ((db.getMaSanBay1().equals(maSB1) && db.getMaSanBay2().equals(maSB2))
                         || (db.getMaSanBay1().equals(maSB2) && db.getMaSanBay2().equals(maSB1))) {
                     
+                    java.util.Date today = new java.util.Date();
+                    if (jDateChooser_NgayDi.getDate().before(today)) {
+                        jLabel_ThongBao.setText("Ngày đi không hợp lệ");
+                        return;
+                    }
+                    
                     Time time = new Time(
                         Integer.parseInt(jComboBox_GioDi.getSelectedItem().toString()),
                         Integer.parseInt(jComboBox_PhutDi.getSelectedItem().toString()),
@@ -434,10 +440,6 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
                     jLabel_ThongBao.setText("Sửa chuyến bay thành công");
                     return;
                 }
-                else {
-                    System.out.println(maSB1 + " - " + maSB2);
-                    System.out.println(db.getMaSanBay1() + " - " + db.getMaSanBay2());
-                }   
             }
             jLabel_ThongBao.setText("Chưa có đường bay giữa 2 sân bay trên");
         }
