@@ -7,12 +7,12 @@ package view;
 
 import connection.LoadData;
 import controller.Controller;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +25,7 @@ import model.Ghe;
  */
 public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
 
-    ArrayList <ChuyenBay> list;
+    ArrayList<ChuyenBay> list;
     DefaultTableModel dtm;
     String maSanBayDi;
     String maSanBayDen;
@@ -34,32 +34,35 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
     int soGheTreEm;
 //    int soGheEmBe;
     String maChuyenBayDi;
-    
-    public GiaoDienChonChuyenBayVe(){
+
+    public GiaoDienChonChuyenBayVe() {
         initComponents();
     }
-    public GiaoDienChonChuyenBayVe(String maSanBayDi, String maSanBayDen, 
+
+    public GiaoDienChonChuyenBayVe(String maSanBayDi, String maSanBayDen,
             Date ngayDi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBeString maChuyenBayDi*/) {
-        
+
         initComponents();
-         this.maSanBayDi= maSanBayDi;
-         this.maSanBayDen = maSanBayDen;
-         this.ngayDi = ngayDi;
-         this.soGheNguoiLon = soGheNguoiLon;
-         this.soGheTreEm = soGheTreEm;
+        jButton_ThoatKetQuaTimKiemChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_XacNhanChonChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        this.maSanBayDi = maSanBayDi;
+        this.maSanBayDen = maSanBayDen;
+        this.ngayDi = ngayDi;
+        this.soGheNguoiLon = soGheNguoiLon;
+        this.soGheTreEm = soGheTreEm;
 //         this.soGheEmBe = soGheEmBe;
-       //  this.maChuyenBayDi = maChuyenBayDi;
+        //  this.maChuyenBayDi = maChuyenBayDi;
         dtm = (DefaultTableModel) jTable_KetQuaTimKiem.getModel();
         dtm.setColumnIdentifiers(new Object[]{
             "Mã CB", "Mã MB", "Mã SB Đi", "Mã SB Đến", "Ngày Bay", "Giờ Bay", "Ghi Chú",
             "Khoảng Cách"
         });
-        System.out.println("soGheNguoiLonaa: "+this.soGheNguoiLon);
-        System.out.println("soGheTreEm: "+this.soGheTreEm);
+        System.out.println("soGheNguoiLonaa: " + this.soGheNguoiLon);
+        System.out.println("soGheTreEm: " + this.soGheTreEm);
 //        System.out.println("soGheEmBe: "+this.soGheEmBe);
         hienKetQua();
-        
-                this.addWindowListener(new WindowAdapter() {
+
+        this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
                         "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
@@ -74,9 +77,8 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
         });
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-     //   
+        //   
 
-        
 //        String date = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
 //        try {
 //            ngayHienTai = new SimpleDateFormat("dd/MM/yyyy").parse(date);
@@ -110,6 +112,7 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
         jButton_ThoatKetQuaTimKiemChuyenBay = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chọn chuyến bay về");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -249,17 +252,17 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
 
     private void jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed
         // TODO add your handling code here:
-        
+
         if (GiaoDienChonGhe.dsVeDi.get(0).getMaGhe().length() > 7) {
-                  for (int i = 0 ; i < GiaoDienChonGhe.dsVeDi.size(); i++){
-              String maGhe = GiaoDienChonGhe.dsVeDi.get(i).getMaGhe().substring(5);
-              maGhe = maGhe.substring(0,1).toLowerCase() + maGhe.substring(1);
-              GiaoDienChonGhe.dsVeDi.get(i).setMaGhe(maGhe);
-          }
+            for (int i = 0; i < GiaoDienChonGhe.dsVeDi.size(); i++) {
+                String maGhe = GiaoDienChonGhe.dsVeDi.get(i).getMaGhe().substring(5);
+                maGhe = maGhe.substring(0, 1).toLowerCase() + maGhe.substring(1);
+                GiaoDienChonGhe.dsVeDi.get(i).setMaGhe(maGhe);
+            }
         }
-            GiaoDienChonGhe.di = true;
-            GiaoDienChonGhe.ve = true;
-          System.out.println("ds ve di "+ GiaoDienChonGhe.dsVeDi.get(0).getMaGhe() );
+        GiaoDienChonGhe.di = true;
+        GiaoDienChonGhe.ve = true;
+        System.out.println("ds ve di " + GiaoDienChonGhe.dsVeDi.get(0).getMaGhe());
         new GiaoDienChonGhe(GiaoDienChonChuyenBayDi.maChuyenBayDi).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_ThoatKetQuaTimKiemChuyenBayActionPerformed
@@ -267,22 +270,20 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
     private void jButton_XacNhanChonChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanChonChuyenBayActionPerformed
         // TODO add your handling code here:
         int row = jTable_KetQuaTimKiem.getSelectedRow();
-            if(row==-1){
-                JOptionPane.showMessageDialog(rootPane, "Hãy chọn chuyến bay về.");
-            }
-            else{
-                new GiaoDienChonGhe(/*this.maChuyenBayDi,*/ (String) jTable_KetQuaTimKiem.getValueAt(row, 0)
-                        , this.soGheNguoiLon, this.soGheTreEm ).setVisible(true);
+        if (row == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn chuyến bay về.");
+        } else {
+            new GiaoDienChonGhe(/*this.maChuyenBayDi,*/(String) jTable_KetQuaTimKiem.getValueAt(row, 0),
+                     this.soGheNguoiLon, this.soGheTreEm).setVisible(true);
 
-                this.dispose();
+            this.dispose();
 
-            }       
+        }
     }//GEN-LAST:event_jButton_XacNhanChonChuyenBayActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
     private void hienKetQua() {
         dtm.setRowCount(0);
 //        LoadData.loadKetQuaTimKiemChuyenBay("VII", "SGN", "2", "3");
@@ -312,28 +313,26 @@ public class GiaoDienChonChuyenBayVe extends javax.swing.JFrame {
 
         for (ChuyenBay tmp : list) {
             int soGheTrong = 0;
-            for(Ghe g : tmp.getArrayListGhe()){
-                if(g.getTrong()==1){
-                    soGheTrong ++;
+            for (Ghe g : tmp.getArrayListGhe()) {
+                if (g.getTrong() == 1) {
+                    soGheTrong++;
                 }
             }
-            
-            if(soGheTrong >= (this.soGheNguoiLon + this.soGheTreEm /*+ this.soGheEmBe*/)){
+
+            if (soGheTrong >= (this.soGheNguoiLon + this.soGheTreEm /*+ this.soGheEmBe*/)) {
                 dtm.addRow(new Object[]{
                     tmp.getMaChuyenBay(), tmp.getMaMayBay(), tmp.getMaSanBayDi(), tmp.getMaSanBayDen(), new SimpleDateFormat("dd/MM/yyyy").format(tmp.getNgayBay()),
                     tmp.getGioBay(), tmp.getGhiChu(), tmp.getKhoangCach()
                 });
             }
-            
-            
-            
+
             //
 //            System.out.println("tongSoGhe "+ tongSoGhe);
 //            System.out.println("soGheTrong "+ soGheTrong);
             //
         }
     }
-    
+
 //    public static void main(String args[]) {
 //        /* Set the Nimbus look and feel */
 //        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

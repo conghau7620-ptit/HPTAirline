@@ -8,6 +8,7 @@ package view;
 import connection.LoadData;
 import connection.UpdateData;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
@@ -29,6 +30,10 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
 
     public GiaoDienThongTinKhachHang() {
         initComponents();
+        jButton_XemLichSu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_XacNhanSuaThongTin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_DoiMatKhau.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThoatGiaoDienThongTinKhachHang.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         //// Phần thông tin cơ bản , đăng xuất
         new LoadData();
         for (KhachHang kh : controller.Controller.arrayListKhachHang) {
@@ -117,6 +122,7 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
         jLabel_ThongBao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Thông tin khách hàng");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -384,6 +390,18 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
 
     private void jButton_XacNhanSuaThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanSuaThongTinActionPerformed
         // TODO add your handling code here:
+        if(jTextField_CMND.getText().isEmpty()){
+            jLabel_ThongBao.setText("*CMND chưa được điền");
+            return;
+        }else{
+            jLabel_ThongBao.setText("");
+        }
+        if(jTextField_TenKhachHang.getText().isEmpty()){
+            jLabel_ThongBao.setText("*Tên khách hàng chưa được điền");
+            return;
+        }else{
+            jLabel_ThongBao.setText("");
+        }
         if (jLabel_ThongBao.getText().isEmpty()) {
             int luaChon = JOptionPane.showConfirmDialog(this, "Xác nhân sửa thông tin cho khách hàng " + this.tenKhachHang, "Xác nhận sửa", JOptionPane.YES_NO_OPTION);
 
@@ -416,11 +434,16 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
         int luaChon = JOptionPane.showConfirmDialog(null, message, "Thay đổi mật khẩu", JOptionPane.OK_CANCEL_OPTION);
         if (luaChon == JOptionPane.OK_OPTION) {
             if (matKhauCu.getText().equals(controller.Controller.tk.getMatKhau())) {
+                if(matKhauMoi.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(rootPane, "Không để trống mật khẩu mới");
+                    return;
+                }
                 String matKhauMoi_String = matKhauMoi.getText();
                 TaiKhoan taiKhoan = new TaiKhoan(controller.Controller.tk.getTenDangNhap(), matKhauMoi_String,
                         controller.Controller.tk.getLoaiTaiKhoan(), controller.Controller.tk.getSdt());
                 if (UpdateData.updateTaiKhoan(taiKhoan) == true) {
                     JOptionPane.showMessageDialog(rootPane, "Đổi mật khẩu thành công");
+                    controller.Controller.tk.setMatKhau(matKhauMoi_String);
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Đổi mật khẩu thất bại");
                 }

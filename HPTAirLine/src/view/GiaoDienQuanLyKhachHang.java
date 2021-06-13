@@ -37,6 +37,8 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
 
     public GiaoDienQuanLyKhachHang() {
         initComponents();
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_KhoiPhucMK.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
             dtmHoaDon.setColumnIdentifiers(new Object[]{
                 "Mã HĐ", "SĐT KH", "Ngày Xuất", "Thanh Toán", "Tổng", "SĐT NV"
@@ -69,8 +71,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         });
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        
-        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
     }
 
     /**
@@ -131,6 +132,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         jButton_KhoiPhucMK = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quản lý khách hàng");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -324,8 +326,8 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("| Tìm theo SĐT");
 
-        jButton_KhoiPhucMK.setBackground(java.awt.Color.red);
-        jButton_KhoiPhucMK.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jButton_KhoiPhucMK.setBackground(new java.awt.Color(255, 77, 77));
+        jButton_KhoiPhucMK.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_KhoiPhucMK.setForeground(java.awt.Color.white);
         jButton_KhoiPhucMK.setText("Khôi phục MK");
         jButton_KhoiPhucMK.setBorderPainted(false);
@@ -368,14 +370,13 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
                                     .addComponent(jLabel8)
                                     .addComponent(jButton_QuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(56, 56, 56)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField_TongTienDaThanhToan)
-                                        .addComponent(jTextField_TenKhachHang)
-                                        .addComponent(jTextField_SoHoaDon)
-                                        .addComponent(jTextField_SDTKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                                        .addComponent(jTextField_SoHoaDonDaThanhToan))
-                                    .addComponent(jButton_KhoiPhucMK)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField_TongTienDaThanhToan)
+                                    .addComponent(jTextField_TenKhachHang)
+                                    .addComponent(jTextField_SoHoaDon)
+                                    .addComponent(jTextField_SDTKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                                    .addComponent(jTextField_SoHoaDonDaThanhToan)
+                                    .addComponent(jButton_KhoiPhucMK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(jLabel9))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,9 +395,6 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
                                 .addComponent(jCheckBox_HoaDonDaThanhToan)))))
                 .addContainerGap())
         );
-
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton_KhoiPhucMK, jButton_QuayLai});
-
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()

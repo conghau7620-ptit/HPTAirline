@@ -9,6 +9,7 @@ import connection.InsertData;
 import connection.LoadData;
 import controller.Controller;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -59,7 +60,8 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
     public GiaoDienDangKyTaiKhoan() {
         initComponents();
         new LoadData();
-        
+        jButton_DangKy.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         
         
         jTextField_TaiKhoan.addKeyListener(new KeyAdapter() {
@@ -309,6 +311,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
         jButton_QuayLai = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Đăng ký tài khoản");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));

@@ -8,6 +8,7 @@ package view;
 import connection.LoadData;
 import connection.UpdateData;
 import controller.Controller;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -29,6 +30,10 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     
     public GiaoDienQuanLyChuyenBay() {
         initComponents();
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_SuaChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThemChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_XoaChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         new LoadData();
         input();
         
@@ -75,10 +80,11 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
         jTextField_TimKiem = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jButton_XoaChuyenBay = new javax.swing.JButton();
-        jButton_QuayLai2 = new javax.swing.JButton();
+        jButton_QuayLai = new javax.swing.JButton();
         jButton_SuaChuyenBay = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quản lý chuyến bay");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -193,14 +199,14 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
             }
         });
 
-        jButton_QuayLai2.setBackground(new java.awt.Color(0, 102, 102));
-        jButton_QuayLai2.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        jButton_QuayLai2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_QuayLai2.setText("Quay Lại");
-        jButton_QuayLai2.setBorderPainted(false);
-        jButton_QuayLai2.addActionListener(new java.awt.event.ActionListener() {
+        jButton_QuayLai.setBackground(new java.awt.Color(0, 102, 102));
+        jButton_QuayLai.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jButton_QuayLai.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_QuayLai.setText("Quay Lại");
+        jButton_QuayLai.setBorderPainted(false);
+        jButton_QuayLai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_QuayLai2ActionPerformed(evt);
+                jButton_QuayLaiActionPerformed(evt);
             }
         });
 
@@ -232,7 +238,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
                         .addComponent(jTextField_TimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton_QuayLai2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_QuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addComponent(jButton_ThemChuyenBay)
                         .addGap(46, 46, 46)
@@ -242,7 +248,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton_QuayLai2, jButton_SuaChuyenBay, jButton_ThemChuyenBay, jButton_XoaChuyenBay});
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton_QuayLai, jButton_SuaChuyenBay, jButton_ThemChuyenBay, jButton_XoaChuyenBay});
 
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,7 +266,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton_ThemChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_XoaChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_QuayLai2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_QuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton_SuaChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
@@ -392,10 +398,10 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Xóa chuyến bay thành công");
     }//GEN-LAST:event_jButton_XoaChuyenBayActionPerformed
 
-    private void jButton_QuayLai2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLai2ActionPerformed
+    private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
         this.dispose();
         new GiaoDienQuanLy().setVisible(true);
-    }//GEN-LAST:event_jButton_QuayLai2ActionPerformed
+    }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     private void jButton_SuaChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaChuyenBayActionPerformed
         if (jTable_ChuyenBay.getSelectedRow()==-1) {
@@ -446,7 +452,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_QuayLai2;
+    private javax.swing.JButton jButton_QuayLai;
     private javax.swing.JButton jButton_SuaChuyenBay;
     private javax.swing.JButton jButton_ThemChuyenBay;
     private javax.swing.JButton jButton_XoaChuyenBay;

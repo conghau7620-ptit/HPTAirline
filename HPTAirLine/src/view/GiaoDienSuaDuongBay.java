@@ -6,6 +6,7 @@
 package view;
 
 import connection.LoadData;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -24,6 +25,8 @@ public class GiaoDienSuaDuongBay extends javax.swing.JFrame {
     String maDuongBay="";
     public GiaoDienSuaDuongBay(String maDuongBay) {
         initComponents();
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_SuaDuongBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.maDuongBay = maDuongBay;
         hienThongTin();
         this.addWindowListener(new WindowAdapter() {
@@ -89,6 +92,7 @@ public class GiaoDienSuaDuongBay extends javax.swing.JFrame {
         jLabel_ThongBao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sửa đường bay");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));

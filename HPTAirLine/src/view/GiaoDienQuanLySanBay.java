@@ -6,6 +6,7 @@
 package view;
 
 import connection.LoadData;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -28,6 +29,10 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
 
     public GiaoDienQuanLySanBay() {
         initComponents();
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_SuaSanBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThemSanBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_XoaSanBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         dtmSanBay = (DefaultTableModel) jTable_SanBay.getModel();
         dtmSanBay.setColumnIdentifiers(new Object[]{"Mã SB", "Tên SB"});
 
@@ -88,6 +93,7 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
         jButton_SuaSanBay = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quản lý sân bay");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -322,7 +328,7 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
             new LoadData();
             int length = jTextField_TimKiem.getText().length();
             for (SanBay sb : controller.Controller.arrayListSanBay) {
-                if ((jTextField_TimKiem.getText()).equalsIgnoreCase(sb.getMaSanBay().substring(0, length))) {
+                if (sb.getMaSanBay().contains(jTextField_TimKiem.getText())) {
                     dtmSanBay.addRow(new Object[]{
                         sb.getMaSanBay(), sb.getTenSanBay()
                     });

@@ -6,6 +6,7 @@
 package view;
 
 import connection.LoadData;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
@@ -31,6 +32,7 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
 
     public GiaoDienChiTietThongKe(String ngayCanXem) {
         initComponents();
+        jButton_ThoatGiaoDienChiTietThongKe.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.ngayCanXem = ngayCanXem;
         this.dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
         this.dtmHoaDon.setColumnIdentifiers(new Object[]{
@@ -86,7 +88,7 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
         };
         jLabel_HoaDon = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton_ThoatGiaoDienXemLichSu = new javax.swing.JButton();
+        jButton_ThoatGiaoDienChiTietThongKe = new javax.swing.JButton();
         jCheckBox_TimHoaDonDaThanhToan = new javax.swing.JCheckBox();
         jTextField_TimTheoSDTKhachHang = new javax.swing.JTextField();
         jTextField_TimTheoSDTNhanVien = new javax.swing.JTextField();
@@ -99,6 +101,7 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
         jRadioButton_TatCa = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Chi tiết thống kê");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -159,15 +162,15 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
         jLabel_HoaDon.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_HoaDon.setText("Hóa đơn");
 
-        jButton_ThoatGiaoDienXemLichSu.setBackground(new java.awt.Color(0, 102, 102));
-        jButton_ThoatGiaoDienXemLichSu.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
-        jButton_ThoatGiaoDienXemLichSu.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_ThoatGiaoDienXemLichSu.setText("Quay lại");
-        jButton_ThoatGiaoDienXemLichSu.setBorderPainted(false);
-        jButton_ThoatGiaoDienXemLichSu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton_ThoatGiaoDienXemLichSu.addActionListener(new java.awt.event.ActionListener() {
+        jButton_ThoatGiaoDienChiTietThongKe.setBackground(new java.awt.Color(0, 102, 102));
+        jButton_ThoatGiaoDienChiTietThongKe.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
+        jButton_ThoatGiaoDienChiTietThongKe.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_ThoatGiaoDienChiTietThongKe.setText("Quay lại");
+        jButton_ThoatGiaoDienChiTietThongKe.setBorderPainted(false);
+        jButton_ThoatGiaoDienChiTietThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton_ThoatGiaoDienChiTietThongKe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_ThoatGiaoDienXemLichSuActionPerformed(evt);
+                jButton_ThoatGiaoDienChiTietThongKeActionPerformed(evt);
             }
         });
 
@@ -277,7 +280,7 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jDateChooser_NgayCanXem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton_ThoatGiaoDienXemLichSu, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+                            .addComponent(jButton_ThoatGiaoDienChiTietThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jRadioButton_TheoNgay)
                         .addGap(18, 18, 18)
@@ -314,7 +317,7 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
                     .addComponent(jRadioButton_TheoNgay)
                     .addComponent(jDateChooser_NgayCanXem, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
-                .addComponent(jButton_ThoatGiaoDienXemLichSu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_ThoatGiaoDienChiTietThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -338,11 +341,11 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_ThoatGiaoDienXemLichSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatGiaoDienXemLichSuActionPerformed
+    private void jButton_ThoatGiaoDienChiTietThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatGiaoDienChiTietThongKeActionPerformed
         // TODO add your handling code here:
         this.dispose();
         new GiaoDienThongKe().setVisible(true);
-    }//GEN-LAST:event_jButton_ThoatGiaoDienXemLichSuActionPerformed
+    }//GEN-LAST:event_jButton_ThoatGiaoDienChiTietThongKeActionPerformed
 
     private void jCheckBox_TimHoaDonDaThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox_TimHoaDonDaThanhToanItemStateChanged
         // TODO add your handling code here:
@@ -445,8 +448,8 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
         for (HoaDon hd : controller.Controller.arrayListHoaDon) {
             String ngayXuatHoaDon = new SimpleDateFormat("yyyy-MM-dd").format(hd.getNgayXuatHoaDon());
             if (ngayXuatHoaDon.substring(0, length).equals(this.ngayCanXem) && hd.getTrangThaiThanhToan() == 1
-                    && hd.getSdtKhachHang().substring(0, this.sdtKhachHang.length()).equals(this.sdtKhachHang)
-                    && hd.getSdtNhanVien().substring(0, this.sdtNhanVien.length()).equals(this.sdtNhanVien)) {
+                    && hd.getSdtKhachHang().contains(sdtKhachHang)
+                    && hd.getSdtNhanVien().contains(sdtNhanVien)) {
                 dtmHoaDon.addRow(new Object[]{
                     hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()), hd.getTrangThaiThanhToan(),
                     hd.getTongTien(), hd.getSdtNhanVien()
@@ -462,8 +465,8 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
         for (HoaDon hd : controller.Controller.arrayListHoaDon) {
             String ngayXuatHoaDon = new SimpleDateFormat("yyyy-MM-dd").format(hd.getNgayXuatHoaDon());
             if (ngayXuatHoaDon.substring(0, length).equals(this.ngayCanXem)
-                    && hd.getSdtKhachHang().substring(0, this.sdtKhachHang.length()).equals(this.sdtKhachHang)
-                    && hd.getSdtNhanVien().substring(0, this.sdtNhanVien.length()).equals(this.sdtNhanVien)) {
+                    && hd.getSdtKhachHang().contains(sdtKhachHang)
+                    && hd.getSdtNhanVien().contains(sdtNhanVien)) {
                 dtmHoaDon.addRow(new Object[]{
                     hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()), hd.getTrangThaiThanhToan(),
                     hd.getTongTien(), hd.getSdtNhanVien()
@@ -509,7 +512,7 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton_ThoatGiaoDienXemLichSu;
+    private javax.swing.JButton jButton_ThoatGiaoDienChiTietThongKe;
     private javax.swing.JCheckBox jCheckBox_TimHoaDonDaThanhToan;
     private com.toedter.calendar.JDateChooser jDateChooser_NgayCanXem;
     private javax.swing.JLabel jLabel2;

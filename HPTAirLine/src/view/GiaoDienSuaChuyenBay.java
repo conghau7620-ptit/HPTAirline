@@ -8,10 +8,12 @@ package view;
 import connection.LoadData;
 import controller.Controller;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import model.ChuyenBay;
 import model.DuongBay;
@@ -33,6 +35,8 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
     public GiaoDienSuaChuyenBay(String maChuyenBay) {
         initComponents();
         new LoadData();
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_SuaChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         loadChuyenBayDuocChon(maChuyenBay);
         maCB = maChuyenBay;
         
@@ -92,6 +96,7 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
         jLabel_ThongBao = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sửa chuyến bay");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -229,57 +234,54 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
                 .addGap(270, 270, 270))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(jLabel_SanBayDi)
-                                    .addGap(251, 251, 251))
-                                .addComponent(jComboBox_SanBayDi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBox_MayBay, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel_MayBay, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jComboBox_SanBayDen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(jLabel_SanBayDen)
-                                    .addGap(238, 238, 238))
-                                .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(16, 16, 16)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addComponent(jLabel_GhiChu)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addGroup(jPanel5Layout.createSequentialGroup()
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel5Layout.createSequentialGroup()
-                                            .addComponent(jLabel_NgayDi, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(40, 40, 40)
-                                            .addComponent(jLabel_IconNgayDi))
-                                        .addComponent(jDateChooser_NgayDi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel5Layout.createSequentialGroup()
-                                            .addComponent(jLabel_NgayVe, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, Short.MAX_VALUE))
-                                        .addGroup(jPanel5Layout.createSequentialGroup()
-                                            .addComponent(jComboBox_GioDi, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox_PhutDi, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jLabel2)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jComboBox_GiayDi, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addComponent(jScrollPane1)))
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(jButton_QuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(jButton_SuaChuyenBay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel_SanBayDi)
+                                .addGap(251, 251, 251))
+                            .addComponent(jComboBox_SanBayDi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox_MayBay, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel_MayBay, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox_SanBayDen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel_SanBayDen)
+                                .addGap(238, 238, 238))
+                            .addComponent(jLabel_ThongBao, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel_GhiChu)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jLabel_NgayDi, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(jLabel_IconNgayDi))
+                                    .addComponent(jDateChooser_NgayDi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jLabel_NgayVe, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
+                                        .addComponent(jComboBox_GioDi, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jComboBox_PhutDi, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jComboBox_GiayDi, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jButton_QuayLai, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jButton_SuaChuyenBay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jSeparator1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,8 +374,18 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
         jComboBox_SanBayDi.setSelectedItem(chuyenBay.getMaSanBayDi());
         jComboBox_SanBayDen.setSelectedItem(chuyenBay.getMaSanBayDen());
         jDateChooser_NgayDi.setDate(new java.util.Date(chuyenBay.getNgayBay().getTime()));
-        jComboBox_GioDi.setSelectedItem(Integer.toString(chuyenBay.getGioBay().getHours()));
+        if (chuyenBay.getGioBay().getHours()<10) {
+            jComboBox_GioDi.setSelectedItem("0" +chuyenBay.getGioBay().getHours());
+        }
+        else {
+            jComboBox_GioDi.setSelectedItem(Integer.toString(chuyenBay.getGioBay().getHours()));
+        }
+        if (chuyenBay.getGioBay().getMinutes()<10) {
+            jComboBox_PhutDi.setSelectedItem("0"+ chuyenBay.getGioBay().getMinutes());
+        }
+        else {
         jComboBox_PhutDi.setSelectedItem(Integer.toString(chuyenBay.getGioBay().getMinutes()));
+        }
         jTextArea_GhiChu.setText(chuyenBay.getGhiChu());
         
     }
@@ -402,10 +414,28 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
             jLabel_SanBayDi.setForeground(Color.white);
             jLabel_SanBayDen.setForeground(Color.white);
         }
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        for (ChuyenBay cb: Controller.arrayListChuyenBay) {
+            if (cb.getMaMayBay().equals(jComboBox_MayBay.getSelectedItem().toString())
+                    && cb.getMaSanBayDi().equals(maSB1) && cb.getMaSanBayDen().equals(maSB2) 
+                    && formatter.format(cb.getNgayBay()).equals(formatter.format(jDateChooser_NgayDi.getDate()))
+                    && cb.getGioBay().getHours()==Integer.parseInt(jComboBox_GioDi.getSelectedItem().toString())) {
+                jLabel_ThongBao.setText("Đã có chuyến bay tương tự cùng thời gian trên");
+                return;
+            }
+        }
+        
         if (!maSB1.equals(maSB2)){
             for (DuongBay db: Controller.arrayListDuongBay) {
                 if ((db.getMaSanBay1().equals(maSB1) && db.getMaSanBay2().equals(maSB2))
                         || (db.getMaSanBay1().equals(maSB2) && db.getMaSanBay2().equals(maSB1))) {
+                    
+                    java.util.Date today = new java.util.Date();
+                    if (jDateChooser_NgayDi.getDate().before(today)) {
+                        jLabel_ThongBao.setText("Ngày đi không hợp lệ");
+                        return;
+                    }
                     
                     Time time = new Time(
                         Integer.parseInt(jComboBox_GioDi.getSelectedItem().toString()),
@@ -421,22 +451,18 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
                         time,
                         jTextArea_GhiChu.getText(),
                         db.getKhoangCach());
+                    int vt=0;
                     for (ChuyenBay cb1 : Controller.arrayListChuyenBay) {
                         if (cb1.getMaChuyenBay().equals(maCB)) {
-                            chuyenBay = cb1;
                              break;
                         }
+                        vt++;
                     }
-                    Controller.arrayListChuyenBay.set(
-                            Controller.arrayListChuyenBay.indexOf(chuyenBay), cb);
+                    Controller.arrayListChuyenBay.set(vt, cb);
                     connection.UpdateData.updateChuyenBay(cb);
                     jLabel_ThongBao.setText("Sửa chuyến bay thành công");
                     return;
                 }
-                else {
-                    System.out.println(maSB1 + " - " + maSB2);
-                    System.out.println(db.getMaSanBay1() + " - " + db.getMaSanBay2());
-                }   
             }
             jLabel_ThongBao.setText("Chưa có đường bay giữa 2 sân bay trên");
         }

@@ -6,6 +6,7 @@
 package view;
 
 import connection.LoadData;
+import java.awt.Cursor;
 import java.awt.event.ItemEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -34,6 +35,10 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
 
     public GiaoDienThanhToanHoaDon() {
         initComponents();
+        jButton_XoaVe.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_XoaHoaDon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThoatGiaoDienXemLichSu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_SuaDiemTichLuyDaDung.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
         dtmHoaDon.setColumnIdentifiers(new Object[]{
             "Mã HĐ", "SĐT KH", "Ngày Xuất", "Thanh Toán", "Tổng", "SĐT NV"
@@ -104,6 +109,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Thanh toán hóa đơn");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -258,7 +264,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        jTextField_TimHoaDon.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jTextField_TimHoaDon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField_TimHoaDon.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField_TimHoaDonKeyReleased(evt);
@@ -536,7 +542,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                                             }
                                         }
                                     } else {
-                                        if (connection.UpdateData.updateHoaDon(maHoaDon, tongTienSauXoa)) {
+                                        if (connection.UpdateData.updateHoaDon(maHoaDon, tongTienSauXoa, controller.Controller.tk.getSdt())) {
                                             if (connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuySauXoa)) {
                                                 JOptionPane.showMessageDialog(rootPane, "Xóa vé thành công");
 
@@ -767,7 +773,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                         System.out.println("Điểm tích lũy sau khi thay đổi số điểm dùng: " + diemTichLuyConLaiSauThayDoi);
                         int luaChonCapNhat = JOptionPane.showConfirmDialog(rootPane, "Điểm tích lũy sau thay đổi sẽ là: " + diemTichLuyConLaiSauThayDoi + "tổng tiền mới là: " + tongTienMoi, null, JOptionPane.OK_CANCEL_OPTION);
                         if (luaChonCapNhat == JOptionPane.OK_OPTION) {
-                            connection.UpdateData.updateHoaDon(maHoaDon, tongTienMoi);
+                            connection.UpdateData.updateHoaDon(maHoaDon, tongTienMoi, controller.Controller.tk.getSdt());
                             connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuyConLaiSauThayDoi);
                             hienThongTinVaoBangHoaDon();
                             dtmVe.setRowCount(0);
@@ -1006,7 +1012,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

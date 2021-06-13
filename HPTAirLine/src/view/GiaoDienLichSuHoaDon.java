@@ -6,6 +6,7 @@
 package view;
 
 import connection.LoadData;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
@@ -33,7 +34,10 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
 
     public GiaoDienLichSuHoaDon() {
         initComponents();
-
+        jButton_XoaVe.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_XoaHoaDon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThoatGiaoDienXemLichSu.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_SuaDiemTichLuyDaDung.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
         dtmHoaDon.setColumnIdentifiers(new Object[]{
             "Mã HĐ", "SĐT KH", "Ngày Xuất", "Thanh Toán", "Tổng", "SĐT NV"
@@ -109,6 +113,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
         jButton_XoaVe = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Lịch sử hóa đơn");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));

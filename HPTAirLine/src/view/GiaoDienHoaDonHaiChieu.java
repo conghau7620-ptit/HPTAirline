@@ -7,7 +7,6 @@
  */
 package view;
 
-import connection.DataConnection;
 
 import connection.InsertData;
 import connection.LoadData;
@@ -16,10 +15,6 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -72,6 +67,8 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
 
     public GiaoDienHoaDonHaiChieu(ArrayList<Ve> danhSachVeDi, ArrayList<Ve> danhSachVeVe) {
         initComponents();
+        jButton_HoanTatHoaDon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThoatGiaoDienHoaDon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.danhSachVeDi = danhSachVeDi;
         this.maHoaDonDi = danhSachVeDi.get(0).getMaHoaDon();
         this.maChuyenBayDi = danhSachVeDi.get(0).getMaChuyenBay();
@@ -149,33 +146,37 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
 //            maHoaDonVe = "HD" + (soHoaDon + 1);
 //        }
 //        //
-
-
+        int i = 0;
         for (Ve ve : this.danhSachVeDi) {
-
+            i = i + 1;
+            if (i <= 9) {
+                ve.setMaVe("V0" + i);
+            } else {
+                ve.setMaVe("V" + i);
+            }
             String maGhe = ve.getMaGhe().substring(0, 1).toUpperCase() + ve.getMaGhe().substring(1);
             ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
             System.out.println("ma ghe: " + ve.getMaGhe());
+            ve.setKyGui((short) 15);
+            //       ve.setMaHoaDon(maHoaDon);
 
-     //       ve.setMaHoaDon(maHoaDon);
-            
-
-        //    ve.setMaHoaDon(maHoaDon);
-
-
+            //    ve.setMaHoaDon(maHoaDon);
         }
+        i = 0;
         for (Ve ve : this.danhSachVeVe) {
-
+            i = i + 1;
+            if (i <= 9) {
+                ve.setMaVe("V0" + i);
+            } else {
+                ve.setMaVe("V" + i);
+            }
             String maGhe = ve.getMaGhe().substring(0, 1).toUpperCase() + ve.getMaGhe().substring(1);
             ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
             System.out.println("ma ghe: " + ve.getMaGhe());
+            ve.setKyGui((short) 15);
+            //   ve.setMaHoaDon(maHoaDonVe);
 
-        //   ve.setMaHoaDon(maHoaDonVe);
-            
-
-          //  ve.setMaHoaDon(maHoaDonVe);
-
-
+            //  ve.setMaHoaDon(maHoaDonVe);
         }
 //        this.maHoaDonDi = this.danhSachVeDi.get(0).getMaHoaDon();
 //        this.maHoaDonVe = this.danhSachVeVe.get(0).getMaHoaDon();
@@ -295,6 +296,7 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         jLabel_tb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Hóa đơn 2 chiều");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -920,13 +922,10 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                     .addComponent(jLabel_TongTienDi)
                     .addComponent(jTextField_SoDienThoaiNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_SoDienThoaiNhanVien))
-                .addGap(18, 29, Short.MAX_VALUE)
+                .addGap(18, 31, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel_BaoLoi2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(0, 0, 0))
+                    .addComponent(jLabel_BaoLoi2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jCheckBox_TrangThaiThanhToanHoaDonDi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_ThoatGiaoDienHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1131,8 +1130,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                                     this.danhSachVeVe.removeAll(danhSachVeVe);
                                 }
 
-                                
-
                             }
                         } else {
                             System.out.println("Thêm hóa đơn thất bại");
@@ -1190,14 +1187,13 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
 
     private void jButton_ThoatGiaoDienHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatGiaoDienHoaDonActionPerformed
         // TODO add your handling code here:
-        
-        
-            for (int i = 0 ; i < GiaoDienChonGhe.dsVeVe.size(); i++){
+
+        for (int i = 0; i < GiaoDienChonGhe.dsVeVe.size(); i++) {
             String maGhe = GiaoDienChonGhe.dsVeVe.get(i).getMaGhe().substring(5);
-            maGhe = maGhe.substring(0,1).toLowerCase() + maGhe.substring(1);
+            maGhe = maGhe.substring(0, 1).toLowerCase() + maGhe.substring(1);
             GiaoDienChonGhe.dsVeVe.get(i).setMaGhe(maGhe);
-          }
-          
+        }
+
         new GiaoDienChonGhe().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_ThoatGiaoDienHoaDonActionPerformed

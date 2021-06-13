@@ -33,6 +33,8 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
      */
     public GiaoDienThemNhanVien() {
         initComponents();
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThemNhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         new LoadData();
         jTextField_TaiKhoan.addKeyListener(new KeyAdapter() {
             @Override
@@ -146,8 +148,6 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         
-        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        jButton_ThemNhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -187,6 +187,7 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
         jLabel_XacNhanMatKhau1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Thêm nhân viên");
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));

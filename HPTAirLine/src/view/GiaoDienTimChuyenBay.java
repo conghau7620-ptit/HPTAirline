@@ -64,7 +64,8 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         }
 
         jLabel_HuongDanDatCho.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
+        jButton_TimChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jLabel_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));   
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -152,6 +153,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         jLabel_QuayLai = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tìm chuyến bay");
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(48, 57, 82));
@@ -381,6 +383,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         jLabel_BaoLoi.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         jLabel_BaoLoi.setForeground(java.awt.Color.yellow);
 
+        jLabel_QuayLai.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jLabel_QuayLai.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_QuayLai.setText("Quay Lại");
         jLabel_QuayLai.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -474,19 +477,15 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                     .addComponent(jDateChooser_NgayDi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(36, 36, 36)
                 .addComponent(jButton_TimChuyenBay, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_BaoLoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel_HuongDanDatCho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 24, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel_QuayLai)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel_HuongDanDatCho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_QuayLai))
+                        .addGap(0, 24, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jComboBox_SanBayDen, jComboBox_SanBayDi});
@@ -572,8 +571,10 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             if ((ngayHienTai.after(ngayVe))) {
                 jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
                 ktra = false;
+                jLabel_BaoLoi.setText("Ngày về phải trước ngày hiện tại.");
                 return ktra;
             } else {
+                jLabel_BaoLoi.setText("");
                 jDateChooser_NgayVe.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
             }
             if (ngayDi.after(ngayVe)) {
@@ -618,9 +619,8 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                 ngayVe = jDateChooser_NgayVe.getDate();
 
                 Controller.loadKetQuaTheoNgay(jComboBox_SanBayDen.getSelectedItem().toString().substring(0, 3),
-                        jComboBox_SanBayDi.getSelectedItem().toString().substring(0, 3), new SimpleDateFormat("yyyy-MM-dd").format(ngayVe).toString());
-                new LoadData();
-                if (controller.Controller.arrayListKetQuaTimKiemChuyenBay.size() != 0) {
+                        jComboBox_SanBayDi.getSelectedItem().toString().substring(0, 3), new SimpleDateFormat("yyyy-MM-dd").format(ngayVe));
+                if (!controller.Controller.arrayListKetQuaTimKiemChuyenBay.isEmpty()) {
                     for (ChuyenBay cb : controller.Controller.arrayListKetQuaTimKiemChuyenBay) {
                         int soGheTrong = 0;
                         for (Ghe g : cb.getArrayListGhe()) {

@@ -14,6 +14,7 @@ import model.ChuyenBay;
 import model.DuongBay;
 import model.HoaDon;
 import model.KhachHang;
+import model.MayBay;
 import model.NhanVien;
 import model.SanBay;
 import model.TaiKhoan;
@@ -227,6 +228,28 @@ public class InsertData {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("thêm sân bay thất bại");
+        return false;
+    }
+    
+    public static boolean insertMayBay(MayBay mb) {
+        String sqlCommand = "insert into dbo.MAYBAY values(?,?,?)";
+        try {
+            DataConnection.createStatement();
+            PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
+            ps.setString(1, mb.getMaMayBay());
+            ps.setString(2,mb.getTenMayBay());
+            ps.setString(3,mb.getHangBay());
+
+            if(ps.executeUpdate()>0){
+                System.out.println("thêm máy bay thành công");
+                return true;
+            }
+
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("thêm máy bay thất bại");
         return false;
     }
 //    

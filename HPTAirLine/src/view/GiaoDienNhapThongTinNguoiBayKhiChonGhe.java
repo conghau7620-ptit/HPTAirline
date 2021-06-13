@@ -175,6 +175,7 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
         jButton_XacNhan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Nhập thông tin người bay");
 
         jPanel3.setBackground(new java.awt.Color(89, 98, 117));
 
@@ -319,7 +320,7 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jTextField_CMND, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
                     .addComponent(jTextField_TenNguoiBay, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,7 +400,7 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                     .addContainerGap(522, Short.MAX_VALUE)
@@ -699,7 +700,15 @@ private String danhMaHoaDon (int soHoaDon) {
                     ve.setMaChuyenBay(maChuyenBay);
                     ve.setMaGhe(maGhe);
                     ve.setCmndNguoiBay(""); // tre em thi cmnd  = ""
-                    ve.setNgaySinh(ngaySinh);
+                    String d = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooser_NgaySinhTreEm.getDate());
+                        java.util.Date ngayDeParse = null;
+                        try {
+                            ngayDeParse = new SimpleDateFormat("yyyy-MM-dd").parse(d);
+                        } catch (ParseException ex) {
+                            Logger.getLogger(GiaoDienHoaDonMotChieu.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        ngaySinh = new java.sql.Date(ngayDeParse.getTime());
+                    ve.setNgaySinh(ngaySinh);               
                     System.out.println("tre em");
                   
                     if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di){
