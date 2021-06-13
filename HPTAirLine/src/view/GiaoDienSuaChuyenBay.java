@@ -13,6 +13,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Date;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import model.ChuyenBay;
 import model.DuongBay;
@@ -373,8 +374,18 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
         jComboBox_SanBayDi.setSelectedItem(chuyenBay.getMaSanBayDi());
         jComboBox_SanBayDen.setSelectedItem(chuyenBay.getMaSanBayDen());
         jDateChooser_NgayDi.setDate(new java.util.Date(chuyenBay.getNgayBay().getTime()));
-        jComboBox_GioDi.setSelectedItem(Integer.toString(chuyenBay.getGioBay().getHours()));
+        if (chuyenBay.getGioBay().getHours()<10) {
+            jComboBox_GioDi.setSelectedItem("0" +chuyenBay.getGioBay().getHours());
+        }
+        else {
+            jComboBox_GioDi.setSelectedItem(Integer.toString(chuyenBay.getGioBay().getHours()));
+        }
+        if (chuyenBay.getGioBay().getMinutes()<10) {
+            jComboBox_PhutDi.setSelectedItem("0"+ chuyenBay.getGioBay().getMinutes());
+        }
+        else {
         jComboBox_PhutDi.setSelectedItem(Integer.toString(chuyenBay.getGioBay().getMinutes()));
+        }
         jTextArea_GhiChu.setText(chuyenBay.getGhiChu());
         
     }
@@ -403,10 +414,28 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
             jLabel_SanBayDi.setForeground(Color.white);
             jLabel_SanBayDen.setForeground(Color.white);
         }
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        for (ChuyenBay cb: Controller.arrayListChuyenBay) {
+            if (cb.getMaMayBay().equals(jComboBox_MayBay.getSelectedItem().toString())
+                    && cb.getMaSanBayDi().equals(maSB1) && cb.getMaSanBayDen().equals(maSB2) 
+                    && formatter.format(cb.getNgayBay()).equals(formatter.format(jDateChooser_NgayDi.getDate()))
+                    && cb.getGioBay().getHours()==Integer.parseInt(jComboBox_GioDi.getSelectedItem().toString())) {
+                jLabel_ThongBao.setText("Đã có chuyến bay tương tự cùng thời gian trên");
+                return;
+            }
+        }
+        
         if (!maSB1.equals(maSB2)){
             for (DuongBay db: Controller.arrayListDuongBay) {
                 if ((db.getMaSanBay1().equals(maSB1) && db.getMaSanBay2().equals(maSB2))
                         || (db.getMaSanBay1().equals(maSB2) && db.getMaSanBay2().equals(maSB1))) {
+                    
+                    java.util.Date today = new java.util.Date();
+                    if (jDateChooser_NgayDi.getDate().before(today)) {
+                        jLabel_ThongBao.setText("Ngày đi không hợp lệ");
+                        return;
+                    }
                     
                     Time time = new Time(
                         Integer.parseInt(jComboBox_GioDi.getSelectedItem().toString()),
@@ -434,10 +463,6 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
                     jLabel_ThongBao.setText("Sửa chuyến bay thành công");
                     return;
                 }
-                else {
-                    System.out.println(maSB1 + " - " + maSB2);
-                    System.out.println(db.getMaSanBay1() + " - " + db.getMaSanBay2());
-                }   
             }
             jLabel_ThongBao.setText("Chưa có đường bay giữa 2 sân bay trên");
         }
