@@ -19,7 +19,7 @@ import model.MayBay;
 
 /**
  *
- * @author t0168
+ * @author conghau
  */
 public class GiaoDienThemMayBay extends javax.swing.JFrame {
 

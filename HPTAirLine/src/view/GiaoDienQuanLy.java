@@ -54,6 +54,8 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton_SanBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         
         jButton_TimChuyen.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        
+        jButton_MayBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -299,7 +301,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton_SanBay.setBackground(new java.awt.Color(60, 60, 153));
         jButton_SanBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_SanBay.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_SanBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_road_48px.png"))); // NOI18N
+        jButton_SanBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_runway_52px.png"))); // NOI18N
         jButton_SanBay.setText("Sân Bay");
         jButton_SanBay.setBorderPainted(false);
         jButton_SanBay.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -313,7 +315,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton_DuongBay.setBackground(new java.awt.Color(20, 0, 65));
         jButton_DuongBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_DuongBay.setForeground(new java.awt.Color(255, 255, 255));
-        jButton_DuongBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_airplane_mode_on_52px.png"))); // NOI18N
+        jButton_DuongBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_paper_plane_52px.png"))); // NOI18N
         jButton_DuongBay.setText("Đường Bay");
         jButton_DuongBay.setBorderPainted(false);
         jButton_DuongBay.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -338,7 +340,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
             }
         });
 
-        jButton_MayBay.setBackground(new java.awt.Color(0, 153, 0));
+        jButton_MayBay.setBackground(new java.awt.Color(0, 102, 51));
         jButton_MayBay.setFont(new java.awt.Font("Roboto", 1, 16)); // NOI18N
         jButton_MayBay.setForeground(new java.awt.Color(255, 255, 255));
         jButton_MayBay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/swing/images/icons8_airplane_mode_on_52px.png"))); // NOI18N
