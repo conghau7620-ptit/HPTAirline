@@ -8,6 +8,7 @@ package view;
 import connection.LoadData;
 import controller.Controller;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Date;
@@ -29,6 +30,8 @@ public class GiaoDienThemChuyenBay extends javax.swing.JFrame {
      */
     public GiaoDienThemChuyenBay() {
         initComponents();
+        jButton_Them.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         new LoadData();
         input();
         this.addWindowListener(new WindowAdapter() {

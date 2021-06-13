@@ -9,6 +9,7 @@ import connection.InsertData;
 import connection.LoadData;
 import controller.Controller;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -25,6 +26,8 @@ public class GiaoDienThemSanBay extends javax.swing.JFrame {
      */
     public GiaoDienThemSanBay() {
         initComponents();
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThemSanBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         new LoadData();
         
         this.addWindowListener(new WindowAdapter() {

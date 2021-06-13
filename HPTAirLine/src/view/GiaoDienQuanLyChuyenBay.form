@@ -151,7 +151,7 @@
                       </Group>
                       <Component id="jSeparator2" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jButton_QuayLai2" linkSize="1" min="-2" pref="169" max="-2" attributes="0"/>
+                          <Component id="jButton_QuayLai" linkSize="1" min="-2" pref="169" max="-2" attributes="0"/>
                           <EmptySpace pref="63" max="32767" attributes="0"/>
                           <Component id="jButton_ThemChuyenBay" linkSize="1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
@@ -181,7 +181,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton_ThemChuyenBay" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="jButton_XoaChuyenBay" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
-                      <Component id="jButton_QuayLai2" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="jButton_QuayLai" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="jButton_SuaChuyenBay" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -293,7 +293,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_XoaChuyenBayActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_QuayLai2">
+        <Component class="javax.swing.JButton" name="jButton_QuayLai">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="0" type="rgb"/>
@@ -308,7 +308,7 @@
             <Property name="borderPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_QuayLai2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_QuayLaiActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton_SuaChuyenBay">

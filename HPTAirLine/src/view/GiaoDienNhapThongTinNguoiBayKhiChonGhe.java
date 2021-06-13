@@ -700,7 +700,15 @@ private String danhMaHoaDon (int soHoaDon) {
                     ve.setMaChuyenBay(maChuyenBay);
                     ve.setMaGhe(maGhe);
                     ve.setCmndNguoiBay(""); // tre em thi cmnd  = ""
-                    ve.setNgaySinh(ngaySinh);
+                    String d = new SimpleDateFormat("yyyy-MM-dd").format(jDateChooser_NgaySinhTreEm.getDate());
+                        java.util.Date ngayDeParse = null;
+                        try {
+                            ngayDeParse = new SimpleDateFormat("yyyy-MM-dd").parse(d);
+                        } catch (ParseException ex) {
+                            Logger.getLogger(GiaoDienHoaDonMotChieu.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        ngaySinh = new java.sql.Date(ngayDeParse.getTime());
+                    ve.setNgaySinh(ngaySinh);               
                     System.out.println("tre em");
                   
                     if (!GiaoDienChonGhe.ve && !GiaoDienChonGhe.di){

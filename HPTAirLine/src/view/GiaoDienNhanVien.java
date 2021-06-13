@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
-import model.KhachHang;
 import model.NhanVien;
 
 /**
@@ -27,6 +26,8 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
      */
     public GiaoDienNhanVien() {
         initComponents();
+        jButton_BanVe.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThanhToan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         setVisible(true);
         thongTinTaiKhoan();
         

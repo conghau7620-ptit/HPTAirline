@@ -39,6 +39,11 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
 
     public GiaoDienQuanLyNhanVien() {
         initComponents();
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_KhoiPhucMK.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_SuaNhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThemNhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_XoaNhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
         dtmHoaDon.setColumnIdentifiers(new Object[]{
             "Mã HĐ", "SĐT KH", "Ngày Xuất", "Thanh Toán", "Tổng", "SĐT NV"
@@ -72,10 +77,6 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
             
-        jButton_SuaNhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        jButton_ThemNhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        jButton_XoaNhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     /**

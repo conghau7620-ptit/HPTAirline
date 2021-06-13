@@ -6,6 +6,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -23,6 +24,8 @@ public class GiaoDienSuaSanBay extends javax.swing.JFrame {
     private String maSanBay;
     public GiaoDienSuaSanBay(String maSanBay) {
         initComponents();
+        jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_SuaSanBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.maSanBay = maSanBay;
         for(SanBay sb: controller.Controller.arrayListSanBay){
             if(this.maSanBay.equalsIgnoreCase(sb.getMaSanBay())){

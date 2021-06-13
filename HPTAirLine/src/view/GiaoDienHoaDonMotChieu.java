@@ -7,17 +7,13 @@
  */
 package view;
 
-import connection.DataConnection;
 import connection.InsertData;
 import connection.LoadData;
 import connection.UpdateData;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,7 +21,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
@@ -61,6 +56,8 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
 //    public GiaoDienHoaDonMotChieu(ArrayList<Ve> danhSachVeDi) {
         public GiaoDienHoaDonMotChieu(){
         initComponents();
+        jButton_HoanTatHoaDon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        jButton_ThoatGiaoDienHoaDon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.danhSachVe = GiaoDienChonGhe.dsVeDi;
         this.phanTramGiaThuongGia = connection.LoadData.phanTramThuongGia;
 
@@ -128,8 +125,14 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
 //                 if(soHoaDon <= 9) maHoaDon= "HD0"+ (soHoaDon);
 //                 else maHoaDon = "HD" + (soHoaDon);
 //        
+        int i = 0;
         for(Ve ve: this.danhSachVe){
-           
+           i = i+1;
+           if(i<=9){
+               ve.setMaVe("V0"+i);
+           }else{
+               ve.setMaVe("V"+i);
+           }
             String maGhe = ve.getMaGhe().substring(0,1).toUpperCase() + ve.getMaGhe().substring(1);
             ve.setMaGhe(ve.getMaChuyenBay()+"-"+maGhe);
             ve.setKyGui((short)15);
