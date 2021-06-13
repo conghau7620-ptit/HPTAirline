@@ -364,10 +364,10 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
         jLabel_TreEm.setText("Trẻ em (2-15t)");
 
         jComboBox_SLNguoiLon.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jComboBox_SLNguoiLon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        jComboBox_SLNguoiLon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
         jComboBox_SLTreEm.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jComboBox_SLTreEm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5" }));
+        jComboBox_SLTreEm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
 
         jDateChooser_NgayDi.setDateFormatString("dd/MM/yyyy");
         jDateChooser_NgayDi.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -426,9 +426,9 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                                     .addComponent(jLabel_NguoiLon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel_TreEm, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jComboBox_SLTreEm, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox_SLNguoiLon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBox_SLTreEm, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox_SLNguoiLon, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jRadioButton_MotChieu)
                                 .addGap(18, 18, 18)

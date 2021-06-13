@@ -501,7 +501,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/swing/images/icons8_road_48px.png"/>
+              <Image iconType="3" name="/swing/images/icons8_runway_52px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="S&#xe2;n Bay"/>
             <Property name="borderPainted" type="boolean" value="false"/>
@@ -524,7 +524,7 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/swing/images/icons8_airplane_mode_on_52px.png"/>
+              <Image iconType="3" name="/swing/images/icons8_paper_plane_52px.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#x1b0;&#x1edd;ng Bay"/>
             <Property name="borderPainted" type="boolean" value="false"/>
@@ -561,7 +561,7 @@
         <Component class="javax.swing.JButton" name="jButton_MayBay">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="99" red="0" type="rgb"/>
+              <Color blue="33" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="16" style="1"/>
