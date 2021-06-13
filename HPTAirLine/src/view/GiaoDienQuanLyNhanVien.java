@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -28,7 +23,7 @@ import model.Ve;
 public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
 
     /**
-     * Creates new form GiaoDienQuanLyKhachHang
+     * Creates new form GiaoDienQuanLyNhanVien
      */
     private String sdtNhanVien = "";
     private String maHoaDon = "";
@@ -76,7 +71,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         });
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-            
+
     }
 
     /**
@@ -580,7 +575,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Bạn vui lòng chọn nhân viên cần sửa");
         } else {
             NhanVien nv = new NhanVien(jTextField_SDTNhanVien.getText(), jTextField_TenNhanVien.getText(), jTextField_DiaChi.getText(),
-                jTextField_TenDangNhap.getText(), jTextField_CMND.getText());
+                    jTextField_TenDangNhap.getText(), jTextField_CMND.getText());
             if (nv.getCmnd().isEmpty() || nv.getTenNhanVien().isEmpty() || nv.getDiaChi().isEmpty()) {
                 jLabel_BaoLoi.setText("*Không bỏ trống thông tin");
             } else {
@@ -607,11 +602,6 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         jLabel_BaoLoi.setText("");
         jLabel_CMND.setForeground(Color.white);
         jTextField_CMND.setForeground(Color.black);
-        //                if (cmnd.length() != 9) {
-            //                    jLabel_BaoLoi.setText("*CMND 9 số");
-            //                    jLabel_CMND.setForeground(Color.yellow);
-            //                    jTextField_CMND.setForeground(Color.yellow);
-            //                }
         for (int i = 0; i < cmnd.length(); i++) {
             if (cmnd.charAt(i) < '0' || cmnd.charAt(i) > '9') {
                 jLabel_BaoLoi.setText("*CMND phải nhập số");
@@ -654,7 +644,6 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
         clearTextFieldThongTinNhanVien();
 
         if (jTextField_TimKiem.getText().length() >= 11) {
-            //            evt.consume();
             jTextField_TimKiem.setText(jTextField_TimKiem.getText().substring(0, jTextField_TimKiem.getText().length() - 1));
         } else {
             dtmNhanVien.setRowCount(0);
@@ -741,7 +730,7 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable_HoaDonMouseClicked
 
     private void jButton_KhoiPhucMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_KhoiPhucMKActionPerformed
-        if (jTable_NhanVien.getSelectedRow()==-1) {
+        if (jTable_NhanVien.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Bạn vui chọn nhân viên cần khôi phục mật khẩu");
             return;
         }
@@ -793,17 +782,6 @@ public class GiaoDienQuanLyNhanVien extends javax.swing.JFrame {
                 }
             }
         }
-////            int soHoaDon = 0;
-//
-//        for (HoaDon hd : controller.Controller.arrayListHoaDon) {
-//            if (hd.getSdtNhanVien().equals(this.sdtNhanVien)) {
-//                dtmHoaDon.addRow(new Object[]{
-//                    hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()),
-//                    hd.getTrangThaiThanhToan(), hd.getTongTien(), hd.getSdtNhanVien()
-//                });
-////                    soHoaDon++;
-//            }
-//        }
     }
 
     private void loadBangHoaDonTheoSDTNhanVien() {

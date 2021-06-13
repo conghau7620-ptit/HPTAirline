@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -27,7 +22,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
      */
     DefaultTableModel dtmChuyenBay = null;
     String maChuyenBayDuocChon = null;
-    
+
     public GiaoDienQuanLyChuyenBay() {
         initComponents();
         jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -36,7 +31,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
         jButton_XoaChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         new LoadData();
         input();
-        
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -297,7 +292,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
             "Khoảng Cách"
         });
         for (ChuyenBay cb : Controller.arrayListChuyenBay) {
-            dtmChuyenBay.addRow(new Object[] {
+            dtmChuyenBay.addRow(new Object[]{
                 cb.getMaChuyenBay(),
                 cb.getMaMayBay(),
                 cb.getMaSanBayDi(),
@@ -309,6 +304,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
             });
         }
     }
+
     private boolean duocSua(String maChuyenBay) {
         for (Ve ve : Controller.arrayListVe) {
             if (ve.getMaChuyenBay().equals(maChuyenBay)) {
@@ -319,7 +315,9 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     }
     private void jTable_ChuyenBayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ChuyenBayMouseClicked
         int row = jTable_ChuyenBay.getSelectedRow();
-        if (row == -1) return;
+        if (row == -1) {
+            return;
+        }
         maChuyenBayDuocChon = jTable_ChuyenBay.getValueAt(row, 0).toString();
         System.out.println(maChuyenBayDuocChon);
     }//GEN-LAST:event_jTable_ChuyenBayMouseClicked
@@ -340,7 +338,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_TimKiemFocusLost
 
     private void jTextField_TimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyReleased
-        while (dtmChuyenBay.getRowCount()!=0) {
+        while (dtmChuyenBay.getRowCount() != 0) {
             dtmChuyenBay.removeRow(0);
         }
         if (jTextField_TimKiem.getText().isEmpty()) {
@@ -352,7 +350,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
         jTextField_TimKiem.setCaretPosition(jTextField_TimKiem.getText().length());
         for (ChuyenBay cb : Controller.arrayListChuyenBay) {
             if (cb.getMaSanBayDi().contains(st) || cb.getMaSanBayDen().contains(st)) {
-                dtmChuyenBay.addRow(new Object[] {
+                dtmChuyenBay.addRow(new Object[]{
                     cb.getMaChuyenBay(),
                     cb.getMaMayBay(),
                     cb.getMaSanBayDi(),
@@ -375,22 +373,21 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MousePressed
 
     private void jButton_XoaChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaChuyenBayActionPerformed
-        if (jTable_ChuyenBay.getSelectedRow()==-1) {
+        if (jTable_ChuyenBay.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Bạn vui lòng chọn chuyến bay cần xóa");
             return;
         }
-        if (!duocSua(maChuyenBayDuocChon)){
+        if (!duocSua(maChuyenBayDuocChon)) {
             JOptionPane.showMessageDialog(null, "Chuyến bay đã được đặt vé, không thể xóa");
             return;
         }
         ChuyenBay chuyenBayXoa = null;
-        for (ChuyenBay cb: Controller.arrayListChuyenBay) {
+        for (ChuyenBay cb : Controller.arrayListChuyenBay) {
             if (cb.getMaChuyenBay().equals(maChuyenBayDuocChon)) {
                 chuyenBayXoa = cb;
                 break;
             }
         }
-        
         Controller.arrayListChuyenBay.remove(chuyenBayXoa);
         UpdateData.deleteGhe(maChuyenBayDuocChon);
         UpdateData.deleteChuyenBay(maChuyenBayDuocChon);
@@ -404,7 +401,7 @@ public class GiaoDienQuanLyChuyenBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     private void jButton_SuaChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaChuyenBayActionPerformed
-        if (jTable_ChuyenBay.getSelectedRow()==-1) {
+        if (jTable_ChuyenBay.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Bạn vui lòng chọn chuyến bay cần sửa thông tin");
             return;
         }

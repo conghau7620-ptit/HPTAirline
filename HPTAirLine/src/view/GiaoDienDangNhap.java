@@ -1,6 +1,3 @@
-/*
-    clean trc khi chạy
- */
 package view;
 
 import connection.LoadData;
@@ -10,7 +7,6 @@ import java.awt.Cursor;
 import javax.swing.BorderFactory;
 import model.TaiKhoan;
 
-//TẠM HOÀN THÀNH XỬ LÝ GIAO DIỆN ĐĂNG NHẬP
 /**
  *
  * @author tuanbuiquoc
@@ -218,7 +214,6 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
     private void jLabel_DangKyMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangKyMousePressed
         // TODO add your handling code here:
         new GiaoDienDangKyTaiKhoan().setVisible(true);
-//        dispose();
     }//GEN-LAST:event_jLabel_DangKyMousePressed
 
     private void jButton_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DangNhapActionPerformed
@@ -239,18 +234,11 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
                 if (controller.Controller.tk.getLoaiTaiKhoan().equalsIgnoreCase("QuanLy")) {
                     new GiaoDienQuanLy().setVisible(true);
                     this.dispose();
-                }
-
-                //                this.testHD1Chieu();
-                //                this.testHD2Chieu();
-                //                new GiaoDienLichSuHoaDon().setVisible(true);    //testLichsu
-
-                else if (taiKhoanHienTai.getLoaiTaiKhoan().equals("KhachHang")) {
+                } else if (taiKhoanHienTai.getLoaiTaiKhoan().equals("KhachHang")) {
 
                     new GiaoDienTimChuyenBay().setVisible(true);
                     this.dispose();
-                }
-                else if (taiKhoanHienTai.getLoaiTaiKhoan().equals("NhanVien")) {
+                } else if (taiKhoanHienTai.getLoaiTaiKhoan().equals("NhanVien")) {
                     new GiaoDienNhanVien().setVisible(true);
                     this.dispose();
                 }
@@ -263,7 +251,7 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
             jTextField_TenDangNhap.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
         }
     }//GEN-LAST:event_jButton_DangNhapActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */

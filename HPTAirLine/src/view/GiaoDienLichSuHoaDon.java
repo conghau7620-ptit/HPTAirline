@@ -1,8 +1,3 @@
-/*
-    tạm hoàn thành lịch sử hóa đơn khách hàng: có xóa hóa đơn, xóa vé trong hóa đơn, thay đổi điểm đã sử dụng của hóa đơn
-    xóa hết vé trong 1 hóa đơn sẽ tự động xóa hóa đơn
-    trả điểm khi hủy vé, hủy hóa đơn
- */
 package view;
 
 import connection.LoadData;
@@ -27,7 +22,7 @@ import model.Ve;
 public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
 
     /**
-     * Creates new form GiaoDienHoaDonDaDat
+     * Creates new form GiaoDienLichSuHoaDon
      */
     DefaultTableModel dtmHoaDon = null;
     DefaultTableModel dtmVe = null;
@@ -43,24 +38,6 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
             "Mã HĐ", "SĐT KH", "Ngày Xuất", "Thanh Toán", "Tổng", "SĐT NV"
         });
         hienThongTinVaoBangHoaDon();
-//        dtmHoaDon.setRowCount(0);
-//
-//        new LoadData();
-//
-//        for (KhachHang kh : controller.Controller.arrayListKhachHang) {
-//            if (kh.getSdtKhachHang().equals(controller.Controller.tk.getSdt())) {
-//                for (HoaDon hd : controller.Controller.arrayListHoaDon) {
-//                    if (hd.getSdtKhachHang().equals(kh.getSdtKhachHang())) {
-//                        dtmHoaDon.addRow(new Object[]{
-//                            hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()), hd.getTrangThaiThanhToan(),
-//                            hd.getTongTien(), hd.getSdtNhanVien()
-//                        });
-//                    }
-//
-//                }
-//                break;
-//            }
-//        }
 
         dtmVe = (DefaultTableModel) jTable_VeDaChon.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
@@ -379,7 +356,6 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
         if (row == -1) {
 
         } else {
-            // sau khi xóa thì bảng hóa đơn reset, tạm giải quyết = joptionpane
             if (rowHoaDon == -1) {
                 JOptionPane.showMessageDialog(rootPane, "Hãy chọn hóa đơn trước");
             } else {
@@ -521,7 +497,6 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                                                     }
                                                 }
 
-                                                ////
                                             }
                                         }
                                     } else {
@@ -550,7 +525,6 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                                                     }
                                                 }
 
-                                                ////
                                             }
                                         }
                                     }
@@ -597,7 +571,6 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
 
     private void jButton_SuaDiemTichLuyDaDungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaDiemTichLuyDaDungActionPerformed
         // TODO add your handling code here:
-        //        int row = jTable_VeDaChon.getSelectedRow();
         int rowHoaDon = jTable_HoaDon.getSelectedRow();
 
         if (rowHoaDon == -1) {
@@ -606,9 +579,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
             jLabel_BaoLoi.setText("");
             String maHoaDon = (String) jTable_HoaDon.getValueAt(rowHoaDon, 0);
             String sdtKhachHang = (String) jTable_HoaDon.getValueAt(rowHoaDon, 1);
-//            String maVe = (String) jTable_VeDaChon.getValueAt(row, 0);\
             String maVe = "";
-//            String maGhe = (String) jTable_VeDaChon.getValueAt(row, 12);
             String hangGheCuaVeDaChon = "";
             int giaCoBan = 0;
             int soVePhoThong = 0;
@@ -695,21 +666,11 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                 //
                 JComboBox jComboBox_DiemMoi = new JComboBox(new Object[]{"0", "100", "200", "300", "400", "500", "600", "700", "800", "900", "1000"});
                 //        
-//            JLabel jLabel_BaoLoi = new JLabel();
-//            jLabel_BaoLoi.setForeground(Color.yellow);
-//            JTextField jTextField_DiemMoi = new JTextField();
                 Object[] message = {
                     "Điểm cũ đã dùng:", jTextField_DiemCuDaDung,
                     "Điểm còn lại: ", jTextField_DiemConLai,
                     "Điểm mới muốn dùng:", jComboBox_DiemMoi
                 };
-//            jComboBox_DiemMoi.addItemListener(new ItemListener() {
-//                @Override
-//                public void itemStateChanged(ItemEvent e) {
-//                     if (Integer.parseInt(jComboBox_DiemMoi.getSelectedItem().toString()) > (diemTichLuyHienTaiCuaKhachHang + diemTichLuyKhachDaDung)) {
-//                            jLabel_BaoLoi.setText("*Không đủ điểm");
-//                    }
-//            });
 
                 int luaChon = JOptionPane.showConfirmDialog(rootPane, message, "Nhập điểm tích lũy mới muốn dùng", JOptionPane.OK_CANCEL_OPTION);
 
@@ -759,7 +720,6 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
 
     private void jButton_XoaHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaHoaDonActionPerformed
         // TODO add your handling code here:
-        //        int row = jTable_VeDaChon.getSelectedRow();
         int rowHoaDon = jTable_HoaDon.getSelectedRow();
         System.out.println("hàng " + rowHoaDon);
 
@@ -769,10 +729,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
             jLabel_BaoLoi.setText("");
             String maHoaDon = (String) jTable_HoaDon.getValueAt(rowHoaDon, 0);
             String sdtKhachHang = (String) jTable_HoaDon.getValueAt(rowHoaDon, 1);
-//            String maVe = (String) jTable_VeDaChon.getValueAt(row, 0);\
             String maVe = "";
-//            String maGhe = (String) jTable_VeDaChon.getValueAt(row, 12);
-//            String hangGheCuaVeDaChon = "";
             int giaCoBan = 0;
             int soVePhoThong = 0;
             int soVeThuongGia = 0;
@@ -798,7 +755,6 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                         maVe = v.getMaVe();
                     }
                 }
-
                 // tính giá cơ bản
                 for (Ve v : controller.Controller.arrayListVe) {
                     if (maVe.equals(v.getMaVe()) && v.getMaHoaDon().equals(maHoaDon)) {
@@ -830,7 +786,6 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                 }
                 //
                 //từ các bước trên suy ra được điểm đã dùng, giá gốc, giá sau khi dùng,...
-//                System.out.println("hạng ghế của vé đã chọn:" + hangGheCuaVeDaChon);
                 System.out.println("PhoThong" + soVePhoThong + "THuongGia" + soVeThuongGia);
                 int tongTienThucTe = (int) jTable_HoaDon.getValueAt(rowHoaDon, 4);
                 System.out.println("tong tien thuc te: " + tongTienThucTe);
@@ -869,10 +824,6 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                         }
 
                     }
-
-//                    connection.UpdateData.deleteHoaDon(maHoaDon); // xóa hóa đơn
-//
-//                    connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuySauXoa);// cập nhật lại điểm cho khách
                     if (connection.UpdateData.deleteHoaDon(maHoaDon)) {
                         if (connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuySauXoa)) {
                             JOptionPane.showMessageDialog(rootPane, "Xóa hóa đơn thành công");
@@ -883,21 +834,20 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                     for (Ve v : controller.Controller.arrayListVe) {
                         if (v.getMaHoaDon().equals(maHoaDon)) {
                             if (v.getNgaySinh() != null) {
-                dtmVe.addRow(new Object[]{
-                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                    v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
-                    v.getMaHoaDon(), v.getMaGhe()
-                });
-            } else {
-                dtmVe.addRow(new Object[]{
-                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
-                    v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
-                    v.getMaHoaDon(), v.getMaGhe()
-                });
-            }
+                                dtmVe.addRow(new Object[]{
+                                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                                    v.getCmndNguoiBay(), v.getTenNguoiBay(), new SimpleDateFormat("dd/MM/yyyy").format(v.getNgaySinh()),
+                                    v.getMaHoaDon(), v.getMaGhe()
+                                });
+                            } else {
+                                dtmVe.addRow(new Object[]{
+                                    v.getMaVe(), v.getMaChuyenBay(), v.getGia(), v.getKyGui(),
+                                    v.getCmndNguoiBay(), v.getTenNguoiBay(), "",
+                                    v.getMaHoaDon(), v.getMaGhe()
+                                });
+                            }
                         }
                     }
-                    ////
                 }
             }
 
@@ -908,42 +858,6 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Windows".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienLichSuHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienLichSuHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienLichSuHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienLichSuHoaDon.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                controller.Controller.tk.setLoaiTaiKhoan("KhachHang");
-//                controller.Controller.tk.setSdt("123");
-//                controller.Controller.tk.setTenDangNhap("tuanbui");
-//                controller.Controller.tk.setMatKhau("456");
-//                new GiaoDienLichSuHoaDon().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_SuaDiemTichLuyDaDung;

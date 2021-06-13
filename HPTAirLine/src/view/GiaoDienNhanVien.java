@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -30,7 +25,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         jButton_ThanhToan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         setVisible(true);
         thongTinTaiKhoan();
-        
+
         jButton_BanVe.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -38,7 +33,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
                 new GiaoDienTimChuyenBay().setVisible(true);
             }
         });
-        
+
         jButton_ThanhToan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,7 +41,7 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
                 new GiaoDienThanhToanHoaDon().setVisible(true);
             }
         });
-        
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -62,22 +57,20 @@ public class GiaoDienNhanVien extends javax.swing.JFrame {
         });
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        
+
     }
-    
+
     private void thongTinTaiKhoan() {
-        //// Phần thông tin cơ bản , đăng xuất
         jLabel_XemThongTinTaiKhoan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jLabel_DangXuat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         new LoadData();
         jLabel_PhanQuyen.setText("nhân viên");
-        for (NhanVien nv: Controller.arrayListNhanVien) {
+        for (NhanVien nv : Controller.arrayListNhanVien) {
             if (nv.getSdtNhanVien().equals(Controller.tk.getSdt())) {
                 jLabel_TenNguoiDung.setText(nv.getTenNhanVien());
                 break;
             }
         }
-        ////
     }
 
     /**

@@ -1,23 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
-
-import java.util.ArrayList;
-import javax.swing.JTextField;
 
 /**
  *
  * @author conghau
  */
 public class Ghe {
+
     private String maGhe;
     private String maChuyenBay;
     private String loaiGhe;
     private byte trong;
-//    private ArrayList<JTextField> list; 
 
     public Ghe() {
     }
@@ -60,8 +52,5 @@ public class Ghe {
     public void setTrong(byte trong) {
         this.trong = trong;
     }
-    
-    
+
 }
-
-

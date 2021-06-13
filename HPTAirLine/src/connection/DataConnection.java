@@ -1,9 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
-jdbc:sqlserver://;databaseName=HPT_AIRLINES
-jdbc:sqlserver://;databaseName=HPT_AIRLINES [sa on SA
+    jdbc:sqlserver://;databaseName=HPT_AIRLINES
+    jdbc:sqlserver://;databaseName=HPT_AIRLINES [sa on SA
  */
 package connection;
 
@@ -20,49 +17,47 @@ import java.util.logging.Logger;
  * @author conghau
  */
 public class DataConnection {
-    
+
     public static Connection connection;
     public static Statement statement;
 
-    
     public static ResultSet retrieveData(String sqlCommand) {
         try {
             createStatement();
             ResultSet resultSet = statement.executeQuery(sqlCommand);
             return resultSet;
         } catch (SQLException ex) {
-            Logger.getLogger(DataConnection.class.getName()).log(Level.SEVERE, 
+            Logger.getLogger(DataConnection.class.getName()).log(Level.SEVERE,
                     null, ex);
             return null;
         }
     }
-    
 
-    public static void createStatement() {    
+    public static void createStatement() {
         String url = "jdbc:sqlserver://;databaseName=HPT_AIRLINES";
 
         String user = "sa";
         String pass = "123";
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(url,user,pass);
+            connection = DriverManager.getConnection(url, user, pass);
             statement = connection.createStatement();
 
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DataConnection.class.getName()).log(Level.SEVERE, 
+            Logger.getLogger(DataConnection.class.getName()).log(Level.SEVERE,
                     null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(DataConnection.class.getName()).log(Level.SEVERE, 
+            Logger.getLogger(DataConnection.class.getName()).log(Level.SEVERE,
                     null, ex);
         }
     }
-    
+
     public static void main(String[] args) {
         createStatement();
-        
+
     }
 
     DataConnection() {
-        
+
     }
 }

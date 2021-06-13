@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -33,7 +28,7 @@ import model.NhanVien;
 public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
     /**
-     * Creates new form FlightSearchForm
+     * Creates new form GiaoDienTimChuyenBay
      */
     public Date ngayHienTai;
 
@@ -48,13 +43,13 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             Logger.getLogger(GiaoDienTimChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
         }
         //
-        if(!controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")){
-            for(Component c:jPanel_TaiKhoan.getComponents()){
-                c.setForeground(new Color(48,57,82));
+        if (!controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")) {
+            for (Component c : jPanel_TaiKhoan.getComponents()) {
+                c.setForeground(new Color(48, 57, 82));
             }
-        }else{
-                    jLabel_XemThongTinTaiKhoan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-                    jLabel_DangXuat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        } else {
+            jLabel_XemThongTinTaiKhoan.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            jLabel_DangXuat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }
         thongTinTaiKhoan();
         inputMacDinh();
@@ -65,7 +60,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
         jLabel_HuongDanDatCho.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_TimChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        jLabel_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));   
+        jLabel_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -556,7 +551,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
         Date ngayDi = jDateChooser_NgayDi.getDate();
         Date ngayVe = jDateChooser_NgayVe.getDate();
-        //neu ngay trong 2 jDateChooser trc ngay hien tai thi khong the tim chuyen bay
+
         if ((ngayHienTai.after(ngayDi))) {
             jDateChooser_NgayDi.setBorder(BorderFactory.createLineBorder(Color.yellow, 1));
             ktra = false;
@@ -610,10 +605,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             boolean ve = false;
             int soGheNguoiLon = Integer.parseInt(jComboBox_SLNguoiLon.getSelectedItem().toString());
             int soGheTreEm = Integer.parseInt(jComboBox_SLTreEm.getSelectedItem().toString());
-//            int soGheEmBe = Integer.parseInt(jComboBox_SLEmBe.getSelectedItem().toString());
             if (jRadioButton_KhuHoi.isSelected()) {
-                //  khuHoi = true;
-                //  di = true;
                 ve = true;
                 khuHoi = true;
                 ngayVe = jDateChooser_NgayVe.getDate();
@@ -628,7 +620,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                                 soGheTrong++;
                             }
                         }
-                        if (soGheTrong >= (soGheNguoiLon + soGheTreEm /*+ this.soGheEmBe*/)) {
+                        if (soGheTrong >= (soGheNguoiLon + soGheTreEm)) {
                             break;
                         } else {
                             JOptionPane.showMessageDialog(rootPane, "Không có chuyến về đủ ghế");
@@ -641,7 +633,6 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                 }
             }
 
-            
             new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm).setVisible(true);
             this.dispose();
         }
@@ -688,7 +679,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
     private void jLabel_XemThongTinTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_XemThongTinTaiKhoanMousePressed
         // TODO add your handling code here:
-        if(!controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")){
+        if (!controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")) {
             return;
         }
         if (jLabel_PhanQuyen.getText().equals("nhân viên")) {
@@ -707,7 +698,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
 
     private void jLabel_DangXuatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_DangXuatMousePressed
         // TODO add your handling code here:
-        if(!controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")){
+        if (!controller.Controller.tk.getLoaiTaiKhoan().equals("KhachHang")) {
             return;
         }
         dispose();

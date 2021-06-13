@@ -1,6 +1,3 @@
-/*
-    tim theo sdt va loc theo trang thai thanh toan
- */
 package view;
 
 import connection.LoadData;
@@ -40,9 +37,9 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
         jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_KhoiPhucMK.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         dtmHoaDon = (DefaultTableModel) jTable_HoaDon.getModel();
-            dtmHoaDon.setColumnIdentifiers(new Object[]{
-                "Mã HĐ", "SĐT KH", "Ngày Xuất", "Thanh Toán", "Tổng", "SĐT NV"
-            });
+        dtmHoaDon.setColumnIdentifiers(new Object[]{
+            "Mã HĐ", "SĐT KH", "Ngày Xuất", "Thanh Toán", "Tổng", "SĐT NV"
+        });
 
         dtmVe = (DefaultTableModel) jTable_Ve.getModel();
         dtmVe.setColumnIdentifiers(new Object[]{
@@ -584,10 +581,8 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
 
     private void jTextField_TimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimKiemKeyReleased
         // TODO add your handling code here:
-        
         clearTextFieldThongTinKhachHang();
         if (jTextField_TimKiem.getText().length() >= 11) {
-//            evt.consume();
             jTextField_TimKiem.setText(jTextField_TimKiem.getText().substring(0, jTextField_TimKiem.getText().length() - 1));
         } else {
             dtmKhachHang.setRowCount(0);
@@ -596,8 +591,8 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
             for (KhachHang kh : controller.Controller.arrayListKhachHang) {
                 if (kh.getSdtKhachHang().contains(jTextField_TimKiem.getText().trim())) {
                     dtmKhachHang.addRow(new Object[]{
-                        kh.getSdtKhachHang(), kh.getTenKhachHang()
-                        ,kh.getDiemTichLuy()
+                        kh.getSdtKhachHang(), kh.getTenKhachHang(),
+                        kh.getDiemTichLuy()
                     });
                 }
             }
@@ -680,7 +675,7 @@ public class GiaoDienQuanLyKhachHang extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_TimKiemKeyTyped
 
     private void jButton_KhoiPhucMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_KhoiPhucMKActionPerformed
-        if (jTable_KhachHang.getSelectedRow()==-1) {
+        if (jTable_KhachHang.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Bạn vui chọn khách hàng cần khôi phục mật khẩu");
             return;
         }

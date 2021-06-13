@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package connection;
 
 import java.sql.PreparedStatement;
@@ -65,8 +60,7 @@ public class InsertData {
         }
 
     }
-//    29/04, chua test
-//    
+
     public static boolean insertHoaDon(HoaDon hoaDon) {
         String sqlCommand = "insert into dbo.HOADON values(?,?,?,?,?,?)";
         try {
@@ -78,7 +72,7 @@ public class InsertData {
             ps.setByte(4, hoaDon.getTrangThaiThanhToan());
             ps.setInt(5, hoaDon.getTongTien());
             ps.setString(6, hoaDon.getSdtNhanVien());
-            
+
             return ps.executeUpdate() > 0;
 
         } catch (SQLException ex) {
@@ -95,38 +89,16 @@ public class InsertData {
             for (Ve v : danhSachVe) {
                 DataConnection.createStatement();
                 PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
-//                ps.setString(1, v.getMaVe());
-//                ps.setString(2, v.getSdtKhachHang());
-//                ps.setString(3, v.getMaChuyenBay());
-//                ps.setInt(4, v.getGia());
-//                ps.setShort(5, v.getKyGui());
-//                ps.setByte(6, v.getTrangThaiDoi());
-//                ps.setByte(7, v.getTrangThaiVe());
-//                ps.setString(8, v.getCmndNguoiBay());
-//                ps.setString(9, v.getTenNguoiBay());
-//                ps.setString(10, v.getEmailNguoiBay());
-//                ps.setString(11, v.getSdtNguoiBay());
-//                ps.setString(12, v.getMaHoaDon());
-//                ps.setString(13, v.getMaGhe());     
                 ps.setString(1, v.getMaVe());
-//                ps.setString(2, v.getSdtKhachHang());
                 ps.setString(2, v.getMaChuyenBay());
                 ps.setInt(3, v.getGia());
                 ps.setShort(4, v.getKyGui());
-//                ps.setByte(6, v.getTrangThaiDoi());
-//                ps.setByte(7, v.getTrangThaiVe());
                 ps.setString(5, v.getCmndNguoiBay());
                 ps.setString(6, v.getTenNguoiBay());
-//                ps.setString(10, v.getEmailNguoiBay());
-//                ps.setString(11, v.getSdtNguoiBay());
                 ps.setDate(7, v.getNgaySinh());
                 ps.setString(8, v.getMaHoaDon());
-                ps.setString(9, v.getMaGhe());    
+                ps.setString(9, v.getMaGhe());
                 ps.executeUpdate();
-//                if(ps.executeUpdate()<=0){
-//                    System.out.println("Khong the them danh sach ve");
-//                    return false;
-//                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
@@ -135,7 +107,7 @@ public class InsertData {
         return true;
     }
 //    
-    
+
     public static boolean insertNhanVien(NhanVien nv) {
         String sqlCommand = "insert into dbo.NHANVIEN values(?,?,?,?,?)";
         try {
@@ -147,19 +119,18 @@ public class InsertData {
             ps.setString(4, nv.getTenDangNhap());
             ps.setString(5, nv.getCmnd());
 
-            if(ps.executeUpdate()>0){
+            if (ps.executeUpdate() > 0) {
                 System.out.println("thêm nhân viên thành công");
                 return true;
             }
 
-            
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("thêm nhân viên thất bại");
         return false;
     }
-    
+
     public static boolean insertDuongBay(DuongBay db) {
         String sqlCommand = "insert into dbo.DUONGBAY values(?,?,?,?)";
         try {
@@ -170,19 +141,18 @@ public class InsertData {
             ps.setString(3, db.getMaSanBay2());
             ps.setInt(4, db.getKhoangCach());
 
-            if(ps.executeUpdate()>0){
+            if (ps.executeUpdate() > 0) {
                 System.out.println("thêm đường bay thành công");
                 return true;
             }
 
-            
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("thêm đường bay thất bại");
         return false;
     }
-    
+
     public static boolean insertChuyenBay(ChuyenBay cb) {
         String sqlCommand = "insert into dbo.CHUYENBAY values(?,?,?,?,?,?,?,?)";
         try {
@@ -197,19 +167,18 @@ public class InsertData {
             ps.setString(7, cb.getGhiChu());
             ps.setInt(8, cb.getKhoangCach());
 
-            if(ps.executeUpdate()>0){
+            if (ps.executeUpdate() > 0) {
                 System.out.println("thêm chuyến bay thành công");
                 return true;
             }
 
-            
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("thêm chuyến bay thất bại");
         return false;
     }
-    
+
     public static boolean insertSanBay(SanBay sb) {
         String sqlCommand = "insert into dbo.SANBAY values(?,?)";
         try {
@@ -218,40 +187,36 @@ public class InsertData {
             ps.setString(1, sb.getMaSanBay());
             ps.setString(2, sb.getTenSanBay());
 
-            if(ps.executeUpdate()>0){
+            if (ps.executeUpdate() > 0) {
                 System.out.println("thêm sân bay thành công");
                 return true;
             }
 
-            
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("thêm sân bay thất bại");
         return false;
     }
-    
+
     public static boolean insertMayBay(MayBay mb) {
         String sqlCommand = "insert into dbo.MAYBAY values(?,?,?)";
         try {
             DataConnection.createStatement();
             PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
             ps.setString(1, mb.getMaMayBay());
-            ps.setString(2,mb.getTenMayBay());
-            ps.setString(3,mb.getHangBay());
+            ps.setString(2, mb.getTenMayBay());
+            ps.setString(3, mb.getHangBay());
 
-            if(ps.executeUpdate()>0){
+            if (ps.executeUpdate() > 0) {
                 System.out.println("thêm máy bay thành công");
                 return true;
             }
 
-            
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("thêm máy bay thất bại");
         return false;
     }
-//    
-    
 }

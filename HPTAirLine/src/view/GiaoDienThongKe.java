@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -27,44 +22,45 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
     /**
      * Creates new form GiaoDienThongKe
      */
-    private String sHomQua= ""; //yyyy-MM-dd
-    private String sHomNay= ""; //yyyy-MM-dd
+    private String sHomQua = ""; //yyyy-MM-dd
+    private String sHomNay = ""; //yyyy-MM-dd
     private String sThangTruoc = ""; //yyyy-MM
     private String sNamTruoc = ""; //yyyy
+
     public GiaoDienThongKe() {
         initComponents();
-        
-         // lấy ngày hôm nay và hôm qua
+
+        // lấy ngày hôm nay và hôm qua
         Instant ngayHomNay = Instant.now(); //current date
         Instant ngayHomQua = ngayHomNay.minus(Duration.ofDays(1));
         Date dateNgayNay = Date.from(ngayHomNay);
         Date dateNgayTruoc = Date.from(ngayHomQua);
-        
-        this.sHomQua= "";
+
+        this.sHomQua = "";
         this.sHomQua = new SimpleDateFormat("yyyy-MM-dd").format(dateNgayTruoc);
         System.out.println(sHomQua);
-        
-        this.sHomNay= "";
+
+        this.sHomNay = "";
         this.sHomNay = new SimpleDateFormat("yyyy-MM-dd").format(dateNgayNay);
         System.out.println(sHomNay);
 
         Date dt = new Date();
-        Calendar c = Calendar.getInstance(); 
-        c.setTime(dt); 
+        Calendar c = Calendar.getInstance();
+        c.setTime(dt);
         c.add(Calendar.MONTH, -1);
         dt = c.getTime();
-        
+
         this.sThangTruoc = "";
         this.sThangTruoc = new SimpleDateFormat("yyyy-MM").format(dt);
-        System.out.println("Tháng trước: "+sThangTruoc);
-        
+        System.out.println("Tháng trước: " + sThangTruoc);
+
         c.add(Calendar.YEAR, -1);
         dt = c.getTime();
-        
+
         this.sNamTruoc = "";
         this.sNamTruoc = new SimpleDateFormat("yyyy").format(dt);
-        System.out.println("Năm trước: "+sNamTruoc);
-        
+        System.out.println("Năm trước: " + sNamTruoc);
+
         loadThongKeTheoNgay();
 
         this.addWindowListener(new WindowAdapter() {
@@ -82,13 +78,13 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
         });
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        
+
         jButton_XemTatCa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThongTinChiTietHomNay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThongTinChiTietHomQua.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThongTinChiTietThangNay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        jButton_ThongTinChiTietThangTruoc.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));   
+        jButton_ThongTinChiTietThangTruoc.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThongTinChiTietNamNay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThongTinChiTietNamTruoc.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
@@ -936,7 +932,7 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void loadThongKeTheoNgay() {
-        new LoadData();        
+        new LoadData();
         //ngày hôm nay
         int tongNgayHomNay = 0;
         int tongDaThanhToanHomNay = 0;
@@ -988,10 +984,10 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
         int tongThangTruoc = 0;
         int tongDaThanhToanThangTruoc = 0;
         for (HoaDon hd : controller.Controller.arrayListHoaDon) {
-            
+
             String ngayXuatHoaDon = new SimpleDateFormat("yyyy-MM-dd").format(hd.getNgayXuatHoaDon());
             if (ngayXuatHoaDon.substring(0, 7).equals(this.sThangTruoc)) {
-                
+
                 tongThangTruoc = tongThangTruoc + hd.getTongTien();
                 if (hd.getTrangThaiThanhToan() == 1) {
                     tongDaThanhToanThangTruoc = tongDaThanhToanThangTruoc + hd.getTongTien();
@@ -1005,10 +1001,10 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
         int tongNamNay = 0;
         int tongDaThanhToanNamNay = 0;
         for (HoaDon hd : controller.Controller.arrayListHoaDon) {
-            
+
             String ngayXuatHoaDon = new SimpleDateFormat("yyyy-MM-dd").format(hd.getNgayXuatHoaDon());
             if (ngayXuatHoaDon.substring(0, 4).equals(this.sHomNay.substring(0, 4))) {
-                
+
                 tongNamNay = tongNamNay + hd.getTongTien();
                 if (hd.getTrangThaiThanhToan() == 1) {
                     tongDaThanhToanNamNay = tongDaThanhToanNamNay + hd.getTongTien();
@@ -1022,11 +1018,11 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
         int tongNamTruoc = 0;
         int tongDaThanhToanNamTruoc = 0;
         for (HoaDon hd : controller.Controller.arrayListHoaDon) {
-            
+
             String ngayXuatHoaDon = new SimpleDateFormat("yyyy-MM-dd").format(hd.getNgayXuatHoaDon());
-            System.out.println(ngayXuatHoaDon.substring(0, 4)+"//");
+            System.out.println(ngayXuatHoaDon.substring(0, 4) + "//");
             if (ngayXuatHoaDon.substring(0, 4).equals(this.sNamTruoc)) {
-                
+
                 tongNamTruoc = tongNamTruoc + hd.getTongTien();
                 if (hd.getTrangThaiThanhToan() == 1) {
                     tongDaThanhToanNamTruoc = tongDaThanhToanNamTruoc + hd.getTongTien();
@@ -1036,7 +1032,7 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
         jLabel_TongNamTruoc.setText(tongNamTruoc + "");
         jLabel_DaThanhToanNamTruoc.setText(tongDaThanhToanNamTruoc + "");
         //
-        
+
     }
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
         // TODO add your handling code here:
@@ -1063,7 +1059,7 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
     private void jButton_ThongTinChiTietThangNayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietThangNayActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new GiaoDienChiTietThongKe(this.sHomNay.substring(0,7)).setVisible(true);
+        new GiaoDienChiTietThongKe(this.sHomNay.substring(0, 7)).setVisible(true);
     }//GEN-LAST:event_jButton_ThongTinChiTietThangNayActionPerformed
 
     private void jButton_ThongTinChiTietThangTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietThangTruocActionPerformed
@@ -1075,7 +1071,7 @@ public class GiaoDienThongKe extends javax.swing.JFrame {
     private void jButton_ThongTinChiTietNamNayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietNamNayActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new GiaoDienChiTietThongKe(this.sHomNay.substring(0,4)).setVisible(true);
+        new GiaoDienChiTietThongKe(this.sHomNay.substring(0, 4)).setVisible(true);
     }//GEN-LAST:event_jButton_ThongTinChiTietNamNayActionPerformed
 
     private void jButton_ThongTinChiTietNamTruocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThongTinChiTietNamTruocActionPerformed

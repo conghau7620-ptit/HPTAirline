@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.InsertData;
@@ -29,7 +24,7 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
         implements KeyListener {
 
     /**
-     * Creates new form GiaoDienDangKyTaiKhoan
+     * Creates new form GiaoDienThemNhanVien
      */
     public GiaoDienThemNhanVien() {
         initComponents();
@@ -144,10 +139,10 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
                 }
             }
         });
-        
+
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -470,7 +465,7 @@ public class GiaoDienThemNhanVien extends javax.swing.JFrame
                 JOptionPane.showMessageDialog(rootPane, "Thêm nhân viên thành công");
                 this.dispose();
                 new GiaoDienQuanLyNhanVien().setVisible(true);
-            }      
+            }
         }
     }//GEN-LAST:event_jButton_ThemNhanVienActionPerformed
 

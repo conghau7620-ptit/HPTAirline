@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -24,9 +19,10 @@ public class GiaoDienQuanLyDuongBay extends javax.swing.JFrame {
      * Creates new form GiaoDienQuanLyDuongBay
      */
     DefaultTableModel dtmDuongBay;
-    String maDuongBay="";
-    String maSanBay1="";
-    String maSanBay2="";
+    String maDuongBay = "";
+    String maSanBay1 = "";
+    String maSanBay2 = "";
+
     public GiaoDienQuanLyDuongBay() {
         initComponents();
         jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -36,7 +32,7 @@ public class GiaoDienQuanLyDuongBay extends javax.swing.JFrame {
         this.dtmDuongBay = (DefaultTableModel) jTable_DuongBay.getModel();
         dtmDuongBay.setColumnIdentifiers(new Object[]{"Mã ĐB", "Mã SB 1", "Mã SB 2", "Khoảng Cách"});
         hienThongTin();
-        
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -340,14 +336,14 @@ public class GiaoDienQuanLyDuongBay extends javax.swing.JFrame {
     private void jButton_XoaDuongBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaDuongBayActionPerformed
         // TODO add your handling code here:
         int row = jTable_DuongBay.getSelectedRow();
-        if(row == -1){
+        if (row == -1) {
             JOptionPane.showMessageDialog(rootPane, "Chọn đường bay muốn xóa");
-        }else{
-            if(kiemTraSuaXoaDuongBay()){
-                if(connection.UpdateData.deleteDuongBay(this.maDuongBay)){
+        } else {
+            if (kiemTraSuaXoaDuongBay()) {
+                if (connection.UpdateData.deleteDuongBay(this.maDuongBay)) {
                     JOptionPane.showMessageDialog(rootPane, "Xóa đường bay thành công");
                     hienThongTin();
-                }else{
+                } else {
                     JOptionPane.showMessageDialog(rootPane, "Xóa đường bay thất bại");
                 }
             }
@@ -363,10 +359,10 @@ public class GiaoDienQuanLyDuongBay extends javax.swing.JFrame {
     private void jButton_SuaDuongBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaDuongBayActionPerformed
         // TODO add your handling code here:
         int row = jTable_DuongBay.getSelectedRow();
-        if(row == -1){
+        if (row == -1) {
             JOptionPane.showMessageDialog(rootPane, "Chọn đường bay muốn sửa");
-        }else{
-            if(kiemTraSuaXoaDuongBay()){
+        } else {
+            if (kiemTraSuaXoaDuongBay()) {
                 new GiaoDienSuaDuongBay(this.maDuongBay).setVisible(true);
                 this.dispose();
             }
@@ -376,31 +372,33 @@ public class GiaoDienQuanLyDuongBay extends javax.swing.JFrame {
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPanel2MousePressed
-    
-    public void hienThongTin(){
-        new LoadData(); 
+
+    public void hienThongTin() {
+        new LoadData();
         dtmDuongBay.setRowCount(0);
-        for(DuongBay db : controller.Controller.arrayListDuongBay){
-            dtmDuongBay.addRow(new Object[]{db.getMaDuongBay(), db.getMaSanBay1(),db.getMaSanBay2(),db.getKhoangCach()});
+        for (DuongBay db : controller.Controller.arrayListDuongBay) {
+            dtmDuongBay.addRow(new Object[]{db.getMaDuongBay(), db.getMaSanBay1(), db.getMaSanBay2(), db.getKhoangCach()});
         }
     }
-    public boolean kiemTraSuaXoaDuongBay(){
+
+    public boolean kiemTraSuaXoaDuongBay() {
         new LoadData();
-        for(ChuyenBay cb : controller.Controller.arrayListChuyenBay){
-            if(cb.getMaSanBayDi().equalsIgnoreCase(maSanBay1)
-                    &&cb.getMaSanBayDen().equalsIgnoreCase(maSanBay2)){
+        for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
+            if (cb.getMaSanBayDi().equalsIgnoreCase(maSanBay1)
+                    && cb.getMaSanBayDen().equalsIgnoreCase(maSanBay2)) {
                 JOptionPane.showMessageDialog(rootPane, "Đường bay đã được sử dụng trong chuyến bay.");
                 return false;
             }
-            if(cb.getMaSanBayDi().equalsIgnoreCase(maSanBay2)
-                    &&cb.getMaSanBayDen().equalsIgnoreCase(maSanBay1)){
+            if (cb.getMaSanBayDi().equalsIgnoreCase(maSanBay2)
+                    && cb.getMaSanBayDen().equalsIgnoreCase(maSanBay1)) {
                 JOptionPane.showMessageDialog(rootPane, "Đường bay đã được sử dụng trong chuyến bay.");
                 return false;
             }
         }
-        
+
         return true;
     }
+
     /**
      * @param args the command line arguments
      */

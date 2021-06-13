@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import connection.DataConnection;
@@ -26,11 +21,6 @@ import model.SanBay;
 import model.TaiKhoan;
 import model.Ve;
 
-
-//import sun.net.www.content.image.gif;
-
-
-
 /**
  *
  * @author conghau
@@ -46,8 +36,6 @@ public class Controller {
     public static ArrayList<TaiKhoan> arrayListTaiKhoan = new ArrayList<TaiKhoan>();
     public static ArrayList<Ve> arrayListVe = new ArrayList<Ve>();
     public static ArrayList<DuongBay> arrayListDuongBay = new ArrayList<DuongBay>();
-
-
 
     //them list ket qua tim kiem
     public static ArrayList<ChuyenBay> arrayListKetQuaTimKiemChuyenBay = new ArrayList<ChuyenBay>();
@@ -77,8 +65,7 @@ public class Controller {
         }
     }
 
-
-    public static boolean insertListGhe(String maCB) { // giải thích giúp vói k hiể. t chỉ viết để tạo ghế test thôi mà ý là sao t tạo nó k vào
+    public static boolean insertListGhe(String maCB) {
         String sqlCommand = "insert into dbo.GHE values(?,?,?,?)";
 
         try {
@@ -87,7 +74,6 @@ public class Controller {
                 PreparedStatement ps = DataConnection.connection.prepareStatement(sqlCommand);
                 Ghe gheA;
                 if (i <= 5) {
-                    //gheA = new Ghe("GA"+i+"-"+maCB.trim(),maCB.trim(),"ThuongGia",(byte)1);
                     gheA = new Ghe(maCB.trim().trim() + "-Ghe_" + i + "A", maCB.trim(), "ThuongGia", (byte) 1);
                 } else {
                     gheA = new Ghe(maCB.trim() + "-Ghe_" + i + "A", maCB.trim(), "PhoThong", (byte) 1);
@@ -187,13 +173,11 @@ public class Controller {
                 ps.executeUpdate();
             }
 
-
         } catch (SQLException ex) {
             Logger.getLogger(InsertData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }
-
 
     public static boolean veCoTheXoaHayKhong(String maHoaDon, String maVe) {
         new LoadData();
@@ -224,32 +208,27 @@ public class Controller {
         return true;
     }
 
-    public static void taoGheChoTatCaChuyenBay(){
+    public static void taoGheChoTatCaChuyenBay() {
         new LoadData();
-        String maChuyenBayy ="";
+        String maChuyenBayy = "";
         DataConnection.createStatement();
-        String sql = "select * from CHUYENBAY"; 
+        String sql = "select * from CHUYENBAY";
         try {
             PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
-             while (rs.next()){
-              maChuyenBayy = rs.getString("MaChuyenBay");  // đến chỗ này là nó lấy ra từng mã chuyến bay ok hong ?      
-                 insertListGhe(maChuyenBayy); 
-           
+
+            while (rs.next()) {
+                maChuyenBayy = rs.getString("MaChuyenBay");  // đến chỗ này là nó lấy ra từng mã chuyến bay ok hong ?      
+                insertListGhe(maChuyenBayy);
+
             }
 
+        } catch (Exception e) {
         }
-         catch (Exception e) {
-        }
-    } 
-        
-    public static void main(String[] args) {
-//        checkDenThoiGianXoaHayChua("CB09");
-//        System.out.println(" ");
-//        xoaCacHoaDonChuaThanhToanCuaChuyenBay();
-//        new LoadData();
     }
-    
+
+    public static void main(String[] args) {
+
+    }
 
 }

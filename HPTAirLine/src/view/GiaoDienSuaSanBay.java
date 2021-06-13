@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.awt.Color;
@@ -22,18 +17,19 @@ public class GiaoDienSuaSanBay extends javax.swing.JFrame {
      * Creates new form GiaoDienSuaSanBay
      */
     private String maSanBay;
+
     public GiaoDienSuaSanBay(String maSanBay) {
         initComponents();
         jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_SuaSanBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.maSanBay = maSanBay;
-        for(SanBay sb: controller.Controller.arrayListSanBay){
-            if(this.maSanBay.equalsIgnoreCase(sb.getMaSanBay())){
+        for (SanBay sb : controller.Controller.arrayListSanBay) {
+            if (this.maSanBay.equalsIgnoreCase(sb.getMaSanBay())) {
                 jTextField_MaSanBay.setText(sb.getMaSanBay());
                 jTextField_TenSanBay.setText(sb.getTenSanBay());
             }
         }
-        
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -250,23 +246,21 @@ public class GiaoDienSuaSanBay extends javax.swing.JFrame {
             jLabel_ThongBao.setText("*Mã sân bay chưa được điền");
             jLabel_MaSanBay.setForeground(Color.yellow);
             return;
-        }
-        else {
+        } else {
             jLabel_ThongBao.setText("");
             jLabel_MaSanBay.setForeground(Color.white);
         }
-        if (jTextField_MaSanBay.getText().length()!=3) {
+        if (jTextField_MaSanBay.getText().length() != 3) {
             jLabel_ThongBao.setText("*Mã sân bay chỉ chứa đúng 3 ký tự");
             jLabel_MaSanBay.setForeground(Color.yellow);
             return;
-        }
-        else {
+        } else {
             jLabel_ThongBao.setText("");
             jLabel_MaSanBay.setForeground(Color.white);
         }
-        for (int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             char ch = jTextField_MaSanBay.getText().charAt(i);
-            if (ch<'A' || ch>'Z') {
+            if (ch < 'A' || ch > 'Z') {
                 jLabel_ThongBao.setText("Mã sân bay chỉ chứa chữ cái từ A-Z");
                 jLabel_MaSanBay.setForeground(Color.yellow);
                 return;
@@ -274,37 +268,36 @@ public class GiaoDienSuaSanBay extends javax.swing.JFrame {
         }
         jLabel_ThongBao.setText("");
         jLabel_MaSanBay.setForeground(Color.white);
-        for (SanBay sb: controller.Controller.arrayListSanBay) {
-            if(jTextField_MaSanBay.getText().equals(this.maSanBay)){           
-            }else{
-               if (sb.getMaSanBay().equals(jTextField_MaSanBay.getText())) {
-                jLabel_ThongBao.setText("Mã sân bay đã tồn tại trong danh sách");
-                jLabel_MaSanBay.setForeground(Color.yellow);
-                return;
-            } 
-            }          
+        for (SanBay sb : controller.Controller.arrayListSanBay) {
+            if (jTextField_MaSanBay.getText().equals(this.maSanBay)) {
+            } else {
+                if (sb.getMaSanBay().equals(jTextField_MaSanBay.getText())) {
+                    jLabel_ThongBao.setText("Mã sân bay đã tồn tại trong danh sách");
+                    jLabel_MaSanBay.setForeground(Color.yellow);
+                    return;
+                }
+            }
         }
         jLabel_ThongBao.setText("");
         jLabel_MaSanBay.setForeground(Color.white);
-        
+
         if (jTextField_TenSanBay.getText().isEmpty()) {
             jLabel_ThongBao.setText("*Tên sân bay chưa được điền");
             jLabel_TenSanBay.setForeground(Color.yellow);
             return;
-        }
-        else {
+        } else {
             jLabel_ThongBao.setText("");
             jLabel_TenSanBay.setForeground(Color.white);
         }
-        
+
         SanBay sanBay = new SanBay(
-            jTextField_MaSanBay.getText(),
-            jTextField_TenSanBay.getText());
-        if(connection.UpdateData.updateSanBay(this.maSanBay, sanBay)){
+                jTextField_MaSanBay.getText(),
+                jTextField_TenSanBay.getText());
+        if (connection.UpdateData.updateSanBay(this.maSanBay, sanBay)) {
             JOptionPane.showMessageDialog(rootPane, "Sửa sân bay thành công");
             this.dispose();
             new GiaoDienQuanLySanBay().setVisible(true);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Sửa sân bay thất bại");
         }
     }//GEN-LAST:event_jButton_SuaSanBayActionPerformed
@@ -317,37 +310,6 @@ public class GiaoDienSuaSanBay extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienSuaSanBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienSuaSanBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienSuaSanBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienSuaSanBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new GiaoDienSuaSanBay().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_QuayLai;

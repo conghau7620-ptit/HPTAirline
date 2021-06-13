@@ -1,12 +1,4 @@
-/*
-    tạm hoàn thành mua dưới quyền khách hàng và nhân viên
-    có xử lý điểm tích lũy
-    có thêm khách hàng nếu khách hàng chưa tồn tại trong csdl
-    Truyền vào 2 arraylist đối tượng vé trong đó mã hóa đơn, mã chuyến bay, mã ghế,... và thông tin người 
-                bay đã được set dữ liệu sẵn
- */
 package view;
-
 
 import connection.InsertData;
 import connection.LoadData;
@@ -114,38 +106,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
 
         thongTinTaiKhoan();
 
-//        //chuẩn hóa từ chọn ghế
-//        String sql = "select * from HOADON";
-//        connection.DataConnection.createStatement();
-//
-//        int soHoaDon = 1;
-//        try {
-//            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
-//
-//            while (rs.next()) {
-//                soHoaDon++;
-//            }
-//            System.out.println(soHoaDon);
-//        } catch (Exception e) {
-//        }
-//        System.out.println("HD" + soHoaDon);
-//        //
-//        soHoaDon++;
-//        String maHoaDon = "";
-//        if (soHoaDon <= 9) {
-//            maHoaDon = "HD0" + (soHoaDon);
-//        } else {
-//            maHoaDon = "HD" + (soHoaDon);
-//        }
-//
-//        String maHoaDonVe = "";
-//        if (soHoaDon <= 8) {
-//            maHoaDonVe = "HD0" + (soHoaDon + 1);
-//        } else {
-//            maHoaDonVe = "HD" + (soHoaDon + 1);
-//        }
-//        //
         int i = 0;
         for (Ve ve : this.danhSachVeDi) {
             i = i + 1;
@@ -158,9 +118,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
             System.out.println("ma ghe: " + ve.getMaGhe());
             ve.setKyGui((short) 15);
-            //       ve.setMaHoaDon(maHoaDon);
-
-            //    ve.setMaHoaDon(maHoaDon);
         }
         i = 0;
         for (Ve ve : this.danhSachVeVe) {
@@ -174,13 +131,8 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
             System.out.println("ma ghe: " + ve.getMaGhe());
             ve.setKyGui((short) 15);
-            //   ve.setMaHoaDon(maHoaDonVe);
 
-            //  ve.setMaHoaDon(maHoaDonVe);
         }
-//        this.maHoaDonDi = this.danhSachVeDi.get(0).getMaHoaDon();
-//        this.maHoaDonVe = this.danhSachVeVe.get(0).getMaHoaDon();
-        //
 
         hienThongTin();
         this.addWindowListener(new WindowAdapter() {
@@ -1094,11 +1046,9 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                         // chỉnh sửa một vài thông tin trong vé
                         for (Ve ve : this.danhSachVeDi) {
                             ve.setMaHoaDon(hoaDonDi.getMaHoaDon());
-//                            ve.setSdtKhachHang(jTextField_SoDienThoaiKhachHang.getText());
                         }
                         for (Ve ve : this.danhSachVeVe) {
                             ve.setMaHoaDon(hoaDonVe.getMaHoaDon());
-//                            ve.setSdtKhachHang(jTextField_SoDienThoaiKhachHang.getText());
                         }
 
                         if (InsertData.insertHoaDon(hoaDonDi) == true && InsertData.insertHoaDon(hoaDonVe) == true) {
@@ -1170,12 +1120,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
         }
         for (KhachHang kh : controller.Controller.arrayListKhachHang) {
             if (kh.getSdtKhachHang().equals(jTextField_SoDienThoaiKhachHang.getText())) {
-//                for (Ve ve : this.danhSachVeDi) {
-//                    ve.setSdtKhachHang(jTextField_SoDienThoaiKhachHang.getText());
-//                }
-//                for (Ve ve : this.danhSachVeVe) {
-//                    ve.setSdtKhachHang(jTextField_SoDienThoaiKhachHang.getText());
-//                }
                 jTextField_DiemTichLuy.setText(kh.getDiemTichLuy() + "");
                 break;
             } else {
@@ -1255,7 +1199,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             }
         }
         for (Ve v : this.danhSachVeDi) {
-//            v.setSdtKhachHang(jTextField_SoDienThoaiKhachHang.getText());
             for (Ghe g : controller.Controller.arrayListChuyenBay.get(index).getArrayListGhe()) {
                 if (v.getMaGhe().equalsIgnoreCase(g.getMaGhe())) {
                     if (g.getLoaiGhe().equalsIgnoreCase("PhoThong")) {
@@ -1295,7 +1238,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
             }
         }
         for (Ve v : this.danhSachVeVe) {
-//            v.setSdtKhachHang(jTextField_SoDienThoaiKhachHang.getText());
             for (Ghe g : controller.Controller.arrayListChuyenBay.get(index).getArrayListGhe()) {
                 if (v.getMaGhe().equalsIgnoreCase(g.getMaGhe())) {
                     if (g.getLoaiGhe().equalsIgnoreCase("PhoThong")) {
@@ -1343,118 +1285,6 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Windows".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienHoaDonHaiChieu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienHoaDonHaiChieu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienHoaDonHaiChieu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienHoaDonHaiChieu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-////                ArrayList<Ve> danhSachVeDi = new ArrayList<>();
-////                String maChuyenBayDi = "CB01";
-////                String maHoaDon = "HD01";
-////
-////                Ve v1 = new Ve();
-////                v1.setKyGui((short) 20);
-////                v1.setMaVe("V01");
-////                v1.setCmndNguoiBay("CMNDNgu");
-////                v1.setMaChuyenBay("CB01");
-////                v1.setMaHoaDon(maHoaDon);
-////                v1.setMaGhe("A01-CB01");
-//////                v1.setEmailNguoiBay("emai1");
-//////                v1.setTrangThaiDoi((byte) 0);
-//////                v1.setTrangThaiVe((byte) 0);
-//////                v1.setSdtKhachHang("");
-////                v1.setGia(0);
-////                v1.setTenNguoiBay("ten n");
-//////                v1.setSdtNguoiBay("123");
-////
-////                Ve v2 = new Ve();
-////                v2.setKyGui((short) 20);
-////                v2.setMaVe("V02");
-////                v2.setCmndNguoiBay("CMNDNgu");
-////                v2.setMaChuyenBay("CB01");
-////                v2.setMaHoaDon(maHoaDon);
-////                v2.setMaGhe("A02-CB01");
-//////                v2.setEmailNguoiBay("emailNo");
-//////                v2.setTrangThaiDoi((byte) 0);
-//////                v2.setTrangThaiVe((byte) 0);
-//////                v2.setSdtKhachHang("");
-////                v2.setGia(0);
-////                v2.setTenNguoiBay("ten ngu2");
-//////                v2.setSdtNguoiBay("223");
-////
-////                danhSachVeDi.add(v1);
-////                danhSachVeDi.add(v2);
-////
-////                ArrayList<Ve> danhSachVeVe = new ArrayList<>();
-////                String maChuyenBayVe = "CB02";
-////                String maHoaDonVe = "HD02";
-////
-////                Ve v3 = new Ve();
-////                v3.setKyGui((short) 20);
-////                v3.setMaVe("V01");
-////                v3.setCmndNguoiBay("CMNDNgu");
-////                v3.setMaChuyenBay(maChuyenBayVe);
-////                v3.setMaHoaDon(maHoaDonVe);
-////                v3.setMaGhe("A01-CB02");
-//////                v3.setEmailNguoiBay("emai1");
-//////                v3.setTrangThaiDoi((byte) 0);
-//////                v3.setTrangThaiVe((byte) 0);
-//////                v3.setSdtKhachHang("");
-////                v3.setGia(0);
-////                v3.setTenNguoiBay("ten n");
-//////                v3.setSdtNguoiBay("123");
-////
-////                Ve v4 = new Ve();
-////                v4.setKyGui((short) 20);
-////                v4.setMaVe("V02");
-////                v4.setCmndNguoiBay("CMNDNgu");
-////                v4.setMaChuyenBay(maChuyenBayVe);
-////                v4.setMaHoaDon(maHoaDonVe);
-////                v4.setMaGhe("A03-CB02");
-//////                v4.setEmailNguoiBay("emailNo");
-//////                v4.setTrangThaiDoi((byte) 0);
-//////                v4.setTrangThaiVe((byte) 0);
-//////                v4.setSdtKhachHang("");
-////                v4.setGia(0);
-////                v4.setTenNguoiBay("ten ngu2");
-//////                v4.setSdtNguoiBay("223");
-////
-////                danhSachVeVe.add(v3);
-////                danhSachVeVe.add(v4);
-//
-//                new GiaoDienHoaDonHaiChieu(danhSachVeDi, danhSachVeVe).setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_HoanTatHoaDon;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package connection;
 
 import controller.Controller;
@@ -39,11 +34,6 @@ public class LoadData {
                         rs.getString(7),
                         rs.getInt(8));
                 chuyenBay.setArrayListGhe(loadTableGhe(chuyenBay.getMaChuyenBay().trim()));
-
-//                for (Ghe g: chuyenBay.getArrayListGhe()) {
-//                    System.out.print(g.getMaGhe() + " ");
-//                }
-//                System.out.println("");
                 Controller.arrayListChuyenBay.add(chuyenBay);
             }
         } catch (SQLException ex) {
@@ -51,16 +41,15 @@ public class LoadData {
         }
     }
 
-    
-    public static void loadTableDuongBay(){
+    public static void loadTableDuongBay() {
         ResultSet rs = DataConnection.retrieveData("select * from dbo.DUONGBAY");
         try {
             while (rs.next()) {
                 DuongBay duongBay = new DuongBay(
-                    rs.getString(1).trim(),
-                    rs.getString(2).trim(),
-                    rs.getString(3).trim(),
-                    rs.getInt(4));
+                        rs.getString(1).trim(),
+                        rs.getString(2).trim(),
+                        rs.getString(3).trim(),
+                        rs.getInt(4));
 
                 Controller.arrayListDuongBay.add(duongBay);
             }
@@ -68,8 +57,8 @@ public class LoadData {
             Logger.getLogger(LoadData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public static ArrayList<Ghe> loadTableGhe(String maChuyenBay){ 
+
+    public static ArrayList<Ghe> loadTableGhe(String maChuyenBay) {
 
         ArrayList<Ghe> arrayListGhe = new ArrayList<Ghe>();
         ResultSet rs = DataConnection.retrieveData("select * from dbo.GHE where MaChuyenBay like '%" + maChuyenBay + " %'");
@@ -133,8 +122,6 @@ public class LoadData {
                         rs.getString(1).trim(),
                         rs.getString(2).trim(),
                         rs.getString(3).trim());
-//                    rs.getInt(4),
-//                    rs.getInt(5));
                 Controller.arrayListMayBay.add(mayBay);
             }
         } catch (SQLException ex) {
@@ -193,36 +180,16 @@ public class LoadData {
         ResultSet rs = DataConnection.retrieveData("select * from dbo.VE");
         try {
             while (rs.next()) {
-//                short a = rs.getShort(4);
                 Ve ve = new Ve(
-                        //                    rs.getString(1).trim(),
-                        //                    rs.getString(2).trim(),
-                        //                    rs.getString(3).trim(),
-                        //                    rs.getInt(4),
-                        //                    rs.getShort(5),
-                        //                    rs.getByte(6),
-                        //                    rs.getByte(7),
-                        //                    rs.getString(8).trim(),
-                        //                    rs.getString(9).trim(),
-                        //                    rs.getString(10).trim(),
-                        //                    rs.getString(11).trim(),
-                        //                    rs.getString(12).trim(),
-                        //                    rs.getString(13).trim());
                         rs.getString(1).trim(),
                         rs.getString(2).trim(),
-                        //                    rs.getString(3).trim(),
                         rs.getInt(3),
                         rs.getShort(4),
-                        //                    rs.getByte(6),
-                        //                    rs.getByte(7),
-                        //                    rs.getString(8).trim(),
-                        //                    rs.getString(9).trim(),
                         rs.getString(5).trim(),
                         rs.getString(6).trim(),
                         rs.getDate(7),
                         rs.getString(8).trim(),
                         rs.getString(9).trim());
-//                    ve.setKyGui(a);
                 Controller.arrayListVe.add(ve);
             }
         } catch (SQLException ex) {
@@ -265,11 +232,7 @@ public class LoadData {
                 tongTienThucTe = hd.getTongTien();
             }
         }
-
-//            String maVe = (String) jTable_VeDaChon.getValueAt(row, 0);\
         String maVe = "";
-//            String maGhe = (String) jTable_VeDaChon.getValueAt(row, 12);
-//            String hangGheCuaVeDaChon = "";
         int giaCoBan = 0;
         int soVePhoThong = 0;
         int soVeThuongGia = 0;
@@ -306,8 +269,6 @@ public class LoadData {
                     }
                 }
             }
-            System.out.println(index);
-            //
             // tìm số ghế phổ thông, thương gia trong hóa đơn đã chọn
             for (Ve v : controller.Controller.arrayListVe) {
                 if (v.getMaHoaDon().equals(maHoaDon)) {
@@ -323,9 +284,7 @@ public class LoadData {
                     }
                 }
             }
-            //
             //từ các bước trên suy ra được điểm đã dùng, giá gốc, giá sau khi dùng,...
-//                System.out.println("hạng ghế của vé đã chọn:" + hangGheCuaVeDaChon);
             System.out.println("PhoThong " + soVePhoThong + "ThuongGia " + soVeThuongGia);
 
             System.out.println("tong tien thuc te: " + tongTienThucTe);
@@ -361,10 +320,6 @@ public class LoadData {
                 }
 
             }
-
-//                    connection.UpdateData.deleteHoaDon(maHoaDon); // xóa hóa đơn
-//
-//                    connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuySauXoa);// cập nhật lại điểm cho khách
             if (connection.UpdateData.deleteHoaDon(maHoaDon)) {
                 if (connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuySauXoa)) {
                     System.err.println("Xóa hóa đơn thành công");
@@ -393,12 +348,7 @@ public class LoadData {
         // Convert Date to Calendar
         Calendar c = Calendar.getInstance();
         c.setTime(dateChuyenBay);
-//        c.add(Calendar.YEAR, 2);
-//        c.add(Calendar.MONTH, 1);
-//        c.add(Calendar.DATE, -10);
         c.add(Calendar.HOUR, -2);
-//        c.add(Calendar.MINUTE, 30);
-//        c.add(Calendar.SECOND, 50);
 
         // đổi lại
         Date ngayGioSeBiXoa = c.getTime();
@@ -410,7 +360,6 @@ public class LoadData {
             return true;
         }
         System.out.println("Chua Xoa");
-
         return false;
     }
 

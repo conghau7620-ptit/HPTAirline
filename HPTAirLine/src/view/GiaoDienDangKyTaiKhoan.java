@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.InsertData;
@@ -28,234 +23,222 @@ import model.TaiKhoan;
  *
  * @author conghau
  */
-
 public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
-                implements KeyListener{
-    
+        implements KeyListener {
+
     /**
      * Creates new form GiaoDienDangKyTaiKhoan
      */
-    
     boolean checkTaiKhoan = false;
     boolean checkSDT = false;
     boolean checkCMND = false;
     boolean checkXacNhanMatKhau = false;
-    
+
     String removeAccent(String s) {
         String temp = Normalizer.normalize(s, Normalizer.Form.NFD);
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
         return pattern.matcher(temp).replaceAll("");
     }
-    
+
     void thongBao(javax.swing.JLabel lb, String message) {
         lb.setForeground(Color.yellow);
         jLabel_ThongBao.setText(message);
     }
-    
+
     void huyThongBao(javax.swing.JLabel lb) {
         lb.setForeground(Color.white);
         jLabel_ThongBao.setText("");
     }
-    
+
     public GiaoDienDangKyTaiKhoan() {
         initComponents();
         new LoadData();
         jButton_DangKy.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        
-        
+
         jTextField_TaiKhoan.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 String taiKhoan = jTextField_TaiKhoan.getText();
-                
-                    
+
                 for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
-                        if(tk.getTenDangNhap().equals(taiKhoan)) {
-                              thongBao(jLabel_TaiKhoan,"*Tài khoản đã tồn tại");
-                            checkTaiKhoan = false;
-                            return;
-                        }
+                    if (tk.getTenDangNhap().equals(taiKhoan)) {
+                        thongBao(jLabel_TaiKhoan, "*Tài khoản đã tồn tại");
+                        checkTaiKhoan = false;
+                        return;
+                    }
                 }
-                   
+
                 huyThongBao(jLabel_TaiKhoan);
                 checkTaiKhoan = true;
             }
         });
-                
+
         jTextField_CMND.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                 String cmnd = removeAccent(jTextField_CMND.getText().trim());
-                 
-                 for (int i=0; i<cmnd.length(); i++) {
-                     if (!Character.isDigit(cmnd.charAt(i))) {
-                         thongBao(jLabel_CMND, "*CMND phải nhập số");
-                         checkCMND=false;
-                         return;
-                     }
-                 }
-                 
-                  huyThongBao(jLabel_CMND);
-                  checkCMND = true;
+                String cmnd = removeAccent(jTextField_CMND.getText().trim());
+
+                for (int i = 0; i < cmnd.length(); i++) {
+                    if (!Character.isDigit(cmnd.charAt(i))) {
+                        thongBao(jLabel_CMND, "*CMND phải nhập số");
+                        checkCMND = false;
+                        return;
+                    }
+                }
+
+                huyThongBao(jLabel_CMND);
+                checkCMND = true;
             }
         });
-        
+
         jTextField_SoDienThoai.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                 String sdt = removeAccent(jTextField_SoDienThoai.getText().trim());
-                 
-                 for (int i=0; i<sdt.length(); i++) {
-                     if (!Character.isDigit(sdt.charAt(i))) {
-                         thongBao(jLabel_SoDienThoai,"*Số điện thoại phải nhập số");
-                         checkSDT = false;
-                         return;
-                     }
-                 }
-                 
-                 if (sdt.length()!=10) {
-                     thongBao(jLabel_SoDienThoai,"*Số điện thoại không hợp lệ");
-                     checkSDT = false;
-                     return;
-                 }
-                 
-                 for (KhachHang kh: Controller.arrayListKhachHang) {
-                     if (kh.getSdtKhachHang().equals(sdt)) {
-                         thongBao(jLabel_SoDienThoai,"*Số điện thoại đã được sử dụng");
-                         checkSDT = false;
-                         return;
-                     }
-                 }
-                 
-                 huyThongBao(jLabel_SoDienThoai);
-                 checkSDT = true;
+                String sdt = removeAccent(jTextField_SoDienThoai.getText().trim());
+
+                for (int i = 0; i < sdt.length(); i++) {
+                    if (!Character.isDigit(sdt.charAt(i))) {
+                        thongBao(jLabel_SoDienThoai, "*Số điện thoại phải nhập số");
+                        checkSDT = false;
+                        return;
+                    }
+                }
+
+                if (sdt.length() != 10) {
+                    thongBao(jLabel_SoDienThoai, "*Số điện thoại không hợp lệ");
+                    checkSDT = false;
+                    return;
+                }
+
+                for (KhachHang kh : Controller.arrayListKhachHang) {
+                    if (kh.getSdtKhachHang().equals(sdt)) {
+                        thongBao(jLabel_SoDienThoai, "*Số điện thoại đã được sử dụng");
+                        checkSDT = false;
+                        return;
+                    }
+                }
+
+                huyThongBao(jLabel_SoDienThoai);
+                checkSDT = true;
             }
-        }); 
-        
+        });
+
         jTextField_xacNhanMatKhau.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
                 if (!jTextField_MatKhau.getText().equals(jTextField_xacNhanMatKhau.getText())) {
-                    thongBao(jLabel_XacNhanMatKhau,"*Xác nhận mật khẩu không trùng khớp với mật khẩu");
+                    thongBao(jLabel_XacNhanMatKhau, "*Xác nhận mật khẩu không trùng khớp với mật khẩu");
                     checkXacNhanMatKhau = false;
                     return;
                 }
-                
+
                 huyThongBao(jLabel_XacNhanMatKhau);
                 checkXacNhanMatKhau = true;
-                
+
             }
         });
-        
+
         jButton_DangKy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (jTextField_TenKhachHang.getText().trim().isEmpty()) {
-                    thongBao(jLabel_TenKhachHang,"*Tên khách hàng chưa được điền");
+                    thongBao(jLabel_TenKhachHang, "*Tên khách hàng chưa được điền");
                     return;
-                }
-                else {
+                } else {
                     huyThongBao(jLabel_TenKhachHang);
                 }
-                
+
                 if (jTextField_CMND.getText().trim().isEmpty()) {
-                    thongBao(jLabel_CMND,"*CMND chưa được điền");
+                    thongBao(jLabel_CMND, "*CMND chưa được điền");
                     return;
-               }
-                else {
+                } else {
                     huyThongBao(jLabel_CMND);
                 }
                 if (!checkCMND) {
-                    thongBao(jLabel_CMND,"*CMND phải nhập số");
+                    thongBao(jLabel_CMND, "*CMND phải nhập số");
                     return;
                 }
-                
+
                 if (jTextField_TaiKhoan.getText().trim().isEmpty()) {
-                    thongBao(jLabel_TaiKhoan,"*Tài khoản chưa được điền");
+                    thongBao(jLabel_TaiKhoan, "*Tài khoản chưa được điền");
                     return;
-                }
-                else {
+                } else {
                     huyThongBao(jLabel_TaiKhoan);
                 }
                 if (!checkTaiKhoan) {
-                    thongBao(jLabel_TaiKhoan,"*Tài khoản đã tồn tại");
+                    thongBao(jLabel_TaiKhoan, "*Tài khoản đã tồn tại");
                     return;
                 }
-                
+
                 if (jTextField_SoDienThoai.getText().trim().isEmpty()) {
-                    thongBao(jLabel_SoDienThoai,"*Số điện thoại chưa được điền");
+                    thongBao(jLabel_SoDienThoai, "*Số điện thoại chưa được điền");
                     return;
-                }
-                else {
+                } else {
                     huyThongBao(jLabel_SoDienThoai);
                 }
                 if (!checkSDT) {
                     String sdt = removeAccent(jTextField_SoDienThoai.getText().trim());
-                 
-                    for (int i=0; i<sdt.length(); i++) {
+
+                    for (int i = 0; i < sdt.length(); i++) {
                         if (!Character.isDigit(sdt.charAt(i))) {
-                            thongBao(jLabel_SoDienThoai,"*Số điện thoại phải nhập số");
+                            thongBao(jLabel_SoDienThoai, "*Số điện thoại phải nhập số");
                             return;
                         }
                     }
-                    
-                    if (sdt.length()!=10) {
-                        thongBao(jLabel_SoDienThoai,"*Số điện thoại không hợp lệ");
+
+                    if (sdt.length() != 10) {
+                        thongBao(jLabel_SoDienThoai, "*Số điện thoại không hợp lệ");
                         return;
                     }
-                 
-                    thongBao(jLabel_SoDienThoai,"*Số điện thoại đã được sử dụng để đăng ký");
+
+                    thongBao(jLabel_SoDienThoai, "*Số điện thoại đã được sử dụng để đăng ký");
                     return;
                 }
-                
+
                 if (jTextField_MatKhau.getText().trim().isEmpty()) {
-                    thongBao(jLabel_MatKhau,"*Mật khẩu chưa được điền");
+                    thongBao(jLabel_MatKhau, "*Mật khẩu chưa được điền");
                     return;
-                }
-                else {
+                } else {
                     huyThongBao(jLabel_MatKhau);
                 }
-                
+
                 if (jTextField_xacNhanMatKhau.getText().trim().isEmpty()) {
-                    thongBao(jLabel_XacNhanMatKhau,"*Xác nhận mật khẩu chưa được điền");
+                    thongBao(jLabel_XacNhanMatKhau, "*Xác nhận mật khẩu chưa được điền");
                     return;
-                }
-                else {
+                } else {
                     huyThongBao(jLabel_XacNhanMatKhau);
-                } 
+                }
                 if (!checkXacNhanMatKhau) {
-                    thongBao(jLabel_XacNhanMatKhau,"*Xác nhận mật khẩu không trùng khớp với mật khẩu");
+                    thongBao(jLabel_XacNhanMatKhau, "*Xác nhận mật khẩu không trùng khớp với mật khẩu");
                     return;
                 }
-                
-                
-                    TaiKhoan tk = new TaiKhoan(
-                                    jTextField_TaiKhoan.getText(),
-                                    jTextField_MatKhau.getText(),
-                                    "KhachHang",
-                                    jTextField_SoDienThoai.getText());
-                    Controller.arrayListTaiKhoan.add(tk);
-                    InsertData.insertTaiKhoan(tk);
-                    
-                    KhachHang kh = new KhachHang(
-                                    jTextField_SoDienThoai.getText(),
-                                    jTextField_TenKhachHang.getText(),
-                                    jTextField_Email.getText(),
-                                    jTextField_DiaChi.getText(),
-                                    jTextField_TaiKhoan.getText(),
-                                    jTextField_CMND.getText(),
-                                    0);
-                    Controller.arrayListKhachHang.add(kh);
-                    InsertData.insertKhachHang(kh);
-                    
-                    JOptionPane.showMessageDialog(rootPane, "Đăng ký thành công");
-                    
-                    dispose();
-//                    new GiaoDienDangNhap().setVisible(true);
-                    
+
+                TaiKhoan tk = new TaiKhoan(
+                        jTextField_TaiKhoan.getText(),
+                        jTextField_MatKhau.getText(),
+                        "KhachHang",
+                        jTextField_SoDienThoai.getText());
+                Controller.arrayListTaiKhoan.add(tk);
+                InsertData.insertTaiKhoan(tk);
+
+                KhachHang kh = new KhachHang(
+                        jTextField_SoDienThoai.getText(),
+                        jTextField_TenKhachHang.getText(),
+                        jTextField_Email.getText(),
+                        jTextField_DiaChi.getText(),
+                        jTextField_TaiKhoan.getText(),
+                        jTextField_CMND.getText(),
+                        0);
+                Controller.arrayListKhachHang.add(kh);
+                InsertData.insertKhachHang(kh);
+
+                JOptionPane.showMessageDialog(rootPane, "Đăng ký thành công");
+
+                dispose();
+
             }
-            
+
         });
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -273,7 +256,7 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -601,8 +584,10 @@ public class GiaoDienDangKyTaiKhoan extends javax.swing.JFrame
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {}
+    public void keyPressed(KeyEvent e) {
+    }
 
     @Override
-    public void keyReleased(KeyEvent e) {}
+    public void keyReleased(KeyEvent e) {
+    }
 }

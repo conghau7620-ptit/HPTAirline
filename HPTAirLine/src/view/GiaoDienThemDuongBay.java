@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.InsertData;
@@ -30,7 +25,7 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
         jButton_ThemDuongBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         new LoadData();
         input();
-        
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -247,13 +242,13 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void input() {
-        for (SanBay sb: Controller.arrayListSanBay) {
-            jComboBox_SanBay1.addItem(sb.getMaSanBay().toString()+"-"+sb.getTenSanBay());
-            jComboBox_SanBay2.addItem(sb.getMaSanBay().toString()+"-"+sb.getTenSanBay());
+        for (SanBay sb : Controller.arrayListSanBay) {
+            jComboBox_SanBay1.addItem(sb.getMaSanBay().toString() + "-" + sb.getTenSanBay());
+            jComboBox_SanBay2.addItem(sb.getMaSanBay().toString() + "-" + sb.getTenSanBay());
         }
-        jComboBox_SanBay2.setSelectedItem(Controller.arrayListSanBay.get(1).getMaSanBay().toString()+"-"+Controller.arrayListSanBay.get(1).getTenSanBay().toString());
+        jComboBox_SanBay2.setSelectedItem(Controller.arrayListSanBay.get(1).getMaSanBay().toString() + "-" + Controller.arrayListSanBay.get(1).getTenSanBay().toString());
     }
-    
+
     private void jButton_QuayLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_QuayLaiActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -275,7 +270,7 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
             jLabel_ThongBao.setText("Khoảng cách chưa được điền");
             return;
         }
-        for (DuongBay db: Controller.arrayListDuongBay) {
+        for (DuongBay db : Controller.arrayListDuongBay) {
             if ((db.getMaSanBay1().equals(maSB1.substring(0, 3)) && db.getMaSanBay2().equals(maSB2.substring(0, 3)))
                     || (db.getMaSanBay1().equals(maSB2.substring(0, 3)) && db.getMaSanBay2().equals(maSB1.substring(0, 3)))) {
                 jLabel_ThongBao.setText("Đường bay đã tồn tại trong danh sách");
@@ -285,27 +280,25 @@ public class GiaoDienThemDuongBay extends javax.swing.JFrame {
         int tmp;
         if (Controller.arrayListDuongBay.isEmpty()) {
             tmp = 1;
-        }
-        else {
+        } else {
             tmp = Integer.parseInt(Controller.arrayListDuongBay.get(
-                Controller.arrayListDuongBay.size()-1).getMaDuongBay().substring(2))+1;
+                    Controller.arrayListDuongBay.size() - 1).getMaDuongBay().substring(2)) + 1;
         }
         String maDuongBay = "DB";
-        if (tmp<=9) {
+        if (tmp <= 9) {
             maDuongBay = maDuongBay + "0" + tmp;
-        }
-        else {
+        } else {
             maDuongBay += tmp;
         }
-        
+
         DuongBay duongBay = new DuongBay(
-            maDuongBay,
-            maSB1.substring(0, 3),
-            maSB2.substring(0, 3),
-            Integer.parseInt(jTextField_KhoangCach.getText()));
+                maDuongBay,
+                maSB1.substring(0, 3),
+                maSB2.substring(0, 3),
+                Integer.parseInt(jTextField_KhoangCach.getText()));
         Controller.arrayListDuongBay.add(duongBay);
         InsertData.insertDuongBay(duongBay);
-        
+
         jLabel_ThongBao.setText("Thêm đường bay thành công.");
     }//GEN-LAST:event_jButton_ThemDuongBayActionPerformed
 
