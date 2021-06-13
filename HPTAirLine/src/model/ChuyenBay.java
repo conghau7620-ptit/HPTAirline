@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.sql.Date;
@@ -14,6 +9,7 @@ import java.util.ArrayList;
  * @author conghau
  */
 public class ChuyenBay {
+
     private String maChuyenBay;
     private String maMayBay;
     private String maSanBayDi;
@@ -26,7 +22,7 @@ public class ChuyenBay {
 
     public ChuyenBay() {
     }
-    
+
     public ChuyenBay(String maChuyenBay, String maMayBay, String maSanBayDi, String maSanBayDen, Date ngayBay, Time gioBay, String ghiChu, int khoangCach) {
         this.maChuyenBay = maChuyenBay;
         this.maMayBay = maMayBay;
@@ -73,6 +69,7 @@ public class ChuyenBay {
     public ArrayList<Ghe> getArrayListGhe() {
         return arrayListGhe;
     }
+
     public void setMaChuyenBay(String maChuyenBay) {
         this.maChuyenBay = maChuyenBay;
     }
@@ -108,6 +105,5 @@ public class ChuyenBay {
     public void setArrayListGhe(ArrayList<Ghe> arrayListGhe) {
         this.arrayListGhe = arrayListGhe;
     }
-    
-    
+
 }

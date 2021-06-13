@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.InsertData;
@@ -46,7 +41,7 @@ public class GiaoDienThemMayBay extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThemMayBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        
+
     }
 
     /**
@@ -239,8 +234,7 @@ public class GiaoDienThemMayBay extends javax.swing.JFrame {
             jLabel_ThongBao.setText("Tên máy bay chưa được điền");
             jLabel_TenSanBay.setForeground(Color.yellow);
             return;
-        }
-        else {
+        } else {
             jLabel_ThongBao.setText("");
             jLabel_TenSanBay.setForeground(Color.white);
         }
@@ -248,8 +242,7 @@ public class GiaoDienThemMayBay extends javax.swing.JFrame {
             jLabel_ThongBao.setText("Hãng bay chưa được điền");
             jLabel_HangBay.setForeground(Color.yellow);
             return;
-        }
-        else {
+        } else {
             jLabel_ThongBao.setText("");
             jLabel_HangBay.setForeground(Color.white);
         }
@@ -264,18 +257,17 @@ public class GiaoDienThemMayBay extends javax.swing.JFrame {
         int tmp;
         if (Controller.arrayListMayBay.isEmpty()) {
             tmp = 1;
-        }
-        else {
+        } else {
             tmp = Integer.parseInt(Controller.arrayListMayBay.get(
-                Controller.arrayListMayBay.size()-1).getMaMayBay().substring(2)) +1;
+                    Controller.arrayListMayBay.size() - 1).getMaMayBay().substring(2)) + 1;
         }
-        
-        String maMB = "MB" + (tmp<10?"0":"") + tmp;
-        
+
+        String maMB = "MB" + (tmp < 10 ? "0" : "") + tmp;
+
         MayBay mb = new MayBay(
-            maMB,
-            jTextField_TenMayBay.getText(),
-            jTextField_HangBay.getText());
+                maMB,
+                jTextField_TenMayBay.getText(),
+                jTextField_HangBay.getText());
         Controller.arrayListMayBay.add(mb);
         InsertData.insertMayBay(mb);
         JOptionPane.showMessageDialog(null, "Thêm máy bay thành công");

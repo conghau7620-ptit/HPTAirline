@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -29,9 +24,9 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
     /**
      * Creates new form GiaoDienSuaChuyenBay
      */
-    
     ChuyenBay chuyenBay = null;
     String maCB = null;
+
     public GiaoDienSuaChuyenBay(String maChuyenBay) {
         initComponents();
         new LoadData();
@@ -39,7 +34,7 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
         jButton_SuaChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         loadChuyenBayDuocChon(maChuyenBay);
         maCB = maChuyenBay;
-        
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -356,11 +351,11 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void loadChuyenBayDuocChon(String maChuyenBay) {
-        for (MayBay mb: Controller.arrayListMayBay) {
+        for (MayBay mb : Controller.arrayListMayBay) {
             jComboBox_MayBay.addItem(mb.getMaMayBay());
         }
-        
-        for (SanBay sb: Controller.arrayListSanBay) {
+
+        for (SanBay sb : Controller.arrayListSanBay) {
             jComboBox_SanBayDi.addItem(sb.getMaSanBay());
             jComboBox_SanBayDen.addItem(sb.getMaSanBay());
         }
@@ -374,20 +369,18 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
         jComboBox_SanBayDi.setSelectedItem(chuyenBay.getMaSanBayDi());
         jComboBox_SanBayDen.setSelectedItem(chuyenBay.getMaSanBayDen());
         jDateChooser_NgayDi.setDate(new java.util.Date(chuyenBay.getNgayBay().getTime()));
-        if (chuyenBay.getGioBay().getHours()<10) {
-            jComboBox_GioDi.setSelectedItem("0" +chuyenBay.getGioBay().getHours());
-        }
-        else {
+        if (chuyenBay.getGioBay().getHours() < 10) {
+            jComboBox_GioDi.setSelectedItem("0" + chuyenBay.getGioBay().getHours());
+        } else {
             jComboBox_GioDi.setSelectedItem(Integer.toString(chuyenBay.getGioBay().getHours()));
         }
-        if (chuyenBay.getGioBay().getMinutes()<10) {
-            jComboBox_PhutDi.setSelectedItem("0"+ chuyenBay.getGioBay().getMinutes());
-        }
-        else {
-        jComboBox_PhutDi.setSelectedItem(Integer.toString(chuyenBay.getGioBay().getMinutes()));
+        if (chuyenBay.getGioBay().getMinutes() < 10) {
+            jComboBox_PhutDi.setSelectedItem("0" + chuyenBay.getGioBay().getMinutes());
+        } else {
+            jComboBox_PhutDi.setSelectedItem(Integer.toString(chuyenBay.getGioBay().getMinutes()));
         }
         jTextArea_GhiChu.setText(chuyenBay.getGhiChu());
-        
+
     }
     private void jDateChooser_NgayDiPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooser_NgayDiPropertyChange
         // TODO add your handling code here:
@@ -400,61 +393,60 @@ public class GiaoDienSuaChuyenBay extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_QuayLaiActionPerformed
 
     private void jButton_SuaChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SuaChuyenBayActionPerformed
-        String maSB1= jComboBox_SanBayDi.getSelectedItem().toString().trim();
-        String maSB2= jComboBox_SanBayDen.getSelectedItem().toString().trim();
-        
+        String maSB1 = jComboBox_SanBayDi.getSelectedItem().toString().trim();
+        String maSB2 = jComboBox_SanBayDen.getSelectedItem().toString().trim();
+
         if (maSB1.equals(maSB2)) {
             jLabel_ThongBao.setText("*Sân bay đi bị trùng vs sân bay đến");
             jLabel_SanBayDi.setForeground(Color.yellow);
             jLabel_SanBayDen.setForeground(Color.yellow);
             return;
-        }
-        else {
+        } else {
             jLabel_ThongBao.setText("");
             jLabel_SanBayDi.setForeground(Color.white);
             jLabel_SanBayDen.setForeground(Color.white);
         }
-        
+
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        for (ChuyenBay cb: Controller.arrayListChuyenBay) {
+        for (ChuyenBay cb : Controller.arrayListChuyenBay) {
             if (cb.getMaMayBay().equals(jComboBox_MayBay.getSelectedItem().toString())
-                    && cb.getMaSanBayDi().equals(maSB1) && cb.getMaSanBayDen().equals(maSB2) 
+                    && cb.getMaSanBayDi().equals(maSB1) && cb.getMaSanBayDen().equals(maSB2)
                     && formatter.format(cb.getNgayBay()).equals(formatter.format(jDateChooser_NgayDi.getDate()))
-                    && cb.getGioBay().getHours()==Integer.parseInt(jComboBox_GioDi.getSelectedItem().toString())) {
+                    && cb.getGioBay().getHours() == Integer.parseInt(jComboBox_GioDi.getSelectedItem().toString())) {
                 jLabel_ThongBao.setText("Đã có chuyến bay tương tự cùng thời gian trên");
                 return;
             }
         }
-        
-        if (!maSB1.equals(maSB2)){
-            for (DuongBay db: Controller.arrayListDuongBay) {
+
+        if (!maSB1.equals(maSB2)) {
+            for (DuongBay db : Controller.arrayListDuongBay) {
                 if ((db.getMaSanBay1().equals(maSB1) && db.getMaSanBay2().equals(maSB2))
                         || (db.getMaSanBay1().equals(maSB2) && db.getMaSanBay2().equals(maSB1))) {
-                    
+
                     java.util.Date today = new java.util.Date();
                     if (jDateChooser_NgayDi.getDate().before(today)) {
                         jLabel_ThongBao.setText("Ngày đi không hợp lệ");
                         return;
                     }
-                    
+
                     Time time = new Time(
-                        Integer.parseInt(jComboBox_GioDi.getSelectedItem().toString()),
-                        Integer.parseInt(jComboBox_PhutDi.getSelectedItem().toString()),
-                        Integer.parseInt(jComboBox_GiayDi.getSelectedItem().toString()));
+                            Integer.parseInt(jComboBox_GioDi.getSelectedItem().toString()),
+                            Integer.parseInt(jComboBox_PhutDi.getSelectedItem().toString()),
+                            Integer.parseInt(jComboBox_GiayDi.getSelectedItem().toString()));
                     Date date = new java.sql.Date(jDateChooser_NgayDi.getDate().getTime());
                     ChuyenBay cb = new ChuyenBay(
-                        chuyenBay.getMaChuyenBay(),
-                        jComboBox_MayBay.getSelectedItem().toString(),
-                        jComboBox_SanBayDi.getSelectedItem().toString(),
-                        jComboBox_SanBayDen.getSelectedItem().toString(),
-                        date,
-                        time,
-                        jTextArea_GhiChu.getText(),
-                        db.getKhoangCach());
-                    int vt=0;
+                            chuyenBay.getMaChuyenBay(),
+                            jComboBox_MayBay.getSelectedItem().toString(),
+                            jComboBox_SanBayDi.getSelectedItem().toString(),
+                            jComboBox_SanBayDen.getSelectedItem().toString(),
+                            date,
+                            time,
+                            jTextArea_GhiChu.getText(),
+                            db.getKhoangCach());
+                    int vt = 0;
                     for (ChuyenBay cb1 : Controller.arrayListChuyenBay) {
                         if (cb1.getMaChuyenBay().equals(maCB)) {
-                             break;
+                            break;
                         }
                         vt++;
                     }

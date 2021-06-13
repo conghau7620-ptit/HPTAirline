@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.InsertData;
@@ -29,7 +24,7 @@ public class GiaoDienThemSanBay extends javax.swing.JFrame {
         jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThemSanBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         new LoadData();
-        
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -250,23 +245,21 @@ public class GiaoDienThemSanBay extends javax.swing.JFrame {
             jLabel_ThongBao.setText("*Mã sân bay chưa được điền");
             jLabel_MaSanBay.setForeground(Color.yellow);
             return;
-        }
-        else {
+        } else {
             jLabel_ThongBao.setText("");
             jLabel_MaSanBay.setForeground(Color.white);
         }
-        if (jTextField_MaSanBay.getText().length()!=3) {
+        if (jTextField_MaSanBay.getText().length() != 3) {
             jLabel_ThongBao.setText("*Mã sân bay chỉ chứa đúng 3 ký tự");
             jLabel_MaSanBay.setForeground(Color.yellow);
             return;
-        }
-        else {
+        } else {
             jLabel_ThongBao.setText("");
             jLabel_MaSanBay.setForeground(Color.white);
         }
-        for (int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             char ch = jTextField_MaSanBay.getText().charAt(i);
-            if (ch<'A' || ch>'Z') {
+            if (ch < 'A' || ch > 'Z') {
                 jLabel_ThongBao.setText("Mã sân bay chỉ chứa chữ cái từ A-Z");
                 jLabel_MaSanBay.setForeground(Color.yellow);
                 return;
@@ -274,7 +267,7 @@ public class GiaoDienThemSanBay extends javax.swing.JFrame {
         }
         jLabel_ThongBao.setText("");
         jLabel_MaSanBay.setForeground(Color.white);
-        for (SanBay sb: Controller.arrayListSanBay) {
+        for (SanBay sb : Controller.arrayListSanBay) {
             if (sb.getMaSanBay().equals(jTextField_MaSanBay.getText())) {
                 jLabel_ThongBao.setText("Mã sân bay đã tồn tại trong danh sách");
                 jLabel_MaSanBay.setForeground(Color.yellow);
@@ -283,25 +276,24 @@ public class GiaoDienThemSanBay extends javax.swing.JFrame {
         }
         jLabel_ThongBao.setText("");
         jLabel_MaSanBay.setForeground(Color.white);
-        
+
         if (jTextField_TenSanBay.getText().isEmpty()) {
             jLabel_ThongBao.setText("*Tên sân bay chưa được điền");
             jLabel_TenSanBay.setForeground(Color.yellow);
             return;
-        }
-        else {
+        } else {
             jLabel_ThongBao.setText("");
             jLabel_TenSanBay.setForeground(Color.white);
         }
-        
+
         SanBay sanBay = new SanBay(
-            jTextField_MaSanBay.getText(),
-            jTextField_TenSanBay.getText());
+                jTextField_MaSanBay.getText(),
+                jTextField_TenSanBay.getText());
         Controller.arrayListSanBay.add(sanBay);
         InsertData.insertSanBay(sanBay);
         jLabel_ThongBao.setText("Thêm sân bay thành công");
-        
-        
+
+
     }//GEN-LAST:event_jButton_ThemSanBayActionPerformed
 
     private void jTextField_MaSanBayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_MaSanBayKeyReleased

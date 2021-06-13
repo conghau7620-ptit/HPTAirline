@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -26,9 +21,8 @@ import model.Ghe;
 public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
 
     /**
-     * Creates new form FlightSearchResultFrame
+     * Creates new form GiaoDienChonChuyenBayDi
      */
-    //SoGhe trong trong chuyen bay deu = 0; chưa sửa
     public static String maChuyenBayDi;
     ArrayList<ChuyenBay> list;
     DefaultTableModel dtm;
@@ -38,12 +32,10 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
     Date ngayVe;
     int soGheNguoiLon;
     int soGheTreEm;
-//    int soGheEmBe;
     boolean khuHoi;
     boolean di, ve;
 
     public GiaoDienChonChuyenBayDi(String maSanBayDi, String maSanBayDen,
-            // Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
             Date ngayDi, Date ngayVe, boolean di, boolean ve, boolean khuHoi, int soGheNguoiLon, int soGheTreEm/*, int soGheEmBe*/) {
         initComponents();
         jButton_XacNhanChonChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -56,7 +48,6 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
         this.soGheTreEm = soGheTreEm;
         this.di = di;
         this.ve = ve;
-//         this.soGheEmBe = soGheEmBe;
         this.khuHoi = khuHoi;
 
         dtm = (DefaultTableModel) jTable_KetQuaTimKiem.getModel();
@@ -83,15 +74,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         hienKetQua();
 
-        //   
-//        String date = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
-//        try {
-//            ngayHienTai = new SimpleDateFormat("dd/MM/yyyy").parse(date);
-//        } catch (ParseException ex) {
-//            Logger.getLogger(GiaoDienTimChuyenBay.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
-// test
 
     private GiaoDienChonChuyenBayDi() {
         initComponents(); //To change body of generated methods, choose Tools | Templates.
@@ -272,36 +255,23 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
     private void jButton_XacNhanChonChuyenBayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanChonChuyenBayActionPerformed
         // TODO add your handling code here:
         int row = jTable_KetQuaTimKiem.getSelectedRow();
-        //if(this.khuHoi == true){
         if (this.ve == true) {
-//            this.dispose();
-//                int row = jTable_KetQuaTimKiem.getSelectedRow();
             if (row == -1) {
                 JOptionPane.showMessageDialog(rootPane, "Hãy chọn chuyến bay đi.");
             } else {
-//                    new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe
-//                            , this.soGheNguoiLon, this.soGheTreEm/*, this.soGheEmBe*/, 
-//                            (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
-
                 new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
                 maChuyenBayDi = (String) jTable_KetQuaTimKiem.getValueAt(row, 0);
                 this.dispose();
             }
         } else {
-            //   int row = jTable_KetQuaTimKiem.getSelectedRow();
             if (row == -1) {
                 JOptionPane.showMessageDialog(rootPane, "Hãy chọn chuyến bay đi.");
             } else {
-//                new GiaoDienChonGhe((String) jTable_KetQuaTimKiem.getValueAt(row, 0), ""
-//                        , this.soGheNguoiLon, this.soGheTreEm, this.soGheEmBe).setVisible(true);
-                //new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
                 new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
                 this.dispose();
 
             }
         }
-        //    new GiaoDienChonGhe(maSanBayDi, maSanBayDen, ngayDi, ngayVe, khuHoi, soGheNguoiLon, soGheTreEm, (String) jTable_KetQuaTimKiem.getValueAt(row, 0)).setVisible(true);
-        //  new GiaoDienChonGhe().setVisible(true);
     }//GEN-LAST:event_jButton_XacNhanChonChuyenBayActionPerformed
 
     /**
@@ -309,17 +279,7 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
      */
     private void hienKetQua() {
         dtm.setRowCount(0);
-//        LoadData.loadKetQuaTimKiemChuyenBay("VII", "SGN", "2", "3");
-//        try {
-//            this.ngayDi = new SimpleDateFormat("dd/MM/yyyy").parse(ngayDi.toString());
-//        } catch (ParseException ex) {
-//            Logger.getLogger(TestKetQuaTimKiem.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//              
         String stringNgayDi = new SimpleDateFormat("yyyy-MM-dd").format(ngayDi);
-//        System.out.println(stringNgayDi);
-//        System.out.println(this.maSanBayDi);
-//        System.out.println(this.maSanBayDen);
 
         Controller.arrayListKetQuaTimKiemChuyenBay.removeAll(Controller.arrayListKetQuaTimKiemChuyenBay);
 
@@ -327,15 +287,6 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
         LoadData.loadTableChuyenBay();
 
         list = Controller.arrayListKetQuaTimKiemChuyenBay;
-//        ArrayList<ChuyenBay> list2 = Controller.arrayListChuyenBay;
-//        for(ChuyenBay x: list2){
-//            int soGheTrong = 0;
-//            for(Ghe g : x.getArrayListGhe()){
-//                    System.out.println(g.getTrong());
-//                    System.out.println(g.getMaGhe());
-//            }
-//        }
-        ///   
 
         for (ChuyenBay cb : list) {
             int soGheTrong = 0;
@@ -350,53 +301,9 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
                     cb.getGioBay(), cb.getGhiChu(), cb.getKhoangCach()
                 });
             }
-            //
-//            System.out.println("tongSoGhe "+ tongSoGhe);
-//            System.out.println("soGheTrong "+ soGheTrong);
-            //
         }
     }
 
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Windows".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(TestKetQuaTimKiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(TestKetQuaTimKiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(TestKetQuaTimKiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(TestKetQuaTimKiem.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        
-////        java.awt.EventQueue.invokeLater(new Runnable() {
-////            public void run() {
-////                new TestKetQuaTimKiem("", "", ngayHienTai, ngayHienTai, true).setVisible(true);
-////            }
-////       });
-//
-//    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -426,7 +333,6 @@ public class GiaoDienChonChuyenBayDi extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GiaoDienChonChuyenBayDi().setVisible(true);
-                // new GiaoDienChonGhe(xacNhan, ve).setVisible(true);
             }
         });
     }

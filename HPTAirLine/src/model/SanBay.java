@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 /**
@@ -10,6 +5,7 @@ package model;
  * @author conghau
  */
 public class SanBay {
+
     private String maSanBay;
     private String tenSanBay;
 
@@ -36,6 +32,5 @@ public class SanBay {
     public void setTenSanBay(String tenSanBay) {
         this.tenSanBay = tenSanBay;
     }
-    
-    
+
 }

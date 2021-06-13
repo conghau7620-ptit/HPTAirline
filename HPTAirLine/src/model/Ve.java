@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.sql.Date;
@@ -12,40 +7,35 @@ import java.sql.Date;
  * @author conghau
  */
 public class Ve {
+
     private String maVe;
-//    private String sdtKhachHang;
     private String maChuyenBay;
     private int gia;
     private short kyGui;
-//    private byte trangThaiDoi;
-//    private byte trangThaiVe;
     private String cmndNguoiBay;
     private String tenNguoiBay;
-//    private String emailNguoiBay;
-//    private String sdtNguoiBay;
     private String maHoaDon;
     private String maGhe;
     private Date ngaySinh;
+
     public Ve() {
     }
- // test 
-    public Ve (String maVe, String sdtKhachHang, String maChuyenBay, String cmndNguoibay, String tenNguoiBay,String emailNguoiBay, String sdtNguoiBay, String maGhe){
-        
+    // test 
+
+    public Ve(String maVe, String sdtKhachHang, String maChuyenBay, String cmndNguoibay, String tenNguoiBay, String emailNguoiBay, String sdtNguoiBay, String maGhe) {
+
         this.maVe = maVe;
-//        this.sdtKhachHang= sdtKhachHang;
         this.maChuyenBay = maChuyenBay;
-        
         this.cmndNguoiBay = cmndNguoibay;
         this.tenNguoiBay = tenNguoiBay;
-//        this.emailNguoiBay = emailNguoiBay;
-//        this.sdtNguoiBay = sdtNguoiBay;
         this.maGhe = maGhe;
-        
+
     }
+
     public Ve(String maVe, String maChuyenBay, int gia, short kyGui, String cmndNguoiBay, String tenNguoiBay, Date ngaySinh, String maHoaDon, String maGhe) {
         this.maVe = maVe;
         this.maChuyenBay = maChuyenBay;
-        
+
         this.gia = gia;
         this.kyGui = kyGui;
         this.cmndNguoiBay = cmndNguoiBay;
@@ -55,8 +45,6 @@ public class Ve {
         this.maGhe = maGhe;
     }
 
-
-
     public Date getNgaySinh() {
         return ngaySinh;
     }
@@ -64,15 +52,10 @@ public class Ve {
     public void setNgaySinh(Date ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
-   
 
     public String getMaVe() {
         return maVe;
     }
-
-//    public String getSdtKhachHang() {
-//        return sdtKhachHang;
-//    }
 
     public String getMaChuyenBay() {
         return maChuyenBay;
@@ -86,14 +69,6 @@ public class Ve {
         return kyGui;
     }
 
-//    public byte getTrangThaiDoi() {
-//        return trangThaiDoi;
-//    }
-
-//    public byte getTrangThaiVe() {
-//        return trangThaiVe;
-//    }
-
     public String getCmndNguoiBay() {
         return cmndNguoiBay;
     }
@@ -101,14 +76,6 @@ public class Ve {
     public String getTenNguoiBay() {
         return tenNguoiBay;
     }
-
-//    public String getEmailNguoiBay() {
-//        return emailNguoiBay;
-//    }
-
-//    public String getSdtNguoiBay() {
-//        return sdtNguoiBay;
-//    }
 
     public String getMaHoaDon() {
         return maHoaDon;
@@ -122,10 +89,6 @@ public class Ve {
         this.maVe = maVe;
     }
 
-//    public void setSdtKhachHang(String sdtKhachHang) {
-//        this.sdtKhachHang = sdtKhachHang;
-//    }
-
     public void setMaChuyenBay(String maChuyenBay) {
         this.maChuyenBay = maChuyenBay;
     }
@@ -138,14 +101,6 @@ public class Ve {
         this.kyGui = kyGui;
     }
 
-//    public void setTrangThaiDoi(byte trangThaiDoi) {
-//        this.trangThaiDoi = trangThaiDoi;
-//    }
-//
-//    public void setTrangThaiVe(byte trangThaiVe) {
-//        this.trangThaiVe = trangThaiVe;
-//    }
-
     public void setCmndNguoiBay(String cmndNguoiBay) {
         this.cmndNguoiBay = cmndNguoiBay;
     }
@@ -154,14 +109,6 @@ public class Ve {
         this.tenNguoiBay = tenNguoiBay;
     }
 
-//    public void setEmailNguoiBay(String emailNguoiBay) {
-//        this.emailNguoiBay = emailNguoiBay;
-//    }
-//
-//    public void setSdtNguoiBay(String sdtNguoiBay) {
-//        this.sdtNguoiBay = sdtNguoiBay;
-//    }
-
     public void setMaHoaDon(String maHoaDon) {
         this.maHoaDon = maHoaDon;
     }
@@ -169,6 +116,5 @@ public class Ve {
     public void setMaGhe(String maGhe) {
         this.maGhe = maGhe;
     }
-    
-    
+
 }

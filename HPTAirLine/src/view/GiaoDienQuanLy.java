@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -25,7 +20,7 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
      */
     public GiaoDienQuanLy() {
         initComponents();
-        
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -34,14 +29,14 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
 
                 if (confirmed == JOptionPane.YES_OPTION) {
                     dispose();
-                }else{
+                } else {
                     setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }
             }
         });
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        
+
         thongTinTaiKhoan();
         jButton_KhachHang.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThongKe.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -52,9 +47,9 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jButton_ChuyenBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_DuongBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_SanBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        
+
         jButton_TimChuyen.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        
+
         jButton_MayBay.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
@@ -446,13 +441,12 @@ public class GiaoDienQuanLy extends javax.swing.JFrame {
         jLabel_DangXuat.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         new LoadData();
         jLabel_PhanQuyen.setText("quản lý");
-        for (NhanVien nv: Controller.arrayListNhanVien) {
+        for (NhanVien nv : Controller.arrayListNhanVien) {
             if (nv.getSdtNhanVien().equals(Controller.tk.getSdt())) {
                 jLabel_TenNguoiDung.setText(nv.getTenNhanVien());
                 break;
             }
         }
-        ////
     }
     private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
         // TODO add your handling code here:

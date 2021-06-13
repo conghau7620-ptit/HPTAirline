@@ -1,29 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
-
-======
-bấm vô một ghế hiện thêm một jfame để nhập thông tin người bay sau đó lưu vào bảng tên người bay để gọn lại
- */
-
-
- /*
-    - tạo đối tượng vé
-    - Xuất mã vé tự dộng gán vào mã vé của dối tượng vé 
-    - Lấy mã chuyến bay gán vào đối tượng
-    - Khai báo 2 biết chưa giá cho 2 hạng phổ thông và thương gia,
-duyện mảng để gán giá vé cho đúng ghế
-    - Trạng thái đổi ?????
-    - Trạng thái vé <thanh toán> <chưa thanh toán>
-    - mở một jframe cho phép nhập thông tin của người bay, thông tin nhập được
-gán vào các thuộc tính trong vé gồm : CMND, tên, email, sđt.
-    - Xuất mã hóa đơn vào vé
-    - Lấy mã ghế
-
-
-    - Xuất thông tin ra Bảng thông tin mua để ng mua dễ dàng theo dõi 
- */
 package view;
 
 import connection.DataConnection;
@@ -43,49 +17,29 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author MY PC
  */
-
-
-
-//public static ArrayList <model.NguoiBay> dsNguoiBay = new ArrayList();
-
 public class GiaoDienChonGhe extends javax.swing.JFrame {
 
     /**
      * Creates new form chonGhe
      */
-    public static ArrayList<model.Ve> dsVe = new ArrayList(); // ds ve duoc chon   // cần có ds vé đi và ds vé về  
+    public static ArrayList<model.Ve> dsVe = new ArrayList();
 
     public static ArrayList<model.Ve> dsVeDi = new ArrayList();
-    public static ArrayList<model.Ve> dsVeVe = new ArrayList(); // thế này dược chưa ok, hóa đơn 2 chiều thì 2 danh sách truyền vào nhe, có mã hóa đơn luôn thì càng tốt
-    // oke cái đó để xem, vậy phải có hóa đơn trước khi chọn vé rồi, chỉ cần mã hóa đơn thôi, lúc tạo hóa đơn t mowis 
-//         /insert hóa đơn á, vậy mã Hóa đơn mình cho tự động sinh luôn ha, ừ,  còn vé thì khóa là mã vé với mã hóa đơn nên mối danh sách cứ đặt từ V01 ròi oke, về lại chỗ thêm ghế nha, ừ
+    public static ArrayList<model.Ve> dsVeVe = new ArrayList();
+    ArrayList<JTextField> listSelected = new ArrayList();
+    ArrayList<JTextField> dsTextField = new ArrayList();
 
-        ArrayList <JTextField> listSelected = new ArrayList();  // ds cac nut dc click
-        ArrayList <JTextField> dsTextField = new ArrayList();   // ds tat ca cac ghe
+    ArrayList<model.Ghe> dsGhe = new ArrayList<model.Ghe>();
 
-        ArrayList <model.Ghe> dsGhe = new ArrayList <model.Ghe>(); // ds ghe lay tu trong csdl
-
-       // ArrayList <model.Ghe> dsGheDau = new ArrayList <model.Ghe>(); //  quen ròi :)))))))))
-        private Color bg = new Color(240,240,240);
-
+    private Color bg = new Color(240, 240, 240);
 
     public GiaoDienChonGhe() {
         initComponents();
 
-
-//       layGhe();
         luuTextField();
         layGheTuCSDL(this.maChuyenBay);
 
         layMauGhe();
-
-//        System.out.println("tre ve: " + GiaoDienChonGhe.soGheTreEmVe);
-//                    System.out.println("tre di: "+ GiaoDienChonGhe.soGheTreEmDi);
-//                     System.out.println("lon ve: "+ GiaoDienChonGhe.soGheNguoiLonVe);
-//                     System.out.println("lon di: "+  GiaoDienChonGhe.soGheNguoiLonDi);
-//layGheTuCSDL("CB01");
-//           
-//           layMauGhe();
 
         xuatThongTinVaoBang();
 
@@ -104,23 +58,19 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         });
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-            
-            
-       
+
     }
-    
-    // phu vu cho nut back
-    
-        public GiaoDienChonGhe(String maChuyenBay) {
+
+    public GiaoDienChonGhe(String maChuyenBay) {
         initComponents();
-        
+
         luuTextField();
         layGheTuCSDL(maChuyenBay);
 
         layMauGhe();
         xuatThongTinVaoBang();
-        
-            this.addWindowListener(new WindowAdapter() {
+
+        this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
                         "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
@@ -135,12 +85,9 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         });
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-            
 
     }
-        
-        // ket thuc phuc vu cho nut back
-        
+
     public static String maSanBayDi;
     public static String maSanBayDen;
 
@@ -152,15 +99,12 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
     public static int soGheNguoiLonVe;
     public static int soGheTreEmDi;
     public static int soGheTreEmVe;
-//    public static int nguoiLonBanDau, treEmBanDau;
-//    int soGheEmBe;
     public static String maChuyenBay;
     public static boolean khuHoi;
-    public static boolean di,ve;
+    public static boolean di, ve;
 
     public GiaoDienChonGhe(String maSanBayDi, String maSanBayDen,
-            //  Date ngayDi, Date ngayVe, boolean khuHoi, int soGheNguoiLon, int soGheTreEm, String maChuyenBay){
-            Date ngayDi, Date ngayVe, boolean di, boolean ve,  boolean khuHoi, int soGheNguoiLon, int soGheTreEm, String maChuyenBay){
+            Date ngayDi, Date ngayVe, boolean di, boolean ve, boolean khuHoi, int soGheNguoiLon, int soGheTreEm, String maChuyenBay) {
         initComponents();
         this.maSanBayDi = maSanBayDi;
         this.maSanBayDen = maSanBayDen;
@@ -178,10 +122,6 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         this.di = di;
         this.ve = ve;
         this.khuHoi = khuHoi;
-//        maChuyenBay = "phong";
-//        luuGheVaoCSDL(maChuyenBay);
-
-
 
         System.out.println("chon bay di");
         layGheTuCSDL(this.maChuyenBay);
@@ -189,7 +129,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         luuTextField();
         layMauGhe();
 
-               this.addWindowListener(new WindowAdapter() {
+        this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
                         "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
@@ -204,16 +144,13 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         });
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-            
-           
 
     }
-    public GiaoDienChonGhe(String maChuyenBay,int soGheNguoiLon, int soGheTreEm){
+
+    public GiaoDienChonGhe(String maChuyenBay, int soGheNguoiLon, int soGheTreEm) {
         initComponents();
         this.maChuyenBay = maChuyenBay;
-        // this.soGheNguoiLonDi = soGheNguoiLon;
         this.soGheNguoiLonVe = soGheNguoiLon;
-        //  this.soGheTreEmDi = soGheTreEm;
         this.soGheTreEmVe = soGheTreEm;
 
         System.out.println("chon bay ve");
@@ -221,7 +158,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
 
         luuTextField();
         layMauGhe();
-    this.addWindowListener(new WindowAdapter() {
+        this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
                         "Bạn có chắc muốn thoát chương trình không?", "Xác nhận",
@@ -236,7 +173,7 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         });
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-            
+
     }
 
     /**
@@ -244,24 +181,17 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
      */
-
-           
-           
-           
-
-    
     @SuppressWarnings("unchecked")
 
-    private void xuatThongTinVaoBang(){
+    private void xuatThongTinVaoBang() {
 
-     //   System.out.println("dsvedi "+ dsVeDi.size());
-          DefaultTableModel dtm = (DefaultTableModel) jTable_ThongTinNguoiBay.getModel();
+        DefaultTableModel dtm = (DefaultTableModel) jTable_ThongTinNguoiBay.getModel();
 
         dtm.setNumRows(0);
-        Vector vt ;
-          if (di){
+        Vector vt;
+        if (di) {
 
-        for(int i = 0; i < dsVeDi.size();i++){
+            for (int i = 0; i < dsVeDi.size(); i++) {
                 vt = new Vector();
 
                 vt.add(dsVeDi.get(i).getMaChuyenBay());
@@ -269,36 +199,27 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
                 vt.add(dsVeDi.get(i).getMaGhe());
                 vt.add(dsVeDi.get(i).getMaHoaDon());
 
-
                 System.out.println(dsVeDi.get(i));
 
                 dtm.addRow(vt);
-            for (int j = 0 ; j < dsTextField.size();j++){
-
+                for (int j = 0; j < dsTextField.size(); j++) {
                     // đổi textfield thành màu xanh
-                if(dsTextField.get(j).getName().trim().equals(dsVeDi.get(i).getMaGhe().trim())){
-                    System.out.println("vonglap"+ dsTextField.get(j).getName());
+                    if (dsTextField.get(j).getName().trim().equals(dsVeDi.get(i).getMaGhe().trim())) {
+                        System.out.println("vonglap" + dsTextField.get(j).getName());
                         dsTextField.get(j).setBackground(Color.GREEN);
                         listSelected.add(dsTextField.get(j));
 
                         break;
-                }
-
-                else {
-                    System.out.println("vonglap"+ dsTextField.get(j).getName());
+                    } else {
+                        System.out.println("vonglap" + dsTextField.get(j).getName());
                         System.out.println("false");
                     }
                 }
             }
             jTable_ThongTinNguoiBay.setModel(dtm);
 
-//                for(int k =0 ; k< listSelected.size();k++){
-//            System.out.println("alo: "+listSelected.get(k).getName());
-//        }
-        }
-          
-        else if (!ve && !di){
-            for(int i = 0; i < dsVeVe.size();i++){
+        } else if (!ve && !di) {
+            for (int i = 0; i < dsVeVe.size(); i++) {
                 vt = new Vector();
 
                 vt.add(dsVeVe.get(i).getMaChuyenBay());
@@ -306,37 +227,25 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
                 vt.add(dsVeVe.get(i).getMaGhe());
                 vt.add(dsVeVe.get(i).getMaHoaDon()); // fix loi bang ve ve k xuat ma hoa don
 
-
                 System.out.println(dsVeVe.get(i));
 
                 dtm.addRow(vt);
-            for (int j = 0 ; j < dsTextField.size();j++){
+                for (int j = 0; j < dsTextField.size(); j++) {
 
                     // đổi textfield thành màu xanh
-                if(dsTextField.get(j).getName().trim().equals(dsVeVe.get(i).getMaGhe().trim())){
-                    System.out.println("vonglap"+ dsTextField.get(j).getName());
+                    if (dsTextField.get(j).getName().trim().equals(dsVeVe.get(i).getMaGhe().trim())) {
+                        System.out.println("vonglap" + dsTextField.get(j).getName());
                         dsTextField.get(j).setBackground(Color.GREEN);
                         listSelected.add(dsTextField.get(j));
                         break;
                     }
-
-//                else {
-//                }
                 }
             }
             jTable_ThongTinNguoiBay.setModel(dtm);
-
-// for(int k =0 ; k< listSelected.size();k++){
-////            System.out.println();
-//            System.out.println("alo: "+listSelected.get(k).getName());
-//        }
         }
-
-        
-
-        
     }
-    private int luuTextField(){
+
+    private int luuTextField() {
         dsTextField.add(Ghe_1A);
         dsTextField.add(Ghe_1B);
         dsTextField.add(Ghe_1C);
@@ -428,19 +337,10 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         dsTextField.add(Ghe_15E);
         dsTextField.add(Ghe_15F);
 
-        
-//        System.err.println("luu ghe thanh cong");
-//        
-//        for (int i =0; i < dsTextField.size();i++){
-//            System.err.println(dsTextField.get(i).getName());
-//        }
         return 1;
     }
 
- 
-
-    
-    private int layGheTuCSDL(String maChuyenBay){
+    private int layGheTuCSDL(String maChuyenBay) {
         System.out.println("lay ghe");
         connection.DataConnection.createStatement();
         String sql = "select * from GHE";
@@ -448,27 +348,17 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
             PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()){
-                  model.Ghe ghe = new model.Ghe() ;
-                // 
-                  if(rs.getString("MaChuyenBay").trim().equals(maChuyenBay.trim())){
+            while (rs.next()) {
+                model.Ghe ghe = new model.Ghe();
+                if (rs.getString("MaChuyenBay").trim().equals(maChuyenBay.trim())) {
 
                     ghe.setMaGhe(rs.getString("MaGhe"));
                     ghe.setMaChuyenBay(rs.getString("MaChuyenBay"));
                     ghe.setLoaiGhe(rs.getString("LoaiGhe"));
                     ghe.setTrong(rs.getByte("Trong"));
-                    //
-//                      System.out.println(ghe.getMaGhe());
                     dsGhe.add(ghe);
                 }
-//                  else {
-//                  }
-
-                  
-                  
-                
             }
-//            System.out.println(dsGhe.size());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "lay that bai");
         }
@@ -476,161 +366,112 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         return 1;
     }
 
-    
-       private int layMauGhe(){
+    private int layMauGhe() {
         byte trong = 0;
-         for(int i = 0 ; i< dsGhe.size();i++){
+        for (int i = 0; i < dsGhe.size(); i++) {
 
-             if (dsGhe.get(i).getTrong() == trong){
-//                 System.out.println(dsGhe.get(i).getMaGhe().substring(5));
+            if (dsGhe.get(i).getTrong() == trong) {
 
-                  for (int j=0;j< dsTextField.size();j++){
+                for (int j = 0; j < dsTextField.size(); j++) {
 
-                if(dsGhe.get(i).getMaGhe().substring(5).trim().equalsIgnoreCase(dsTextField.get(j).getName().trim())){
+                    if (dsGhe.get(i).getMaGhe().substring(5).trim().equalsIgnoreCase(dsTextField.get(j).getName().trim())) {
                         dsTextField.get(j).setBackground(Color.red);
-//                     System.err.println("bang nhau");
 
                     }
-//                else {
-//
-//                   System.out.println(dsTextField.get(j).getName());
-//                }
                 }
 
-             
-         }}
+            }
+        }
         return 1;
 
     }
 
-    // khi mà click vào ghế thì tạm thời đổi màu
-    
-    // ở đây là đầu tiên là hàm đổi màu ghế nên chưa đổi tên lại
-
-        private void xuLiSuKienClickVaMoBangNhapThongTin(JTextField a){
-
-        // System.out.println(a.getBackground().getRed()+"-"+a.getBackground().getGreen()+"-"+a.getBackground().getBlue()); // 240 240 240
-     if ((a.getBackground().getRed()) == 240 && (a.getBackground().getGreen() == 240)&&(a.getBackground().getBlue() == 240)){ // so sánh nếu mà ghế màu trắng mới cho click
-//                System.err.println("trang");            //khi ông chọn xong r mở cái này lên mấy nút kia vẫn ấn đc mà, nhưng mấy cái ghế đấy nó k chạy event thì ph
+    private void xuLiSuKienClickVaMoBangNhapThongTin(JTextField a) {
+        if ((a.getBackground().getRed()) == 240 && (a.getBackground().getGreen() == 240) && (a.getBackground().getBlue() == 240)) {
             a.setBackground(Color.GREEN);
             this.listSelected.add(a);
-//                System.err.println(a.getName());
 
-               if (di){new GiaoDienNhapThongTinNguoiBayKhiChonGhe(a.getName(), this.maChuyenBay, this.soGheNguoiLonDi, this.soGheTreEmDi).setVisible(true);}
-               else if (!di &&!ve) new GiaoDienNhapThongTinNguoiBayKhiChonGhe(a.getName(), this.maChuyenBay, this.soGheNguoiLonVe, this.soGheTreEmVe).setVisible(true);
+            if (di) {
+                new GiaoDienNhapThongTinNguoiBayKhiChonGhe(a.getName(), this.maChuyenBay, this.soGheNguoiLonDi, this.soGheTreEmDi).setVisible(true);
+            } else if (!di && !ve) {
+                new GiaoDienNhapThongTinNguoiBayKhiChonGhe(a.getName(), this.maChuyenBay, this.soGheNguoiLonVe, this.soGheTreEmVe).setVisible(true);
+            }
 
             this.dispose();
+        } else if ((a.getBackground().getRed()) == 0 && (a.getBackground().getGreen() == 255) && (a.getBackground().getBlue() == 0)) {
+            a.setBackground(bg);
 
-            //
-     }
- 
-            else if ((a.getBackground().getRed()) == 0 && (a.getBackground().getGreen() == 255)&&(a.getBackground().getBlue() == 0)) {
+            for (int i = 0; i < listSelected.size(); i++) {
 
-                a.setBackground(bg);
-//                System.err.println("chuyen tu xanh sang trang");
-                
-// viet thu tim ghe moi chon de xoa ra khoi danh sach
-
-            for(int i =0;i < listSelected.size();i++){
-            
-
-                    
                 System.err.println("chuan bi xoa");
-                if(listSelected.get(i) == a){
+                if (listSelected.get(i) == a) {
                     System.err.println("bang nhau");
                     listSelected.remove(i);
 
                     System.err.println("da xoa");
-                }
-                else {
-                    System.err.println("khong bang nhau");}
-
-                     
-            }   
-            
-                if (di)     xoaThongTinKhiClick(a, dsVeDi, soGheNguoiLonDi, soGheTreEmDi);
-                else if (!ve && !di) xoaThongTinKhiClick(a, dsVeVe, soGheNguoiLonVe, soGheTreEmVe);
-            }   
-     
-     
-                    System.out.println("sau khi xoa mot nut cong lai so luong ghe");
-                    System.out.println("tre ve: " + GiaoDienChonGhe.soGheTreEmVe);
-                    System.out.println("tre di: "+ GiaoDienChonGhe.soGheTreEmDi);
-                     System.out.println("lon ve: "+ GiaoDienChonGhe.soGheNguoiLonVe);
-                     System.out.println("lon di: "+  GiaoDienChonGhe.soGheNguoiLonDi);
-
-}   
-private void xoaThongTinKhiClick(JTextField a, ArrayList<model.Ve> dsVe,int soNguoiLon, int soTreEm  ){
-//     for(int i =0;i < listSelected.size();i++){
-//                
-//               
-//                    
-//                    System.err.println("chuan bi xoa");
-//                if(listSelected.get(i) == a){
-//                     System.err.println("bang nhau");
-//                      listSelected.remove(i);
-//                      
-//                    System.err.println("da xoa");                   
-//                }
-//                else {
-//                    System.err.println("khong bang nhau");}
-//                     
-//            }
-            
-            for (int j = 0 ; j < dsVe.size(); j++){
-               
-                System.out.println("maghe " + dsVe.get(j).getMaGhe() );;
-                System.out.println("cmnd " + dsVe.get(j).getCmndNguoiBay() + " 0");;
-                System.out.println("ma jtextfield" + a.getName());
-                
-                
-                if (dsVe.get(j).getMaGhe().trim().equals(a.getName())){
-                    
-                    
-                    if(dsVe.get(j).getCmndNguoiBay().equals("")){
-                        if(di){
-                            soGheTreEmDi++;
-                        }
-                        else if (!ve && !di){
-                            soGheTreEmVe++;
-                        }
-                        //soTreEm++;
-//                        System.out.println("tang so tre em len 1");
-//                        System.out.println("so tre em sau khi taang"+ soTreEm);
-                    }
-                    else {
-                         if(di){
-                            soGheNguoiLonDi++;
-                        }
-                        else if (!ve && !di){
-                            soGheNguoiLonVe++;
-                        }
-//                        soNguoiLon++;
-//                    System.out.println("tang so ng lon len 1");
-//                        System.out.println("so ng lon sau khi tang" + soNguoiLon);
-                    }
-                    
-                    dsVe.remove(j);
+                } else {
+                    System.err.println("khong bang nhau");
                 }
             }
-                        System.out.println("so luong ve di"+dsVe.size());
-                            this.xuatThongTinVaoBang();
 
+            if (di) {
+                xoaThongTinKhiClick(a, dsVeDi, soGheNguoiLonDi, soGheTreEmDi);
+            } else if (!ve && !di) {
+                xoaThongTinKhiClick(a, dsVeVe, soGheNguoiLonVe, soGheTreEmVe);
+            }
+        }
 
-}
-// hàm này để chuyển màu danh sách các ghế đã chọn truyền vào màu tương ứng vỡi xác nhận hoặc hủy
-      
-private void changeColor(Color a){
+        System.out.println("sau khi xoa mot nut cong lai so luong ghe");
+        System.out.println("tre ve: " + GiaoDienChonGhe.soGheTreEmVe);
+        System.out.println("tre di: " + GiaoDienChonGhe.soGheTreEmDi);
+        System.out.println("lon ve: " + GiaoDienChonGhe.soGheNguoiLonVe);
+        System.out.println("lon di: " + GiaoDienChonGhe.soGheNguoiLonDi);
+
+    }
+
+    private void xoaThongTinKhiClick(JTextField a, ArrayList<model.Ve> dsVe, int soNguoiLon, int soTreEm) {
+
+        for (int j = 0; j < dsVe.size(); j++) {
+
+            System.out.println("maghe " + dsVe.get(j).getMaGhe());;
+            System.out.println("cmnd " + dsVe.get(j).getCmndNguoiBay() + " 0");;
+            System.out.println("ma jtextfield" + a.getName());
+
+            if (dsVe.get(j).getMaGhe().trim().equals(a.getName())) {
+
+                if (dsVe.get(j).getCmndNguoiBay().equals("")) {
+                    if (di) {
+                        soGheTreEmDi++;
+                    } else if (!ve && !di) {
+                        soGheTreEmVe++;
+                    }
+
+                } else {
+                    if (di) {
+                        soGheNguoiLonDi++;
+                    } else if (!ve && !di) {
+                        soGheNguoiLonVe++;
+                    }
+                }
+                dsVe.remove(j);
+            }
+        }
+        System.out.println("so luong ve di" + dsVe.size());
+        this.xuatThongTinVaoBang();
+
+    }
+
+    private void changeColor(Color a) {
         byte trong = 1;
         DataConnection.createStatement();
         String sql = "update GHE set Trong = ? where MaGhe = ? ";
 
         try {
             PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
-        for(int i =0;i < listSelected.size();i++){
+            for (int i = 0; i < listSelected.size(); i++) {
 //   
-              for (int j = 0;j< dsGhe.size();j++){
-                  if(dsGhe.get(j).getMaGhe().trim().equals(listSelected.get(i).getName())){
+                for (int j = 0; j < dsGhe.size(); j++) {
+                    if (dsGhe.get(j).getMaGhe().trim().equals(listSelected.get(i).getName())) {
 
                         ps.setByte(1, trong);
                         ps.setString(2, dsGhe.get(j).getMaGhe().trim());
@@ -638,7 +479,6 @@ private void changeColor(Color a){
                         JOptionPane.showMessageDialog(this, "sua thanh cong");
                         ps.executeUpdate();
 
-                      
                     }
                 }
             }
@@ -647,15 +487,9 @@ private void changeColor(Color a){
             JOptionPane.showMessageDialog(this, "sua that bai");
         }
 
-      for(int i =0;i < listSelected.size();i++){
+        for (int i = 0; i < listSelected.size(); i++) {
             listSelected.get(i).setBackground(a);
-            // nếu cái nút nào có màu đỏ thì duyệt mảng ghế có ghế nào trùng tên nút màu đỏ thì đỏi trạng thái bằng 1
-
-              
         }
-
-
-   
     }
 
 
@@ -2688,56 +2522,28 @@ private void changeColor(Color a){
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-
     private void huyChon() {
 
-         for(int i =0;i < listSelected.size();i++){
+        for (int i = 0; i < listSelected.size(); i++) {
 
-             Color bg = new Color(240,240,240);
-          listSelected.get(i).setBackground(bg);
-          
-         }
-                    if( this.di){
-                          dsVeDi.removeAll(dsVeDi);
-                          soGheNguoiLonDi = nguoiLonBanDau;
-                          soGheTreEmDi = treEmBanDau;
-                      }
-                      else if (!di && !ve){
-                          dsVeVe.removeAll(dsVe);
-                          soGheNguoiLonVe = nguoiLonBanDau; // reset số ng lớn  
-                          soGheTreEmVe = treEmBanDau;   // reset số trẻ em
-                      }
-         
-         //   
-//              for (int j = 0;j< dsGhe.size();j++){
-//                  if(dsGhe.get(i).getMaGhe().trim().equalsIgnoreCase(listSelected.get(j).getName().trim())){
-//
-//                      
-//                 
-//                      if( this.di){
-//                          dsVeDi.removeAll(dsVeDi);
-//                          soGheNguoiLonDi = nguoiLonBanDau;
-//                          soGheTreEmDi = treEmBanDau;
-//                      }
-//                      else if (!di && !ve){
-//                          dsVeVe.removeAll(dsVe);
-//                          soGheNguoiLonVe = nguoiLonBanDau;
-//                          soGheTreEmVe = treEmBanDau;
-//                      }
-//                  }}
+            Color bg = new Color(240, 240, 240);
+            listSelected.get(i).setBackground(bg);
 
+        }
+        if (this.di) {
+            dsVeDi.removeAll(dsVeDi);
+            soGheNguoiLonDi = nguoiLonBanDau;
+            soGheTreEmDi = treEmBanDau;
+        } else if (!di && !ve) {
+            dsVeVe.removeAll(dsVe);
+            soGheNguoiLonVe = nguoiLonBanDau; // reset số ng lớn  
+            soGheTreEmVe = treEmBanDau;   // reset số trẻ em
+        }
     }
     private void Huy_ChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Huy_ChonActionPerformed
         // TODO add your handling code here:
-
-        // changeColor(Color.WHITE);
         huyChon();
         ((DefaultTableModel) jTable_ThongTinNguoiBay.getModel()).setRowCount(0);
-
-
-       // changeColor(Color.WHITE);
-
-
     }//GEN-LAST:event_Huy_ChonActionPerformed
 
     private void Ghe_2AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Ghe_2AActionPerformed
@@ -3105,10 +2911,7 @@ private void changeColor(Color a){
 
     private void Ghe_1AMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Ghe_1AMouseClicked
         // TODO add your handling code here:
-        System.out.println("àaaaaa");
         this.xuLiSuKienClickVaMoBangNhapThongTin(Ghe_1A);
-        // là sao không hiểu lắm nói rõ ra xem thử, kiểu ông ấn vào mà code nó k chạy á, chứ 2 nút hủy với xác nhân hình như vẫn ấn được
-        // đúng rồi hai cái button vẫn nhấn được nhưng mà cái textfield nó bị sao á nhìn nó cũng k giống như bth, chạy lại lần nữa thử, từ lúc chọn chuyến bay áoke
 
     }//GEN-LAST:event_Ghe_1AMouseClicked
 
@@ -3567,74 +3370,56 @@ private void changeColor(Color a){
 
     private void Xac_NhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Xac_NhanActionPerformed
         // TODO add your handling code here:
+        if (this.ve == true) {
 
-//        this.khuHoi = true;
+            if ((soGheNguoiLonDi != 0) || (soGheTreEmDi != 0)) {
+                JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin vào số lượng vé đã chọn trước khi xác nhận!");
+            } else {
 
-       if(this.ve == true){ 
-                
-                
-                // chặn xác nhận khi không nhập đủ số lượng vé lúc đi
-                if ((soGheNguoiLonDi != 0 ) || (soGheTreEmDi != 0) ){
-                    JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin vào số lượng vé đã chọn trước khi xác nhận!");
-                }
-                else {
-                    
                 ve = false;
                 di = false;
-          new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe, this.nguoiLonBanDau, this.treEmBanDau).setVisible(true); // looix k mở được chọn chuyến bay về khi truyền thamn số vào
-          // khuHoi = false;
-          
-          
-          //  changeColor(Color.RED);
-           this.dispose();
-       }
-       
-       }
-       else {
-//           changeColor(Color.RED);
-//            System.out.println(this.khuHoi);
-             // chặn xác nhận khi không nhập đủ số lượng vé lúc đi
-            
-            if(true == this.khuHoi){
-                if((soGheTreEmVe !=0) || (soGheNguoiLonVe !=0) ){//|| (soGheTreEmVe!=0 || soGheNguoiLonVe!=0)
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin vào số lượng vé đã chọn trước khi xác nhận!");
-            }
-                else {
-                new GiaoDienHoaDonHaiChieu(dsVeDi, dsVeVe).setVisible(true);
+                new GiaoDienChonChuyenBayVe(this.maSanBayDen, this.maSanBayDi, this.ngayVe, this.nguoiLonBanDau, this.treEmBanDau).setVisible(true);
                 this.dispose();
             }
-            }
-            else {
-                if((soGheTreEmDi!=0) || (soGheNguoiLonDi!=0) ){//|| (soGheTreEmVe!=0 || soGheNguoiLonVe!=0)
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin vào số lượng vé đã chọn trước khi xác nhận!");
-            }
-            else {
-                System.out.println("di mot chieu");
-                new GiaoDienHoaDonMotChieu().setVisible(true);
 
-                this.dispose();
+        } else {
+
+            if (true == this.khuHoi) {
+                if ((soGheTreEmVe != 0) || (soGheNguoiLonVe != 0)) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin vào số lượng vé đã chọn trước khi xác nhận!");
+                } else {
+                    new GiaoDienHoaDonHaiChieu(dsVeDi, dsVeVe).setVisible(true);
+                    this.dispose();
+                }
+            } else {
+                if ((soGheTreEmDi != 0) || (soGheNguoiLonDi != 0)) {
+                    JOptionPane.showMessageDialog(this, "Vui lòng nhập đủ thông tin vào số lượng vé đã chọn trước khi xác nhận!");
+                } else {
+                    System.out.println("di mot chieu");
+                    new GiaoDienHoaDonMotChieu().setVisible(true);
+
+                    this.dispose();
+                }
             }
-            }
-        } 
+        }
     }//GEN-LAST:event_Xac_NhanActionPerformed
 
     private void Huy_Chon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Huy_Chon1ActionPerformed
-                // TODO add your handling code here:
-                
-             if (di){
-                 dsVeDi.removeAll(dsVeDi);
-                 new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, nguoiLonBanDau, treEmBanDau).setVisible(true);
-                 System.out.println("so nguoi lon va tre em ban dau" + nguoiLonBanDau + "-" +treEmBanDau);
-                 this.dispose();
-             }   
-             else if (!ve && !di) {
-                 dsVeVe.removeAll(dsVeVe);
-                  new GiaoDienChonChuyenBayVe(maSanBayDen, maSanBayDi, ngayVe, nguoiLonBanDau, treEmBanDau).setVisible(true);
-                  System.out.println("so nguoi lon va tre em ban dau" + nguoiLonBanDau + "-" +treEmBanDau);
-                 this.dispose();
-                 
-             }
-                
+        // TODO add your handling code here:
+
+        if (di) {
+            dsVeDi.removeAll(dsVeDi);
+            new GiaoDienChonChuyenBayDi(maSanBayDi, maSanBayDen, ngayDi, ngayVe, di, ve, khuHoi, nguoiLonBanDau, treEmBanDau).setVisible(true);
+            System.out.println("so nguoi lon va tre em ban dau" + nguoiLonBanDau + "-" + treEmBanDau);
+            this.dispose();
+        } else if (!ve && !di) {
+            dsVeVe.removeAll(dsVeVe);
+            new GiaoDienChonChuyenBayVe(maSanBayDen, maSanBayDi, ngayVe, nguoiLonBanDau, treEmBanDau).setVisible(true);
+            System.out.println("so nguoi lon va tre em ban dau" + nguoiLonBanDau + "-" + treEmBanDau);
+            this.dispose();
+
+        }
+
     }//GEN-LAST:event_Huy_Chon1ActionPerformed
 
     /**
@@ -3669,7 +3454,6 @@ private void changeColor(Color a){
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GiaoDienChonGhe().setVisible(true);
-                // new GiaoDienChonGhe(xacNhan, ve).setVisible(true);
             }
         });
     }

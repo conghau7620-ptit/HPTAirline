@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -371,7 +366,6 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.sdtKhachHang = jTextField_TimTheoSDTKhachHang.getText();
         if (jTextField_TimTheoSDTKhachHang.getText().length() >= 11) {
-//            evt.consume();
             jTextField_TimTheoSDTKhachHang.setText(this.sdtKhachHang.substring(0, this.sdtKhachHang.length() - 1));
             this.sdtKhachHang = jTextField_TimTheoSDTKhachHang.getText();
             System.out.println(sdtKhachHang);
@@ -389,7 +383,6 @@ public class GiaoDienChiTietThongKe extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.sdtNhanVien = jTextField_TimTheoSDTNhanVien.getText();
         if (jTextField_TimTheoSDTNhanVien.getText().length() >= 11) {
-//            evt.consume();
             jTextField_TimTheoSDTNhanVien.setText(this.sdtNhanVien.substring(0, this.sdtNhanVien.length() - 1));
             this.sdtNhanVien = jTextField_TimTheoSDTKhachHang.getText();
             System.out.println(sdtNhanVien);

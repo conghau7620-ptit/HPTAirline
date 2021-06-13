@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -23,7 +18,6 @@ import model.TaiKhoan;
  *
  * @author tuanbuiquoc
  */
-//Tạm hoàn thành giao diện thông tin nhân viên, và xử lý sửa thông tin, đổi mật khẩu, chưa kiểm tra  input
 public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
 
     String tenNhanVien;
@@ -34,7 +28,6 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
         jButton_DoiMatKhau.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThoatGiaoDienThongTinNhanVien.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_XacNhanSuaThongTin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        //// Phần thông tin cơ bản , đăng xuất
         new LoadData();
         for (NhanVien nv : controller.Controller.arrayListNhanVien) {
             if (nv.getSdtNhanVien().equals(controller.Controller.tk.getSdt())) {
@@ -341,13 +334,13 @@ public class GiaoDienThongTinNhanVien extends javax.swing.JFrame {
         if (jTextField_CMND.getText().isEmpty()) {
             jLabel_ThongBao.setText("*CMND chưa được điền");
             return;
-        }else{
+        } else {
             jLabel_ThongBao.setText("");
         }
         if (jTextField_TenNhanVien.getText().isEmpty()) {
             jLabel_ThongBao.setText("*Tên nhân viên chưa được điền");
             return;
-        }else{
+        } else {
             jLabel_ThongBao.setText("");
         }
         if (jLabel_ThongBao.getText().isEmpty()) {

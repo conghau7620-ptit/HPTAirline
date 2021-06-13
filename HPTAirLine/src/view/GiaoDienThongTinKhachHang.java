@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -23,7 +18,6 @@ import model.TaiKhoan;
  *
  * @author tuanbuiquoc
  */
-//Tạm hoàn thành giao diện thông tin khách hàng, và xử lý sửa thông tin, đổi mật khẩu, chưa kiểm tra  input
 public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
 
     String tenKhachHang;
@@ -34,7 +28,6 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
         jButton_XacNhanSuaThongTin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_DoiMatKhau.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThoatGiaoDienThongTinKhachHang.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        //// Phần thông tin cơ bản , đăng xuất
         new LoadData();
         for (KhachHang kh : controller.Controller.arrayListKhachHang) {
             if (kh.getSdtKhachHang().equals(controller.Controller.tk.getSdt())) {
@@ -390,16 +383,16 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
 
     private void jButton_XacNhanSuaThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XacNhanSuaThongTinActionPerformed
         // TODO add your handling code here:
-        if(jTextField_CMND.getText().isEmpty()){
+        if (jTextField_CMND.getText().isEmpty()) {
             jLabel_ThongBao.setText("*CMND chưa được điền");
             return;
-        }else{
+        } else {
             jLabel_ThongBao.setText("");
         }
-        if(jTextField_TenKhachHang.getText().isEmpty()){
+        if (jTextField_TenKhachHang.getText().isEmpty()) {
             jLabel_ThongBao.setText("*Tên khách hàng chưa được điền");
             return;
-        }else{
+        } else {
             jLabel_ThongBao.setText("");
         }
         if (jLabel_ThongBao.getText().isEmpty()) {
@@ -434,7 +427,7 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
         int luaChon = JOptionPane.showConfirmDialog(null, message, "Thay đổi mật khẩu", JOptionPane.OK_CANCEL_OPTION);
         if (luaChon == JOptionPane.OK_OPTION) {
             if (matKhauCu.getText().equals(controller.Controller.tk.getMatKhau())) {
-                if(matKhauMoi.getText().isEmpty()){
+                if (matKhauMoi.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(rootPane, "Không để trống mật khẩu mới");
                     return;
                 }

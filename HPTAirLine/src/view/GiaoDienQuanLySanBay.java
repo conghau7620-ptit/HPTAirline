@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -37,7 +32,7 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
         dtmSanBay.setColumnIdentifiers(new Object[]{"Mã SB", "Tên SB"});
 
         hienThongTin();
-        
+
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -321,7 +316,6 @@ public class GiaoDienQuanLySanBay extends javax.swing.JFrame {
         jTextField_TimKiem.setText(st);
         jTextField_TimKiem.setCaretPosition(jTextField_TimKiem.getText().length());
         if (jTextField_TimKiem.getText().length() >= 4) {
-//            evt.consume();
             jTextField_TimKiem.setText(jTextField_TimKiem.getText().substring(0, jTextField_TimKiem.getText().length() - 1));
         } else {
             dtmSanBay.setRowCount(0);

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -22,7 +17,8 @@ public class GiaoDienSuaDuongBay extends javax.swing.JFrame {
     /**
      * Creates new form GiaoDienSuaDuongBay
      */
-    String maDuongBay="";
+    String maDuongBay = "";
+
     public GiaoDienSuaDuongBay(String maDuongBay) {
         initComponents();
         jButton_QuayLai.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -45,26 +41,28 @@ public class GiaoDienSuaDuongBay extends javax.swing.JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
+
     private void hienThongTin() {
         new LoadData();
-        for (SanBay sb: controller.Controller.arrayListSanBay) {
-            jComboBox_SanBay1.addItem(sb.getMaSanBay().toString()+"-"+sb.getTenSanBay());
-            jComboBox_SanBay2.addItem(sb.getMaSanBay().toString()+"-"+sb.getTenSanBay());   
+        for (SanBay sb : controller.Controller.arrayListSanBay) {
+            jComboBox_SanBay1.addItem(sb.getMaSanBay().toString() + "-" + sb.getTenSanBay());
+            jComboBox_SanBay2.addItem(sb.getMaSanBay().toString() + "-" + sb.getTenSanBay());
         }
-        for(DuongBay db: controller.Controller.arrayListDuongBay){
-            if(db.getMaDuongBay().equalsIgnoreCase(maDuongBay)){
-                for (SanBay sb: controller.Controller.arrayListSanBay) {
-                    if(sb.getMaSanBay().equalsIgnoreCase(db.getMaSanBay1())){
-                        jComboBox_SanBay1.setSelectedItem(db.getMaSanBay1().toString()+"-"+sb.getTenSanBay());
+        for (DuongBay db : controller.Controller.arrayListDuongBay) {
+            if (db.getMaDuongBay().equalsIgnoreCase(maDuongBay)) {
+                for (SanBay sb : controller.Controller.arrayListSanBay) {
+                    if (sb.getMaSanBay().equalsIgnoreCase(db.getMaSanBay1())) {
+                        jComboBox_SanBay1.setSelectedItem(db.getMaSanBay1().toString() + "-" + sb.getTenSanBay());
                     }
-                    if(sb.getMaSanBay().equalsIgnoreCase(db.getMaSanBay2())){
-                         jComboBox_SanBay2.setSelectedItem(db.getMaSanBay2().toString()+"-"+sb.getTenSanBay());
+                    if (sb.getMaSanBay().equalsIgnoreCase(db.getMaSanBay2())) {
+                        jComboBox_SanBay2.setSelectedItem(db.getMaSanBay2().toString() + "-" + sb.getTenSanBay());
                     }
                 }
             }
-            jTextField_KhoangCach.setText(db.getKhoangCach()+"");
+            jTextField_KhoangCach.setText(db.getKhoangCach() + "");
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -281,15 +279,15 @@ public class GiaoDienSuaDuongBay extends javax.swing.JFrame {
             jLabel_ThongBao.setText("Khoảng cách chưa được điền");
             return;
         }
-        
+
         DuongBay duongBay = new DuongBay(
-            this.maDuongBay,
-            maSB1.substring(0, 3),
-            maSB2.substring(0, 3),
-            Integer.parseInt(jTextField_KhoangCach.getText()));
-        if(connection.UpdateData.updateDuongBay(duongBay)){
+                this.maDuongBay,
+                maSB1.substring(0, 3),
+                maSB2.substring(0, 3),
+                Integer.parseInt(jTextField_KhoangCach.getText()));
+        if (connection.UpdateData.updateDuongBay(duongBay)) {
             JOptionPane.showMessageDialog(rootPane, "Sửa đường bay thành công");
-        }else{
+        } else {
             JOptionPane.showMessageDialog(rootPane, "Sửa đường bay thất bại");
         }
     }//GEN-LAST:event_jButton_SuaDuongBayActionPerformed
@@ -297,37 +295,6 @@ public class GiaoDienSuaDuongBay extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Windows".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienSuaDuongBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienSuaDuongBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienSuaDuongBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(GiaoDienSuaDuongBay.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new GiaoDienSuaDuongBay().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_QuayLai;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import connection.LoadData;
@@ -27,7 +22,7 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
      * Creates new form GiaoDienSuaMayBay
      */
     String maMayBay;
-    
+
     public GiaoDienSuaMayBay(String maMayBay) {
         initComponents();
         new LoadData();
@@ -235,9 +230,9 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void input() {
-        MayBay mayBay=null;
-        for (MayBay mb: Controller.arrayListMayBay) {
-            if(mb.getMaMayBay().equals(maMayBay)) {
+        MayBay mayBay = null;
+        for (MayBay mb : Controller.arrayListMayBay) {
+            if (mb.getMaMayBay().equals(maMayBay)) {
                 mayBay = mb;
                 break;
             }
@@ -250,8 +245,7 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
             jLabel_ThongBao.setText("Tên máy bay chưa được điền");
             jLabel_TenSanBay.setForeground(Color.yellow);
             return;
-        }
-        else {
+        } else {
             jLabel_ThongBao.setText("");
             jLabel_TenSanBay.setForeground(Color.white);
         }
@@ -259,8 +253,7 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
             jLabel_ThongBao.setText("Hãng bay chưa được điền");
             jLabel_HangBay.setForeground(Color.yellow);
             return;
-        }
-        else {
+        } else {
             jLabel_ThongBao.setText("");
             jLabel_HangBay.setForeground(Color.white);
         }
@@ -273,17 +266,17 @@ public class GiaoDienSuaMayBay extends javax.swing.JFrame {
         }
         jLabel_ThongBao.setText("");
         MayBay mb = new MayBay(
-             maMayBay,
-            jTextField_TenMayBay.getText(),
-            jTextField_HangBay.getText());
-        int vt=0;
-        for (MayBay mb1:Controller.arrayListMayBay) {
+                maMayBay,
+                jTextField_TenMayBay.getText(),
+                jTextField_HangBay.getText());
+        int vt = 0;
+        for (MayBay mb1 : Controller.arrayListMayBay) {
             if (mb1.getMaMayBay().equals(maMayBay)) {
                 break;
             }
             vt++;
         }
-        Controller.arrayListMayBay.set(vt,mb);
+        Controller.arrayListMayBay.set(vt, mb);
         UpdateData.updateMayBay(mb);
         jLabel_ThongBao.setText("Sửa máy bay thành công");
     }//GEN-LAST:event_jButton_SuaMayBayActionPerformed

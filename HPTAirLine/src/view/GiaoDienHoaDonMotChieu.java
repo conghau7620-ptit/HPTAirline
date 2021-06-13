@@ -1,10 +1,3 @@
-/*
-    tạm hoàn thành mua dưới quyền khách hàng và nhân viên
-    có xử lý điểm tích lũy
-    có thêm khách hàng nếu khách hàng chưa tồn tại trong csdl
-    Truyền vào 1 arraylist đối tượng vé trong đó mã hóa đơn, mã chuyến bay, mã ghế và thông tin người 
-                bay đã được set dữ liệu sẵn
- */
 package view;
 
 import connection.InsertData;
@@ -50,11 +43,8 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
     private String maHoaDon;
     private String maChuyenBayDi;
     private ArrayList<Ve> danhSachVe;
-//public GiaoDienHoaDonMotChieu(){
-//    
-//}
-//    public GiaoDienHoaDonMotChieu(ArrayList<Ve> danhSachVeDi) {
-        public GiaoDienHoaDonMotChieu(){
+
+    public GiaoDienHoaDonMotChieu() {
         initComponents();
         jButton_HoanTatHoaDon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         jButton_ThoatGiaoDienHoaDon.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -85,9 +75,6 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         jDateChooser_NgayXuatHoaDon.setEnabled(false);
         thongTinTaiKhoan();
 
-
-
-
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 int confirmed = JOptionPane.showConfirmDialog(null,
@@ -101,50 +88,28 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                 }
             }
         });
-        
+
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-//        String sql = "select * from HOADON";
-//                connection.DataConnection.createStatement();
-//               
-//                int soHoaDon =1;
-//                try {
-//            PreparedStatement ps = DataConnection.connection.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
-//            
-//            while(rs.next()){
-//                soHoaDon++; 
-//            }
-//                    System.out.println(soHoaDon);
-//        } catch (Exception e) {
-//        }
-//                System.out.println("HD"+soHoaDon);
-//                                 //
-//                                 soHoaDon++;
-//                 String maHoaDon = "";
-//                 if(soHoaDon <= 9) maHoaDon= "HD0"+ (soHoaDon);
-//                 else maHoaDon = "HD" + (soHoaDon);
-//        
+
         int i = 0;
-        for(Ve ve: this.danhSachVe){
-           i = i+1;
-           if(i<=9){
-               ve.setMaVe("V0"+i);
-           }else{
-               ve.setMaVe("V"+i);
-           }
-            String maGhe = ve.getMaGhe().substring(0,1).toUpperCase() + ve.getMaGhe().substring(1);
-            ve.setMaGhe(ve.getMaChuyenBay()+"-"+maGhe);
-            ve.setKyGui((short)15);
-            System.out.println("ma ve: "+ve.getMaVe());
-            System.out.println("ma hd: "+ve.getMaHoaDon());
-            System.out.println("ma ghe: "+ve.getMaGhe());
-            System.out.println("ma cb: "+ve.getMaChuyenBay());
+        for (Ve ve : this.danhSachVe) {
+            i = i + 1;
+            if (i <= 9) {
+                ve.setMaVe("V0" + i);
+            } else {
+                ve.setMaVe("V" + i);
+            }
+            String maGhe = ve.getMaGhe().substring(0, 1).toUpperCase() + ve.getMaGhe().substring(1);
+            ve.setMaGhe(ve.getMaChuyenBay() + "-" + maGhe);
+            ve.setKyGui((short) 15);
+            System.out.println("ma ve: " + ve.getMaVe());
+            System.out.println("ma hd: " + ve.getMaHoaDon());
+            System.out.println("ma ghe: " + ve.getMaGhe());
+            System.out.println("ma cb: " + ve.getMaChuyenBay());
         }
-        
+
         hienThongTin();
-
-
 
     }
 
@@ -652,12 +617,12 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
     private void jButton_ThoatGiaoDienHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ThoatGiaoDienHoaDonActionPerformed
         // TODO add your handling code here:
 
-          for (int i = 0 ; i < GiaoDienChonGhe.dsVeDi.size(); i++){
-              String maGhe = GiaoDienChonGhe.dsVeDi.get(i).getMaGhe().substring(5);
-              maGhe = maGhe.substring(0,1).toLowerCase() + maGhe.substring(1);
-              GiaoDienChonGhe.dsVeDi.get(i).setMaGhe(maGhe);
-          }
-          
+        for (int i = 0; i < GiaoDienChonGhe.dsVeDi.size(); i++) {
+            String maGhe = GiaoDienChonGhe.dsVeDi.get(i).getMaGhe().substring(5);
+            maGhe = maGhe.substring(0, 1).toLowerCase() + maGhe.substring(1);
+            GiaoDienChonGhe.dsVeDi.get(i).setMaGhe(maGhe);
+        }
+
         new GiaoDienChonGhe().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton_ThoatGiaoDienHoaDonActionPerformed
@@ -686,7 +651,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
     }
     private void jButton_HoanTatHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_HoanTatHoaDonActionPerformed
         // TODO add your handling code here:
-        if (baoLoi()==false) {
+        if (baoLoi() == false) {
 
         } else {
             new LoadData();
@@ -739,16 +704,15 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
 
                         for (Ve ve : this.danhSachVe) {
                             ve.setMaHoaDon(hoaDon.getMaHoaDon());
-//                            ve.setSdtKhachHang(jTextField_SoDienThoaiKhachHang.getText());
                         }
                         if (InsertData.insertHoaDon(hoaDon) == true) {
                             System.out.println("Thêm hóa đơn thành công");
                             if (InsertData.insertVe(danhSachVe) == true) {
                                 System.out.println("Thêm danh sách vé thành công");
 
-                                for(Ve v: this.danhSachVe){
-                                    if(UpdateData.updateGhe(v.getMaGhe(), (byte) 0)){
-                                        System.out.println("Cap nhat ghe "+v.getMaGhe());
+                                for (Ve v : this.danhSachVe) {
+                                    if (UpdateData.updateGhe(v.getMaGhe(), (byte) 0)) {
+                                        System.out.println("Cap nhat ghe " + v.getMaGhe());
                                     }
                                 }
 
@@ -761,7 +725,6 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                                 }
                             }
 
-                            
                         } else {
                             System.out.println("Thêm hóa đơn thất bại");
                         }
@@ -800,7 +763,6 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         for (KhachHang kh : controller.Controller.arrayListKhachHang) {
             if (kh.getSdtKhachHang().equals(jTextField_SoDienThoaiKhachHang.getText())) {
                 for (Ve ve : this.danhSachVe) {
-//                    ve.setSdtKhachHang(jTextField_SoDienThoaiKhachHang.getText());
                 }
                 jTextField_DiemTichLuy.setText(kh.getDiemTichLuy() + "");
                 break; // thêm vào để khi tìm được k chạy lần lặp tiếp theo
@@ -849,7 +811,6 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
             }
         }
         for (Ve v : this.danhSachVe) {
-//            v.setSdtKhachHang(jTextField_SoDienThoaiKhachHang.getText());
             for (Ghe g : controller.Controller.arrayListChuyenBay.get(index).getArrayListGhe()) {
                 if (v.getMaGhe().equalsIgnoreCase(g.getMaGhe())) {
                     if (g.getLoaiGhe().equalsIgnoreCase("PhoThong")) {
@@ -876,13 +837,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                 });
             }
         }
-//        //
-//        for(KhachHang kh : controller.Controller.arrayListKhachHang){
-//            if(jTextField_SoDienThoaiKhachHang.getText().equalsIgnoreCase(kh.getSdtKhachHang())){
-//                jTextField_DiemTichLuy.setText(kh.getDiemTichLuy()+"");
-//            }
-//        }
-//        //
+
         jTextField_SLVePhoThong.setText("" + soVePhoThong);
         jTextField_SLVeThuongGia.setText("" + soVeThuongGia);
         jTextField_GiaVePhoThong.setText("" + giaCoBan);
@@ -926,48 +881,7 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                ArrayList<Ve> danhSachVe = new ArrayList<>();
-//                String maChuyenBayDi = "CB01";
-//                String maHoaDon = "HD01";
-//
-//                Ve v1 = new Ve();
-//                v1.setKyGui((short) 20);
-//                v1.setMaVe("V01");
-//                v1.setCmndNguoiBay("CMNDNgu");
-//                v1.setMaChuyenBay("CB01");
-//                v1.setMaHoaDon(maHoaDon);
-//                v1.setMaGhe("A01-CB01");
-////                v1.setEmailNguoiBay("emai1");
-////                v1.setTrangThaiDoi((byte) 0);
-////                v1.setTrangThaiVe((byte) 0);
-////                v1.setSdtKhachHang("");
-//                v1.setGia(0);
-//                v1.setTenNguoiBay("ten n");
-////                v1.setSdtNguoiBay("123");
-//
-//                Ve v2 = new Ve();
-//                v2.setKyGui((short) 20);
-//                v2.setMaVe("V02");
-//                v2.setCmndNguoiBay("CMNDNgu");
-//                v2.setMaChuyenBay("CB01");
-//                v2.setMaHoaDon(maHoaDon);
-//                v2.setMaGhe("A02-CB01");
-////                v2.setEmailNguoiBay("emailNo");
-////                v2.setTrangThaiDoi((byte) 0);
-////                v2.setTrangThaiVe((byte) 0);
-////                v2.setSdtKhachHang("");
-//                v2.setGia(0);
-//                v2.setTenNguoiBay("ten ngu2");
-////                v2.setSdtNguoiBay("223");
-//
-//                danhSachVe.add(v1);
-//                danhSachVe.add(v2);
-//
-//                for (Ve v : danhSachVe) {
-//                    System.out.println(v.toString());
-//                }
-             //   new GiaoDienHoaDonMotChieu(danhSachVe).setVisible(true);
-               new GiaoDienHoaDonMotChieu().setVisible(true);
+                new GiaoDienHoaDonMotChieu().setVisible(true);
             }
         });
     }
