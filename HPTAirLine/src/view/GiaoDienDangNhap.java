@@ -221,7 +221,7 @@ public class GiaoDienDangNhap extends javax.swing.JFrame {
         new LoadData();
         int index = -1;
         for (TaiKhoan tk : Controller.arrayListTaiKhoan) {
-            if (jTextField_TenDangNhap.getText().equals(tk.getTenDangNhap())) {
+            if (jTextField_TenDangNhap.getText().trim().equals(tk.getTenDangNhap())) {
                 index = Controller.arrayListTaiKhoan.indexOf(tk);
             }
         }
