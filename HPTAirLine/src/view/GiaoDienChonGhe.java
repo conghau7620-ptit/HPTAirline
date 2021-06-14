@@ -631,7 +631,11 @@ public class GiaoDienChonGhe extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable_ThongTinNguoiBay = new javax.swing.JTable();
+        jTable_ThongTinNguoiBay = new javax.swing.JTable(){
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
         Huy_Chon = new javax.swing.JButton();
         Xac_Nhan = new javax.swing.JButton();
         Huy_Chon1 = new javax.swing.JButton();
