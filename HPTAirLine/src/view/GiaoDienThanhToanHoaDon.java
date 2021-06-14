@@ -483,7 +483,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                         tongTienSauXoa = ((soVePhoThong - 1) * giaCoBan + soVeThuongGia * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia)
                                 - ((soVePhoThong - 1) * giaCoBan + soVeThuongGia * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia) * diemTichLuyKhachDaDung / 1000;
 
-                        diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang - 5;
+                        diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang;
                         System.out.println("Tong tiền sau Xóa=" + tongTienSauXoa);
                         System.out.println("điểm tích lũy sau xóa" + diemTichLuySauXoa);
                     }
@@ -492,7 +492,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                                 - (soVePhoThong * giaCoBan + (soVeThuongGia - 1) * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia) * diemTichLuyKhachDaDung / 1000;
 
                         System.out.println("Tong tiền sau Xóa=" + tongTienSauXoa);
-                        diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang - 10;
+                        diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang;
                         System.out.println("điểm tích lũy sau xóa (chưa tính nếu sau khi xóa thì không còn vé nào)" + diemTichLuySauXoa);
                     }
                     if (tongTienSauXoa == 0) {
@@ -776,7 +776,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_jButton_SuaDiemTichLuyDaDungActionPerformed
-
+    int index = 0;
     private void jButton_XoaHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_XoaHoaDonActionPerformed
         // TODO add your handling code here:
         int rowHoaDon = jTable_HoaDon.getSelectedRow();
@@ -823,6 +823,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                         for (ChuyenBay cb : controller.Controller.arrayListChuyenBay) {
                             if (v.getMaChuyenBay().equals(cb.getMaChuyenBay())) {
                                 index = controller.Controller.arrayListChuyenBay.indexOf(cb);
+                                this.index = index;
                                 giaCoBan = cb.getKhoangCach() * 500;
                                 break;
                             }
@@ -865,7 +866,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 System.out.println("diem còn lại của khách " + diemTichLuyHienTaiCuaKhachHang);
                 int diemTichLuySauXoa = 0;
 
-                diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang - soVePhoThong * 5 - soVeThuongGia * 10 + diemTichLuyKhachDaDung;
+                diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang + diemTichLuyKhachDaDung;
                 System.out.println("Điểm tích lũy sau khi xóa hóa đơn: " + diemTichLuySauXoa);
 
                 int luaChon = JOptionPane.showConfirmDialog(rootPane, "Xóa hóa đơn " + maHoaDon + " đã chọn?", "Xác nhận", JOptionPane.OK_CANCEL_OPTION);
@@ -923,6 +924,24 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
             return;
         }
         String maHoaDon = (String) jTable_HoaDon.getValueAt(rowHoaDon, 0);
+        String sdtKhachHang = (String) jTable_HoaDon.getValueAt(rowHoaDon, 1);
+        int soVePhoThong = 0;
+        int soVeThuongGia = 0;
+
+        for (Ve v : controller.Controller.arrayListVe) {
+            if (v.getMaHoaDon().equals(maHoaDon)) {
+                for (Ghe g : controller.Controller.arrayListChuyenBay.get(index).getArrayListGhe()) {
+                    if (v.getMaGhe().equals(g.getMaGhe())) {
+                        if (g.getLoaiGhe().equalsIgnoreCase("PhoThong")) {
+                            soVePhoThong++;
+                        }
+                        if (g.getLoaiGhe().equalsIgnoreCase("ThuongGia")) {
+                            soVeThuongGia++;
+                        }
+                    }
+                }
+            }
+        }
         int vtHoaDon = -1;
         for (HoaDon hd : controller.Controller.arrayListHoaDon) {
             if (hd.getMaHoaDon().equals(maHoaDon)) {
@@ -930,16 +949,24 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 break;
             }
         }
-
+        int diemTichLuyHienTaiCuaKhachHang = 0;
+        // lấy điểm tích lũy hiện tại của khách hàng
+        for (KhachHang kh : controller.Controller.arrayListKhachHang) {
+            if (sdtKhachHang.equals(kh.getSdtKhachHang())) {
+                diemTichLuyHienTaiCuaKhachHang = kh.getDiemTichLuy();
+                break;
+            }
+        }
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             controller.Controller.arrayListHoaDon.get(vtHoaDon).setTrangThaiThanhToan((byte) 1);
             controller.Controller.arrayListHoaDon.get(vtHoaDon).setSdtNhanVien(controller.Controller.tk.getSdt());
             connection.UpdateData.updateHoaDon(maHoaDon, (byte) 1, controller.Controller.tk.getSdt());
+            connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuyHienTaiCuaKhachHang + soVePhoThong * 5 + soVeThuongGia * 10);
             hienThongTinVaoBangHoaDon();
         } else {
             controller.Controller.arrayListHoaDon.get(vtHoaDon).setTrangThaiThanhToan((byte) 0);
             connection.UpdateData.updateHoaDon(maHoaDon, (byte) 0, controller.Controller.tk.getSdt());
-
+            connection.UpdateData.updateDiemTichLuyKhachHang(sdtKhachHang, diemTichLuyHienTaiCuaKhachHang - soVePhoThong * 5 - soVeThuongGia * 10);
             hienThongTinVaoBangHoaDon();
         }
     }//GEN-LAST:event_jCheckBox_DaThanhToanItemStateChanged

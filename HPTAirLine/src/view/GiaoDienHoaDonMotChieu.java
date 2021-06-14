@@ -672,8 +672,15 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                 if (kiemTraSuDungDiemTichLuy() == true) {
                     int diemTichLuy = Integer.parseInt(jTextField_DiemTichLuy.getText());
                     int diemTichLuySuDung = Integer.parseInt(jComboBox_SuDungDiemTichLuy.getSelectedItem().toString());
-                    int luaChon = JOptionPane.showConfirmDialog(this, "Sau khi hoàn tất hóa đơn điểm tích lũy sẽ là: "
+                    int luaChon = 0;
+                    if(jCheckBox_TrangThaiThanhToan.isSelected()){
+                        luaChon = JOptionPane.showConfirmDialog(this, "Sau khi hoàn tất hóa đơn điểm tích lũy sẽ là: "
                             + (diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 10), null, JOptionPane.YES_NO_OPTION);
+                    }else{
+                        luaChon = JOptionPane.showConfirmDialog(this, "Sau khi hoàn tất hóa đơn điểm tích lũy sẽ là: "
+                            + (diemTichLuy - diemTichLuySuDung), null, JOptionPane.YES_NO_OPTION);
+                    }
+                    
                     if (luaChon == JOptionPane.YES_OPTION) {
                         //gọi hàm sửa thông tin
                         HoaDon hoaDon = new HoaDon();
@@ -715,14 +722,15 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
                                         System.out.println("Cap nhat ghe " + v.getMaGhe());
                                     }
                                 }
-
-                                if (UpdateData.updateDiemTichLuyKhachHang(jTextField_SoDienThoaiKhachHang.getText(), diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 10) == true) {
-                                    System.out.println("Cập nhật điểm tích lũy thành công");
-                                    GiaoDienChonGhe.dsVeDi.removeAll(GiaoDienChonGhe.dsVeDi);//remove để khi tạo hóa đơn khác không bị lặp mã hóa đơn
-                                    this.danhSachVe.removeAll(danhSachVe);
-                                    this.dispose();
-                                    new GiaoDienTimChuyenBay().setVisible(true);
+                                if (jCheckBox_TrangThaiThanhToan.isSelected()) {
+                                    if (UpdateData.updateDiemTichLuyKhachHang(jTextField_SoDienThoaiKhachHang.getText(), diemTichLuy - diemTichLuySuDung + this.soVePhoThong * 5 + this.soVeThuongGia * 10) == true) {
+                                        System.out.println("Cập nhật điểm tích lũy thành công");
+                                    }
                                 }
+                                GiaoDienChonGhe.dsVeDi.removeAll(GiaoDienChonGhe.dsVeDi);//remove để khi tạo hóa đơn khác không bị lặp mã hóa đơn
+                                this.danhSachVe.removeAll(danhSachVe);
+                                this.dispose();
+                                new GiaoDienTimChuyenBay().setVisible(true);
                             }
 
                         } else {
