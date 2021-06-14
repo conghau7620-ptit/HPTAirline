@@ -242,6 +242,9 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable_HoaDonMouseClicked"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;        public boolean isCellEditable(int row, int column){&#xa;        return false;&#xa;    }}"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -428,6 +431,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;public boolean isCellEditable(int row, int column){&#xa;        return false;&#xa;    }}"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
