@@ -304,7 +304,7 @@ public class LoadData {
             System.out.println("diem còn lại của khách " + diemTichLuyHienTaiCuaKhachHang);
             int diemTichLuySauXoa = 0;
 
-            diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang - soVePhoThong * 5 - soVeThuongGia * 10 + diemTichLuyKhachDaDung;
+            diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang + diemTichLuyKhachDaDung;
             System.out.println("Điểm tích lũy sau khi xóa hóa đơn: " + diemTichLuySauXoa);
 
             // cập nhật trạng thái ghế

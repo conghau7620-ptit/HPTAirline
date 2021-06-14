@@ -456,7 +456,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                     if (hangGheCuaVeDaChon.equalsIgnoreCase("PhoThong")) {
                         tongTienSauXoa = ((soVePhoThong - 1) * giaCoBan + soVeThuongGia * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia)
                                 - ((soVePhoThong - 1) * giaCoBan + soVeThuongGia * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia) * diemTichLuyKhachDaDung / 1000;
-                        diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang - 5;
+                        diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang;
                         System.out.println("Tong tiền sau Xóa=" + tongTienSauXoa);
                         System.out.println("điểm tích lũy sau xóa" + diemTichLuySauXoa);
                     }
@@ -464,7 +464,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                         tongTienSauXoa = (soVePhoThong * giaCoBan + (soVeThuongGia - 1) * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia)
                                 - (soVePhoThong * giaCoBan + (soVeThuongGia - 1) * giaCoBan * GiaoDienHoaDonMotChieu.phanTramGiaThuongGia) * diemTichLuyKhachDaDung / 1000;
                         System.out.println("Tong tiền sau Xóa=" + tongTienSauXoa);
-                        diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang - 10;
+                        diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang;
                         System.out.println("điểm tích lũy sau xóa (chưa tính nếu sau khi xóa thì không còn vé nào)" + diemTichLuySauXoa);
                     }
                     if (tongTienSauXoa == 0) {
@@ -811,7 +811,7 @@ public class GiaoDienLichSuHoaDon extends javax.swing.JFrame {
                 System.out.println("diem còn lại của khách " + diemTichLuyHienTaiCuaKhachHang);
                 int diemTichLuySauXoa = 0;
 
-                diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang - soVePhoThong * 5 - soVeThuongGia * 10 + diemTichLuyKhachDaDung;
+                diemTichLuySauXoa = diemTichLuyHienTaiCuaKhachHang + diemTichLuyKhachDaDung;
                 System.out.println("Điểm tích lũy sau khi xóa hóa đơn: " + diemTichLuySauXoa);
 
                 int luaChon = JOptionPane.showConfirmDialog(rootPane, "Xóa hóa đơn " + maHoaDon + " đã chọn?", "Xác nhận", JOptionPane.OK_CANCEL_OPTION);
