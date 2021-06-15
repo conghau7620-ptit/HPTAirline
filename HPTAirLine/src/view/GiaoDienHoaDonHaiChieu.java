@@ -996,13 +996,18 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                                 + this.soVePhoThongVe * 5 + this.soVeThuongGiaVe * 10), null, JOptionPane.YES_NO_OPTION);
                     } else if (jCheckBox_TrangThaiThanhToanHoaDonDi.isSelected() && !jCheckBox_TrangThaiThanhToanHoaDonVe.isSelected()) {
                         luaChon = JOptionPane.showConfirmDialog(this, "Sau khi hoàn tất hóa đơn điểm tích lũy sẽ là: "
-                                + (diemTichLuy - diemTichLuySuDung + this.soVePhoThongDi * 5 + this.soVeThuongGiaDi * 10), null, JOptionPane.YES_NO_OPTION);
+                                + (diemTichLuy - diemTichLuySuDung + this.soVePhoThongDi * 5 + this.soVeThuongGiaDi * 10)
+                                + "\nSau khi thanh toán hóa đơn còn lại điểm tích lũy sẽ là: " + (diemTichLuy - diemTichLuySuDung + this.soVePhoThongDi * 5 + this.soVeThuongGiaDi * 10
+                                + this.soVePhoThongVe * 5 + this.soVeThuongGiaVe * 10), null, JOptionPane.YES_NO_OPTION);
                     } else if (!jCheckBox_TrangThaiThanhToanHoaDonDi.isSelected() && jCheckBox_TrangThaiThanhToanHoaDonVe.isSelected()) {
                         luaChon = JOptionPane.showConfirmDialog(this, "Sau khi hoàn tất hóa đơn điểm tích lũy sẽ là: "
-                                + (diemTichLuy - diemTichLuySuDung + this.soVePhoThongVe * 5 + this.soVeThuongGiaVe * 10), null, JOptionPane.YES_NO_OPTION);
+                                + (diemTichLuy - diemTichLuySuDung + this.soVePhoThongVe * 5 + this.soVeThuongGiaVe * 10)
+                                + "\nSau khi thanh toán hóa đơn còn lại điểm tích lũy sẽ là: " + (diemTichLuy - diemTichLuySuDung + this.soVePhoThongDi * 5 + this.soVeThuongGiaDi * 10
+                                + this.soVePhoThongVe * 5 + this.soVeThuongGiaVe * 10), null, JOptionPane.YES_NO_OPTION);
                     } else {
-                        luaChon = JOptionPane.showConfirmDialog(this, "Sau khi hoàn tất hóa đơn điểm tích lũy sẽ là: "
-                                + (diemTichLuy - diemTichLuySuDung), null, JOptionPane.YES_NO_OPTION);
+                        luaChon = JOptionPane.showConfirmDialog(this, "Sau khi thanh toán hai hóa đơn điểm tích lũy sẽ là: "
+                                + (diemTichLuy - diemTichLuySuDung + this.soVePhoThongDi * 5 + this.soVeThuongGiaDi * 10
+                                + this.soVePhoThongVe * 5 + this.soVeThuongGiaVe * 10), null, JOptionPane.YES_NO_OPTION);
                     }
 
                     if (luaChon == JOptionPane.YES_OPTION) {
