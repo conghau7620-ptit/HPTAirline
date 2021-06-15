@@ -220,9 +220,9 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         jCheckBox_DaThanhToan.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jCheckBox_DaThanhToan.setForeground(new java.awt.Color(255, 255, 255));
         jCheckBox_DaThanhToan.setText("Đã thanh toán");
-        jCheckBox_DaThanhToan.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jCheckBox_DaThanhToanItemStateChanged(evt);
+        jCheckBox_DaThanhToan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jCheckBox_DaThanhToanMouseClicked(evt);
             }
         });
 
@@ -916,7 +916,29 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton_XoaHoaDonActionPerformed
 
-    private void jCheckBox_DaThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCheckBox_DaThanhToanItemStateChanged
+    private void jTextField_TimHoaDonKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimHoaDonKeyReleased
+        jTextField_TimHoaDon.setText(jTextField_TimHoaDon.getText().toUpperCase());
+        jTextField_TimHoaDon.setCaretPosition(jTextField_TimHoaDon.getText().length());
+        if (jTextField_TimHoaDon.getText().isEmpty()) {
+            hienThongTinVaoBangHoaDon();
+            return;
+        }
+        while (dtmHoaDon.getRowCount() != 0) {
+            dtmHoaDon.removeRow(0);
+        }
+        for (HoaDon hd : controller.Controller.arrayListHoaDon) {
+            if (hd.getMaHoaDon().contains(jTextField_TimHoaDon.getText().trim())) {
+                dtmHoaDon.addRow(new Object[]{
+                    hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()), hd.getTrangThaiThanhToan(),
+                    hd.getTongTien(), hd.getSdtNhanVien()
+
+                });
+            }
+        }
+    }//GEN-LAST:event_jTextField_TimHoaDonKeyReleased
+
+    private void jCheckBox_DaThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox_DaThanhToanMouseClicked
+        // TODO add your handling code here:
         int rowHoaDon = jTable_HoaDon.getSelectedRow();
         if (rowHoaDon == -1) {
             JOptionPane.showMessageDialog(rootPane, "Chưa chọn hóa đơn");
@@ -999,28 +1021,7 @@ public class GiaoDienThanhToanHoaDon extends javax.swing.JFrame {
                 break;
             }
         }
-    }//GEN-LAST:event_jCheckBox_DaThanhToanItemStateChanged
-
-    private void jTextField_TimHoaDonKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_TimHoaDonKeyReleased
-        jTextField_TimHoaDon.setText(jTextField_TimHoaDon.getText().toUpperCase());
-        jTextField_TimHoaDon.setCaretPosition(jTextField_TimHoaDon.getText().length());
-        if (jTextField_TimHoaDon.getText().isEmpty()) {
-            hienThongTinVaoBangHoaDon();
-            return;
-        }
-        while (dtmHoaDon.getRowCount() != 0) {
-            dtmHoaDon.removeRow(0);
-        }
-        for (HoaDon hd : controller.Controller.arrayListHoaDon) {
-            if (hd.getMaHoaDon().contains(jTextField_TimHoaDon.getText().trim())) {
-                dtmHoaDon.addRow(new Object[]{
-                    hd.getMaHoaDon(), hd.getSdtKhachHang(), new SimpleDateFormat("dd/MM/yyyy").format(hd.getNgayXuatHoaDon()), hd.getTrangThaiThanhToan(),
-                    hd.getTongTien(), hd.getSdtNhanVien()
-
-                });
-            }
-        }
-    }//GEN-LAST:event_jTextField_TimHoaDonKeyReleased
+    }//GEN-LAST:event_jCheckBox_DaThanhToanMouseClicked
 
     /**
      * @param args the command line arguments
