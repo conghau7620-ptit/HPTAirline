@@ -605,6 +605,28 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             boolean ve = false;
             int soGheNguoiLon = Integer.parseInt(jComboBox_SLNguoiLon.getSelectedItem().toString());
             int soGheTreEm = Integer.parseInt(jComboBox_SLTreEm.getSelectedItem().toString());
+            
+            Controller.loadKetQuaTheoNgay(jComboBox_SanBayDi.getSelectedItem().toString().substring(0, 3),
+                    jComboBox_SanBayDen.getSelectedItem().toString().substring(0, 3), new SimpleDateFormat("yyyy-MM-dd").format(ngayDi));
+            if (!controller.Controller.arrayListKetQuaTimKiemChuyenBay.isEmpty()) {
+                for (ChuyenBay cb : controller.Controller.arrayListKetQuaTimKiemChuyenBay) {
+                    int soGheTrong = 0;
+                    for (Ghe g : cb.getArrayListGhe()) {
+                        if (g.getTrong() == 1) {
+                            soGheTrong++;
+                        }
+                    }
+                    if (soGheTrong >= (soGheNguoiLon + soGheTreEm)) {
+                        break;
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Không có chuyến đi đủ ghế");
+                        return;
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Không có chuyến đi");
+                return;
+            }
             if (jRadioButton_KhuHoi.isSelected()) {
                 ve = true;
                 khuHoi = true;
