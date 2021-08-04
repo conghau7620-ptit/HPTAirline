@@ -632,6 +632,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                 khuHoi = true;
                 ngayVe = jDateChooser_NgayVe.getDate();
 
+               controller.Controller.arrayListKetQuaTimKiemChuyenBay.removeAll(controller.Controller.arrayListKetQuaTimKiemChuyenBay);
                 Controller.loadKetQuaTheoNgay(jComboBox_SanBayDen.getSelectedItem().toString().substring(0, 3),
                         jComboBox_SanBayDi.getSelectedItem().toString().substring(0, 3), new SimpleDateFormat("yyyy-MM-dd").format(ngayVe));
                 if (!controller.Controller.arrayListKetQuaTimKiemChuyenBay.isEmpty()) {

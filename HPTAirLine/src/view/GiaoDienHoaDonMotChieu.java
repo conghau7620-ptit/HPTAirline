@@ -755,30 +755,31 @@ public class GiaoDienHoaDonMotChieu extends javax.swing.JFrame {
 
     private void jTextField_SoDienThoaiKhachHangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField_SoDienThoaiKhachHangKeyReleased
         // TODO add your handling code here:
-        new LoadData();
+        
         String sdt = jTextField_SoDienThoaiKhachHang.getText();
         for (int i = 0; i < sdt.length(); i++) {
             if (sdt.charAt(i) < '0' || sdt.charAt(i) > '9') {
                 jLabel_BaoLoi2.setForeground(Color.yellow);
-                jTextField_SoDienThoaiKhachHang.setForeground(Color.yellow);
+                jLabel_SoDienThoaiKhachHang.setForeground(Color.yellow);
                 jLabel_BaoLoi2.setText("*Vui lòng nhập số");
-            } else {
-                jLabel_BaoLoi2.setForeground(Color.black);
-                jTextField_SoDienThoaiKhachHang.setForeground(Color.black);
-                jLabel_BaoLoi2.setText("");
-            }
+                return;
+            } 
         }
+                jLabel_BaoLoi2.setForeground(Color.black);
+                jLabel_SoDienThoaiKhachHang.setForeground(Color.white);
+                jLabel_BaoLoi2.setText("");
+            
+        
         for (KhachHang kh : controller.Controller.arrayListKhachHang) {
             if (kh.getSdtKhachHang().equals(jTextField_SoDienThoaiKhachHang.getText())) {
-                for (Ve ve : this.danhSachVe) {
-                }
+                
                 jTextField_DiemTichLuy.setText(kh.getDiemTichLuy() + "");
+                
                 break; // thêm vào để khi tìm được k chạy lần lặp tiếp theo
             } else {
                 jTextField_DiemTichLuy.setText("0");
             }
         }
-        hienThongTin();
     }//GEN-LAST:event_jTextField_SoDienThoaiKhachHangKeyReleased
     private boolean kiemTraSuDungDiemTichLuy() {
         int diemTichLuy = Integer.parseInt(jTextField_DiemTichLuy.getText());
