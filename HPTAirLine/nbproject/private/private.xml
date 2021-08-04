@@ -2,36 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienThongKe.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienNhanVien.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienQuanLy.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienDangKyTaiKhoan.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienThemNhanVien.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienHoaDonHaiChieu.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienQuanLyNhanVien.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienLichSuHoaDon.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienDangNhap.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienThongTinNhanVien.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienSuaDuongBay.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienQuanLyDuongBay.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienQuanLySanBay.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienChonChuyenBayVe.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienChiTietThongKe.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienQuanLyChuyenBay.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienThemChuyenBay.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienChonChuyenBayDi.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienChonGhe.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienThongTinKhachHang.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienSuaSanBay.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienThemDuongBay.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienThemSanBay.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienTimChuyenBay.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienSuaChuyenBay.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienNhapThongTinNguoiBayKhiChonGhe.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienQuanLyKhachHang.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienHoaDonMotChieu.java</file>
-            <file>file:/D:/NetBeansProjects/HPTAirline/HPTAirLine/src/view/GiaoDienThanhToanHoaDon.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
