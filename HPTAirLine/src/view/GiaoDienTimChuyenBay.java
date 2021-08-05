@@ -605,7 +605,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
             boolean ve = false;
             int soGheNguoiLon = Integer.parseInt(jComboBox_SLNguoiLon.getSelectedItem().toString());
             int soGheTreEm = Integer.parseInt(jComboBox_SLTreEm.getSelectedItem().toString());
-            
+            controller.Controller.arrayListKetQuaTimKiemChuyenBay.removeAll(controller.Controller.arrayListKetQuaTimKiemChuyenBay);
             Controller.loadKetQuaTheoNgay(jComboBox_SanBayDi.getSelectedItem().toString().substring(0, 3),
                     jComboBox_SanBayDen.getSelectedItem().toString().substring(0, 3), new SimpleDateFormat("yyyy-MM-dd").format(ngayDi));
             if (!controller.Controller.arrayListKetQuaTimKiemChuyenBay.isEmpty()) {
@@ -631,7 +631,7 @@ public class GiaoDienTimChuyenBay extends javax.swing.JFrame {
                 ve = true;
                 khuHoi = true;
                 ngayVe = jDateChooser_NgayVe.getDate();
-
+                controller.Controller.arrayListKetQuaTimKiemChuyenBay.removeAll(controller.Controller.arrayListKetQuaTimKiemChuyenBay);
                 Controller.loadKetQuaTheoNgay(jComboBox_SanBayDen.getSelectedItem().toString().substring(0, 3),
                         jComboBox_SanBayDi.getSelectedItem().toString().substring(0, 3), new SimpleDateFormat("yyyy-MM-dd").format(ngayVe));
                 if (!controller.Controller.arrayListKetQuaTimKiemChuyenBay.isEmpty()) {
