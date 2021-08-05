@@ -1,6 +1,7 @@
 package view;
 
 import connection.LoadData;
+import controller.Controller;
 import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -279,7 +280,13 @@ public class GiaoDienSuaDuongBay extends javax.swing.JFrame {
             jLabel_ThongBao.setText("Khoảng cách chưa được điền");
             return;
         }
-
+        for (DuongBay db : Controller.arrayListDuongBay) {
+            if ((db.getMaSanBay1().equals(maSB1.substring(0, 3)) && db.getMaSanBay2().equals(maSB2.substring(0, 3)))
+                    || (db.getMaSanBay1().equals(maSB2.substring(0, 3)) && db.getMaSanBay2().equals(maSB1.substring(0, 3)))) {
+                jLabel_ThongBao.setText("Đường bay đã tồn tại trong danh sách");
+                return;
+            }
+        }
         DuongBay duongBay = new DuongBay(
                 this.maDuongBay,
                 maSB1.substring(0, 3),
