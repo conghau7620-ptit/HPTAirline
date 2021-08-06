@@ -427,7 +427,7 @@ public class GiaoDienThongTinKhachHang extends javax.swing.JFrame {
         int luaChon = JOptionPane.showConfirmDialog(null, message, "Thay đổi mật khẩu", JOptionPane.OK_CANCEL_OPTION);
         if (luaChon == JOptionPane.OK_OPTION) {
             if (matKhauCu.getText().equals(controller.Controller.tk.getMatKhau())) {
-                if (matKhauMoi.getText().isEmpty()) {
+                if (matKhauMoi.getText().isBlank()) {
                     JOptionPane.showMessageDialog(rootPane, "Không để trống mật khẩu mới");
                     return;
                 }

@@ -617,7 +617,8 @@ public class GiaoDienNhapThongTinNguoiBayKhiChonGhe extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Họ và tên không được bỏ trống.");
         else if (!ten.equals("") && CMND.equals(""))
             JOptionPane.showMessageDialog(this, "CMND/Hộ chiếu không được để trống");
-
+        else if (CMND.length() < 7)
+            JOptionPane.showMessageDialog(this, "CMND/Hộ chiếu không được ít hơn 7 kí tự");
         else {
             for (int i = 0; i < CMND.length(); i++) {
                 if (CMND.charAt(i) < '0' || CMND.charAt(i) > '9') {
