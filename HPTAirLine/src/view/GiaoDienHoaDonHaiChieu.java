@@ -1103,7 +1103,9 @@ public class GiaoDienHoaDonHaiChieu extends javax.swing.JFrame {
                                         System.out.println("Cập nhật điểm tích lũy thành công");
                                     }
                                 } else {
-
+                                    if (UpdateData.updateDiemTichLuyKhachHang(jTextField_SoDienThoaiKhachHang.getText(), diemTichLuy - diemTichLuySuDung) == true) {
+                                        System.out.println("Cập nhật điểm tích lũy thành công");
+                                    }
                                 }
                                 //
                                 this.dispose();
